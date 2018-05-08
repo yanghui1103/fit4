@@ -100,7 +100,7 @@ public class SystemCoreController extends BaseController {
 			if (result.hasErrors()) {
 				FieldError error = result.getFieldError();
 				model.addAttribute("errorMsg", error.getDefaultMessage());
-				return "common/loginPage";
+				return "system/common/loginPage";
 			}
 			// 获取存放在session中的验证码
 			// String code = (String)
@@ -116,7 +116,7 @@ public class SystemCoreController extends BaseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			model.addAttribute("errorMsg", "登录失败");
-			return "common/loginPage";
+			return "system/common/loginPage";
 		}
 
 		/**** 开始shiro登录 *****/
@@ -131,7 +131,7 @@ public class SystemCoreController extends BaseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			model.addAttribute("errorMsg", "登录失败,认证拦截:" + e.getMessage());
-			return "common/loginPage";
+			return "system/common/loginPage";
 		}
 
 		/***
