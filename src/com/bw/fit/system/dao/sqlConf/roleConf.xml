@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="roleSql">
+	<sql id="paginationSql">
+		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
+	</sql>
+	<select id="getRoleList" parameterType="trole" resultType="trole">
+		select * from (
+		select rl.*,(
+		select count(1) from staff2role a,staff st where st.fdid = a.user_id and st.isdeleted='0' and a.role_id = rl.fdid 
+		) user_count
+		 from roles rl where role_name like  '%'||#{keyWords,jdbcType=VARCHAR}||'%' and isdeleted='0'  ) 
+		where 1=1  
+		<if test="paginationEnable!='0'">		
+			<include refid="paginationSql"></include>
+		</if>
+	</select>
+	<!-- 增加新角色 -->
+	<insert id="createRole" parameterType="trole" >
+		insert into roles (fdid,role_name,isdeleted,parent_id,creator) values
+		(#{fdid,jdbcType=VARCHAR},#{role_name,jdbcType=VARCHAR},'0',#{parent_id,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR})
+	</insert>
+	<select id="getRole" parameterType="String" resultType="trole">
+		select rl.*,(
+		select count(1) from staff2role sr,staff st where st.fdid = sr.user_id and sr.role_id = rl.fdid and st.isdeleted='0'
+			) user_count
+		from roles rl where fdid = #{fdid} 
+	</select>
+	<!-- 作废角色 -->
+	<update id="deleteRole"  parameterType="String">
+		update roles set isdeleted='1' where fdid = #{fdid}
+	</update>
+	
+	
+	<!--角色的所有的菜单 -->
+	<select id="getMenuAuthTreeJsonByRoleId" parameterType="String"
+		resultType="menu">
+	select mm.* from  role2authority ra,authority2menu am,menu mm
+	where  ra.authority_id = am.authority
+	and am.menu_id = mm.fdid and ra.role_id = #{role_id}
+	</select>
+	
+	<!-- 根据角色和菜单获取功能权限 -->
+	<select id="getOperationsByMenuId" parameterType="trole"
+		resultType="toperation">
+		select op.* from authority2operation ap,operation op
+		where ap.operation_id = op.fdid and op.foreign_id = #{keyWords}
+		and ap.authority = #{fdid}
+	</select>
+	<select id="getElementsByMenuId"   parameterType="trole"
+		resultType="toperation">
+		select pe.*,am.* from authority2element am,page_element pe
+		where am.element_id = pe.fdid and am.menu_id = #{keyWords}
+		and am.authority = #{fdid}	
+	</select>
+	<!-- 查询这些角色下拥有授权情况列表 -->
+	<select id="getChildRoleAllotsByRoleId"  parameterType="java.util.List" resultType="roleAllot">
+		select am.authority role_id,op.fdid operation_id,mm.fdid menu_id,pe.fdid element_id
+ 		from authority2menu am ,authority2operation ao,authority2element ae,
+		menu mm ,operation op,page_element pe
+		where am.authority = ao.authority and ao.authority = ae.authority 
+		and mm.fdid = am.menu_id and op.fdid = ao.operation_id and pe.fdid = ae.element_id
+		and am.authority in 
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}       
+        </foreach>   
+	</select>
+	<!-- 获取这角色下的所有子孙 -->
+	<select id="getChildrenRoles"  parameterType="String"
+		resultType="trole">
+		select *
+      from roles a
+      where isdeleted='0'
+      connect by
+      a.parent_id =
+      prior a.fdid
+      start with a.parent_id =#{role_id}
+	</select>
+	<delete id="delAuthoryOperation"  parameterType="baseEntity">
+		delete from authority2operation where authority = #{fdid} and operation_id =#{keyWords}
+	</delete>
+	<delete id="delAuthoryElement"  parameterType="baseEntity">
+		delete from authority2element where authority = #{fdid} and element_id =#{keyWords} and menu_id=#{creator}
+	</delete>
+	<insert id="createAuthoryOperation" parameterType="baseEntity">
+		insert into authority2operation (authority,operation_id) values 
+		(#{fdid},#{keyWords})
+	</insert>
+	<insert id="createAuthoryElement" parameterType="baseEntity">
+		insert into authority2operation (element_id,authority,menu_id) values 
+		(#{keyWords},#{fdid},#{creator})
+	</insert>
+	<insert id="createAuthoritymenu" parameterType="baseEntity">
+		insert into authority2menu (authority,menu_id) values 
+		(#{fdid},#{creator})
+	</insert>
+	<select id="getAuthoritymenu" parameterType="baseEntity" resultType="int">
+		select count(1) from authority2menu where authority=#{fdid} and menu_id = #{creator}
+	</select>
+</mapper>   
