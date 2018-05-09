@@ -17,6 +17,9 @@
 <link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 <link href="<%=basePath %>common/fit/v4/custom/green/uimaker/easyui.css"  rel="stylesheet" >
 <link href="<%=basePath %>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
+<script type="text/javascript" src="<%=basePath %>common/fit/v4/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>common/fit/v4/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>common/fit/v4/js/easyui-lang-zh_CN.js"></script>
 <!-- fit v3.0 start use -->
 <style type="text/css">
 	@media screen and (max-width: 1000px) {
