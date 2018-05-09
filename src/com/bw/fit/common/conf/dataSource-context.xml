@@ -59,14 +59,14 @@
 	<aop:config>
 		<!-- 通过aop定义事务增强切面 -->
 		<aop:pointcut id="serviceMethod"
-			expression="execution(* com.bw.fit.*.service.impl.*.*(..))" />
+			expression="execution(* com.bw.fit.*.service.impl.*.*.*(..))" />
 		<!-- 引用事务增强 -->
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
 	</aop:config>
 	<aop:config>
 		<!-- 通过aop定义事务增强切面 -->
 		<aop:pointcut id="daoMethod"
-			expression="execution(* com.bw.fit.*.dao.impl.*.*(..))" />
+			expression="execution(* com.bw.fit.*.dao.impl.*.*.*(..))" />
 		<!-- 引用事务增强 -->
 		<aop:advisor pointcut-ref="daoMethod" advice-ref="txAdvice" />
 	</aop:config>

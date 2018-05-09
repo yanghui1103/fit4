@@ -11,21 +11,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<%=basePath%>themes/default/easyui.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=basePath%>themes/icon.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=basePath%>common/css/easyui_dm.css"> 
-<script type="text/javascript"
-	src="<%=basePath%>common/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript"
-	src="<%=basePath%>common/js/jquery.easyui.min.js"></script>
-<script type="text/javascript"
-	src="<%=basePath%>common/js/easyui/common.js"></script>
-<script type="text/javascript"
-	src="<%=basePath%>common/lodop/LodopFuncs.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
+<link href="<%=basePath %>common/fit/v4/static/lightblue/css/login/login.css" rel="stylesheet">
+<link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
+<link href="<%=basePath %>common/fit/v4/custom/green/uimaker/easyui.css"  rel="stylesheet" >
+<link href="<%=basePath %>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
 <!-- fit v3.0 start use -->
 <style type="text/css">
 	@media screen and (max-width: 1000px) {
