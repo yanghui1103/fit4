@@ -50,6 +50,11 @@ public class VerificationRealm extends AuthorizingRealm  {
 		//3.数据库中查询用户记录
 		Account account = new Account();
 		account.setLogName(userName);
+//		Account u1 = userDao.getUserById(userDao.getUserIdByCd(user.getUser_cd()));
+//		if (u1 ==null) {
+//			throw new AuthenticationException("账号不存在");
+//		}
+//		copyProperties(user, u1);
 		//5,最后返回的用户信息，
 		Object principal = userName;
 		Object credentials = account.getLogPwd();
