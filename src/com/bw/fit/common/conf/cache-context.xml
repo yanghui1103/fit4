@@ -15,7 +15,7 @@
 	http://www.springframework.org/schema/task/spring-task-4.0.xsd
 	http://www.springframework.org/schema/cache 
 	http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
-	<!-- echace 配置 -->
+	<!-- echace 配置11 -->
 	<cache:annotation-driven cache-manager="cacheManager" />
 	<bean id="cacheManagerFactory"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
