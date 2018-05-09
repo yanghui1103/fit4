@@ -39,7 +39,7 @@
 			value="classpath:com/bw/fit/common/conf/dao-persistence-config.xml"></property>
 		<property name="mapperLocations" >
 			<list>
-				<value>classpath:com/bw/fit/*/dao/sqlConf/*Conf.xml</value>
+				<value>classpath:com/bw/fit/*/*/dao/sqlConf/*Conf.xml</value>
 			</list>
 		</property>	
 	</bean>

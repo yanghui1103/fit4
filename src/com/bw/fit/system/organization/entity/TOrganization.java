@@ -1,13 +1,13 @@
-package com.bw.fit.system.organization.model;
+package com.bw.fit.system.organization.entity;
 
-import com.bw.fit.common.model.BaseModel;
+import com.bw.fit.common.entity.BaseEntity;
+
 /****
- * 组织模型
+ * 组织实体
  * @author yangh
  *
  */
-public class Organization extends BaseModel{
-
+public class TOrganization extends BaseEntity {
 	private String name;
 	private String code ;
 	private String simpleName;
@@ -86,7 +86,6 @@ public class Organization extends BaseModel{
 	public void setSimpleName(String simpleName) {
 		this.simpleName = simpleName;
 	}
-	
 	
 	
 }
