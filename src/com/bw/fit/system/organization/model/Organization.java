@@ -1,4 +1,4 @@
-package com.bw.fit.system.model;
+package com.bw.fit.system.organization.model;
 
 import com.bw.fit.common.model.BaseModel;
 /****
