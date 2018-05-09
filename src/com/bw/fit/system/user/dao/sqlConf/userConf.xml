@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userSql">
+	<!-- 获取用户信息 -->
+	<select id="getUserIdByCd" parameterType="String" resultType="String">
+		select fdid from staff where user_cd = #{user_cd} and isdeleted='0'
+	</select>
+	<!-- 获取用户信息 -->
+	<select id="getUserById" parameterType="String" resultType="tuser">
+		select st.*,cp.company_name,cp.company_type_cd,cp.fdid company_id from staff  st,staff2company sc ,company cp where st.fdid = sc.user_id and sc.company_id = cp.fdid 
+		and st.fdid = #{user_id} 
+	</select>
+	<!-- 根据用户查询其角色 -->
+	<select id="getUserRoleInfo" parameterType="String" resultType="trole">
+		select rl.*
+		from staff2role sr,roles rl where sr.role_id = rl.fdid and
+		rl.isdeleted='0'
+		and sr.user_id = #{user_id}
+	</select>
+	<!-- 查询用户岗位 -->
+	<select id="getUserPostionInfo" parameterType="String"
+		resultType="tpostion">
+		select p.*
+		from staff2postion sr,postion p where sr.postion_id = p.fdid
+		and sr.user_id =#{user_id}
+	</select>
+	<!-- 用户的所有的菜单 -->
+	<select id="getMenuInfoByUserId" parameterType="String"
+		resultType="menu">
+	select mm.* from staff2role sr ,role2authority ra,authority2menu am,menu mm
+	where sr.role_id = ra.role_id and ra.authority_id = am.authority
+	and am.menu_id = mm.fdid and sr.user_id = #{user_id}
+	</select>
+	
+	
+	<sql id="paginationSql">
+		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
+	</sql>
+	<!-- 用户列表 -->
+	<select id="getUserList" parameterType="tuser" resultType="tuser">
+		select * from (
+		select * from staff where user_name like  '%'||#{keyWords}||'%' and isdeleted='0'  order by version_time desc ) 
+		where 1=1  
+		<if test="paginationEnable!='0'">		
+			<include refid="paginationSql"></include>
+		</if>
+	</select> 
+	<!-- 删除用户 -->
+	<update id="deleteUser" parameterType="String">
+		update staff set version_time=sysdate,isdeleted='1' where fdid = #{fdid}
+	</update>
+	<!-- 新建用户 -->
+	<insert id="createUser"  parameterType="tuser">
+		insert into staff(fdid,user_cd,user_name,user_order,password,phone,state,isdeleted,create_time,creator,version_time) values
+		(#{fdid},#{user_cd},#{user_name},#{user_order},#{password},#{phone},'2','0',sysdate,#{creator},sysdate)
+	</insert>
+	<insert id="createUser2Company"  parameterType="tuser">
+		insert into staff2company (user_id,company_id) values (#{fdid},#{company_id})
+	</insert>
+	<insert id="createUser2Postion" parameterType="tuser">
+		insert into staff2postion(user_id,postion_id) values (#{fdid},#{postion_id})
+	</insert>
+	<insert id="createUser2Role" parameterType="tuser">
+		insert into staff2postion(user_id,role_id) values (#{fdid},#{role_id})
+	</insert>
+</mapper>   

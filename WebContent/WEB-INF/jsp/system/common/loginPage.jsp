@@ -26,7 +26,7 @@
 				<div class="lg-zone">
 					<div class="lg-box">
 						<div class="lg-label"><h4>用户登录</h4></div>
-						<form id="login_form" action="<%=basePath %>system/login" method="post">
+						<form id="login_form" action="<%=basePath %>common/login" method="post">
 							<div class="lg-username input-item clearfix">
 								<i class="iconfont">&#xe60d;</i>
 								<input type="text" name="user_cd" value="admin" placeholder="账号">
