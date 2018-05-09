@@ -94,13 +94,13 @@ public class SystemCoreController extends BaseController {
 			Session session_first = PubFun.getCurrentSession();
 			User us_first = ((User) session_first.getAttribute("CurrentUser"));
 			if(us_first!=null||(us_first!=null &&!"".equals(us_first.getFdid()))){
-				return "common/indexPage";
+				return "system/common/indexPage";
 			} 
 			
 			if (result.hasErrors()) {
 				FieldError error = result.getFieldError();
 				model.addAttribute("errorMsg", error.getDefaultMessage());
-				return "system/common/loginPage";
+				return "common/loginPage";
 			}
 			// 获取存放在session中的验证码
 			// String code = (String)
@@ -116,7 +116,7 @@ public class SystemCoreController extends BaseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			model.addAttribute("errorMsg", "登录失败");
-			return "system/common/loginPage";
+			return "common/loginPage";
 		}
 
 		/**** 开始shiro登录 *****/
@@ -131,7 +131,7 @@ public class SystemCoreController extends BaseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			model.addAttribute("errorMsg", "登录失败,认证拦截:" + e.getMessage());
-			return "system/common/loginPage";
+			return "common/loginPage";
 		}
 
 		/***
@@ -148,7 +148,7 @@ public class SystemCoreController extends BaseController {
 		// }
 		User uu = systemService.getCurrentUserInfo(user.getUser_cd());
 		session.setAttribute("CurrentUser", uu);
-		return "common/indexPage";
+		return "system/common/indexPage";
 	}
 
 	@RequestMapping("logOutSys")
