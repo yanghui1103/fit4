@@ -10,7 +10,7 @@ import java.util.Date;
 public class BaseEntity {
 
 
-	private String fdid  ; 
+	private String id  ; 
 	private String keyWords ;
 	private String creator;
 	private String creator_name;
@@ -88,12 +88,13 @@ public class BaseEntity {
 	public void setIsdeleted(String isdeleted) {
 		this.isdeleted = isdeleted;
 	}
-	public String getFdid() {
-		return fdid;
+	
+	public String getId() {
+		return id;
 	}
-	public void setFdid(String fdid) {
-		this.fdid = fdid;
-	}	
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getCreate_time() {
 		return create_time;
 	}

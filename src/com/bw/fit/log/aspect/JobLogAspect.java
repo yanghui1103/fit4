@@ -56,7 +56,7 @@ public class JobLogAspect implements  Ordered {
 				TLogInfo t = new TLogInfo();
 				t.setLog_type_id("59");		 // 定时任务操作日志，选自数据字典 
 				t.setOperator_id("system_job_runner"); // 
-				t.setFdid(getUUID());
+				t.setId(getUUID());
 				t.setIp("major_system");
 				t.setOperate_function(currentMethod.getName()); 
 				if ((obj instanceof JSONObject)) {

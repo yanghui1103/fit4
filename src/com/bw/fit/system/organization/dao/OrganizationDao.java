@@ -2,6 +2,7 @@ package com.bw.fit.system.organization.dao;
 
 import java.util.List;
 
+import com.bw.fit.common.model.RbackException;
 import com.bw.fit.system.organization.model.Organization;
 
 public interface OrganizationDao {
@@ -12,4 +13,23 @@ public interface OrganizationDao {
 	 * @return
 	 */
 	public List<Organization> getOrganizations(Organization org );
+	/****
+	 * 新增组织
+	 * @param org
+	 * @throws RbackException
+	 */
+	public void insert(Organization org ) throws RbackException ;
+	/****
+	 * 修改组织
+	 * @param org
+	 * @throws RbackException
+	 */
+	public void update(Organization org ) throws RbackException ;
+	/****
+	 * 删除组织
+	 * @param org
+	 * @throws RbackException
+	 */
+	public void delete(String id) throws RbackException ;
+	
 }

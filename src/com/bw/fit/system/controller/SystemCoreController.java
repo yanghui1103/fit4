@@ -43,7 +43,6 @@ import com.bw.fit.common.util.PropertiesUtil;
 import com.bw.fit.common.util.PubFun;
 import com.bw.fit.log.model.LogInfo;
 import com.bw.fit.log.service.ILogService;
-import com.bw.fit.system.dao.CompanyDao;
 import com.bw.fit.system.dao.SystemDao;
 import com.bw.fit.system.dao.UserDao;
 import com.bw.fit.system.entity.*;
@@ -60,9 +59,7 @@ import com.bw.fit.system.service.SystemService;
 @Controller
 public class SystemCoreController extends BaseController { 
 	@Autowired
-	private SystemService systemService;
-	@Autowired
-	private CompanyDao companyDao ;
+	private SystemService systemService; 
 	@Autowired
 	private SystemDao systemDao;
 	@Autowired
@@ -93,7 +90,7 @@ public class SystemCoreController extends BaseController {
 			// 如果当前客户端有未登出用户则还是去主页
 			Session session_first = PubFun.getCurrentSession();
 			User us_first = ((User) session_first.getAttribute("CurrentUser"));
-			if(us_first!=null||(us_first!=null &&!"".equals(us_first.getFdid()))){
+			if(us_first!=null||(us_first!=null &&!"".equals(us_first.getId()))){
 				return "system/common/indexPage";
 			} 
 			
@@ -177,7 +174,7 @@ public class SystemCoreController extends BaseController {
 	@ResponseBody
 	public JSONArray getMenuAuthTreeJson() {
 		Session session = PubFun.getCurrentSession();
-		String user_id = ((User) session.getAttribute("CurrentUser")).getFdid();
+		String user_id = ((User) session.getAttribute("CurrentUser")).getId();
 		return systemService.getMenuTreeJsonByUserId(user_id);
 	}
 
@@ -223,38 +220,7 @@ public class SystemCoreController extends BaseController {
 	 * @param session
 	 *            会话
 	 * @return
-	 */
-	@RequestMapping("companyList/{params}")
-	@ResponseBody
-	public JSONObject companyList(@PathVariable("params") String params,
-			Model model, @ModelAttribute Company c, HttpServletRequest request) {
-		JSONObject json = new JSONObject();
-		c.setPaginationEnable("1");
-		List<Company> list = companyDao.getCompanyList(c);
-		if (list != null && list.size() > 0) {
-			for (Company cc : list) {
-				TdataDict d = (systemDao
-						.getDictByValue(cc.getCompany_type_cd()));
-				if (d != null) {
-					cc.setCompany_type_name(d.getDict_name());
-				}
-				Tcompany tc = (systemDao.getCompany(cc.getParent_id())) ;
-				if(tc !=null){
-					cc.setParent_company_name(tc.getCompany_name()) ;	
-				}			
-			}
-		}
-		c.setPaginationEnable("0");
-		List<Company> listTotal = companyDao.getCompanyList(c);
-		if (listTotal != null && listTotal.size() > 0) {
-			json.put("total", listTotal.size());
-		} else {
-			json.put("total", 0);
-		}
-		json.put("rows", JSONObject.toJSON(list));
-		return json;
-	}
-
+	 */ 
 	/*****
 	 * 获取此用户在此页面的功能权限
 	 * 
@@ -271,34 +237,11 @@ public class SystemCoreController extends BaseController {
 		Session session = getCurrentSession();
 		JSONObject json = new JSONObject();
 		json = systemService.getOperationsByMenuId(
-				((User) session.getAttribute("CurrentUser")).getFdid(),
+				((User) session.getAttribute("CurrentUser")).getId(),
 				BtnPrefixCode);
 		return json;
 	}
-
-	/*****
-	 * 删除组织
-	 * 
-	 * @param fdid
-	 * @return
-	 */
-	@RequestMapping("deleteCompany/{fdid}")
-	@ResponseBody
-	public JSONObject deleteCompany(@PathVariable(value = "fdid") String fdid) {
-		JSONObject j = new JSONObject();
-		returnSuccessJson(j);
-		Company c = new Company();
-		c.setFdid(fdid);
-		try {
-			companyDao.deleteCompany(c);
-		} catch (RbackException e) {
-			j = new JSONObject();
-			returnFailJson(j, e.getMsg());
-		} finally {
-			return j;
-		}
-	}
-
+ 
 	/****
 	 * 打开数据字典页面
 	 * 
@@ -321,20 +264,7 @@ public class SystemCoreController extends BaseController {
 		return (JSONArray) JSONArray.parse("[" + json.toString() + "]");
 	}
 
-	@RequestMapping(value = "getCompanyTree/{parent_id}", produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public JSONArray getCompanyTree(
-			@PathVariable(value = "parent_id") String parent_id)
-			throws Exception {
-		if ("-9".equals(parent_id)) {
-			Session session = getCurrentSession();
-			parent_id = ((User) session.getAttribute("CurrentUser"))
-					.getCompany_id();
-		}
-		Company json = systemService.getCompanyTree(parent_id);
-		return (JSONArray) JSONArray.parse("[" + json.toString() + "]");
-	}
-
+ 
 	/****
 	 * 用于页面获取下拉菜单(统一口径)
 	 * 
@@ -381,7 +311,7 @@ public class SystemCoreController extends BaseController {
 		returnSuccessJson(json);
 		TdataDict dd = new TdataDict();
 		PubFun.copyProperties(dd, d);
-		if (StringUtils.isNotEmpty(dd.getFdid())) {
+		if (StringUtils.isNotEmpty(dd.getId())) {
 			try {
 				systemDao.updateDataDict(dd);
 			} catch (RbackException e) {
@@ -393,7 +323,7 @@ public class SystemCoreController extends BaseController {
 			}
 
 		}
-		dd.setFdid(getUUID());
+		dd.setId(getUUID());
 		try {
 			systemDao.createDataDict(dd);
 		} catch (RbackException e) {
@@ -427,7 +357,7 @@ public class SystemCoreController extends BaseController {
 				|| "editDictPage".equalsIgnoreCase(pageName)) {
 			DataDict d = new DataDict();
 			PubFun.copyProperties(d, systemDao.getThisDataDictInfo(param));
-			d.setFdid(param);
+			d.setId(param);
 			model.addAttribute("model", d);
 		}
 
@@ -685,31 +615,7 @@ public class SystemCoreController extends BaseController {
 		}
 		
 	}
-	
-	@RequestMapping("createCompany")
-	@ResponseBody
-	public JSONObject createCompany(@Valid @ModelAttribute Company c,BindingResult result) {
-		fillCommonProptities(c,true);
-		JSONObject json = new JSONObject();
-		if (result.hasErrors()) {
-			FieldError error = result.getFieldError();
-			json.put("res", "1");
-			returnFailJson(json, error.getDefaultMessage());
-			return json;
-		}
-		returnSuccessJson(json);
-		Tcompany cc = new Tcompany();
-		PubFun.copyProperties(cc,c);
-		try {
-			systemDao.createCompany(cc);
-		} catch (RbackException e) {
-			json = new JSONObject();
-			json.put("res", "1");
-			returnFailJson(json, e.getMsg());
-		}
-		return json;
-	}
-
+	 
 	/****
 	 * 打开编辑页
 	 * @return
@@ -721,37 +627,6 @@ public class SystemCoreController extends BaseController {
 	}
 	
 	/****
-	 * 保存更新组织信息
-	 * @param c
-	 * @param result
-	 * @return
-	 */
-	@RequestMapping("updateCompany")
-	@ResponseBody
-	public JSONObject updateCompany(@Valid @ModelAttribute Company c,BindingResult result){
-		fillCommonProptities(c,false);
-		JSONObject json = new JSONObject();
-		if (result.hasErrors()) {
-			FieldError error = result.getFieldError();
-			json.put("res", "1");
-			returnFailJson(json, error.getDefaultMessage());
-			return json;
-		}
-		returnSuccessJson(json);
-		Tcompany cc = new Tcompany();
-		PubFun.copyProperties(cc,c);
-		try {
-			systemDao.updateCompany(cc);
-		} catch (RbackException e) {
-			e.printStackTrace();
-			json = new JSONObject();
-			json.put("res", "1");
-			returnFailJson(json, e.getMsg());
-		}
-		return json;
-	}
-	
-	/****
 	 * 请求，获取当前用户的所有角色
 	 * @return
 	 */
@@ -759,7 +634,7 @@ public class SystemCoreController extends BaseController {
 	@ResponseBody
 	public JSONArray getMyRoles(){
 		Session session = getCurrentSession();
-		String user_id = ((User) session.getAttribute("CurrentUser")).getFdid();
+		String user_id = ((User) session.getAttribute("CurrentUser")).getId();
 		List<Trole> rls = userDao.getUserRoleInfo(user_id);
 		return (JSONArray)JSONArray.toJSON(rls);
 	}
@@ -777,7 +652,7 @@ public class SystemCoreController extends BaseController {
 		List<Menu> rls2 = new ArrayList<>();
 		for(Menu mm:rls){
 			for(Menu mm2:rls){
-				if(mm.getFdid().equalsIgnoreCase(mm2.getParent_id()))
+				if(mm.getId().equalsIgnoreCase(mm2.getParent_id()))
 					rls2.add(mm);
 			}
 		}
@@ -808,7 +683,7 @@ public class SystemCoreController extends BaseController {
 	@ResponseBody
 	public JSONArray getDictNameByValue(@PathVariable String value) {
 		TdataDict dd = systemDao.getDictByValue(value);
-		List<TdataDict> list = systemDao.getDataDictList(dd.getFdid()); 
+		List<TdataDict> list = systemDao.getDataDictList(dd.getId()); 
 		return (JSONArray)JSONArray.toJSON(list);
 	}
 	/****
@@ -947,7 +822,7 @@ public class SystemCoreController extends BaseController {
 		for(Toperation t:oplist_p){
 			if(oplist!=null){
 				for(Toperation p:oplist){
-					if(p.getFdid().equals(t.getFdid())){
+					if(p.getId().equals(t.getId())){
 						t.setChecked("1");
 					}
 				}
@@ -974,7 +849,7 @@ public class SystemCoreController extends BaseController {
 		json.put("msg", "存在数据");
 		for(TpageElement t:elelist_p){
 			for(TpageElement p:elelist){
-				if(p.getFdid().equals(t.getFdid())){
+				if(p.getId().equals(t.getId())){
 					t.setChecked("1");
 				}
 			}

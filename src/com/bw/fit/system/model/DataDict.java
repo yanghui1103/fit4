@@ -82,7 +82,7 @@ public class DataDict extends BaseModel   implements Serializable{
 
 	// 先序遍历，拼接JSON字符串
 	public String toString() {
-		String result = "{" + "fdid : '" + getFdid() + "'" + ", dict_value : '" + this.getDict_value() + "'"
+		String result = "{" + "fdid : '" + getId() + "'" + ", dict_value : '" + this.getDict_value() + "'"
 				+ ", dict_remark : '" + this.getDict_remark() + "'"
 				+ ", can_add : '" + this.getCan_add() + "'"
 				+ ", can_edit : '" + this.getCan_edit() + "'"

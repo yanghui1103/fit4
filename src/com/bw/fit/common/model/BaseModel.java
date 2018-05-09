@@ -12,7 +12,7 @@ import com.bw.fit.common.util.Node;
  */
 public class BaseModel{
 
-	private String fdid ;
+	private String id ;
 	private String keyWords="";	
 	private String start_date="1900-01-01" ;
 	private String end_date="2099-12-31" ;
@@ -127,12 +127,12 @@ public class BaseModel{
 	}
 	public void setLogContent(String logContent) {
 		this.logContent = logContent;
+	}	
+	public String getId() {
+		return id;
 	}
-	public String getFdid() {
-		return fdid;
-	}
-	public void setFdid(String fdid) {
-		this.fdid = fdid;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getKeyWords() {
 		return keyWords;

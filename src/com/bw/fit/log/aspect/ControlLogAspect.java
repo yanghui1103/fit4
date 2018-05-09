@@ -67,8 +67,8 @@ public class ControlLogAspect implements Ordered {
 			t.setLog_type_id("58");		 // 主系统操作日志，选自数据字典
 			Session session = PubFun.getCurrentSession(); 
 			User user = ((User)session.getAttribute("CurrentUser"));
-			t.setOperator_id(user==null?"":user.getFdid());
-			t.setFdid(getUUID());
+			t.setOperator_id(user==null?"":user.getId());
+			t.setId(getUUID());
 			t.setIp(getIpAddr(request));
 			t.setParams(request.getQueryString());
 			t.setOperate_function(request.getMethod()); 

@@ -485,7 +485,7 @@ public class PubFun {
 		HttpGet httpGet = new HttpGet(
 				PropertiesUtil.getValueByKey("system.default.url")
 						+ "system/getMessageInteractiveInfo" + "/"
-						+ user.getFdid());
+						+ user.getId());
 		// response
 		HttpResponse response = null;
 		try {
@@ -567,11 +567,11 @@ public class PubFun {
 
 	public static void fillCommonProptities(BaseModel b, boolean isFillFdid) {
 		b.setCreator(((User) getCurrentSession().getAttribute("CurrentUser"))
-				.getFdid());
+				.getId());
 		b.setVersion_time(getSysDate());
 		b.setCreate_time(getSysDate());
 		if (isFillFdid) {
-			b.setFdid(getUUID());
+			b.setId(getUUID());
 		}
 	}
 	

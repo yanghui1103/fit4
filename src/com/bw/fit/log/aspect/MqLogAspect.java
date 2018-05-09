@@ -56,7 +56,7 @@ public class MqLogAspect implements Ordered {
 			TLogInfo t = new TLogInfo();
 			t.setLog_type_id("62");		 // 消息队列操作日志，选自数据字典 
 			t.setOperator_id("system_mq_server"); // 
-			t.setFdid(getUUID());
+			t.setId(getUUID());
 			t.setIp("major_system");
 			t.setOperate_function(currentMethod.getName()); 
 			if ((obj instanceof JSONObject)) {
