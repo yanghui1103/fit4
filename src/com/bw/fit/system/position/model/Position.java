@@ -2,7 +2,7 @@ package com.bw.fit.system.position.model;
 
 import java.util.List;
 
-import com.bw.fit.common.model.BaseModel;
+import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.organization.model.Organization;
 /****

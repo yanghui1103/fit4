@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bw.fit.common.controller.BaseController;
+import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.organization.model.Organization;
 
 /*****

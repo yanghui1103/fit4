@@ -29,11 +29,11 @@
 						<form id="login_form" action="<%=basePath %>common/login" method="post">
 							<div class="lg-username input-item clearfix">
 								<i class="iconfont">&#xe60d;</i>
-								<input type="text" name="user_cd" value="admin" placeholder="账号">
+								<input type="text" name="logName" value="admin" placeholder="账号">
 							</div>
 							<div class="lg-password input-item clearfix">
 								<i class="iconfont">&#xe634;</i>
-								<input type="password" name="passwd" value="123456" placeholder="请输入密码">
+								<input type="password" name="logPwd" value="123456" placeholder="请输入密码">
 							</div>
 							<div class="lg-check clearfix">
 								<div class="input-item">

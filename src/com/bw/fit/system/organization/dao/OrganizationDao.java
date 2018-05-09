@@ -2,7 +2,7 @@ package com.bw.fit.system.organization.dao;
 
 import java.util.List;
 
-import com.bw.fit.common.model.RbackException;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.organization.model.Organization;
 
 public interface OrganizationDao {

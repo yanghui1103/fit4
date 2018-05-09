@@ -44,7 +44,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:com/bw/fit/common/conf/*-servlet.xml</param-value>
+			<param-value>classpath:com/bw/fit/system/common/conf/*-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
@@ -73,7 +73,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:com/bw/fit/common/conf/*-context.xml</param-value>
+		<param-value>classpath:com/bw/fit/system/common/conf/*-context.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -93,12 +93,12 @@
 	</session-config>
 
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/jsp/common/autoLogin.jsp</welcome-file>
+		<welcome-file>/WEB-INF/jsp/system/common/autoLogin.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- session建立和销毁,都被此处拦截并进行增删 -->
 	<listener>
-		<listener-class>com.bw.fit.common.listenter.MultiSessionListener</listener-class>
+		<listener-class>com.bw.fit.system.common.listenter.MultiSessionListener</listener-class>
 	</listener>
 	<listener>  
         <listener-class>  
@@ -121,7 +121,7 @@
 	<!-- log4j -->
 	<context-param>
   		<param-name>log4jConfigLocation</param-name>
-  		<param-value>classpath:com/bw/fit/common/conf/log4j.xml</param-value>
+  		<param-value>classpath:com/bw/fit/system/common/conf/log4j.xml</param-value>
 	</context-param>
 
 	<!-- 配置log4j.xml变量 -->

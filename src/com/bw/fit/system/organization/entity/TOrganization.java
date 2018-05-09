@@ -1,6 +1,6 @@
 package com.bw.fit.system.organization.entity;
 
-import com.bw.fit.common.entity.BaseEntity;
+import com.bw.fit.system.common.entity.BaseEntity;
 
 /****
  * 组织实体

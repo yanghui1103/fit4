@@ -1,6 +1,6 @@
 package com.bw.fit.system.organization.model;
 
-import com.bw.fit.common.model.BaseModel;
+import com.bw.fit.system.common.model.BaseModel;
 /****
  * 组织模型
  * @author yangh
