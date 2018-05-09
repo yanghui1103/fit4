@@ -24,7 +24,12 @@ import com.bw.fit.system.organization.model.Organization;
 public class OrganizationController extends BaseController {
 
 	
-	
+	/******
+	 * 增加组织
+	 * @param org
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value="organization",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject add(@Valid @ModelAttribute Organization org,BindingResult result){
@@ -32,6 +37,11 @@ public class OrganizationController extends BaseController {
 		return null ;
 	}
 	
+	/****
+	 * 删除组织
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="organization/{id}",method=RequestMethod.DELETE,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject delete(@PathVariable String id){
@@ -39,7 +49,11 @@ public class OrganizationController extends BaseController {
 		return null ;
 	}
 	
-
+	/*****
+	 * 修改组织
+	 * @param org
+	 * @return
+	 */
 	@RequestMapping(value="organization",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject update(@Valid @ModelAttribute Organization org){
