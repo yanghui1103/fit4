@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><jsp:include
-	page="/common.jsp"></jsp:include>
+	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
+<link href="<%=basePath %>common/fit/v4/static/lightblue/css/login/login.css" rel="stylesheet">
 <!DOCTYPE html> 
 <html lang="en"> 
 <body class="default">
@@ -25,19 +26,19 @@
 				<div class="lg-zone">
 					<div class="lg-box">
 						<div class="lg-label"><h4>用户登录</h4></div>
-						<form>
+						<form id="login_form" action="<%=basePath %>system/login" method="post">
 							<div class="lg-username input-item clearfix">
 								<i class="iconfont">&#xe60d;</i>
-								<input type="text" name="username" placeholder="账号/邮箱">
+								<input type="text" name="user_cd" value="admin" placeholder="账号">
 							</div>
 							<div class="lg-password input-item clearfix">
 								<i class="iconfont">&#xe634;</i>
-								<input type="password" name="password" placeholder="请输入密码">
+								<input type="password" name="passwd" value="123456" placeholder="请输入密码">
 							</div>
 							<div class="lg-check clearfix">
 								<div class="input-item">
 									<i class="iconfont">&#xe633;</i>
-									<input type="text" placeholder="验证码">
+									<input type="text" name="verificationCode" placeholder="验证码">
 								</div>
 								<span class="check-code">XD34F</span>
 							</div>
@@ -63,9 +64,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(function(){
-			alert("sdfdf");
-		});
+		function login(){
+			document.getElementById("login_form").submit();
+		}
 	</script>
 </body> 
 </html>

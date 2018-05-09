@@ -14,7 +14,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 <link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 <link href="<%=basePath %>common/fit/v4/static/lightblue/css/login/login.css" rel="stylesheet">
-<link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 <link href="<%=basePath %>common/fit/v4/custom/green/uimaker/easyui.css"  rel="stylesheet" >
 <link href="<%=basePath %>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
 <script type="text/javascript" src="<%=basePath %>common/fit/v4/js/jquery.min.js"></script>
