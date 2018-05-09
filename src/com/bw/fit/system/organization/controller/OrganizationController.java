@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bw.fit.common.controller.BaseController;
 
+/*****
+ * 组织Controller
+ * @author yangh
+ *
+ */
 @RequestMapping("org")
 @Controller
 public class OrganizationController extends BaseController {

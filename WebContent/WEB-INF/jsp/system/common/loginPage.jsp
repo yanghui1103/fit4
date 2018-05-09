@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%><jsp:include
+	page="/common.jsp"></jsp:include>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -8,14 +9,6 @@
 %>
 <!DOCTYPE html> 
 <html lang="en"> 
-<head> 
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>uimaker信息管理系统</title> 
-    <link href="<%=basePath %>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
-    <link href="<%=basePath %>common/fit/v4/static/lightblue/css/login/login.css" rel="stylesheet">
-
-</head> 
 <body class="default">
 	<div class="login-hd">
 		<div class="left-bg"></div>
