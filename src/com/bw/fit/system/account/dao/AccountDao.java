@@ -4,7 +4,16 @@ import com.bw.fit.system.account.model.Account;
 
 public interface AccountDao {
 
+	/*****
+	 * 获取账号信息
+	 * @param id
+	 * @return
+	 */
 	public Account getAccount(String id);
-	
-	public String getAccountIdByName(String logName);
+	/*****
+	 * 根据登录名，获取账号
+	 * @param logName
+	 * @return
+	 */
+	public Account getAccountIdByName(String logName);
 }

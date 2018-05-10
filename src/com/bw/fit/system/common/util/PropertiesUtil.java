@@ -5,7 +5,7 @@ import java.util.*;
 import org.springframework.stereotype.Component;
 
 public class PropertiesUtil {
-	private static String fileName ="com/bw/fit/common/conf/keyValuePropConf" ;	
+	private static String fileName ="com/bw/fit/system/common/conf/keyValuePropConf" ;	
 	public static String getValueByKey(String key){
 		ResourceBundle rb=null;
 		try {

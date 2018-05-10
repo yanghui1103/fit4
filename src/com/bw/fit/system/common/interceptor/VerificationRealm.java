@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.apache.shiro.authc.*;
 
+import com.bw.fit.system.account.dao.AccountDao;
 import com.bw.fit.system.account.model.*;
 import com.bw.fit.system.account.model.Account;
 import com.alibaba.fastjson.JSONObject;
@@ -37,6 +38,8 @@ import com.bw.fit.system.common.util.PubFun;
  */
 public class VerificationRealm extends AuthorizingRealm  {
 
+	@Autowired
+	private AccountDao accountDao;
 	/*****
 	 * 认证权限是否符合
 	 */
@@ -48,13 +51,15 @@ public class VerificationRealm extends AuthorizingRealm  {
 		//2.从UsernamePasswordToken 获取username
 		String userName = token.getUsername();
 		//3.数据库中查询用户记录
-		Account account = new Account();
-		account.setLogName(userName);
-//		Account u1 = userDao.getUserById(userDao.getUserIdByCd(user.getUser_cd()));
-//		if (u1 ==null) {
-//			throw new AuthenticationException("账号不存在");
-//		}
-//		copyProperties(user, u1);
+		Account account = new Account(); 
+		Account account_2 = accountDao.getAccountIdByName(userName);
+		if (account_2 ==null) {
+			throw new AuthenticationException("账号不存在");
+		}
+		account = accountDao.getAccount(account_2.getId());
+		if (account ==null) {
+			throw new AuthenticationException("账号疑似异常，请联系管理人员");
+		}
 		//5,最后返回的用户信息，
 		Object principal = userName;
 		Object credentials = account.getLogPwd();
@@ -62,7 +67,7 @@ public class VerificationRealm extends AuthorizingRealm  {
 		ByteSource salt = ByteSource.Util.bytes(PropertiesUtil.getValueByKey("user.pw.slogmm") + userName );
 		SimpleAuthenticationInfo info = null ;
 		info = new SimpleAuthenticationInfo(principal,credentials,salt,getName());
-		return null ;
+		return info ;
 	}
 	/****
 	 * 授权时候用

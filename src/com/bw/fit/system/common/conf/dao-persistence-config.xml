@@ -12,9 +12,10 @@
     <typeAliases>
     	<package name="com.bw.fit.system.organization.entity"/> 
     	<package name="com.bw.fit.system.organization.model"/> 
-    	<package name="com.bw.fit.system.log.entity"/> 
-    	<package name="com.bw.fit.system.log.model"/> 
+    	<package name="com.bw.fit.component.log.entity"/> 
+    	<package name="com.bw.fit.component.log.model"/> 
     	<package name="com.bw.fit.system.organization.model"/> 
+    	<package name="com.bw.fit.system.account.model"/> 
     	<package name="com.bw.fit.system.common.model"/> 
     	<package name="com.bw.fit.system.common.entity"/> 
     </typeAliases>

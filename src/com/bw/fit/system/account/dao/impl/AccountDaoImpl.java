@@ -13,14 +13,12 @@ public class AccountDaoImpl implements AccountDao {
 	private DaoTemplete daoTemplete;
 	@Override
 	public Account getAccount(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Account)daoTemplete.getOneData("accountSql.getAccount", id);
 	}
 
 	@Override
-	public String getAccountIdByName(String logName) {
-		// TODO Auto-generated method stub
-		return null;
+	public Account getAccountIdByName(String logName) {
+		return (Account)daoTemplete.getOneData("accountSql.getAccountIdByName", logName);
 	}
 
 }

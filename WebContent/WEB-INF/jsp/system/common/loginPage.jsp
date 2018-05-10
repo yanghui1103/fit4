@@ -38,7 +38,7 @@
 							<div class="lg-check clearfix">
 								<div class="input-item">
 									<i class="iconfont">&#xe633;</i>
-									<input type="text" name="verificationCode" placeholder="验证码">
+									<input type="text" name="verificationCode" value="1234" placeholder="验证码">
 								</div>
 								<span class="check-code">XD34F</span>
 							</div>

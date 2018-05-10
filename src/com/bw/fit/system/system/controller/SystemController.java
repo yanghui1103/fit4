@@ -39,7 +39,11 @@ public class SystemController extends BaseController {
 			BindingResult result, HttpServletRequest request, Model model) {  
 			Session session = getCurrentSession();
 			try {
-				model.addAttribute("account", account);			
+				model.addAttribute("account", account);		
+				if(account==null||account.getLogName()==null||account.getLogPwd()==null){
+					model.addAttribute("errorMsg", "请填写账号密码");
+					return "system/common/loginPage";
+				}
 				// 如果当前客户端有未登出用户则还是去主页
 				Account us_first = getCurrentAccount();
 				if(us_first!=null||(us_first!=null &&!"".equals(us_first.getId()))){
