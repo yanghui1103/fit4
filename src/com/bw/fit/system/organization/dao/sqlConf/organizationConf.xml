@@ -5,9 +5,9 @@
 		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
 	</sql>
 	<!-- 获取组织信息 -->
-	<select id="getCompanyList" parameterType="Organization" resultType="Organization">
+	<select id="getOrganizations" parameterType="Organization" resultType="Organization">
 		select * from (
-		select * from t_organization where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by create_time desc ) 
+		select * from t_organization where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by createtime desc ) 
 		where 1=1  
 		<if test="paginationEnable!='0'">		
 			<include refid="paginationSql"></include>

@@ -1,7 +1,10 @@
 package com.bw.fit.system.organization.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.controller.BaseController;
+import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.system.organization.dao.OrganizationDao;
 import com.bw.fit.system.organization.model.Organization;
 
 /*****
@@ -23,6 +29,8 @@ import com.bw.fit.system.organization.model.Organization;
 @Controller
 public class OrganizationController extends BaseController {
 
+	@Autowired
+	private OrganizationDao organizationDao;
 	
 	/******
 	 * 增加组织
@@ -70,7 +78,22 @@ public class OrganizationController extends BaseController {
 	@RequestMapping(value="organizations",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject organizations(@Valid @ModelAttribute Organization org){
-		
-		return null ;
+		JSONObject js = new JSONObject();
+		JSONArray array = new JSONArray();
+		List<Organization> list = organizationDao.getOrganizations(org);
+		if(list==null||list.size()<1){
+			PubFun.returnFailJson(js, "无数据");
+			return js ;
+		}
+		for(Organization o:list){
+			JSONObject j = new JSONObject();
+			j.put("id", o.getId());
+			j.put("pId", o.getParentId());
+			j.put("name", o.getName());
+			array.add(j);
+		}
+		js.put("res", "2");
+		js.put("list", array);
+		return js ;
 	}
 }

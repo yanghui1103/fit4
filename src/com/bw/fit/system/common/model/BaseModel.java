@@ -15,12 +15,12 @@ public class BaseModel{
 	private String keyWords="";	
 	private String start_date="1900-01-01" ;
 	private String end_date="2099-12-31" ;
-	private String create_time ;
-	private String version_time ;
+	private String createTime ;
+	private String versionTime ;
 	private String creator;
-	private String creator_name;
-	private String create_company_id;
-	private String create_company_name;
+	private String creatorName; 
+	private String createOrgId;
+	private String createOrgName;
 	private String logId ;
 	private String logContent;
 	private String sql ;
@@ -31,6 +31,9 @@ public class BaseModel{
 	private String action_name ;
 	private String UUID ;
 	private String status ;
+	private String temp_str1;
+	private String temp_str2;
+	private String temp_str3;
 	/***
 	 * 翻页使用
 	 */
@@ -151,23 +154,23 @@ public class BaseModel{
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	public String getCreate_time() {
-		if(!"".equals(create_time)&&create_time!=null&&create_time.contains(".0")){
-			create_time = create_time.replace(".0", "");
+	public String getCreateTime() {
+		if(!"".equals(createTime)&&createTime!=null&&createTime.contains(".0")){
+			createTime = createTime.replace(".0", "");
 		}
-		return create_time;
+		return createTime;
 	}
-	public void setCreate_time(String create_time) {
-		this.create_time = create_time;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 	public String getVersion_time() {
-		if(!"".equals(version_time)&&version_time!=null&&version_time.contains(".0")){
-			version_time = version_time.replace(".0", "");
+		if(!"".equals(versionTime)&&versionTime!=null&&versionTime.contains(".0")){
+			versionTime = versionTime.replace(".0", "");
 		}
-		return version_time;
+		return versionTime;
 	}
-	public void setVersion_time(String version_time) {
-		this.version_time = version_time;
+	public void setVersionTime(String versionTime) {
+		this.versionTime = versionTime;
 	}
 	public String getCreator() {
 		return creator;
@@ -175,24 +178,45 @@ public class BaseModel{
 	public void setCreator(String creator) {
 		this.creator = creator;
 	}
-	public String getCreator_name() {
-		return creator_name;
-	}
-	public void setCreator_name(String creator_name) {
-		this.creator_name = creator_name;
-	}
-	public String getCreate_company_id() {
-		return create_company_id;
-	}
-	public void setCreate_company_id(String create_company_id) {
-		this.create_company_id = create_company_id;
-	}
-	public String getCreate_company_name() {
-		return create_company_name;
-	}
-	public void setCreate_company_name(String create_company_name) {
-		this.create_company_name = create_company_name;
-	}	
 	
+	public String getCreatorName() {
+		return creatorName;
+	}
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
+	public String getCreateOrgId() {
+		return createOrgId;
+	}
+	public void setCreateOrgId(String createOrgId) {
+		this.createOrgId = createOrgId;
+	}
+	public String getCreateOrgName() {
+		return createOrgName;
+	}
+	public void setCreateOrgName(String createOrgName) {
+		this.createOrgName = createOrgName;
+	}
+	public String getVersionTime() {
+		return versionTime;
+	}
+	public String getTemp_str1() {
+		return temp_str1;
+	}
+	public void setTemp_str1(String temp_str1) {
+		this.temp_str1 = temp_str1;
+	}
+	public String getTemp_str2() {
+		return temp_str2;
+	}
+	public void setTemp_str2(String temp_str2) {
+		this.temp_str2 = temp_str2;
+	}
+	public String getTemp_str3() {
+		return temp_str3;
+	}
+	public void setTemp_str3(String temp_str3) {
+		this.temp_str3 = temp_str3;
+	}
 	
 }
