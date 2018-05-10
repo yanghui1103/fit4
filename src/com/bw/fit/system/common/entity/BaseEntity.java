@@ -9,17 +9,29 @@ import java.util.Date;
  */
 public class BaseEntity {
 
-
-	private String id  ; 
-	private String keyWords ;
+	private String id ;
+	private String keyWords="";	
+	private String start_date="1900-01-01" ;
+	private String end_date="2099-12-31" ;
+	private String createTime ;
+	private String versionTime ;
 	private String creator;
-	private String creator_name;
-	private String create_time ;
-	private String version_time ;
-	private String operator_id;
-	private String creator_id; 
-	private String isdeleted ="0" ; // 默认未删除
-
+	private String creatorName; 
+	private String createOrgId;
+	private String createOrgName;
+	private String logId ;
+	private String logContent;
+	private String sql ;
+	private String res ;
+	private String msg ;
+	private String returnInfo ;
+	private String staff_id;
+	private String action_name ;
+	private String UUID ;
+	private String status ;
+	private String temp_str1;
+	private String temp_str2;
+	private String temp_str3;
 	/***
 	 * 翻页使用
 	 */
@@ -28,28 +40,10 @@ public class BaseEntity {
 	private Integer start_num;
 	private Integer end_num;
 	private String paginationEnable;
-	private String status ;
 	
 	
 	
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public String getCreator() {
-		return creator;
-	}
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-	public String getCreator_name() {
-		return creator_name;
-	}
-	public void setCreator_name(String creator_name) {
-		this.creator_name = creator_name;
-	}
+	
 	public String getPaginationEnable() {
 		return paginationEnable;
 	}
@@ -74,53 +68,153 @@ public class BaseEntity {
 	public Integer getEnd_num() {
 		return (page-1)*rows + rows;
 	} 
-	
-	
-	public String getKeyWords() {
-		return keyWords;
+	public String getStatus() {
+		return status;
 	}
-	public void setKeyWords(String keyWords) {
-		this.keyWords = keyWords;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public String getIsdeleted() {
-		return isdeleted;
+	public String getUUID() {
+		return UUID;
 	}
-	public void setIsdeleted(String isdeleted) {
-		this.isdeleted = isdeleted;
+	public void setUUID(String uUID) {
+		UUID = uUID;
 	}
-	
+	public String getStaff_id() {
+		return staff_id;
+	}
+	public void setStaff_id(String staff_id) {
+		this.staff_id = staff_id;
+	}
+	public String getAction_name() {
+		return action_name;
+	}
+	public void setAction_name(String action_name) {
+		this.action_name = action_name;
+	}
+	public String getSql() {
+		return sql;
+	}
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
+	public String getReturnInfo() {
+		return returnInfo;
+	}
+	public void setReturnInfo(String returnInfo) {
+		this.returnInfo = returnInfo;
+	}
+	public String getRes() {
+		return res;
+	}
+	public void setRes(String res) {
+		this.res = res;
+	}
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public String getLogId() {
+		return logId;
+	}
+	public void setLogId(String logId) {
+		this.logId = logId;
+	}
+	public String getLogContent() {
+		return logContent;
+	}
+	public void setLogContent(String logContent) {
+		this.logContent = logContent;
+	}	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getCreate_time() {
-		return create_time;
+	public String getKeyWords() {
+		return keyWords;
 	}
-	public void setCreate_time(String create_time) {
-		this.create_time = create_time;
+	public void setKeyWords(String keyWords) {
+		this.keyWords = keyWords;
+	}
+	public String getStart_date() {
+		return start_date;
+	}
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+	public String getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
+	public String getCreateTime() {
+		if(!"".equals(createTime)&&createTime!=null&&createTime.contains(".0")){
+			createTime = createTime.replace(".0", "");
+		}
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 	public String getVersion_time() {
-		return version_time;
+		if(!"".equals(versionTime)&&versionTime!=null&&versionTime.contains(".0")){
+			versionTime = versionTime.replace(".0", "");
+		}
+		return versionTime;
 	}
-	public void setVersion_time(String version_time) {
-		this.version_time = version_time;
+	public void setVersionTime(String versionTime) {
+		this.versionTime = versionTime;
 	}
-	public String getOperator_id() {
-		return operator_id;
+	public String getCreator() {
+		return creator;
 	}
-	public void setOperator_id(String operator_id) {
-		this.operator_id = operator_id;
-	}
-	public String getCreator_id() {
-		return creator_id;
-	}
-	public void setCreator_id(String creator_id) {
-		this.creator_id = creator_id;
+	public void setCreator(String creator) {
+		this.creator = creator;
 	}
 	
-	
-	
+	public String getCreatorName() {
+		return creatorName;
+	}
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
+	public String getCreateOrgId() {
+		return createOrgId;
+	}
+	public void setCreateOrgId(String createOrgId) {
+		this.createOrgId = createOrgId;
+	}
+	public String getCreateOrgName() {
+		return createOrgName;
+	}
+	public void setCreateOrgName(String createOrgName) {
+		this.createOrgName = createOrgName;
+	}
+	public String getVersionTime() {
+		return versionTime;
+	}
+	public String getTemp_str1() {
+		return temp_str1;
+	}
+	public void setTemp_str1(String temp_str1) {
+		this.temp_str1 = temp_str1;
+	}
+	public String getTemp_str2() {
+		return temp_str2;
+	}
+	public void setTemp_str2(String temp_str2) {
+		this.temp_str2 = temp_str2;
+	}
+	public String getTemp_str3() {
+		return temp_str3;
+	}
+	public void setTemp_str3(String temp_str3) {
+		this.temp_str3 = temp_str3;
+	}
 	
 }

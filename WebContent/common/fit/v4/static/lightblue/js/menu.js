@@ -7,12 +7,20 @@ var SystemMenu = [{
 		icon: '&#xe620;',
 		isCurrent: true,
 		children: [{
-			title: '组织管理',
-			href: ctx + 'system/gotoIframePage/system/organization/organizationListPage/-9',
+			title: '首页',
+			href: ctx + 'system/gotoIframePage/system/common/firstPage/-9',
 			isCurrent: true
 		},{
+<<<<<<< HEAD
 			title: '岗位管理',
 			href: ctx + 'system/gotoIframePage/system/position/positionListPage/-9'
+=======
+			title: '组织管理',
+			href: ctx + 'system/gotoIframePage/system/organization/organizationListPage/-9' 
+		},{
+			title: '二级页面',
+			href: 'index.html'
+>>>>>>> branch 'master' of https://github.com/yanghui1103/fit4.git
 		},{
 			title: '招标流程',
 			href: 'process.html'
