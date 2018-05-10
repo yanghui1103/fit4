@@ -26,9 +26,7 @@
         <div id="pf-hd">
             <div class="pf-logo">
                 <img src="<%=basePath%>common/fit/v4/static/lightblue/images/main/main_logo.png" alt="logo">
-            </div>     
-            
-
+            </div> 
             <div class="pf-user">
             	<span class="msgts">10</span>
                 <div class="pf-user-photo">
@@ -66,7 +64,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
 
         <div id="pf-bd">
@@ -185,97 +182,7 @@
          <div id="mm-tabcloseall">关闭所有</div>
          <div id="mm-tabcloseother">关闭其他</div> 
     </div>
-    <div id="dlg" class="easyui-dialog" title="业务日志查看" data-options="closed:true,modal:true" style="width:720px;height:490px;padding:10px;display:none;">
-      <link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/static/lightblue/css/process.css">
-      <div class="time-line">
-        <div class="time-item date">
-          <div class="content-left first">
-            <span>2016-04-25</span>
-            <label><span class="dot"></span><i class="line"></i></label>
-          </div>
-        </div>
-        <div class="time-item time">
-          <div class="content-left">
-            <span>15:58:34</span>
-            <label><i class="line"></i><span class="dot"></span></label>
-          </div>
-          <div class="content-right">
-            <span class="left-arrow"></span>
-            <div class="detail-outer">
-              <div class="detail">
-                <div>
-                  <span class="name">占立中</span>
-                  <label>[买方]</label>
-                  <span class="status">发布</span>
-                </div>
-                <div>
-                  <span class="name">占立中</span>
-                  <label>[买方]</label>
-                  <span class="status">发布</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="time-item time important">
-          <div class="content-left">
-            <span>17:00:21</span>
-            <label><i class="line"></i><span class="dot"></span></label>
-          </div>
-          <div class="content-right">
-            <span class="left-arrow"></span>
-            <div class="detail-outer">
-              <div class="detail">
-                <div>
-                  <span class="name">纪相东</span>
-                  <label>[供方]</label>
-                  <span class="status">石家庄华能电力有限公司。报价已发布，报价单号：<span class="order">121568215782</span></span>
-                </div>
-                <div>
-                  <span class="name">纪相东</span>
-                  <label>[供方]</label>
-                  <span class="status">石家庄华能电力有限公司。报价已发布，报价单号：<span class="order">121568215782</span></span>
-                </div>
-                <div>
-                  <span class="name">纪相东</span>
-                  <label>[供方]</label>
-                  <span class="status">石家庄华能电力有限公司。报价已发布，报价单号：<span class="order">121568215782</span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="time-item date">
-          <div class="content-left">
-            <span>2016-04-26</span>
-            <label><span class="dot"></span><i class="line"></i></label>
-          </div>
-        </div>
-        <div class="time-item time">
-          <div class="content-left">
-            <span>09:21:14</span>
-            <label><i class="line"></i><span class="dot"></span></label>
-          </div>
-          <div class="content-right">
-            <span class="left-arrow"></span>
-            <div class="detail-outer">
-              <div class="detail">
-                <div>
-                  <span class="name">占立中</span>
-                  <label>[买方]</label>
-                  <span class="status">发布</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="time-item last">
-          <div class="content-left">
-            <label><i class="line"></i><span class="dot"></span></label>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <script type="text/javascript" src="<%=basePath%>common/fit/v4/static/lightblue/js/menu.js"></script>
     <script type="text/javascript" src="<%=basePath%>common/fit/v4/static/lightblue/js/main.js"></script>
     <!--[if IE 7]>

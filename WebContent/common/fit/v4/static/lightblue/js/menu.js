@@ -7,7 +7,11 @@ var SystemMenu = [{
 		icon: '&#xe620;',
 		isCurrent: true,
 		children: [{
-			title: '首页',
+			title: '组织管理',
+			href: ctx + 'gotoIframePage/system/organization/organizationListPage',
+			isCurrent: true
+		},{
+			title: '岗位管理',
 			href: 'workbench.html',
 			isCurrent: true
 		},{

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bw.fit.system.common.controller.BaseController;
@@ -89,5 +90,21 @@ public class SystemController extends BaseController {
 			Account uu  = null ;
 			session.setAttribute("CurrentUser", uu);
 			return "system/common/indexPage";
+	}
+	
+	/*****
+	 * 统一调整方法
+	 * @param path1 jsp下第一层路径
+	 * @param path2
+	 * @param pageName 必须带Page
+	 * @param param 参数
+	 * @param model UI-Model
+	 * @return
+	 */
+	@RequestMapping("gotoIframePage/{path1}/{path2}/{pageName}/{param}")
+	public String gotoIframePage(@PathVariable(value="path1") String path1,@PathVariable(value="path2") String path2,
+			@PathVariable(value="pageName") String pageName,@PathVariable(value="param") String param,Model model){
+		
+		return path1+"/"+path2+"/"+pageName  ;
 	}
 }
