@@ -17,6 +17,7 @@
     	<package name="com.bw.fit.system.organization.model"/> 
     	<package name="com.bw.fit.system.account.model"/> 
     	<package name="com.bw.fit.system.common.model"/> 
+    	<package name="com.bw.fit.system.position.model"/> 
     	<package name="com.bw.fit.system.common.entity"/> 
     </typeAliases>
 </configuration>
