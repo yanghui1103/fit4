@@ -68,7 +68,7 @@ public class SystemController extends BaseController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				model.addAttribute("errorMsg", "登录失败");
-				return "common/loginPage";
+				return "system/common/loginPage";
 			}
 
 			/**** 开始shiro登录 *****/
@@ -83,11 +83,11 @@ public class SystemController extends BaseController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				model.addAttribute("errorMsg", "登录失败,认证拦截:" + e.getMessage());
-				return "common/loginPage";
+				return "system/common/loginPage";
 			}
 
 			Account uu  = null ;
 			session.setAttribute("CurrentUser", uu);
-			return "common/indexPage";
+			return "system/common/indexPage";
 	}
 }
