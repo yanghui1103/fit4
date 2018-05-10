@@ -15,7 +15,7 @@
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 	<link href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/easyui.css"  rel="stylesheet" >
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
-    <link href="<%=basePath%>common/fit/v4/static/green/css/basic_info.css" rel="stylesheet">
+    <link href="<%=basePath%>common/fit/v4/static/lightblue/css/basic_info.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/icon.css">
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
@@ -23,7 +23,7 @@
 	
 	
 	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/demo.css" type="text/css">
-	<link rel="stylesheet" href="<%=basePath%>common/ztree/zTreeStyle/zTreeStyle.css" type="text/css">
+	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.core.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>
 </head> 

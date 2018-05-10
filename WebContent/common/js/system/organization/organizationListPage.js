@@ -20,7 +20,6 @@ var setting = {
 				onClick: this.onClick
 			}
 		};
-		// zNodes = [{"name":"虚拟组织","pId":"0","id":"105"},{"name":"虚拟组织","pId":"105001","id":"105001001"},{"name":"虚拟组织","pId":"105","id":"105001"}];
 
 		function focusKey(e) {
 			if (key.hasClass("empty")) {
@@ -101,7 +100,8 @@ var setting = {
 		$(document).ready(function(){			
 			$.get(ctx+"org/organizations",function(data){ 
 				if(data.res =="2"){ 
-					zNodes = (data.list) ;
+					zNodes = (data.list) ; 
+					
 					$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 					key = $("#key");
 					key.bind("focus", focusKey)
