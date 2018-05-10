@@ -15,45 +15,28 @@
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 	<link href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/easyui.css"  rel="stylesheet" >
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
-    <link href="<%=basePath%>common/fit/v4/static/green/css/basic_info.css" rel="stylesheet">
+    <link href="<%=basePath%>common/fit/v4/static/lightblue/css/basic_info.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/icon.css">
+	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/demo.css" type="text/css">
+	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/easyui-lang-zh_CN.js"></script>	
+	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>
 </head> 
 <body>
 	<div class="container">
 		<div class="left-tree">
-			<ul class="easyui-tree">
-				<li>
-					<span>树形菜单形式</span>
-					<ul>
-						<li data-options="state:'closed'">
-							<span>采购组织</span>
-							<ul>
-								<li>
-									<span>采购组织1</span>
-								</li>
-								<li>
-									<span>采购组织2</span>
-								</li>
-								<li>
-									<span>采购组织3</span>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<span>信息管理模块</span>
-							<ul>
-								<li>密码修改</li>
-								<li>RFI动态信息</li>
-								<li>新物料管理</li>
-								<li>供应商转交</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
+			<label class="kv-label">关键词:</label><input type="text" id="key" value="" class="empty" />
+			<div style="display:none">
+				<input type="radio" id="name" name="keyType" class="radio first" checked />
+				<input type="radio" id="getNodesByParamFuzzy" name="funType" class="radio" style="margin-left:36px;" checked />
+			</div>
+			<div class="zTreeDemoBackground left">
+				<ul id="treeDemo" class="ztree"></ul>
+			</div>
 		</div>
 		<div class="content">
 			<div class="easyui-tabs1" style="width:100%;">
