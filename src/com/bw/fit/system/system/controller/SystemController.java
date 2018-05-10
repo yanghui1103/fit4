@@ -93,7 +93,7 @@ public class SystemController extends BaseController {
 	}
 	
 	/*****
-	 * 统一调整方法
+	 * 统一跳转方法
 	 * @param path1 jsp下第一层路径
 	 * @param path2
 	 * @param pageName 必须带Page

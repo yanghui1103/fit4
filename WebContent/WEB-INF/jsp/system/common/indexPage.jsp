@@ -12,6 +12,7 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>信息管理系统</title> 
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/common/common.js"></script>
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 	<link href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/easyui.css"  rel="stylesheet" >
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
@@ -20,6 +21,7 @@
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/easyui-lang-zh_CN.js"></script>	
 	<%--     <jsp:include page="../../../../common/common.jsp" /> --%>
+
 </head> 
 <body>
     <div class="container">

@@ -8,11 +8,7 @@ var SystemMenu = [{
 		isCurrent: true,
 		children: [{
 			title: '组织管理',
-			href: ctx + 'system/gotoIframePage/system/organization/organizationListPage',
-			isCurrent: true
-		},{
-			title: '岗位管理',
-			href: ctx + 'system/gotoIframePage/system/position/positionListPage',
+			href: ctx + 'system/gotoIframePage/system/organization/organizationListPage/-9',
 			isCurrent: true
 		},{
 			title: '二级页面',
