@@ -24,7 +24,7 @@
 <body>
 	
     <div class="container">
-       <table id="dg" style="width:100%;height:554px" title="全体供应商列表" data-options="
+       <table id="orgListDg" style="width:100%;height:554px" title="全体组织列表" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,
@@ -180,7 +180,7 @@
         }
 
         $(function(){
-            $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
+            $('#orgListDg').datagrid({data:getData()}).datagrid('clientPaging');
         });
     </script>
 </body>
