@@ -60,4 +60,17 @@ public class OrganizationController extends BaseController {
 		
 		return null ;
 	}
+	
+
+	/*****
+	 * 可以翻页，获取组织列表
+	 * @param org
+	 * @return
+	 */
+	@RequestMapping(value="organizations",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject organizations(@Valid @ModelAttribute Organization org){
+		
+		return null ;
+	}
 }
