@@ -11,8 +11,8 @@ var SystemMenu = [{
 			href: ctx + 'system/gotoIframePage/system/organization/organizationListPage/-9',
 			isCurrent: true
 		},{
-			title: '二级页面',
-			href: 'index.html'
+			title: '岗位管理',
+			href: ctx + 'system/gotoIframePage/system/position/positionListPage/-9'
 		},{
 			title: '招标流程',
 			href: 'process.html'
