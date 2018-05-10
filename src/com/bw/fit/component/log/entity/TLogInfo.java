@@ -1,4 +1,4 @@
-package com.bw.fit.system.log.entity;
+package com.bw.fit.component.log.entity;
 
 import java.util.Date;
 

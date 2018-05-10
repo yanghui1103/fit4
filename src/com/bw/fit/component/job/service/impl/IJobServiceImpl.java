@@ -1,9 +1,9 @@
-package com.bw.fit.system.job.service.impl;
+package com.bw.fit.component.job.service.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
-import com.bw.fit.system.job.service.IJobService;
+import com.bw.fit.component.job.service.IJobService;
 
 @Service
 public class IJobServiceImpl implements IJobService {

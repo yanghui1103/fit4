@@ -1,4 +1,4 @@
-package com.bw.fit.system.job.service;
+package com.bw.fit.component.job.service;
 
 /*****
  * 定时任务组件

@@ -1,4 +1,4 @@
-package com.bw.fit.system.log.aspect;
+package com.bw.fit.component.log.aspect;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.dao.DaoTemplete;
-import com.bw.fit.system.log.entity.TLogInfo;
-import com.bw.fit.system.log.service.ILogService;
+import com.bw.fit.component.log.entity.TLogInfo;
+import com.bw.fit.component.log.service.ILogService;
 /*****
  * WS接口层日志切面
  * @author yangh

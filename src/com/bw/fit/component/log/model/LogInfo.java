@@ -1,4 +1,4 @@
-package com.bw.fit.system.log.model;
+package com.bw.fit.component.log.model;
 
 import com.bw.fit.system.common.model.BaseModel;
 

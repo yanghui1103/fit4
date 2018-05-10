@@ -1,10 +1,10 @@
-package com.bw.fit.system.log.dao;
+package com.bw.fit.component.log.dao;
 
 import java.util.List;
 
 import com.bw.fit.system.common.model.RbackException;
-import com.bw.fit.system.log.entity.TLogInfo;
-import com.bw.fit.system.log.model.LogInfo;
+import com.bw.fit.component.log.entity.TLogInfo;
+import com.bw.fit.component.log.model.LogInfo;
 
 /*****
  * 日志组件DAO层

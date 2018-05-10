@@ -1,4 +1,4 @@
-package com.bw.fit.system.log.dao.impl;
+package com.bw.fit.component.log.dao.impl;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.common.model.RbackException;
-import com.bw.fit.system.log.dao.DLogDao;
-import com.bw.fit.system.log.entity.TLogInfo;
-import com.bw.fit.system.log.model.LogInfo;
+import com.bw.fit.component.log.dao.DLogDao;
+import com.bw.fit.component.log.entity.TLogInfo;
+import com.bw.fit.component.log.model.LogInfo;
 
 /****
  * 日志组件：持久层实现类

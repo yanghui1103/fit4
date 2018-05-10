@@ -1,4 +1,4 @@
-package com.bw.fit.system.log.service.impl;
+package com.bw.fit.component.log.service.impl;
 
 import static com.bw.fit.system.common.util.PubFun.*;
 import java.util.ArrayList;
@@ -11,10 +11,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
-import com.bw.fit.system.log.dao.DLogDao;
-import com.bw.fit.system.log.entity.TLogInfo;
-import com.bw.fit.system.log.model.LogInfo;
-import com.bw.fit.system.log.service.ILogService;  
+import com.bw.fit.component.log.dao.DLogDao;
+import com.bw.fit.component.log.entity.TLogInfo;
+import com.bw.fit.component.log.model.LogInfo;
+import com.bw.fit.component.log.service.ILogService;  
 
 @Service
 public class ILogServiceImpl implements ILogService {

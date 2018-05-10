@@ -1,12 +1,12 @@
-package com.bw.fit.system.log.service;
+package com.bw.fit.component.log.service;
 
 import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
-import com.bw.fit.system.log.entity.TLogInfo;
-import com.bw.fit.system.log.model.LogInfo;
+import com.bw.fit.component.log.entity.TLogInfo;
+import com.bw.fit.component.log.model.LogInfo;
 
 /*****
  * 日志组件
