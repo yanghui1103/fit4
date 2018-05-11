@@ -27,9 +27,15 @@ public interface OrganizationDao {
 	public void update(Organization org ) throws RbackException ;
 	/****
 	 * 删除组织
-	 * @param org
+	 * @param id
 	 * @throws RbackException
 	 */
 	public void delete(String id) throws RbackException ;
+	/****
+	 * 获取组织
+	 * @param id
+	 * @throws RbackException
+	 */
+	public Organization get(String id) ;
 	
 }

@@ -38,11 +38,33 @@ var setting = {
 		}
 
 		function onClick(e, treeId, node) {
-			alert("Do what you want to do!");
+			var orgId = node.id;
+			$.ajax({
+				type : 'GET',
+				url : ctx + "org/organization/"+orgId,
+				data : {},
+				success : function(data) {
+					if(data.res=="2"){
+						printOrgDetailInfo(data.org);
+					}else{
+						promptMessage(data.res,data.msg) ;
+					}
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					$.messager.alert({
+			            title: '提示信息',
+			            ok: '确定',
+			            icon: 'error',
+			            cancel: '取消',
+			            msg: errorThrown
+			          });
+				},
+				dataType : "JSON"
+			});
 		}
 		
 		function searchNode(e) {
-			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			var zTree = $.fn.zTree.getZTreeObj("orgTree");
 			if (!$("#getNodesByFilter").attr("checked")) {
 				var value = $.trim(key.get(0).value);
 				var keyType = "";
@@ -83,7 +105,7 @@ var setting = {
 
 		}
 		function updateNodes(highlight) {
-			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			var zTree = $.fn.zTree.getZTreeObj("orgTree");
 			for( var i=0, l=nodeList.length; i<l; i++) {
 				nodeList[i].highlight = highlight;
 				zTree.updateNode(nodeList[i]);
@@ -100,9 +122,8 @@ var setting = {
 		$(document).ready(function(){			
 			$.get(ctx+"org/organizations",function(data){ 
 				if(data.res =="2"){ 
-					zNodes = (data.list) ; 
-					
-					$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					zNodes = (data.list) ; 					
+					$.fn.zTree.init($("#orgTree"), setting, zNodes);
 					key = $("#key");
 					key.bind("focus", focusKey)
 					.bind("blur", blurKey)

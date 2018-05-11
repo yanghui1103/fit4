@@ -35,4 +35,9 @@ public class OrganizationDaoImpl implements OrganizationDao {
 		daoTemplete.update("organizationSql.delete", id);
 	}
 
+	@Override
+	public Organization get(String id) {
+		return (Organization)daoTemplete.getOneData("organizationSql.get", id);
+	}
+
 }

@@ -26,12 +26,18 @@
 	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.core.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListAdminPage.js"></script>
 </head> 
 <body>
 	<div class="container">
 		<div class="left-tree">
+		<label class="kv-label">关键词:</label><input type="text" id="key" value="" class="empty" />
+			<div style="display:none">
+ 			<input type="radio" id="name" name="keyType" class="radio first" checked />
+				<input type="radio" id="getNodesByParamFuzzy" name="funType" class="radio" style="margin-left:36px;" checked />
+			</div>
 			<div class="zTreeDemoBackground left">
-				<ul id="treeDemo" class="ztree"></ul>
+				<ul id="orgTree" class="ztree"></ul>
 			</div>
 		</div>
 		<div class="content">
@@ -42,7 +48,7 @@
 					<tbody>
 						<tr>
 							<td class="kv-label">企业名称</td>
-							<td class="kv-content">苏州电子科技有限公司</td>
+							<td class="kv-content"><span id="name1"></span></td>
 							<td class="kv-label">企业法人</td>
 							<td class="kv-content">左江胜</td>
 							<td class="kv-label">注册资金(万元)</td>
@@ -136,12 +142,7 @@
 				</table>
 
 		      </div>
-		      <div title="财务信息" data-options="closable:false"></div>
-		      <div title="人员情况" data-options="closable:false"></div>
-		      <div title="产品情况" data-options="closable:false"></div>
-		      <div title="供货历史" data-options="closable:false"></div>
-		      <div title="主要原材料供应商" data-options="closable:false"></div>
-		      <div title="资质附件" data-options="closable:false"></div>
+		      
 		    </div>
 		</div>
 	</div>

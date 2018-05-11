@@ -67,6 +67,27 @@ public class OrganizationController extends BaseController {
 		
 		return null ;
 	}
+	
+	/****
+	 * 获取单个组织
+	 * @param org
+	 * @return
+	 */
+	@RequestMapping(value="organization/{id}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
+	@ResponseBody
+	public JSONObject get(@PathVariable String id){
+		JSONObject json = new JSONObject();
+		Organization  o = organizationDao.get(id);
+		if(o==null){
+			json = new JSONObject();
+			PubFun.returnFailJson(json, "该组织不存在");
+			return json ;
+		}
+		json = new JSONObject();
+		PubFun.returnSuccessJson(json);
+		json.put("org", (JSONObject)JSONObject.toJSON(o) );
+		return json ;
+	}
 	/*****
 		 * 可以翻页，获取组织列表
 		 * @param org
@@ -77,6 +98,7 @@ public class OrganizationController extends BaseController {
 		public JSONObject organizations(@Valid @ModelAttribute Organization org){
 			JSONObject js = new JSONObject();
 			JSONArray array = new JSONArray();
+			org.setPaginationEnable("0");
 			List<Organization> list = organizationDao.getOrganizations(org);
 			if(list==null||list.size()<1){
 				PubFun.returnFailJson(js, "无数据");
@@ -87,6 +109,7 @@ public class OrganizationController extends BaseController {
 				j.put("id", o.getId());
 				j.put("pId", o.getParentId());
 				j.put("name", o.getName());
+				j.put("open", true); // 默认全部打开
 				array.add(j);
 			}
 			js.put("res", "2");

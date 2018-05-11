@@ -17,5 +17,8 @@
 	<update id="delete"  parameterType="String">
 		update t_organization set isdeleted='1'  where id = #{id}
 	</update>
+	<select id="get" parameterType="string" resultType="Organization">
+		select * from t_organization where id = #{id}
+	</select>
 		
 </mapper>   
