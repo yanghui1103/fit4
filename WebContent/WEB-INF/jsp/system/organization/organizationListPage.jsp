@@ -43,7 +43,7 @@
 		
 		<div class="content">
 			<div id="tb" style="padding: 0 20px; float: right">
-				<a href="#" class="easyui-linkbutton" iconCls="icon-add"
+				<a href="javascript:addOrg();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
 				<a href="#" class="easyui-linkbutton" iconCls="icon-edit"
 					data-options="selected:true">编辑</a> 
@@ -99,6 +99,7 @@
 		    </div>
 		</div>		 
 	</div>
+	<div id="_loadDialog_orgList"></div>
 </body> 
 </html>
 <script type="text/javascript">

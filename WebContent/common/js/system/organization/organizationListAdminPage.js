@@ -16,3 +16,18 @@ function printOrgDetailInfo(org){
 	$("#summary").text(org.summary);
 	
 }
+
+
+function addOrg(){
+	$('#_loadDialog_orgList').dialog({    
+	    title: '新增组织',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    href: ctx+'system/gotoIframePage/system/organization/organizationAddPage/-9',    
+	    modal: true   
+	}); 
+	
+	
+}
