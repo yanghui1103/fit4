@@ -313,3 +313,42 @@ function addExternalTab(title, url) {
 	function getMainFrameTab(){
 		return self.parent.$('#mainFrame');	
 	}
+	
+	/*****
+	 * 前端数据字典转义
+	 * @param value
+	 */
+	function getDictNameByValue(value){
+		var val = "";
+		$.ajax({
+			type : 'GET',
+			url : ctx + "dict/getDictNameByValue/"+value,
+			data : {},
+			async:false,
+			success : function(data) { 
+				val =  data.dictName;
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				ajaxError(XMLHttpRequest, textStatus, errorThrown);
+				return "";
+			},
+			dataType : "JSON"
+		});
+		return val ;
+	}
+	
+	/***
+	 * 专门处理ajax请求错误
+	 * @param XMLHttpRequest
+	 * @param textStatus
+	 * @param errorThrown
+	 */
+	function ajaxError(XMLHttpRequest, textStatus, errorThrown){
+		$.messager.alert({
+            title: prompt_title,
+            ok: '确定',
+            icon: 'error',
+            cancel: '取消',
+            msg: errorThrown
+          });
+	}
