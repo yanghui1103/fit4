@@ -24,9 +24,13 @@
 	
 	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/demo.css" type="text/css">
 	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<link rel="stylesheet" href="<%=basePath%>common/fit/v4/static/lightblue/css/providers.css">
 	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.core.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.excheck.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionListPage.js"></script>
+<style type="text/css">
+.messager-body{line-height:50px}.messager-window .messager-icon{margin-left:35px}.messager-window .messager-button{border-top:0;background:#fff}.jq-form{margin:10px;padding:0 9px;background:#f1f1f1;font-size:14px}.jq-form .jq-form-row{padding:0 165px;min-height:45px;line-height:45px}.jq-form .jq-form-row.jq-form-submit{height:80px;line-height:80px}.jq-form .jq-form-row.even{background:#fff}.jq-form .jq-form-row>label{float:left;margin-left:-165px;padding-left:30px;width:135px}.jq-form .jq-form-row .jq-form-control{float:left;width:100%}.jq-form .jq-form-row .jq-form-control .jq-form-input{width:100%;height:31px;padding:0 10px;box-sizing:border-box}.jq-form .jq-form-row .jq-form-control .jq-form-textarea{margin-top:10px;width:100%;height:110px;padding:5px;box-sizing:border-box}.jq-form .jq-form-row .jq-form-tip{float:right;margin-right:-165px;padding-left:20px;width:145px;color:#7f7f7f}.jq-form .jq-form-row .jq-form-tip .important{color:#df0000}.jq-form .jq-form-row.jq-form-time .textbox{width:auto!important;height:30px!important;line-height:30px!important}.jq-form .jq-form-row.jq-form-time .textbox-text{width:314px!important;height:30px!important;line-height:30px!important}
+</style>
 </head> 
 <body>
 	<div class="container">
@@ -41,137 +45,62 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="easyui-tabs1" style="width:100%;">
-		      <div title="岗位" data-options="closable:false" class="basic-info">
-		      	<div class="column"><span class="current">注册信息</span></div>
-		      	<table class="kv-table">
-					<tbody>
-						<tr>
-							<td class="kv-label">企业名称</td>
-							<td class="kv-content"><span id="name1"></span></td>
-							<td class="kv-label">企业法人</td>
-							<td class="kv-content">左江胜</td>
-							<td class="kv-label">注册资金(万元)</td>
-							<td class="kv-content">103</td>
-						</tr>
-						<tr>
-							<td class="kv-label">企业类型</td>
-							<td class="kv-content">其他</td>
-							<td class="kv-label">企业性质</td>
-							<td class="kv-content">贸易商</td>
-							<td class="kv-label">主公品类</td>
-							<td class="kv-content">IT设备</td>
-						</tr>
-						<tr>
-							<td class="kv-label">注册地址</td>
-							<td class="kv-content" colspan="5">江苏省苏州市</td>
-						</tr>
-						<tr>
-							<td class="kv-label">公司地址</td>
-							<td class="kv-content" colspan="5">河滨路88号</td>
-						</tr>
-						<tr>
-							<td class="kv-label">邮编</td>
-							<td class="kv-content">214000</td>
-							<td class="kv-label">成立年份</td>
-							<td class="kv-content" colspan="3">2016</td>
-						</tr>
-						<tr>
-							<td class="kv-label">厂房所有</td>
-							<td class="kv-content">自有</td>
-							<td class="kv-label">厂房面积</td>
-							<td class="kv-content">1253</td>
-							<td class="kv-label">建筑面积</td>
-							<td class="kv-content">68</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="column"><span class="current">三证信息</span></div>
-		      	<table class="kv-table">
-					<tbody>
-						<tr>
-							<td class="kv-label">营业执照</td>
-							<td class="kv-content">计算机估计配件</td>
-							<td class="kv-label">扫描照</td>
-							<td class="kv-content" colspan="3"><a href="javascript:;">营业执照.jpg</a></td>
-						</tr>
-						<tr>
-							<td class="kv-label">组织机构代码</td>
-							<td class="kv-content">051855369</td>
-							<td class="kv-label">扫描照</td>
-							<td class="kv-content" colspan="3"><a href="javascript:;">机组织代码.jpg</a></td>
-						</tr>
-						<tr>
-							<td class="kv-label">税务登记证</td>
-							<td class="kv-content">320698415263</td>
-							<td class="kv-label">扫描照</td>
-							<td class="kv-content" colspan="3"><a href="javascript:;">税务登记.jpg</a></td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="column"><span class="current">联系信息</span></div>
-		      	<table class="kv-table">
-					<tbody>
-						<tr>
-							<td class="kv-label">公司电话</td>
-							<td class="kv-content">0512-69168010</td>
-							<td class="kv-label">传真</td>
-							<td class="kv-content">0512-69168010</td>
-							<td class="kv-label">公司网站</td>
-							<td class="kv-content">www.szlf.com</td>
-						</tr>
-						<tr>
-							<td class="kv-label">联系人</td>
-							<td class="kv-content">左江胜</td>
-							<td class="kv-label">联系手机</td>
-							<td class="kv-content">15158966547</td>
-							<td class="kv-label">联系人邮箱</td>
-							<td class="kv-content">zhs88@szlf.com</td>
-						</tr>
-					</tbody>
-				</table>
-				<table class="kv-table yes-not">
-					<tbody>
-						<tr>
-							<td class="kv-label">是否有亲属在公司</td>
-							<td class="kv-content" colspan="2">无</td>
-							<td class="kv-label">是否与公司是竞争关系</td>
-							<td class="kv-content" colspan="2">否</td>
-						</tr>
-					</tbody>
-				</table>
-
-		      </div>
-		      
-		    </div>
-		</div>
+       <table id="dg" style="width:98%;height:470px" title="岗位列表" data-options="
+                rownumbers:true,
+                singleSelect:false,
+                autoRowHeight:false,
+                pagination:true,
+                fitColumns:true,
+                striped:true,
+                checkOnSelect:true,
+                selectOnCheck:true,
+                collapsible:false,
+                toolbar:'#tb',
+                pageSize:10">
+            <thead>
+                <tr>
+                    <th field="ck" checkbox="true"></th>
+                    <th field="code" width="110">供应商编码</th>
+                    <th field="name" width="226">供应商名称</th>
+                    <th field="level" width="112">等级</th>
+                    <th field="provide" width="170">主供品类</th>
+                    <th field="full" width="130">资料是否完善</th>
+                    <th field="issubmit" width="136">调查表格是否提交</th>
+                    <th field="status" width="120">审核状态</th>
+                    <th field="note" width="105">备注</th>
+                </tr>
+            </thead>
+        </table>
+      <div id="tb" style="padding:0 30px;">
+        供应商编码: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+        供应商名称: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+      </div>
+    </div>
 	</div>
 	
 </body> 
 </html>
 <script type="text/javascript">
-	$('.easyui-tabs1').tabs({
-      tabHeight: 36,
-      onSelect: function() {
-      	setTimeout(function() {
-    		resizeTabs();
-    	},100)
-      }
-    });
-    $(window).resize(function(){
-    	$('.easyui-tabs1').tabs("resize");
-    	setTimeout(function() {
-    		resizeTabs();
-    	},100)
-    }).resize();
-    function resizeTabs() {
-		var $body = $('body'),
-			$window = $(window);
+        function getData(){
+            var rows = [];
+            for(var i=1; i<=8; i++){
+                rows.push({
+                    code: '10695',
+                    name: '南京天泽星网股份有限公司',
+                    level: '正式',
+                    provide: '光纤通信设备配件',
+                    full: '√',
+                    issubmit: '√',
+                    status:'已审核',
+                    note: '-'
+                });
+            }
+            return rows;
+        }
 
-		if($window.height() > $body.height()) {
-
-			$('.panel-body').height($window.height() - 44);
-
-		}
-    }
-</script>
+        $(function(){
+            $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
+        });
+    </script>
