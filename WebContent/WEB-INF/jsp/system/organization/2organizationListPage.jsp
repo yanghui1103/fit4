@@ -75,7 +75,7 @@
     	});  
     }
         $(function(){
-            $('#orgListDg').datagrid({data:getData()}).datagrid('clientPaging');
+        	cmpquery();
         });
     </script>
 </body>

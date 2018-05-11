@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8"%>
-	
-<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
-<link href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/easyui.css"  rel="stylesheet" >
 <style type="text/css">
 	@media screen and (max-width: 1000px) {
 		.fit_form_row {
