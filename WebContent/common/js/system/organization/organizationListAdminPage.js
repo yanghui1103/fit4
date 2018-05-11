@@ -3,6 +3,7 @@
  */
 function printOrgDetailInfo(org){ 
 	// alert(getDictNameByValue("depoartment"));
+	$("td > span").empty();
 	$("#name1").text(org.name);
 	$("#code").text(org.code);
 	$("#simpleName").text(org.simpleName);
@@ -13,4 +14,5 @@ function printOrgDetailInfo(org){
 	$("#address").text(org.address);
 	$("#postCode").text(org.postCode);
 	$("#summary").text(org.summary);
+	
 }
