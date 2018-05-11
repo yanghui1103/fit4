@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dictSql"> 
+	<sql id="paginationSql">
+		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
+	</sql>
+	<!-- 获取组织信息 -->
+	<select id="getOrganizations" parameterType="Organization" resultType="Organization">
+		select * from (
+		select * from t_organization where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by createtime desc ) 
+		where 1=1  
+		<if test="paginationEnable!='0'">		
+			<include refid="paginationSql"></include>
+		</if>
+	</select>
+	<!-- 删除组织 -->
+	<update id="delete"  parameterType="String">
+		update t_organization set isdeleted='1'  where id = #{id}
+	</update>
+	<select id="getDictByValue" parameterType="string" resultType="dict">
+		select a.fdid id ,a.parent_id parentId,a.dict_name dictName,
+		a.dict_value dictValue,num sortNumber,can_add canAdd,can_edit canEdit,
+		can_del canDel,dict_remark dictRemark ,isdeleted from data_dict  a where dict_value =  #{value}
+	</select>
+		
+</mapper>   
