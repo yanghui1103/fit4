@@ -40,10 +40,19 @@
 				<ul id="orgTree" class="ztree"></ul>
 			</div>
 		</div>
+		
 		<div class="content">
-			<div class="easyui-tabs1" style="width:100%;">
+			<div id="tb" style="padding: 0 20px; float: right">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-add"
+					data-options="selected:true">新增</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-edit"
+					data-options="selected:true">编辑</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-remove"
+					data-options="selected:true">删除</a> 
+			</div> 
+			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="基本信息" data-options="closable:false" class="basic-info">
-		      	<div class="column"><span class="current">注册信息</span></div>
+					<div  class="column"><span class="current">注册信息</span></div>
 		      	<table class="kv-table">
 					<tbody>
 						<tr>
@@ -86,14 +95,10 @@
 						
 					</tbody>
 				</table>
-				
-
-		      </div>
-		      
+		      </div>		      
 		    </div>
-		</div>
+		</div>		 
 	</div>
-	
 </body> 
 </html>
 <script type="text/javascript">

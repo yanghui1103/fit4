@@ -21,10 +21,13 @@ import com.bw.fit.system.dict.model.Dict;
 public class DictController extends BaseController {
 
 	@Autowired
-	private   DictDao dictDao;
+	private   DictDao dictDao;	
 	
-	
-	
+	/*****
+	 * 根据值获取数据字典名称
+	 * @param value
+	 * @return
+	 */
 	@RequestMapping("getDictNameByValue/{value}")
 	@ResponseBody
 	public JSONObject getDictNameByValue(@PathVariable String value){
