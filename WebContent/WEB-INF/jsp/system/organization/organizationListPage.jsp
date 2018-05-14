@@ -42,14 +42,9 @@
 		</div>
 		
 		<div class="content">
-			<div id="tb" style="padding: 0 20px; float: right">
-				<a href="javascript:addOrg();" class="easyui-linkbutton" iconCls="icon-add"
-					data-options="selected:true">新增</a> 
-				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
-				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
-			</div> 
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="基本信息" data-options="closable:false" class="basic-info">
+		      
 					<div  class="column"><span class="current">注册信息</span></div>
 		      	<table class="kv-table">
 					<tbody>
@@ -93,8 +88,14 @@
 						
 					</tbody>
 				</table>
-		      </div>		      
+		      </div>
 		    </div>
+		    <div id="tb" style="padding: 0 20px; float: right;position: absolute;top:0px;right:0px">
+				<a href="javascript:addOrg();" class="easyui-linkbutton" iconCls="icon-add"
+					data-options="selected:true">新增</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
+			</div>	
 		</div>		 
 	</div>
 	<div id="_loadDialog_orgList"></div>
