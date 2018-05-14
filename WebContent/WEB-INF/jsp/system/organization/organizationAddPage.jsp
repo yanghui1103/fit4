@@ -15,9 +15,7 @@
 <body>
 
 	<div style="float: right;margin-right:30px;margin-top:5px" >
-		<button class="easyui-linkbutton" type=button iconCls="icon-search" data-options="selected:true"
-			style="width: 150px">保存</button>
-		<button class="easyui-linkbutton" type=button iconCls="icon-search"
+		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
 			style="width: 150px">保存</button>
 	</div>
 	
@@ -26,93 +24,66 @@
 		data-options="novalidate:false">
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+			<div>组织编码</div>
+			<input class="easyui-textbox"  name="code" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,validType:['length[0,20]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>组织名称</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
-		</div>
-		
-		
-		
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+				data-options="required:true,validType:['length[0,30]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织名称</div>
+			<div>组织简称</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
-		</div>
-		
-		
-		
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+				data-options="required:true,validType:['length[0,20]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织名称</div>
+			<div>父组织</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
-		</div>
-		
-		
-		
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+				data-options="required:true">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织名称</div>
+			<div>地址薄显示与否</div>
+			<select id="cc" class="easyui-combobox" name="dept"
+				style="width: 80%;paddding-right:2px"  >
+				<option value="1">是</option>
+				<option value="0">否</option>
+			</select>
+		</div>
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>法人/负责人</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
+				data-options="required:true">
 		</div>
 		
-		
-		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
-		</div>
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织名称</div>
+			<div>联系电话</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
+				data-options="required:true">
 		</div>
 		
-		
-		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
-		</div>
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织名称</div>
+			<div>地址</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
+				data-options="">
 		</div>
 		
-		
-		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织编码组织编码</div>
-			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
-				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
-		</div>
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>组织名称</div>
+			<div>邮编</div>
 			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
-				data-options="required:true,prompt:'请输入组织名称'">
+				data-options="">
 		</div>
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织简介</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="multiline:true">
+		</div>
+		
+		
 	</form>	
 	
 	
