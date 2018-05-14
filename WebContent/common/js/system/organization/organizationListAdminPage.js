@@ -14,6 +14,7 @@ function printOrgDetailInfo(org){
 	$("#address").text(org.address);
 	$("#postCode").text(org.postCode);
 	$("#summary").text(org.summary);
+	$("#id").val(org.id);
 	
 }
 
@@ -29,6 +30,21 @@ function addOrgPage(){
 	    href: ctx+'system/gotoIframePage/system/organization/organizationAddPage/-9',    
 	    modal: true   
 	}); 
-	
-	
+}
+
+function removeOrg(){
+	var id = ($("#id").val());
+	if(id!='' && id!='undefined'){
+		promptMessageCallBack("3","是否确认删除该组织?",function(){
+			$.ajax({
+				type : 'DELETE',
+				url : ctx + "org/organization/"+id,
+				data : {},
+				success : function(data) {
+					promptMessage(data.res, data.msg );
+				},
+				dataType : "JSON"
+			});
+		})
+	}
 }

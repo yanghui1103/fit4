@@ -78,8 +78,16 @@ public class OrganizationController extends BaseController {
 	@RequestMapping(value="organization/{id}",method=RequestMethod.DELETE,produces="application/json;charset=UTF8")
 	@ResponseBody
 	public JSONObject delete(@PathVariable String id){
-		
-		return null ;
+		JSONObject json = new JSONObject();
+		try {
+			json = organizationService.delete(id);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}	
 	}
 	
 	/*****

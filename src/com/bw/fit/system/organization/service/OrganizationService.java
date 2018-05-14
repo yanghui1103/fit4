@@ -15,4 +15,11 @@ public interface OrganizationService {
 	 * @throws RbackException
 	 */
 	public JSONObject add(Organization org) throws RbackException ;
+	/****
+	 * 删除组织
+	 * @param org
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject delete(String id) throws RbackException ;
 }

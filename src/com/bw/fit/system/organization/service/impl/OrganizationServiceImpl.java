@@ -34,4 +34,19 @@ public class OrganizationServiceImpl implements OrganizationService {
 	}
 
 
+	@Override
+	public JSONObject delete(String id) throws RbackException {
+		JSONObject json = new JSONObject();
+		try{
+			organizationDao.delete(id);
+			PubFun.returnSuccessJson(json);
+		}catch(RbackException ex){
+			json = new JSONObject();
+			PubFun.returnFailJson(json, ex.getMsg());
+		}finally{
+			return json;
+		}
+	}
+
+
 }
