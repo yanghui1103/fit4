@@ -8,14 +8,13 @@ function printOrgDetailInfo(org){
 	$("#code").text(org.code);
 	$("#simpleName").text(org.simpleName);
 	$("#type").text(getDictNameByValue(org.type));
-	$("#isVisible").text(org.isVisible);
+	$("#isVisible").text(getDictNameByValue(org.isVisible));
 	$("#adminer").text(org.adminer);
 	$("#phone").text(org.phone);
 	$("#address").text(org.address);
 	$("#postCode").text(org.postCode);
 	$("#summary").text(org.summary);
 	$("#id").val(org.id);
-	
 }
 
 

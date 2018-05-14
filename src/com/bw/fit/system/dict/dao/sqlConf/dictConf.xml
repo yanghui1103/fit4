@@ -23,5 +23,20 @@
 		can_del canDel,dict_remark dictRemark ,isdeleted from data_dict  a 
 		where 1=1 and isdeleted='0' and dict_value =  #{value}
 	</select>
-		
+	<select id="getIdByDictValue"  parameterType="string" resultType="string">
+		select fdid from data_dict a where a.dict_value = #{value}
+	</select>
+	
+	<select id="getDictsByParentId" parameterType="string" resultType="dataDict">
+		select a.fdid id,a.parent_id  ,a.dict_name  ,a.dict_value  ,
+		a.dict_remark ,a.num  ,(case can_add when '0' then '否' else '是' end) can_add
+		,(case can_edit when '0' then '否' else '是' end) can_edit
+		,(case can_del when '0' then '否' else '是' end) can_del
+    	from data_dict a
+    	where isdeleted='0'
+    	connect by
+    	a.parent_id =
+    	prior a.fdid
+    	start with a.parent_id = #{parentId}
+	</select>
 </mapper>   
