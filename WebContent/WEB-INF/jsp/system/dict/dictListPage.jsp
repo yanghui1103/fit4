@@ -21,7 +21,7 @@
 	
 </head>
 <body>
-	<div name="dataDictTb" style="padding: 2px 5px;"> 
+	<div style="float:right;padding:0px 1px">
 		<a class="easyui-linkbutton" iconcls="icon-add" id="dataDictAdd">增加</a>
 		<a class="easyui-linkbutton" iconcls="icon-edit" id="dataDictEdit">修改</a>
 		<a class="easyui-linkbutton" iconcls="icon-remove" id="dataDictDel">删除</a>
