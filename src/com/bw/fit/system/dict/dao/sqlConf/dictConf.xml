@@ -39,4 +39,19 @@
     	prior a.fdid
     	start with a.parent_id = #{parentId}
 	</select>
+	
+	
+	<!-- 数据字典tree JSON -->
+	<select id="getDataDictList" parameterType="String" resultType="tdataDict">
+		select a.fdid id,a.parent_id,a.dict_name,a.dict_value,a.dict_remark,a.num,(case can_add when '0' then '否' else '是' end) can_add
+		,(case can_edit when '0' then '否' else '是' end) can_edit
+		,(case can_del when '0' then '否' else '是' end) can_del
+    	from data_dict a
+    	where isdeleted='0'
+    	connect by
+    	a.parent_id =
+    	prior a.fdid
+    	start with a.parent_id = #{parent_id}
+	</select>
+	
 </mapper>   

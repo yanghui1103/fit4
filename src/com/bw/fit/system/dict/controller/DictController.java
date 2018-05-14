@@ -60,7 +60,7 @@ public class DictController extends BaseController {
 	 */
 	@RequestMapping(value = "getDictsByParentValue/{parentValue}", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public JSONObject getDataDictList(@PathVariable(value = "parentValue") String parentValue)
+	public JSONObject getDictsByParentValue(@PathVariable(value = "parentValue") String parentValue)
 			throws Exception {
 		JSONObject json = new JSONObject();
 		String parent_id = dictDao.getIdByDictValue(parentValue);
@@ -69,4 +69,16 @@ public class DictController extends BaseController {
 		json.put("rows", JSONObject.toJSON(list));		
 		return json ;
 	}
+	
+
+	@RequestMapping(value = "getDataDictList/{parent_id}", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public JSONArray getDataDictList(
+			@PathVariable(value = "parent_id") String parent_id)
+			throws Exception {
+		DataDict json = dictService.getAllDataDict(parent_id);
+		return (JSONArray) JSONArray.parse("[" + json.toString() + "]");
+	}
+
+	
 }

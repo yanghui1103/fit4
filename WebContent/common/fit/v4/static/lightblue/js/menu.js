@@ -17,6 +17,9 @@ var SystemMenu = [{
 			title: '组织管理',
 			href: ctx + 'system/gotoIframePage/system/organization/organizationListPage/-9' 
 		},{
+			title: '数据字典',
+			href: ctx + 'system/gotoIframePage/system/dict/dictListPage/-9' 
+		},{
 			title: '二级页面',
 			href: 'index.html'
 		},{
