@@ -48,7 +48,7 @@
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>地址薄显示与否</div>
-			<select id="cc" class="easyui-combobox" name="isVisible"
+			<select id="cc" class="easyui-combobox" name="isVisible" data-options="limitToList:true"
 				style="width: 80%;paddding-right:2px"  >
 				<option value="1">是</option>
 				<option value="0">否</option>
@@ -88,7 +88,7 @@
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>排序号</div>
 			<input class="easyui-numberbox" name="sortNumber" style="width: 80%;paddding-right:2px"  
-				data-options="">
+				data-options="required:true">
 		</div>
 		
 	</form>	

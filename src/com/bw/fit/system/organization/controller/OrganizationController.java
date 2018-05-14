@@ -54,10 +54,12 @@ public class OrganizationController extends BaseController {
 			FieldError error = result.getFieldError();
 			json.put("res", "1");
 			returnFailJson(json, error.getDefaultMessage());
+			return json ;
 		}
 		try {
 			Session session = PubFun.getCurrentSession();
-			PubFun.fillCommonProptities(org, true,session);
+			//PubFun.fillCommonProptities(org, true,session);
+			org.setId(getUUID());
 			json = organizationService.add(org);
 		} catch (RbackException e) {
 			e.printStackTrace();
@@ -119,7 +121,7 @@ public class OrganizationController extends BaseController {
 		 */
 		@RequestMapping(value="organizations",method=RequestMethod.GET,produces="application/json;charset=UTF8")
 		@ResponseBody
-		public JSONObject organizations(@Valid @ModelAttribute Organization org){
+		public JSONObject organizations(@ModelAttribute Organization org){
 			JSONObject js = new JSONObject();
 			JSONArray array = new JSONArray();
 			org.setPaginationEnable("0");
