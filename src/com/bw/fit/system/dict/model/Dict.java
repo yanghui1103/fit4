@@ -7,7 +7,6 @@ public class Dict extends BaseModel {
 	private String dictName;
 	private String parentId;
 	private String dictValue;
-	private String sortNumber;
 	private String canAdd;
 	private String canEdit;
 	private String canDel;
@@ -29,12 +28,6 @@ public class Dict extends BaseModel {
 	}
 	public void setDictValue(String dictValue) {
 		this.dictValue = dictValue;
-	}
-	public String getSortNumber() {
-		return sortNumber;
-	}
-	public void setSortNumber(String sortNumber) {
-		this.sortNumber = sortNumber;
 	}
 	public String getCanAdd() {
 		return canAdd;

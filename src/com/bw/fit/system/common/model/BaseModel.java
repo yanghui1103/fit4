@@ -31,6 +31,7 @@ public class BaseModel{
 	private String action_name ;
 	private String UUID ;
 	private String status ;
+	private int sortNumber;
 	private String temp_str1;
 	private String temp_str2;
 	private String temp_str3;
@@ -46,6 +47,12 @@ public class BaseModel{
 	
 	
 	
+	public int getSortNumber() {
+		return sortNumber;
+	}
+	public void setSortNumber(int sortNumber) {
+		this.sortNumber = sortNumber;
+	}
 	public String getPaginationEnable() {
 		return paginationEnable;
 	}

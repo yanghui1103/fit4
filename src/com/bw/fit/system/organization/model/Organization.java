@@ -1,5 +1,7 @@
 package com.bw.fit.system.organization.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.bw.fit.system.common.model.BaseModel;
 /****
  * 组织模型
@@ -8,6 +10,7 @@ import com.bw.fit.system.common.model.BaseModel;
  */
 public class Organization extends BaseModel{
 
+	@NotEmpty(message="组织名称不得为空")
 	private String name;
 	private String code ;
 	private String simpleName;
