@@ -11,10 +11,18 @@ public class Account extends User{
 	private String logName;
 	private String logPwd;
 	private String verificationCode;
+	private String currentOrgId; /****归属组织id***/
+	
 	
 	
 	public String getVerificationCode() {
 		return verificationCode;
+	}
+	public String getCurrentOrgId() {
+		return currentOrgId;
+	}
+	public void setCurrentOrgId(String currentOrgId) {
+		this.currentOrgId = currentOrgId;
 	}
 	public void setVerificationCode(String verificationCode) {
 		this.verificationCode = verificationCode;

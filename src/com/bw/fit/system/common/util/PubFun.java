@@ -52,6 +52,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.util.ByteSource;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -544,8 +545,15 @@ public class PubFun {
 	}
 
 
-	public static void fillCommonProptities(BaseModel b, boolean isFillFdid) {
-		
+	public static void fillCommonProptities(BaseModel b, boolean isFillFdid,Session session) {
+		if(isFillFdid){
+			b.setId(getUUID());
+			b.setCreator(getCurrentAccount().getId());
+			b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
+		}else{
+			b.setCreator(getCurrentAccount().getId());
+			b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
+		}
 	}
 	
 	/****

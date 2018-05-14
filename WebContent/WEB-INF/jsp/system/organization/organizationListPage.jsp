@@ -91,7 +91,7 @@
 		      </div>
 		    </div>
 		    <div id="tb" style="padding: 0 20px; float: right;position: absolute;top:0px;right:0px">
-				<a href="javascript:addOrg();" class="easyui-linkbutton" iconCls="icon-add"
+				<a href="javascript:addOrgPage();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
 				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
 				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 

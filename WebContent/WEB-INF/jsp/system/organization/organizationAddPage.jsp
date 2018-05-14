@@ -10,12 +10,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationAddPage.js"></script>
 </head>
 <body>
 	<div style="float: right;margin-right:30px;margin-top:5px" >
 		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
-			onclick="addOrg();" style="width: 150px">保存</button>
+			onclick="addOrg2();" style="width: 150px">保存</button>
 	</div>
 	
 	<div style="margin:30px 0px;"></div>
@@ -86,9 +85,15 @@
 				data-options="multiline:true">
 		</div>
 		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>排序号</div>
+			<input class="easyui-numberbox" name="sortNumber" style="width: 80%;paddding-right:2px"  
+				data-options="">
+		</div>
 		
 	</form>	
 	
 	
+<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationAddPage.js"></script>
 </body>
 </html>

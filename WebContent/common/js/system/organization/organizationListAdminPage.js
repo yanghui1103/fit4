@@ -18,7 +18,7 @@ function printOrgDetailInfo(org){
 }
 
 
-function addOrg(){
+function addOrgPage(){
 	$('#_loadDialog_orgList').dialog({    
 	    title: '新增组织',    
 	    width: 800,    

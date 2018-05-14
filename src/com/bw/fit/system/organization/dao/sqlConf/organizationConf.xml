@@ -20,5 +20,13 @@
 	<select id="get" parameterType="string" resultType="Organization">
 		select * from t_organization where id = #{id}
 	</select>
+	<insert id="insert" parameterType="Organization">
+		insert into t_organization (id,name,code,simplename,parentid,type,isvisible,adminer,phone,address,postcode,summary,isdeleted
+		,creator,createtime,sortnumber,versiontime,createorgid ) values 
+		(#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{simpleName,jdbcType=VARCHAR},#{parentId,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},#{isVisible,jdbcType=VARCHAR},#{adminer,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR},#{postCode,jdbcType=VARCHAR},#{summary,jdbcType=VARCHAR},'0'
+		,#{creator,jdbcType=VARCHAR},sysdate,#{sortNumber,jdbcType=INTEGER},sysdate,#{createOrgId,jdbcType=VARCHAR} )
+	</insert>
 		
 </mapper>   

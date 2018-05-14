@@ -12,10 +12,13 @@ public class Organization extends BaseModel{
 
 	@NotEmpty(message="组织名称不得为空")
 	private String name;
+	@NotEmpty(message="组织编码不得为空")
 	private String code ;
 	private String simpleName;
+	@NotEmpty(message="类型不得为空")
 	private String type;
 	private String isVisible;
+	@NotEmpty(message="父组织不得为空")
 	private String parentId;
 	private String adminer;
 	private String phone;

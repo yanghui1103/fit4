@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.controller.BaseController;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
+
+import static com.bw.fit.system.common.util.PubFun.*;
+
 import com.bw.fit.system.organization.dao.OrganizationDao;
 import com.bw.fit.system.organization.model.Organization;
+import com.bw.fit.system.organization.service.OrganizationService;
 
 /*****
  * 组织Controller
@@ -30,6 +37,8 @@ import com.bw.fit.system.organization.model.Organization;
 public class OrganizationController extends BaseController {
 
 	@Autowired
+	private OrganizationService organizationService;
+	@Autowired
 	private OrganizationDao organizationDao;
 	/******
 	 * 增加组织
@@ -40,8 +49,23 @@ public class OrganizationController extends BaseController {
 	@RequestMapping(value="organization",method=RequestMethod.POST,produces="application/json;charset=UTF8")
 	@ResponseBody
 	public JSONObject add(@Valid @ModelAttribute Organization org,BindingResult result){
-		
-		return null ;
+		JSONObject json = new JSONObject();
+		if (result.hasErrors()) {
+			FieldError error = result.getFieldError();
+			json.put("res", "1");
+			returnFailJson(json, error.getDefaultMessage());
+		}
+		try {
+			Session session = PubFun.getCurrentSession();
+			PubFun.fillCommonProptities(org, true,session);
+			json = organizationService.add(org);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}
 	}
 	
 	/****
@@ -80,11 +104,11 @@ public class OrganizationController extends BaseController {
 		Organization  o = organizationDao.get(id);
 		if(o==null){
 			json = new JSONObject();
-			PubFun.returnFailJson(json, "该组织不存在");
+			returnFailJson(json, "该组织不存在");
 			return json ;
 		}
 		json = new JSONObject();
-		PubFun.returnSuccessJson(json);
+		returnSuccessJson(json);
 		json.put("org", (JSONObject)JSONObject.toJSON(o) );
 		return json ;
 	}
@@ -101,7 +125,7 @@ public class OrganizationController extends BaseController {
 			org.setPaginationEnable("0");
 			List<Organization> list = organizationDao.getOrganizations(org);
 			if(list==null||list.size()<1){
-				PubFun.returnFailJson(js, "无数据");
+				returnFailJson(js, "无数据");
 				return js ;
 			}
 			for(Organization o:list){

@@ -2,7 +2,7 @@
  * add org
  */
 
-function addOrg(){
+function addOrg2(){ 
 	if (!$("#orgAddFm").form('enableValidation')
 			.form('validate')) {
 		return;
