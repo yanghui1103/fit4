@@ -10,27 +10,111 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 </head>
 <body>
-	<div style="margin:20px 0;"></div>
+
+	<div style="float: right;margin-right:30px;margin-top:5px" >
+		<button class="easyui-linkbutton" type=button iconCls="icon-search" data-options="selected:true"
+			style="width: 150px">保存</button>
+		<button class="easyui-linkbutton" type=button iconCls="icon-search"
+			style="width: 150px">保存</button>
+	</div>
+	
+	<div style="margin:30px 0px;"></div>
 	<form  class="easyui-form" method="post"
 		data-options="novalidate:false">
+		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<input class="easyui-textbox"  id="code1" style="width: 80%"
-				data-options="label:'组织编码',required:true">
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%"
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
 				data-options="required:true,prompt:'请输入组织名称'">
 		</div>
-	<script type="text/javascript">
-		$(function(){
-			$('#code1').textbox({
-				label:"组织编码",
-				prompt: '请输入组织编码'
-			});
-		});
-	</script>
+		
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,prompt:'请输入组织名称'">
+		</div>
+		
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,prompt:'请输入组织名称'">
+		</div>
+		
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,prompt:'请输入组织名称'">
+		</div>
+		
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,prompt:'请输入组织名称'">
+		</div>
+		
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,prompt:'请输入组织名称'">
+		</div>
+		
+		
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织编码组织编码</div>
+			<input class="easyui-textbox"  id="code1" style="width: 80%;paddding-right:2px"  
+				data-options="label:'组织编码组织编码2',required:true,prompt:'请输入组织编码'">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>组织名称</div>
+			<input class="easyui-textbox" name="role_name" id="123d" style="width: 80%;paddding-right:2px"  
+				data-options="required:true,prompt:'请输入组织名称'">
+		</div>
 	</form>	
+	
+	
 </body>
 </html>

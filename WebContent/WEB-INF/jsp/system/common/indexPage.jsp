@@ -151,20 +151,6 @@
             
 
             <div id="pf-page">
-                <!-- <div class="easyui-tabs1" style="width:100%;height:100%;">
-                  <div title="首页" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="workbench.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                  <div title="采购组织" style="padding:10px 5px 5px 10px;" data-options="closable:true">
-                    <iframe class="page-iframe" src="index.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                    </div>
-                  <div title="基本信息" data-options="closable:true" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="basic_info.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                  <div title="业务流程" data-options="closable:true" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="process.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                </div> -->
             </div>
         </div>
 
@@ -174,7 +160,7 @@
               <span>信息管理系统&nbsp;v1.0</span>
             </div>
             <div class="copyright-name">
-              <span>CopyRight&nbsp;2016&nbsp;&nbsp;uimaker.com&nbsp;版权所有</span>
+              <span>CopyRight&nbsp;2016&nbsp;&nbsp;**.com&nbsp;版权所有</span>
               <i class="iconfont" >&#xe6ff;</i>
             </div>
         </div>
