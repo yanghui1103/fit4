@@ -12,4 +12,10 @@ public interface DictService {
 	 * @return
 	 */
 	public DataDict getDictsByParentValue(String value);
+	/*****
+	 * 获取这个节点（parnet_id）下所有数据字典信息
+	 * @param parent_id
+	 * @return
+	 */
+	public DataDict getAllDataDict(String parent_id) ;
 }

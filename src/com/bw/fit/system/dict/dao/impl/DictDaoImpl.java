@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.dict.dao.DictDao;
+import com.bw.fit.system.dict.entity.TdataDict;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.dict.model.Dict;
 @Repository
@@ -25,6 +26,10 @@ public class DictDaoImpl implements DictDao {
 	@Override
 	public List<DataDict> getDictsByParentId(String parentId) {
 		return daoTemplete.getListData("dictSql.getDictsByParentId", parentId);
+	}
+	@Override
+	public List<TdataDict> getDataDictList(String parent_id) {
+		return daoTemplete.getListData("dictSql.getDataDictList", parent_id);
 	}
 
 }

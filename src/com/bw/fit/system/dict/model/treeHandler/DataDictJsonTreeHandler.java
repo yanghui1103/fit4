@@ -41,7 +41,8 @@ public class DataDictJsonTreeHandler {
 		   if (node.getParent_id() == null || node.getParent_id().equals("")) {
 		    root = node;
 		   } else {
-		    ((DataDict) nodeList.get(node.getParent_id())).addChild(node);
+			   DataDict di = ((DataDict) nodeList.get(node.getParent_id()));
+			   di.addChild(node);
 		   }
 		  }
 		  // 对多叉树进行横向排序

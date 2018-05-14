@@ -2,6 +2,7 @@ package com.bw.fit.system.dict.dao;
 
 import java.util.List;
 
+import com.bw.fit.system.dict.entity.TdataDict;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.dict.model.Dict;
 
@@ -21,4 +22,11 @@ public interface DictDao {
 	 * @return
 	 */
 	public List<DataDict> getDictsByParentId(String parentId);
+
+	/****
+	 * 获取父节点下所有子孙节点
+	 * @param c
+	 * @return
+	 */
+	public List<TdataDict> getDataDictList(String parent_id);
 }
