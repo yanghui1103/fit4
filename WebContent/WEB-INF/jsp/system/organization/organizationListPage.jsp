@@ -19,7 +19,6 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/icon.css">
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/easyui-lang-zh_CN.js"></script>	
 	
 	
 	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/demo.css" type="text/css">
@@ -27,6 +26,7 @@
 	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.core.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListAdminPage.js"></script>
+
 </head> 
 <body>
 	<div class="container">
@@ -45,10 +45,8 @@
 			<div id="tb" style="padding: 0 20px; float: right">
 				<a href="javascript:addOrg();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
-				<a href="#" class="easyui-linkbutton" iconCls="icon-edit"
-					data-options="selected:true">编辑</a> 
-				<a href="#" class="easyui-linkbutton" iconCls="icon-remove"
-					data-options="selected:true">删除</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
 			</div> 
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="基本信息" data-options="closable:false" class="basic-info">

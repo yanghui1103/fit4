@@ -25,6 +25,7 @@ function addOrg(){
 	    height: 500,    
 	    closed: false,    
 	    cache: false,    
+	    maximizable:true,
 	    href: ctx+'system/gotoIframePage/system/organization/organizationAddPage/-9',    
 	    modal: true   
 	}); 
