@@ -14,7 +14,6 @@ public class Position extends BaseModel{
 	private String name;
 	private String code ;
 	private String simpleName;
-	private int sortNmuber;
 	private Organization organization;
 	private List<Account> accounts;
 	public String getName() {
@@ -34,12 +33,6 @@ public class Position extends BaseModel{
 	}
 	public void setSimpleName(String simpleName) {
 		this.simpleName = simpleName;
-	}
-	public int getSortNmuber() {
-		return sortNmuber;
-	}
-	public void setSortNmuber(int sortNmuber) {
-		this.sortNmuber = sortNmuber;
 	}
 	public Organization getOrganization() {
 		return organization;

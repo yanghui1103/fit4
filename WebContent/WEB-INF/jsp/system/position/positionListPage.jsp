@@ -45,7 +45,9 @@
 			</div>
 		</div>
 		<div class="content">
-       <table id="dg" style="width:98%;height:470px" title="岗位列表" data-options="
+			<div class="easyui-tabs1" style="width:100%;">					
+		      <div title="岗位列表" data-options="closable:false" class="basic-info">
+		      		<table id="dg" style="width:98%;height:470px" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,
@@ -77,12 +79,44 @@
         <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
       </div>
-    </div>
+		      </div>
+		    </div>
+		    <div id="tb" style="padding: 0 20px; float: right;position: absolute;top:0px;right:0px">
+				<a href="javascript:addOrgPage();" class="easyui-linkbutton" iconCls="icon-add"
+					data-options="selected:true">新增</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
+				<a href="javascript:removeOrg();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
+			</div>	
+		</div>
 	</div>
 	
 </body> 
 </html>
 <script type="text/javascript">
+$('.easyui-tabs1').tabs({
+    tabHeight: 36,
+    onSelect: function() {
+    	setTimeout(function() {
+  		resizeTabs();
+  	},100)
+    }
+  });
+  $(window).resize(function(){
+  	$('.easyui-tabs1').tabs("resize");
+  	setTimeout(function() {
+  		resizeTabs();
+  	},100)
+  }).resize();
+  function resizeTabs() {
+		var $body = $('body'),
+			$window = $(window);
+
+		if($window.height() > $body.height()) {
+
+			$('.panel-body').height($window.height() - 44);
+
+		}
+  }
         function getData(){
             var rows = [];
             for(var i=1; i<=8; i++){
