@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.entity.TdataDict;
 import com.bw.fit.system.dict.model.DataDict;
@@ -30,6 +31,14 @@ public class DictDaoImpl implements DictDao {
 	@Override
 	public List<TdataDict> getDataDictList(String parent_id) {
 		return daoTemplete.getListData("dictSql.getDataDictList", parent_id);
+	}
+	@Override
+	public Dict get(String id) {
+		return (Dict)daoTemplete.getOneData("dictSql.get", id);
+	}
+	@Override
+	public void delete(String id) throws RbackException {
+		daoTemplete.update("dictSql.delete", id);
 	}
 
 }

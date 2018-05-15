@@ -13,10 +13,6 @@
 			<include refid="paginationSql"></include>
 		</if>
 	</select>
-	<!-- 删除组织 -->
-	<update id="delete"  parameterType="String">
-		update t_organization set isdeleted='1'  where id = #{id} 
-	</update>
 	<select id="getDictByValue" parameterType="string" resultType="dict">
 		select a.fdid id ,a.parent_id parentId,a.dict_name dictName,
 		a.dict_value dictValue,num sortNumber,can_add canAdd,can_edit canEdit,
@@ -40,6 +36,17 @@
     	start with a.parent_id = #{parentId}
 	</select>
 	
+	<select id="get" parameterType="String" resultType="dict"> 
+		select a.fdid id,a.parent_id parentId ,a.dict_name dictName ,a.dict_value  dictValue,
+		a.dict_remark dictRemark,a.num  sortNumber,  can_add canAdd
+		,  can_edit canEdit
+		,  can_del canDel
+    	from data_dict a where fdid = #{id}
+	</select>
+	
+	<update id="delete" parameterType="String">
+		update data_dict set isdeleted='1' where fdid = #{id}
+	</update>
 	
 	<!-- 数据字典tree JSON -->
 	<select id="getDataDictList" parameterType="String" resultType="tdataDict">
