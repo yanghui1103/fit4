@@ -48,15 +48,11 @@
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="岗位列表" data-options="closable:false" class="basic-info">
 		      		<table id="dg" style="width:98%;height:470px" data-options="
-                rownumbers:true,
-                singleSelect:false,
-                autoRowHeight:false,
-                pagination:true,
-                fitColumns:true,
-                striped:true,
-                checkOnSelect:true,
-                selectOnCheck:true,
-                collapsible:false,
+		      	url: '<%=basePath %>position/positions',
+				method: 'get',
+                lines: true,
+				rownumbers: true,
+				idField: 'id',
                 toolbar:'#tb',
                 pageSize:10">
             <thead>
@@ -117,24 +113,4 @@ $('.easyui-tabs1').tabs({
 
 		}
   }
-        function getData(){
-            var rows = [];
-            for(var i=1; i<=8; i++){
-                rows.push({
-                    code: '10695',
-                    name: '南京天泽星网股份有限公司',
-                    level: '正式',
-                    provide: '光纤通信设备配件',
-                    full: '√',
-                    issubmit: '√',
-                    status:'已审核',
-                    note: '-'
-                });
-            }
-            return rows;
-        }
-
-        $(function(){
-            $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
-        });
     </script>

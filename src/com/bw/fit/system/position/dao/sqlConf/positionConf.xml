@@ -6,8 +6,8 @@
 	</sql>
 	<!-- 获取组织信息 -->
 	<select id="getPositions" parameterType="position" resultType="position">
-		select * from (
-		select * from t_position where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by create_time desc ) 
+		select * from 
+		( select * from t_position where isdeleted='0' order by createtime desc )
 		where 1=1  
 		<if test="paginationEnable!='0'">		
 			<include refid="paginationSql"></include>
