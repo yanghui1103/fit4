@@ -40,5 +40,13 @@ public class DictDaoImpl implements DictDao {
 	public void delete(String id) throws RbackException {
 		daoTemplete.update("dictSql.delete", id);
 	}
+	@Override
+	public void insert(Dict dict) throws RbackException {
+		daoTemplete.insert("dictSql.insert", dict);
+	}
+	@Override
+	public void update(Dict dict) throws RbackException {
+		daoTemplete.update("dictSql.update", dict);
+	}
 
 }

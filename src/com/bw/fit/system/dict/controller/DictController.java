@@ -2,9 +2,13 @@ package com.bw.fit.system.dict.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -86,8 +90,7 @@ public class DictController extends BaseController {
 	
 	@RequestMapping(value="dict/{id}",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public JSONObject get(@PathVariable String id){
-		
+	public JSONObject get(@PathVariable String id){		
 		Dict dict = dictDao.get(id);		
 		return (JSONObject)JSONObject.toJSON(dict) ;
 	}
@@ -118,9 +121,57 @@ public class DictController extends BaseController {
 	@RequestMapping("openDictAddPage/{parentId}")
 	public String openDictAddPage(@PathVariable String parentId,Model model){
 		Dict dict = dictDao.get(parentId);		
-		model.addAttribute("parentDict", dict);
-		
+		model.addAttribute("parentDict", dict);		
 		return "system/dict/dictAddPage" ;
 	}
+
+	/*****
+	 * 打开update数据字典页
+	 * @param parentId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("openDictEditPage/{id}")
+	public String openDictEditPage(@PathVariable String id,Model model){
+		Dict dict = dictDao.get(id);		
+		model.addAttribute("dict", dict);		
+		return "system/dict/dictEditPage" ;
+	}
 	
+	
+
+	@RequestMapping(value="dict",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject insert(@Valid @ModelAttribute Dict dict){
+		JSONObject json = new JSONObject();
+		Session session  = PubFun.getCurrentSession();
+		PubFun.fillCommonProptities(dict, true, session);
+		try {
+			json = dictService.createDict(dict);
+		} catch (RbackException e) { 
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}finally{
+			return json ;
+		}
+	}
+	
+	
+
+
+	@RequestMapping(value="dict",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject update(@ModelAttribute Dict dict){
+		JSONObject json = new JSONObject();
+		Session session  = PubFun.getCurrentSession();
+		PubFun.fillCommonProptities(dict, false, session);
+		try {
+			json = dictService.updateDict(dict);
+		} catch (RbackException e) { 
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}finally{
+			return json ;
+		}
+	}
 }

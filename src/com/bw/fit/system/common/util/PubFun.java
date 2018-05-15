@@ -548,12 +548,11 @@ public class PubFun {
 	public static void fillCommonProptities(BaseModel b, boolean isFillFdid,Session session) {
 		if(isFillFdid){
 			b.setId(getUUID());
-			b.setCreator(getCurrentAccount().getId());
-			b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
-		}else{
-			b.setCreator(getCurrentAccount().getId());
-			b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
 		}
+//		b.setCreator(getCurrentAccount().getId());
+//		b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
+		b.setCreator("11");
+		b.setCreateOrgId("105");
 	}
 	
 	/****

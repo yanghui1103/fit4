@@ -48,8 +48,32 @@ function addDictDlg(){
 
 			}	
 		});
-		
-		
 	}
+}
+
+function editDictDlg(){
+	var row = getSingleTreeGridSelectData($("#dataDictTreeGd"));
+	if(row !=null){				
+		var url = ctx + "dict/dict/"+row.id ;
+		$.get(url,function(data){
+			if(data.canEdit=="0"){
+				promptMessage("1","不允许修改此节点");		
+			}	else{
+				$('#_loadDialog_dictList').dialog({    
+				    title: '编辑数据字典',    
+				    width: 800,    
+				    height: 500,    
+				    closed: false,    
+				    cache: false,    
+				    maximizable:true,
+				    href: ctx+'dict/openDictEditPage/'+row.id,    
+				    modal: true   
+				}); 
+
+			}	
+		});
+	}
+
+	
 }
 
