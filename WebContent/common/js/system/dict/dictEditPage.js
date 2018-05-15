@@ -19,9 +19,7 @@ function updateDict(){
 		},
 		dataType : "JSON"
 	});
-
-	
-
-	
-	
 }
+
+
+
