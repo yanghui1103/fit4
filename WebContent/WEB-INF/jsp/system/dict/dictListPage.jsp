@@ -18,6 +18,8 @@
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
     <link href="<%=basePath%>common/fit/v4/static/lightblue/css/basic_info.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/icon.css">
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
 	
 </head>
 <body>
@@ -50,7 +52,31 @@
 	</table>
 
 	<script type="text/javascript" src="<%=basePath%>common/js/system/dict/dictListPage.js"></script>
-	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+	$('.easyui-tabs1').tabs({
+      tabHeight: 36,
+      onSelect: function() {
+      	setTimeout(function() {
+    		resizeTabs();
+    	},100)
+      }
+    });
+    $(window).resize(function(){
+    	$('.easyui-tabs1').tabs("resize");
+    	setTimeout(function() {
+    		resizeTabs();
+    	},100)
+    }).resize();
+    function resizeTabs() {
+		var $body = $('body'),
+			$window = $(window);
+
+		if($window.height() > $body.height()) {
+
+			$('.panel-body').height($window.height() - 44);
+
+		}
+    }
+</script>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -107,4 +108,19 @@ public class DictController extends BaseController {
 			return json ;
 		}
 	}
+	
+	/*****
+	 * 打开新增数据字典页
+	 * @param parentId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("openDictAddPage/{parentId}")
+	public String openDictAddPage(@PathVariable String parentId,Model model){
+		Dict dict = dictDao.get(parentId);		
+		model.addAttribute("parentDict", dict);
+		
+		return "system/dict/dictAddPage" ;
+	}
+	
 }
