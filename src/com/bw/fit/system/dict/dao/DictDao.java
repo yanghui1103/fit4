@@ -2,6 +2,7 @@ package com.bw.fit.system.dict.dao;
 
 import java.util.List;
 
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.dict.entity.TdataDict;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.dict.model.Dict;
@@ -29,4 +30,17 @@ public interface DictDao {
 	 * @return
 	 */
 	public List<TdataDict> getDataDictList(String parent_id);
+	
+	/****
+	 * 获取数据字典
+	 * @param id
+	 * @return
+	 */
+	public Dict get(String id);
+	/***
+	 * 删除
+	 * @param id
+	 * @throws RbackException
+	 */
+	public void delete(String id) throws RbackException ;
 }
