@@ -1,5 +1,6 @@
 package com.bw.fit.system.position.service;
 
-public interface PositionService {
 
+public interface PositionService {
+	
 }

@@ -47,35 +47,32 @@
 		<div class="content">
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="岗位列表" data-options="closable:false" class="basic-info">
-		      		<table id="dg" style="width:98%;height:470px" data-options="
-                rownumbers:true,
-                singleSelect:false,
-                autoRowHeight:false,
-                pagination:true,
-                fitColumns:true,
-                striped:true,
-                checkOnSelect:true,
-                selectOnCheck:true,
-                collapsible:false,
+		      		<table  class="easyui-treegrid" style="width:98%;height:470px" data-options="
+		      	url: '<%=basePath %>position/positions',
+				method: 'get',
+                lines: true,
+				rownumbers: true,
+				pagination:true,
+				idField: 'id',
                 toolbar:'#tb',
                 pageSize:10">
             <thead>
                 <tr>
-                    <th field="ck" checkbox="true"></th>
-                    <th field="code" width="110">供应商编码</th>
-                    <th field="name" width="226">供应商名称</th>
-                    <th field="level" width="112">等级</th>
-                    <th field="provide" width="170">主供品类</th>
-                    <th field="full" width="130">资料是否完善</th>
-                    <th field="issubmit" width="136">调查表格是否提交</th>
-                    <th field="status" width="120">审核状态</th>
-                    <th field="note" width="105">备注</th>
+                    <th data-options="field:'id'" hidden=true></th>
+					<th data-options="field:'code'" width="25%" align="right">编码</th>
+					<th data-options="field:'name'" width="30%">名称</th>
+					<th data-options="field:'simpleName'" width="30%">简称</th>
+					<th data-options="field:'organization.name'" width="15%">所属组织</th>
+					<th data-options="field:'num'" width="15%">序号</th>
+					<th data-options="field:'can_add'" width="10%">可增加</th>
+					<th data-options="field:'can_edit'" width="10%">可修改</th>
+					<th data-options="field:'can_del'" width="10%">可删除</th>
                 </tr>
             </thead>
         </table>
       <div id="tb" style="padding:0 30px;">
-        供应商编码: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-        供应商名称: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+        岗位编码: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+        岗位名称: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
         <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
       </div>
@@ -90,7 +87,7 @@
 		</div>
 	</div>
 	
-</body> 
+</body>
 </html>
 <script type="text/javascript">
 $('.easyui-tabs1').tabs({
@@ -117,24 +114,4 @@ $('.easyui-tabs1').tabs({
 
 		}
   }
-        function getData(){
-            var rows = [];
-            for(var i=1; i<=8; i++){
-                rows.push({
-                    code: '10695',
-                    name: '南京天泽星网股份有限公司',
-                    level: '正式',
-                    provide: '光纤通信设备配件',
-                    full: '√',
-                    issubmit: '√',
-                    status:'已审核',
-                    note: '-'
-                });
-            }
-            return rows;
-        }
-
-        $(function(){
-            $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
-        });
     </script>
