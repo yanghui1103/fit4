@@ -21,7 +21,6 @@
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
 	
 	
-	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/demo.css" type="text/css">
 	<link rel="stylesheet" href="<%=basePath%>common/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	<script type="text/javascript" src="<%=basePath%>common/ztree/js/jquery.ztree.core.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>

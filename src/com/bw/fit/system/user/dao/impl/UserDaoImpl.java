@@ -19,6 +19,11 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<TUser> getUsers(TUser u) {
 		return daoTemplete.getListData("userSql.getUsers", u);
+	}
+
+	@Override
+	public TUser get(String id) {
+		return (TUser)daoTemplete.getOneData("userSql.get", id);
 	} 
 	
 	

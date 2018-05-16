@@ -18,4 +18,6 @@ public interface UserDao {
 	 * @return
 	 */
 	public List<TUser> getUsers(TUser u);
+	
+	public TUser get(String id);
 }

@@ -31,7 +31,10 @@ function userlistquery(){
              pageNumber: 1,
              pageSize: 10,
              pageList: [ 10,20, 30, 40, 50],
-             striped: true //奇偶行是否区分                    
+             striped: true, //奇偶行是否区分                 
+             onDblClickRow: function (index, row) {  
+            	 openUserDetail(row.id); 
+             }     
 	});  
 }
 
@@ -41,7 +44,21 @@ function userlistquery(){
 //增加查询参数，在页面加载时运行  
 function userReloadgrid() {  
 	$('#userLiDg').datagrid('loadData',{total:0,rows:[]}); //清空DataGrid行数据
-  $('#userLiDg').datagrid('options').queryParams= serializeFormToJSON($("#userlistFM").serializeArray());  
-  $("#userLiDg").datagrid('reload');
+	$('#userLiDg').datagrid('options').queryParams= serializeFormToJSON($("#userlistFM").serializeArray());  
+	$("#userLiDg").datagrid('reload');
 }  
 
+
+function openUserDetail(id){
+	$('#_loadDialog_userList').dialog({    
+	    title: '用户详情',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'user/openUserDetail/'+id,    
+	    modal: true   
+	}); 
+	
+}
