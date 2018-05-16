@@ -14,31 +14,25 @@
 <body>
 	<div style="float: right;margin-right:30px;margin-top:5px" >
 		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
-			onclick="addNewDict();" style="width: 150px">保存</button>
+			onclick="updateDict();" style="width: 150px">保存</button>
 	</div>
 	
 	<div style="margin:30px 0px;"></div>
-	<form id="dictAddFm"  class="easyui-form" method="post"
-		data-options="novalidate:false">		
-		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>父节点</div>
-			<input class="easyui-textbox"    style="width: 80%;paddding-right:2px"  readonly  value="${parentDict.dictName }"
-				data-options="required:true,validType:['length[0,20]']">
-			<input type="hidden" value="${parentDict.id }" name="parentId"  >
-		</div>
+	<form id="dicteditFm"  class="easyui-form" method="post"
+		data-options="novalidate:false">	
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>名称</div>
-			<input class="easyui-textbox" name="dictName" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox" name="dictName" style="width: 80%;paddding-right:2px"   value="${dict.dictName }"
 				data-options="required:true,validType:['length[0,20]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>编码</div>
-			<input class="easyui-textbox" name="dictValue" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox" name="dictValue" style="width: 80%;paddding-right:2px"    value="${dict.dictValue }"
 				data-options="required:true,validType:['length[0,10]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>排序号</div>
-			<input class="easyui-numberbox" name="sortNumber" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-numberbox" name="sortNumber" style="width: 80%;paddding-right:2px"    value="${dict.sortNumber }"
 				data-options="required:true,validType:['length[0,3]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
@@ -64,9 +58,17 @@
 				<option value="1">是</option>
 			</select>
 		</div>	
-		
+		<input type="hidden" name="id" value="${dict.id }" >
 	</form>	
 	
-	<script type="text/javascript" src="<%=basePath%>common/js/system/dict/dictAddPage.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/dict/dictEditPage.js"></script>
+	<script type="text/javascript">
+
+	$(function(){
+		$("select[name='canAdd']").val(${dict.canAdd });
+		$("select[name='canEdit']").val(${dict.canEdit });
+		$("select[name='canDel']").val(${dict.canDel });
+	});
+	</script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.bw.fit.system.dict.service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.dict.model.Dict;
 
@@ -18,4 +20,19 @@ public interface DictService {
 	 * @return
 	 */
 	public DataDict getAllDataDict(String parent_id) ;
+	
+	/****
+	 * 新增数据字典
+	 * @param dict
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject createDict(Dict dict) throws RbackException ;
+	/****
+	 * 修改数据字典
+	 * @param dict
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject updateDict(Dict dict) throws RbackException ;
 }

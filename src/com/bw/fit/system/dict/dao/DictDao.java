@@ -43,4 +43,16 @@ public interface DictDao {
 	 * @throws RbackException
 	 */
 	public void delete(String id) throws RbackException ;
+	/***
+	 * 新增
+	 * @param dict
+	 * @throws RbackException
+	 */
+	public void insert(Dict dict) throws RbackException ;
+	/***
+	 * 修改
+	 * @param dict
+	 * @throws RbackException
+	 */
+	public void update(Dict dict) throws RbackException ;
 }

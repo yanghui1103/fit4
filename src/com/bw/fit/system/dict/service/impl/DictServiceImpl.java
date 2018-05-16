@@ -5,6 +5,8 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.entity.TdataDict;
@@ -54,6 +56,36 @@ public class DictServiceImpl implements DictService {
 		}
 		DataDict node = DataDictJsonTreeHandler.getJSONTree(dataList);
 		return node;
+	}
+
+	@Override
+	public JSONObject createDict(Dict dict) throws RbackException {
+		JSONObject json = new JSONObject();		
+		try {
+			dictDao.insert(dict);
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			PubFun.returnFailJson(json, e.getMsg());
+			throw   e;
+		}finally{
+			return json ;
+		}
+	}
+
+	@Override
+	public JSONObject updateDict(Dict dict) throws RbackException {
+		JSONObject json = new JSONObject();		
+		try {
+			dictDao.update(dict);
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			PubFun.returnFailJson(json, e.getMsg());
+			throw   e;
+		}finally{
+			return json ;
+		}
 	}
 
 	
