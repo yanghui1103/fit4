@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="positionSql"> 
 	<sql id="paginationSql">
-		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
+		<![CDATA[ and rn >#{start_num} and rn <= #{end_num} ]]>   
 	</sql>
 	<!-- 获取组织信息 -->
 	<select id="getPositions" parameterType="position" resultType="position">
 		select * from 
-		( select * from t_position where isdeleted='0' order by createtime desc )
+		( select p.*,rownum rn from t_position p where isdeleted='0' order by createtime desc )
 		where 1=1  
 		<if test="paginationEnable!='0'.toString()">		
 			<include refid="paginationSql"></include>

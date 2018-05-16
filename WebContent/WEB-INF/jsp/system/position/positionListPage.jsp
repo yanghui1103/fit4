@@ -63,10 +63,6 @@
 					<th data-options="field:'name'" width="30%">名称</th>
 					<th data-options="field:'simpleName'" width="30%">简称</th>
 					<th data-options="field:'organization.name'" width="15%">所属组织</th>
-					<th data-options="field:'num'" width="15%">序号</th>
-					<th data-options="field:'can_add'" width="10%">可增加</th>
-					<th data-options="field:'can_edit'" width="10%">可修改</th>
-					<th data-options="field:'can_del'" width="10%">可删除</th>
                 </tr>
             </thead>
         </table>
