@@ -59,6 +59,7 @@
 			</select>
 		</div>	
 		<input type="hidden" name="id" value="${dict.id }" >
+		<input type="hidden" name="_method" value="put" >
 	</form>	
 	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/dict/dictEditPage.js"></script>

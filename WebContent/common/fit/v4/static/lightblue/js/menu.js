@@ -20,6 +20,9 @@ var SystemMenu = [{
 			title: '数据字典',
 			href: ctx + 'system/gotoIframePage/system/dict/dictListPage/-9' 
 		},{
+			title: '用户管理',
+			href: ctx + 'system/gotoIframePage/system/user/userListPage/-9' 
+		},{
 			title: '二级页面',
 			href: 'index.html'
 		},{

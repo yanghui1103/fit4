@@ -8,7 +8,7 @@ function updateDict(){
 		return;
 	}
 	$.ajax({
-		type : 'PUT',
+		type : 'post',
 		url : ctx + "dict/dict",
 		data : serializeFormToJSON($("#dicteditFm")
 				.serializeArray()),

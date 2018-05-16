@@ -37,7 +37,7 @@ public class BaseEntity {
 	 * 翻页使用
 	 */
 	private Integer page =1;
-	private Integer rows =20;
+	private Integer rows =10;
 	private Integer start_num;
 	private Integer end_num;
 	private String paginationEnable;
