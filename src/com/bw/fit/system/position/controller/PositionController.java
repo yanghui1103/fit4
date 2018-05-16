@@ -41,6 +41,9 @@ public class PositionController {
 		JSONObject json = new JSONObject();
 		p.setPaginationEnable("1");
 		List<Position> list = positionDao.getPositions(p);
+//		for(Position tmp : list) {
+//			
+//		}
 		p.setPaginationEnable("0");
 		List<Position> listTotal = positionDao.getPositions(p);
 		json.put("total",(listTotal != null && listTotal.size() > 0)?listTotal.size() : 0);
