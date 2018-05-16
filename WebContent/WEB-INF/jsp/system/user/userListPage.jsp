@@ -1,50 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	import="com.bw.fit.common.util.*"
-	isELIgnored="false" pageEncoding="UTF-8"%><jsp:include page="/common.jsp"></jsp:include>
+    pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-</head>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/common/common.js"></script>
+	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
+	<link href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/easyui.css"  rel="stylesheet" > 
+    <link href="<%=basePath%>common/fit/v4/static/lightblue/css/providers.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/icon.css">
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>	
+    <script type="text/javascript" src="<%=basePath%>common/fit/v4/custom/lightblue/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/user/userListPage.js"></script>
+
+</head> 
 <body>
-	<table id="userlisttdg"  >
-	</table>
-	<div name="userlisttb" style="padding: 2px 5px;"> 
+	
+    <div class="container">
+      <div id="tb" style="padding:0 30px;">
 		<form id="userlistFM">
-			<div id="userlist_toolBar" class="easyui-accordion">
-			关键词: <input name="keyWords" class="easyui-textbox"
-				style="width: 200px">
-			<a class="easyui-linkbutton" iconcls="icon-search" onclick="userListPage_query()">查询</a>
-			<a class="easyui-linkbutton" iconcls="icon-search" onclick="ff()">测试上传</a>
-			<div id="dd" >附件</div>
-			</div>
-		</form>
-	</div>
-<script type="text/javascript" src="<%=basePath%>common/fit/userListPage.js"></script>
-<script type="text/javascript">
-$(function(){
-	$('#dd').dialog({    
-	    title: '附件框',    
-	    width: 800,    
-	    height: 500,    
-	    closed: true,    
-	    cache: false,    
-	    minimizable:false,
-	    maximizable:false,
-	    resizable:true,
-	    href: ctx +"systemPlus/openAttachmentPage/-9/-9/2",    
-	    modal: true   
-	});   
-});
-function ff(){
-	$('#dd').dialog('open');
-}
-</script>
-</body>
+        	关键词: <input class="easyui-textbox" type="text" name="keyWords" style="width:166px;height:35px;line-height:35px;"></input>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> 
+        </form>
+      </div>
+      
+      
+       <table id="userLiDg"  >
+        </table>
+    </div>
+	<div id="_loadDialog_userList"></div>
+</body> 
 </html>

@@ -127,7 +127,7 @@ public class OrganizationController extends BaseController {
 		 * @param org
 		 * @return
 		 */
-		@RequestMapping(value="organizations",method=RequestMethod.GET,produces="application/json;charset=UTF8")
+		@RequestMapping(value="organizations",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 		@ResponseBody
 		public JSONObject organizations(@ModelAttribute Organization org){
 			JSONObject js = new JSONObject();
