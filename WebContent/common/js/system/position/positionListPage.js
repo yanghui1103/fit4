@@ -1,144 +1,43 @@
 /**
- * 岗位管理JS
+ * 
  */
-			var zNodes ='';
 
-			var setting = {
-						check: {
-							enable: true,
-							chkStyle: "checkbox",
-							chkboxType: { "Y": "", "N": "" }
-						},
-						data: {
-							key: {
-								title: "t"
-							},
-							simpleData: {
-								enable: true
-							}				
-						},
-						view: {
-							fontCss: getFontCss
-						},
-						callback: {
-							onClick: this.onClick
-						}
-					};
+$(function(){
+	positionlistquery();
+});
 
-					function focusKey(e) {
-						if (key.hasClass("empty")) {
-							key.removeClass("empty");
-						}
-					}
-					function blurKey(e) {
-						if (key.get(0).value === "") {
-							key.addClass("empty");
-						}
-					}
-					var lastValue = "", nodeList = [], fontCss = {};
-					function clickRadio(e) {
-						lastValue = "";
-						searchNode(e);
-					}
 
-					function onClick(e, treeId, node) {
-						var orgId = node.id;
-						$.ajax({
-							type : 'GET',
-							url : ctx + "org/organization/"+orgId,
-							data : {},
-							success : function(data) {
-								if(data.res=="2"){
-									printOrgDetailInfo(data.org);
-								}else{
-									promptMessage(data.res,data.msg) ;
-								}
-							},
-							error:function(XMLHttpRequest, textStatus, errorThrown){
-								$.messager.alert({
-						            title: '提示信息',
-						            ok: '确定',
-						            icon: 'error',
-						            cancel: '取消',
-						            msg: errorThrown
-						          });
-							},
-							dataType : "JSON"
-						});
-					}
-					
-					function searchNode(e) {
-						var zTree = $.fn.zTree.getZTreeObj("positionTree");
-						if (!$("#getNodesByFilter").attr("checked")) {
-							var value = $.trim(key.get(0).value);
-							var keyType = "";
-							if ($("#name").attr("checked")) {
-								keyType = "name";
-							} else if ($("#level").attr("checked")) {
-								keyType = "level";
-								value = parseInt(value);
-							} else if ($("#id").attr("checked")) {
-								keyType = "id";
-								value = parseInt(value);
-							}
-							if (key.hasClass("empty")) {
-								value = "";
-							}
-							if (lastValue === value) return;
-							lastValue = value;
-							if (value === "") return;
-							updateNodes(false);
+function positionlistquery(){    
+	$('#positionLiDg').datagrid({ 
+		pagination:true,
+		method:"get",
+	    url:ctx+'position/positions/' ,   
+      //  queryParams:   serializeFormToJSON($("#userlistFM").serializeArray()),
+	    remoteSort: false, 
+        columns: [[
+                   { field: 'id', title: 'ID' ,hidden:true  },
+                   { field: 'code', title: '编码', width: '20%',fixed:true  },
+                   { field: 'name', title: '名称', width: '30%' },
+                   { field: 'simpleName', title: '简称', width: '20%' }, 
+                   { field: 'name', title: '所属组织', width: '30%'  }
+               ]],
+             fit: false ,    
+             idField: "id",
+             pagination: true,
+             singleSelect:true,
+             rownumbers: true, 
+             fitColumns:true,
+             pageNumber: 1,
+             pageSize: 10,
+             pageList: [ 10,20, 30, 40, 50],
+             striped: true //奇偶行是否区分                    
+	});  
+}
 
-							if ($("#getNodeByParam").attr("checked")) {
-								var node = zTree.getNodeByParam(keyType, value);
-								if (node === null) {
-									nodeList = [];
-								} else {
-									nodeList = [node];
-								}
-							} else if ($("#getNodesByParam").attr("checked")) {
-								nodeList = zTree.getNodesByParam(keyType, value);
-							} else if ($("#getNodesByParamFuzzy").attr("checked")) {
-								nodeList = zTree.getNodesByParamFuzzy(keyType, value);
-							}
-						} else {
-							updateNodes(false);
-							nodeList = zTree.getNodesByFilter(filter);
-						}
-						updateNodes(true);
+//增加查询参数，在页面加载时运行  
+function positionReloadgrid() {  
+	$('#positionLiDg').datagrid('loadData',{total:0,rows:[]}); //清空DataGrid行数据
+ // $('#positionLiDg').datagrid('options').queryParams= serializeFormToJSON($("#userlistFM").serializeArray());  
+  $("#positionLiDg").datagrid('reload');
+}  
 
-					}
-					function updateNodes(highlight) {
-						var zTree = $.fn.zTree.getZTreeObj("positionTree");
-						for( var i=0, l=nodeList.length; i<l; i++) {
-							nodeList[i].highlight = highlight;
-							zTree.updateNode(nodeList[i]);
-						}
-					}
-					function getFontCss(treeId, treeNode) {
-						return (!!treeNode.highlight) ? {color:"#A60000", "font-weight":"bold"} : {color:"#333", "font-weight":"normal"};
-					}
-					function filter(node) {
-						return !node.isParent && node.isFirstNode;
-					}
-
-					var key;
-					$(document).ready(function(){			
-						$.get(ctx+"org/organizations",function(data){ 
-							if(data.res =="2"){ 
-								zNodes = (data.list) ; 					
-								$.fn.zTree.init($("#positionTree"), setting, zNodes);
-								key = $("#key");
-								key.bind("focus", focusKey)
-								.bind("blur", blurKey)
-								.bind("propertychange", searchNode)
-								.bind("input", searchNode);
-								$("#name").bind("change", clickRadio);
-								$("#level").bind("change", clickRadio);
-								$("#id").bind("change", clickRadio); 
-								$("#getNodesByParamFuzzy").bind("change", clickRadio); 
-							}
-						});
-						
-					});
-		
