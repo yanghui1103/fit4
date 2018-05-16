@@ -41,10 +41,17 @@ public class BaseEntity {
 	private Integer start_num;
 	private Integer end_num;
 	private String paginationEnable;
+	private Integer rn ;
 	
 	
 	
 	
+	public Integer getRn() {
+		return rn;
+	}
+	public void setRn(Integer rn) {
+		this.rn = rn;
+	}
 	public int getSortNumber() {
 		return sortNumber;
 	}

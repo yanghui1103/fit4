@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="organizationSql"> 
 	<sql id="paginationSql">
-		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
+		<![CDATA[ and rn >#{start_num} and rn <= #{end_num} ]]>   
 	</sql>
 	<!-- 获取组织信息 -->
 	<select id="getOrganizations" parameterType="Organization" resultType="Organization">
 		select * from (
-		select * from t_organization where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by createtime desc ) 
+		select a.*,rownum rn from t_organization a where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by createtime desc ) 
 		where 1=1  
-		<if test="paginationEnable!='0'">		
+		<if test="paginationEnable!='0'.toString()">		
 			<include refid="paginationSql"></include>
 		</if>
 	</select>
