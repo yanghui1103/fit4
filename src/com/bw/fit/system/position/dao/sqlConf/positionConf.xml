@@ -9,7 +9,7 @@
 		select * from 
 		( select * from t_position where isdeleted='0' order by createtime desc )
 		where 1=1  
-		<if test="paginationEnable!='0'">		
+		<if test="paginationEnable!='0'.toString()">		
 			<include refid="paginationSql"></include>
 		</if>
 	</select>
