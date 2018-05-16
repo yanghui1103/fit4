@@ -28,14 +28,16 @@
       <div id="tb" style="padding:0 30px;">
 		<form id="userlistFM">
         	关键词: <input class="easyui-textbox" type="text" name="keyWords" style="width:166px;height:35px;line-height:35px;"></input>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> 
+        <a href="javascript:userReloadgrid()" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> 
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" >新增</a> 
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" >修改</a> 
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" >删除</a> 
         </form>
-      </div>
-      
-      
-       <table id="userLiDg"  >
+      </div>      
+       <table id="userLiDg" style="width:100%;height:480px;" >
         </table>
     </div>
+      
 	<div id="_loadDialog_userList"></div>
 </body> 
 </html>

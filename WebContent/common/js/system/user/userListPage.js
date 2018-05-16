@@ -20,9 +20,9 @@ function userlistquery(){
                    { field: 'name', title: '帐号', width: '20%' },
                    { field: 'name', title: '联系电话', width: '20%' }, 
                    { field: 'name', title: '岗位', width: '20%' }, 
-                   { field: 'name', title: '所属公司', width: '20%',sortable:true }
+                   { field: 'name', title: '所属公司', width: '20%'  }
                ]],
-             fit: true,    
+             fit: false ,    
              idField: "id",
              pagination: true,
              singleSelect:true,
@@ -33,6 +33,15 @@ function userlistquery(){
              pageList: [ 10,20, 30, 40, 50],
              striped: true //奇偶行是否区分                    
 	});  
-
-
 }
+
+
+
+
+//增加查询参数，在页面加载时运行  
+function userReloadgrid() {  
+	$('#userLiDg').datagrid('loadData',{total:0,rows:[]}); //清空DataGrid行数据
+  $('#userLiDg').datagrid('options').queryParams= serializeFormToJSON($("#userlistFM").serializeArray());  
+  $("#userLiDg").datagrid('reload');
+}  
+
