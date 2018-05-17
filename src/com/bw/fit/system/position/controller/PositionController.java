@@ -3,7 +3,9 @@ package com.bw.fit.system.position.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.model.Dict;
 import com.bw.fit.system.organization.dao.OrganizationDao;
 import com.bw.fit.system.position.dao.PositionDao;
 import com.bw.fit.system.position.model.Position;
+import com.bw.fit.system.position.service.PositionService;
 
 @RequestMapping("position")
 @Controller
 public class PositionController {
 	@Autowired
 	private PositionDao positionDao ;
+	@Autowired
+	private PositionService positionService ;
 	@Autowired
 	private OrganizationDao organizationDao;
 	/*****
@@ -80,5 +87,21 @@ public class PositionController {
 		}
 		model.addAttribute("orgNames", orgNames);
 		return "system/position/positionAddPage" ;
+	}
+	
+	@RequestMapping(value="position",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject insert(@Valid @ModelAttribute Position p){
+		JSONObject json = new JSONObject();
+		Session session  = PubFun.getCurrentSession();
+		PubFun.fillCommonProptities(p, true, session);
+		try {
+			json = positionService.createPosition(p);
+		} catch (RbackException e) { 
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}finally{
+			return json ;
+		}
 	}
 }
