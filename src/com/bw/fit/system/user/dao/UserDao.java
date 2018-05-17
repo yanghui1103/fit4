@@ -3,6 +3,7 @@ package com.bw.fit.system.user.dao;
 import java.util.*;
 
 import com.alibaba.fastjson.JSONObject; 
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.user.entity.TUser;
 
 /****
@@ -18,6 +19,16 @@ public interface UserDao {
 	 * @return
 	 */
 	public List<TUser> getUsers(TUser u);
-	
+	/***
+	 * 根据id获取用户资料
+	 * @param id
+	 * @return
+	 */
 	public TUser get(String id);
+	/****
+	 * 新增
+	 * @param tu
+	 * @throws RbackException
+	 */
+	public void insert(TUser tu) throws RbackException;
 }

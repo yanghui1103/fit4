@@ -1,5 +1,7 @@
 package com.bw.fit.system.user.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.bw.fit.system.common.model.BaseModel;
 
 /****
@@ -9,14 +11,20 @@ import com.bw.fit.system.common.model.BaseModel;
  */
 public class User  extends BaseModel{
 
+	@NotEmpty(message="姓名不得为空")
 	private String name;
 	private String name_pinyin;
+	@NotEmpty(message="编码不得为空")
 	private String code;
+	@NotEmpty(message="性别不得为空")
 	private String gender;
+	@NotEmpty(message="身份证号码不得为空")
 	private String card;
+	@NotEmpty(message="人员类型不得为空")
 	private String type;
 	private String isVisible;
 	private String email;
+	@NotEmpty(message="联系电话不得为空")
 	private String phone;
 	private String address;
 	private String postCode;

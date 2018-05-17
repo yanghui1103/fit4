@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.user.dao.UserDao; 
 import com.bw.fit.system.user.entity.TUser;
@@ -24,6 +25,11 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public TUser get(String id) {
 		return (TUser)daoTemplete.getOneData("userSql.get", id);
+	}
+
+	@Override
+	public void insert(TUser tu) throws RbackException {
+		daoTemplete.insert("userSql.insert", tu);
 	} 
 	
 	

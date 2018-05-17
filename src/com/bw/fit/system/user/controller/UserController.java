@@ -1,12 +1,18 @@
 package com.bw.fit.system.user.controller;
 
+import static com.bw.fit.system.common.util.PubFun.getUUID;
 import static com.bw.fit.system.common.util.PubFun.returnFailJson;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.controller.BaseController;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.user.dao.UserDao;
 import com.bw.fit.system.user.entity.TUser;
 import com.bw.fit.system.user.model.User;
+import com.bw.fit.system.user.service.UserService;
 
 /****
  * 用户层，controller
@@ -33,6 +41,8 @@ public class UserController  extends BaseController{
 
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value="users",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
@@ -60,5 +70,30 @@ public class UserController  extends BaseController{
 		PubFun.copyProperties(user, tu);
 		model.addAttribute("user", user);
 		return "system/user/userDetailPage";
+	}
+	
+	
+	@RequestMapping(value = "user",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject insert(@Valid @ModelAttribute User user,Model model,BindingResult result){
+		JSONObject json = new JSONObject();
+		if (result.hasErrors()) {
+			FieldError error = result.getFieldError();
+			json.put("res", "1");
+			returnFailJson(json, error.getDefaultMessage());
+			return json ;
+		}
+		try {
+			Session session = PubFun.getCurrentSession();
+			//PubFun.fillCommonProptities(org, true,session);
+			user.setId(getUUID());
+			json = userService.add(user);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}
 	}
 }

@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bw.fit.system.common.controller.BaseController;
+import com.bw.fit.system.common.util.PubFun;
 
 import static com.bw.fit.system.common.util.PubFun.*;
 
 import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.account.model.LogAccount;
 
 @RequestMapping("system")
 @Controller
@@ -36,9 +38,11 @@ public class SystemController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String normalLogin(@Valid @ModelAttribute Account account,
+	public String normalLogin(@Valid @ModelAttribute LogAccount logAccount,
 			BindingResult result, HttpServletRequest request, Model model) {  
 			Session session = getCurrentSession();
+			Account account = new Account();
+			PubFun.copyProperties(account, logAccount);
 			try {
 				model.addAttribute("account", account);		
 				if(account==null||account.getLogName()==null||account.getLogPwd()==null){
