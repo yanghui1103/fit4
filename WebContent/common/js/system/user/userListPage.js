@@ -59,6 +59,20 @@ function openUserDetail(id){
 	    maximizable:true,
 	    href: ctx+'user/openUserDetail/'+id,    
 	    modal: true   
-	}); 
+	}); 	
+}
+
+
+function openAddUser(){
+	$('#_loadDialog_userList').dialog({    
+	    title: '新增用户',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'system/gotoIframePage/system/user/userAddPage/-9' ,
+	    modal: true   
+	}); 	
 	
 }
