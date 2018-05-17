@@ -35,6 +35,7 @@
 	<div class="container">
 		<div class="left-tree">
 		<input type="hidden" value="105" id="org_id" />
+		<input type="hidden" value="-1" id="org_ids" />
 		<label class="kv-label">关键词:</label><input type="text" id="key" value="" class="empty" />
 			<div style="display:none">
  			<input type="radio" id="name" name="keyType" class="radio first" checked />
@@ -47,12 +48,13 @@
 		<div class="content">
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="岗位列表" data-options="closable:false" class="basic-info">
+		      	<div id="_loadDialog_positionList"></div>
 		      	<table id="positionLiDg" style="width:100%;height:470px" >
        			</table>
 		      </div>
 		    </div>
 		    <div style="padding: 0 20px; float: right;position: absolute;top:0px;right:0px">
-				<a href="javascript:addOrgPage();" class="easyui-linkbutton" iconCls="icon-add"
+				<a href="javascript:addPositionPage();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
 				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
 				<a href="javascript:removeOrg();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 

@@ -21,9 +21,21 @@ var setting = {
 			fontCss: getFontCss
 		},
 		callback: {
-			onClick: this.onClick
+			onClick: this.onClick,
+			onCheck: this.onCheck
 		}
 	};
+
+	function onCheck(e, treeId, treeNode) {
+		var zTree = $.fn.zTree.getZTreeObj("positionTree");
+		var arr = zTree.getCheckedNodes(true);
+		var ids='';
+		var names='';
+		$.each(arr,function(i,value){
+			ids += value.id+',';
+		});
+		$("#org_ids").val(ids);
+	}
 
 	function focusKey(e) {
 		if (key.hasClass("empty")) {

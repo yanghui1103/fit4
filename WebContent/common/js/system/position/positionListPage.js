@@ -41,3 +41,20 @@ function positionReloadgrid() {
 	positionlistquery();
 }  
 
+function addPositionPage(){
+	var ids = $("#org_ids").val();
+	if(ids =='-1'){			
+		promptMessage("1","请选择组织机构");
+	}else{
+		$('#_loadDialog_positionList').dialog({    
+		    title: '新增岗位',    
+		    width: 800,    
+		    height: 500,    
+		    closed: false,    
+		    cache: false,    
+		    maximizable:true,
+		    href: ctx+'position/openPositionAddPage/'+ids,    
+		    modal: true   
+		});
+	}
+}
