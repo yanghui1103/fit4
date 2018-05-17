@@ -19,7 +19,17 @@
 	</select>
 	
 	<insert id="insert"  parameterType="tUser">
-		
+		insert into t_user (id,name,name_pinyin,code,gender,card,type,isvisible,email,phone,address,postcode,isdeleted,creator,createtime,versiontime,createorgid) values
+	(#{id},#{name},#{name_pinyin,jdbcType=VARCHAR}
+	,#{code,jdbcType=VARCHAR}
+	,#{gender,jdbcType=VARCHAR}
+	,#{card,jdbcType=VARCHAR}
+	,#{type,jdbcType=VARCHAR}
+	,#{isVisible,jdbcType=VARCHAR}
+	,#{email,jdbcType=VARCHAR}
+	,#{phone,jdbcType=VARCHAR}
+	,#{address,jdbcType=VARCHAR}
+	,#{postCode,jdbcType=VARCHAR},'0',#{creator,jdbcType=VARCHAR},sysdate,sysdate,#{createOrgId,jdbcType=VARCHAR})
 	</insert>
 	
 </mapper>   

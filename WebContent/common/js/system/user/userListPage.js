@@ -17,10 +17,10 @@ function userlistquery(){
         columns: [[
                    { field: 'id', title: 'ID' ,hidden:true  },
                    { field: 'name', title: '名称', width: '20%',fixed:true  },
-                   { field: 'name', title: '帐号', width: '20%' },
-                   { field: 'name', title: '联系电话', width: '20%' }, 
-                   { field: 'name', title: '岗位', width: '20%' }, 
-                   { field: 'name', title: '所属公司', width: '20%'  }
+                   { field: 'gender', title: '性别', width: '20%' },
+                   { field: 'type', title: '人员类型', width: '20%' }, 
+                   { field: 'phone', title: '联系电话', width: '20%' }, 
+                   { field: 'code', title: '编码', width: '20%'  }
                ]],
              fit: false ,    
              idField: "id",
