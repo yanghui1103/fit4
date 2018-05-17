@@ -23,6 +23,10 @@
     	<package name="com.bw.fit.system.dict.model"/> 
     	<package name="com.bw.fit.system.user.entity"/> 
     	<package name="com.bw.fit.system.user.model"/> 
+    	<package name="com.bw.fit.system.authority.entity"/> 
+    	<package name="com.bw.fit.system.authority.model"/> 
+    	<package name="com.bw.fit.system.role.entity"/> 
+    	<package name="com.bw.fit.system.role.model"/> 
     	
     </typeAliases>
 </configuration>

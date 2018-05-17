@@ -52,7 +52,7 @@ public class VerificationRealm extends AuthorizingRealm  {
 		String userName = token.getUsername();
 		//3.数据库中查询用户记录
 		Account account = new Account(); 
-		Account account_2 = accountDao.getAccountIdByName(userName);
+		Account account_2 = accountDao.getAccountByName(userName);
 		if (account_2 ==null) {
 			throw new AuthenticationException("账号不存在");
 		}
@@ -76,13 +76,15 @@ public class VerificationRealm extends AuthorizingRealm  {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
 		//1，从PrincipalCollection中获取登录用户信息
 		Object principal = arg0.getPrimaryPrincipal();
+		System.out.println("principal:"+principal);
+		Account account = (accountDao.getAccountByName((String)principal));
 		//2,利用当前用户的权限/角色,此处数据出自数据库查询
 		Set<String> roles = new HashSet<>();
-		roles.add("user");
+		roles.add("DEL_USER");
 		//3,创建SimpleAuthorizationInfo,并设置其roles属性
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roles);
 		//4，返回SimpleAuthorizationInfo
-		return null;
+		return info;
 	}
   
 

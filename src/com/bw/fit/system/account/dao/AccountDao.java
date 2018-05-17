@@ -1,6 +1,9 @@
 package com.bw.fit.system.account.dao;
 
+import java.util.List;
+
 import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.role.entity.TRole;
 
 public interface AccountDao {
 
@@ -15,5 +18,7 @@ public interface AccountDao {
 	 * @param logName
 	 * @return
 	 */
-	public Account getAccountIdByName(String logName);
+	public Account getAccountByName(String logName);
+	
+	public List<TRole> getRolesByAccount(String logName);
 }
