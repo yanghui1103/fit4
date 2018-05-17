@@ -17,13 +17,16 @@
 	<select id="getOrgsByPositionId" parameterType="string" resultType="string">
 		select o.name temp_str1 from t_organization2position op,t_organization o where o.id=OP.ORGID and positionId = #{positionId} ORDER BY o.SORTNUMBER
 	</select>
+	<insert id="insert"  parameterType="Position">
+		insert into t_position(id,name,code,simpleName,isdeleted,
+		creator,createtime,sortnumber,versiontime,createorgid) values
+		(#{id},#{name,jdbcType=VARCHAR},#{code},#{simpleName,jdbcType=VARCHAR},'0',
+		#{creator,jdbcType=VARCHAR},sysdate,#{sortNumber,jdbcType=INTEGER},sysdate,#{createOrgId,jdbcType=VARCHAR})
+	</insert>
 	<!-- 
 	删除组织
 	<update id="delete"  parameterType="String">
 		update t_position set isdeleted='1'  where id = #{id}
 	</update>
-	<insert id="insert"  parameterType="tuser">
-		insert into t_position(fdid,user_cd,user_name,user_order,password,phone,state,isdeleted,create_time,creator,version_time) values
-		(#{fdid},#{user_cd},#{user_name},#{user_order},#{password},#{phone},'2','0',sysdate,#{creator},sysdate)
-	</insert> -->
+	 -->
 </mapper>   
