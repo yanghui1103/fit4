@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,9 +40,17 @@ public class PositionController {
 		JSONObject json = new JSONObject();
 		p.setPaginationEnable("1");
 		List<Position> list = positionDao.getPositions(p);
-//		for(Position tmp : list) {
-//			
-//		}
+		for(Position tmp : list) {
+			String orgNames="";
+			List<String> tmpOrgs = positionDao.getOrgByPositionId(tmp.getId());
+			if(tmpOrgs.size()>0) {
+				for(String s1 : tmpOrgs) {
+					orgNames += s1+";";
+				}
+				orgNames = orgNames.substring(0, orgNames.length()-1);
+				tmp.setTemp_str1(orgNames);
+			}
+		}
 		p.setPaginationEnable("0");
 		List<Position> listTotal = positionDao.getPositions(p);
 		json.put("total",(listTotal != null && listTotal.size() > 0)?listTotal.size() : 0);

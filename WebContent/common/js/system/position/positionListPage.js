@@ -19,7 +19,7 @@ function positionlistquery(){
                    { field: 'code', title: '编码', width: '20%',fixed:true  },
                    { field: 'name', title: '名称', width: '30%' },
                    { field: 'simpleName', title: '简称', width: '20%' }, 
-                   { field: 'name', title: '所属组织', width: '30%'  }
+                   { field: 'temp_str1', title: '所属组织', width: '30%'  }
                ]],
              fit: false ,    
              idField: "id",

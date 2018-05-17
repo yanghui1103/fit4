@@ -26,8 +26,15 @@ public interface PositionDao {
 	public void update(Position position ) throws RbackException ;
 	/****
 	 * 删除岗位
-	 * @param position
+	 * @param id
 	 * @throws RbackException
 	 */
 	public void delete(String id) throws RbackException ;
+	
+	/****
+	 * 根据岗位Id获取所属组织列表
+	 * @param positionId
+	 * @throws RbackException
+	 */
+	public List<String> getOrgByPositionId(String positionId) ;
 }

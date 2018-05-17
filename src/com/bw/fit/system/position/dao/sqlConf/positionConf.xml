@@ -4,14 +4,18 @@
 	<sql id="paginationSql">
 		<![CDATA[ and rn >#{start_num} and rn <= #{end_num} ]]>   
 	</sql>
-	<!-- 获取组织信息 -->
-	<select id="getPositions" parameterType="position" resultType="position">
+	<!-- 获取岗位信息 -->
+	<select id="getPositions" parameterType="Position" resultType="Position">
 		select * from 
 		( select p.*,rownum rn from t_position p where isdeleted='0' order by createtime desc )
 		where 1=1  
 		<if test="paginationEnable!='0'.toString()">		
 			<include refid="paginationSql"></include>
 		</if>
+	</select>
+	<!-- 根据岗位ID获取所属组织 -->
+	<select id="getOrgsByPositionId" parameterType="string" resultType="string">
+		select o.name temp_str1 from t_organization2position op,t_organization o where o.id=OP.ORGID and positionId = #{positionId} ORDER BY o.SORTNUMBER
 	</select>
 	<!-- 
 	删除组织
