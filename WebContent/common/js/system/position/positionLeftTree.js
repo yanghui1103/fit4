@@ -43,28 +43,8 @@ var setting = {
 
 	function onClick(e, treeId, node) {
 		var orgId = node.id;
-		$.ajax({
-			type : 'GET',
-			url : ctx + "org/organization/"+orgId,
-			data : {},
-			success : function(data) {
-				if(data.res=="2"){
-					printOrgDetailInfo(data.org);
-				}else{
-					promptMessage(data.res,data.msg) ;
-				}
-			},
-			error:function(XMLHttpRequest, textStatus, errorThrown){
-				$.messager.alert({
-		            title: '提示信息',
-		            ok: '确定',
-		            icon: 'error',
-		            cancel: '取消',
-		            msg: errorThrown
-		          });
-			},
-			dataType : "JSON"
-		});
+		$("#org_id").val(orgId);
+		positionReloadgrid();
 	}
 	
 	function searchNode(e) {

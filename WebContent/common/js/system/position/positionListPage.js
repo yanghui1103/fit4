@@ -7,11 +7,12 @@ $(function(){
 });
 
 
-function positionlistquery(){    
+function positionlistquery(){
+	var orgId = $("#org_id").val();
 	$('#positionLiDg').datagrid({ 
 		pagination:true,
 		method:"get",
-	    url:ctx+'position/positions/' ,   
+	    url:ctx+'position/positions/'+orgId,   
       //  queryParams:   serializeFormToJSON($("#userlistFM").serializeArray()),
 	    remoteSort: false, 
         columns: [[
@@ -35,9 +36,8 @@ function positionlistquery(){
 }
 
 //增加查询参数，在页面加载时运行  
-function positionReloadgrid() {  
+function positionReloadgrid() { 
 	$('#positionLiDg').datagrid('loadData',{total:0,rows:[]}); //清空DataGrid行数据
- // $('#positionLiDg').datagrid('options').queryParams= serializeFormToJSON($("#userlistFM").serializeArray());  
-  $("#positionLiDg").datagrid('reload');
+	positionlistquery();
 }  
 

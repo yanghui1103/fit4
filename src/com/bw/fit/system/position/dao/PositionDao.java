@@ -11,7 +11,7 @@ public interface PositionDao {
 	 * @param position 岗位
 	 * @return
 	 */
-	public List<Position> getPositions(Position position );
+	public List<Position> getPositions(Position position,String orgId);
 	/****
 	 * 新增岗位
 	 * @param position

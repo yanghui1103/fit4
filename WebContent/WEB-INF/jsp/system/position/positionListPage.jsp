@@ -34,6 +34,7 @@
 <body>
 	<div class="container">
 		<div class="left-tree">
+		<input type="hidden" value="105" id="org_id" />
 		<label class="kv-label">关键词:</label><input type="text" id="key" value="" class="empty" />
 			<div style="display:none">
  			<input type="radio" id="name" name="keyType" class="radio first" checked />

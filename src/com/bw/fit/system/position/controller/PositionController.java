@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
@@ -34,12 +36,12 @@ public class PositionController {
 	 *            会话
 	 * @return
 	 */
-	@RequestMapping("positions")
+	@RequestMapping(value="positions/{orgId}",method=RequestMethod.GET)
 	@ResponseBody
-	public JSONObject companyList(@ModelAttribute Position p, HttpServletRequest request) {
+	public JSONObject companyList(@ModelAttribute Position p, HttpServletRequest request,@PathVariable String orgId) {
 		JSONObject json = new JSONObject();
 		p.setPaginationEnable("1");
-		List<Position> list = positionDao.getPositions(p);
+		List<Position> list = positionDao.getPositions(p,orgId);
 		for(Position tmp : list) {
 			String orgNames="";
 			List<String> tmpOrgs = positionDao.getOrgByPositionId(tmp.getId());
@@ -52,7 +54,7 @@ public class PositionController {
 			}
 		}
 		p.setPaginationEnable("0");
-		List<Position> listTotal = positionDao.getPositions(p);
+		List<Position> listTotal = positionDao.getPositions(p,orgId);
 		json.put("total",(listTotal != null && listTotal.size() > 0)?listTotal.size() : 0);
 		json.put("rows", JSONObject.toJSON(list));
 		return json;

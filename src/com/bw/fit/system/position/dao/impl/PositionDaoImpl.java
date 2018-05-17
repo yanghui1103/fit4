@@ -1,5 +1,6 @@
 package com.bw.fit.system.position.dao.impl;
 
+import java.util.*;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,12 @@ public class PositionDaoImpl implements PositionDao{
 	@Autowired
 	private DaoTemplete daoTemplete;
 	@Override
-	public List<Position> getPositions(Position position) {
-		return daoTemplete.getListData("positionSql.getPositions", position);
+	public List<Position> getPositions(Position position,String orgId) {
+		Map<String,String> map = new HashMap<>();
+		map.put("start_num",String.valueOf(position.getStart_num()));
+		map.put("end_num",String.valueOf(position.getEnd_num()));
+		map.put("orgId",orgId);
+		return daoTemplete.getListData("positionSql.getPositions", map);
 	}
 
 	@Override
