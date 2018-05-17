@@ -73,6 +73,25 @@ function openAddUser(){
 	    maximizable:true,
 	    href: ctx+'system/gotoIframePage/system/user/userAddPage/-9' ,
 	    modal: true   
-	}); 	
-	
+	}); 		
+}
+
+
+function deleteUser(){	 
+	var row = getSingleTreeGridSelectData($("#userLiDg"));
+	if(row !=null){
+		promptMessageCallBack("3","是否确认删除该用户？",function(){					
+			$.ajax({
+				type : 'DELETE',
+				url : ctx + "user/user/"+row.id,
+				data : {},
+				success : function(data) {
+					promptMessageCallBack(data.res, data.msg,function(){
+						userReloadgrid();
+					} );
+				},
+				dataType : "JSON"
+			});
+		});
+	}
 }

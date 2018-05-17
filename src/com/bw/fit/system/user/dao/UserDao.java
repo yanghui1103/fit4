@@ -31,4 +31,5 @@ public interface UserDao {
 	 * @throws RbackException
 	 */
 	public void insert(TUser tu) throws RbackException;
+	public void delete(String id) throws RbackException;
 }

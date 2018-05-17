@@ -29,7 +29,7 @@
         	关键词: <input class="easyui-textbox" type="text" name="keyWords" style="width:166px;height:35px;line-height:35px;"></input>
         <a href="javascript:userReloadgrid();" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> 
         <a href="javascript:openAddUser();" class="easyui-linkbutton" iconCls="icon-add" >新增</a> 
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >修改</a> 
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >修改[未作]</a> 
         <a href="javascript:deleteUser();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
         </form>
       </div>      

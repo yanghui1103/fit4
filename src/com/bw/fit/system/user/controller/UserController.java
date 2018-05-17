@@ -96,4 +96,21 @@ public class UserController  extends BaseController{
 			return json  ;
 		}
 	}
+	
+
+	@RequestMapping(value = "user/{id}",method=RequestMethod.DELETE,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject delete(@PathVariable String id){
+		JSONObject json = new JSONObject();
+		try {
+			userDao.delete(id);
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}
+	}
 }
