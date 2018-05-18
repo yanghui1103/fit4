@@ -8,7 +8,7 @@ public class Menu extends BaseModel {
 	private String parentId;
 	private String href;
 	private String icon;
-	private boolean isCurrent;
+	private String isCurrent;
 	
 	
 	
@@ -36,12 +36,13 @@ public class Menu extends BaseModel {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
-	public boolean isCurrent() {
+	public String getIsCurrent() {
 		return isCurrent;
 	}
-	public void setCurrent(boolean isCurrent) {
+	public void setIsCurrent(String isCurrent) {
 		this.isCurrent = isCurrent;
 	}
+	 
 	
 	
 }

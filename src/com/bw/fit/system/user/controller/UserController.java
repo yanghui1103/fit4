@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.account.service.AccountService;
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.dao.DictDao;
+import com.bw.fit.system.menu.model.Menu;
+import com.bw.fit.system.menu.service.MenuService;
 import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.user.dao.UserDao;
 import com.bw.fit.system.user.entity.TUser;
@@ -46,6 +49,10 @@ public class UserController  extends BaseController{
 	private UserDao userDao;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private MenuService menuService;
+	@Autowired
+	private AccountService accountService;
 	
 	@RequestMapping(value="users",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody

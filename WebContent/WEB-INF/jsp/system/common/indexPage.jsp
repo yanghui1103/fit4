@@ -30,13 +30,12 @@
                 <img src="<%=basePath%>common/fit/v4/static/lightblue/images/main/main_logo.png" alt="logo">
             </div> 
             <div class="pf-user">
-            	<span class="msgts">10</span>
+            	<span class="msgts">${sessionScope.CurrentUser.name }</span>
                 <div class="pf-user-photo">
                     <img src="<%=basePath%>common/fit/v4/static/lightblue/images/main/user.png" alt="">                   
                 </div>
-                <h4 class="pf-user-name ellipsis">uimaker</h4>
+                <h4 class="pf-user-name ellipsis">${sessionScope.CurrentUser.name }</h4>
                 <i class="iconfont xiala">&#xe607;</i>
-
                 <div class="pf-user-panel">
                     <ul class="pf-user-opt">
                         <li>

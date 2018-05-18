@@ -89,7 +89,6 @@ public class SystemController extends BaseController {
 				currentUser.login(token);
 				session = currentUser.getSession();
 			} catch (AuthenticationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				model.addAttribute("errorMsg", "登录失败,认证拦截:" + e.getMessage());
 				return "system/common/loginPage";
