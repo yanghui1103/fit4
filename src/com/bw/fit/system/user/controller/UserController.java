@@ -24,6 +24,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.user.dao.UserDao;
 import com.bw.fit.system.user.entity.TUser;
@@ -40,6 +41,8 @@ import com.bw.fit.system.user.service.UserService;
 public class UserController  extends BaseController{
 
 	@Autowired
+	private DictDao dictDao;
+	@Autowired
 	private UserDao userDao;
 	@Autowired
 	private UserService userService;
@@ -52,6 +55,9 @@ public class UserController  extends BaseController{
 		PubFun.copyProperties(u, user);
 		u.setPaginationEnable("1");
 		List<TUser> list = userDao.getUsers(u);
+		for(TUser tu:list){
+			tu.setType(dictDao.getDictByValue(tu.getType()).getDictName());
+		}
 		u.setPaginationEnable("0");
 		List<TUser> listTotal = userDao.getUsers(u);
 		if (listTotal != null && listTotal.size() > 0) {
@@ -68,10 +74,12 @@ public class UserController  extends BaseController{
 		User user = new User();
 		TUser tu = userDao.get(id);
 		PubFun.copyProperties(user, tu);
+		user.setType(dictDao.getDictByValue(user.getType()).getDictName());
+		user.setGender(dictDao.getDictByValue(user.getGender()).getDictName());
+		user.setIsVisible(dictDao.getDictByValue(user.getIsVisible()).getDictName());
 		model.addAttribute("user", user);
 		return "system/user/userDetailPage";
-	}
-	
+	}	
 	
 	@RequestMapping(value = "user",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
 	@ResponseBody
@@ -88,6 +96,22 @@ public class UserController  extends BaseController{
 			//PubFun.fillCommonProptities(org, true,session);
 			user.setId(getUUID());
 			json = userService.add(user);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}
+	}
+	
+
+	@RequestMapping(value = "user/{id}",method=RequestMethod.DELETE,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject delete(@PathVariable String id){
+		JSONObject json = new JSONObject();
+		try {
+			json = userService.delete(id); 
 		} catch (RbackException e) {
 			e.printStackTrace();
 			json = new JSONObject();

@@ -30,7 +30,12 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void insert(TUser tu) throws RbackException {
 		daoTemplete.insert("userSql.insert", tu);
-	} 
+	}
+
+	@Override
+	public void delete(String id) throws RbackException {
+		daoTemplete.update("userSql.delete", id);
+	}
 	
 	
 	

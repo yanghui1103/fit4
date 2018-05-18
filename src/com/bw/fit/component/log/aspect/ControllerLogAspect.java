@@ -14,33 +14,33 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.session.Session;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.util.PubFun;
-import com.bw.fit.component.log.entity.TLogInfo;
-import com.bw.fit.component.log.service.ILogService; 
+import com.bw.fit.component.log.model.LogInfo;
+import com.bw.fit.component.log.service.LogService; 
 
 /****
- * 拦截control请求的日志切面
- * 
+ * 拦截controller请求的日志切面
  * @author yangh
  *
  */
-@Component(value="controlLogAspect")
-public class ControlLogAspect implements Ordered {
-	public static Log log = LogFactory.getLog(ControlLogAspect.class);
+@Component(value="mainLogAspect")
+public class ControllerLogAspect implements Ordered {
 	@Autowired  
 	HttpServletRequest request; 
 	@Autowired
-	private ILogService iLogService;
+	private LogService logService;
 
 	@Override
 	public int getOrder() {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 
@@ -60,10 +60,16 @@ public class ControlLogAspect implements Ordered {
 					msig.getParameterTypes());
 
 			obj = pjd.proceed(); // 执行
-			TLogInfo t = new TLogInfo();
-			t.setLog_type_id("58");	  
+			LogInfo t = new LogInfo();   
+			Account account = PubFun.getCurrentAccount();
+			t.setId(getUUID());
+			t.setCreator(account.getLogName()+account.getName());
+			t.setOperateFunction(currentMethod.getName());
+			t.setParams(currentMethod.getParameters().toString());
+			t.setResult(obj.toString());
+			t.setLogType("mainlog");
+			logService.notice(t);
 		} catch (Throwable e) {
-			log.error("controller LogAspect:异常通知 ... , exception = " + e);
 			e.printStackTrace();
 		}
 		return obj;

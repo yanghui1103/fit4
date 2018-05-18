@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="accountSql">
+<mapper namespace="roleSql">
 	<sql id="paginationSql">
 		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
 	</sql>
@@ -17,19 +17,15 @@
 	<update id="delete"  parameterType="String">
 		update t_organization set isdeleted='1'  where id = #{id}
 	</update>
-	
 	<select id="getAccountIdByName"  parameterType="String" resultType="account">
 		select * from t_account where isdeleted='0' and logname= #{logName,jdbcType=VARCHAR}
 	</select>
-	
-	<select id="getAccount"  parameterType="String" resultType="account">
-		select * from t_account where id = #{id,jdbcType=VARCHAR}
-	</select>
-	
-	<select id="getRolesByAccount"  parameterType="String" resultType="tRole">
-		select r.* from t_account a,t_account2role ar,t_role r
-		where a.id = ar.accountid and ar.roleid = r.id 
-		and r.isdeleted ='0' and a.logname = #{logName}
+	<select id="get"  parameterType="String" resultType="tAuthority">
+		select * from t_authority where code = #{code,jdbcType=VARCHAR} and isdeleted='1'
 	</select>
 		
+	<select id="getAuthoritysByRole"  parameterType="String" resultType="tAuthority">
+		select a.* from t_role2authority  ra ,t_authority a 
+		where ra.authorityid = a.code  and a.isdeleted='0' and ra.roleid = #{roleId}
+	</select>	
 </mapper>   

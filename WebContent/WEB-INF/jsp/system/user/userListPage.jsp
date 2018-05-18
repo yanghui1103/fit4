@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%><%@ include file="/include.inc.jsp"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -20,7 +20,6 @@
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>	
     <script type="text/javascript" src="<%=basePath%>common/fit/v4/custom/lightblue/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/user/userListPage.js"></script>
-
 </head> 
 <body>	
     <div class="container">
@@ -29,8 +28,10 @@
         	关键词: <input class="easyui-textbox" type="text" name="keyWords" style="width:166px;height:35px;line-height:35px;"></input>
         <a href="javascript:userReloadgrid();" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> 
         <a href="javascript:openAddUser();" class="easyui-linkbutton" iconCls="icon-add" >新增</a> 
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >修改</a> 
-        <a href="javascript:deleteUser();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >修改[未作]</a> 
+        <shiro:hasRole name="DEL_USER"> 
+        	<a href="javascript:deleteUser();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
+        </shiro:hasRole>
         </form>
       </div>      
        <table id="userLiDg" style="width:100%;height:480px;" >

@@ -13,4 +13,11 @@ public interface UserService {
 	 * @throws RbackException
 	 */
 	public JSONObject add(User user) throws RbackException ;
+	/***
+	 * 删除
+	 * @param user
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject delete(String id) throws RbackException ;
 }

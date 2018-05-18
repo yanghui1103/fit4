@@ -16,9 +16,9 @@
 	<!-- 采集service请求方法日志 -->
 	<aop:config>
 		<aop:pointcut
-			expression="execution(* com.bw.fit.*.service.*.create*(..))||execution(* com.bw.fit.*.service.*.update*(..))||execution(* com.bw.fit.*.service.*.edit*(..))||execution(* com.bw.fit.*.service.*.del*(..))||execution(* com.bw.fit.*.service.*.insert*(..))"
+			expression="execution(* com.bw.fit.*.*.service.*.create*(..))||execution(* com.bw.fit.*.*.service.*.update*(..))||execution(* com.bw.fit.*.*.service.*.edit*(..))||execution(* com.bw.fit.*.*.service.*.del*(..))||execution(* com.bw.fit.*.*.service.*.insert*(..))"
 			id="logpointcut1" />		
-		<aop:aspect ref="controlLogAspect" order="1"> 		
+		<aop:aspect ref="mainLogAspect" order="1"> 		
 			<aop:around method="aroundMethod" pointcut-ref="logpointcut1" />
 		</aop:aspect>
 	</aop:config>	
