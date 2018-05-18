@@ -3,6 +3,7 @@ package com.bw.fit.component.log.aspect;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static com.bw.fit.system.common.util.PubFun.*;
 
@@ -14,7 +15,10 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.component.log.model.LogInfo;
 import com.bw.fit.component.log.service.LogService;
 /*****
  * WS接口层日志切面
@@ -26,7 +30,7 @@ public class WsLogAspect implements  Ordered {
 	@Autowired
 	private DaoTemplete daoTemplete ;
 	@Autowired
-	private LogService LogService;
+	private LogService logService;
 
 
 	@Override
@@ -50,17 +54,21 @@ public class WsLogAspect implements  Ordered {
 						msig.getParameterTypes());
 
 				obj = pjd.proceed(); // 执行
-//				TLogInfo t = new TLogInfo();
-//				t.setLog_type_id("61");		 // 定时任务操作日志，选自数据字典 
-//				t.setOperator_id("system_ws_server"); // 
-//				t.setId(getUUID());
-//				t.setIp("major_system");
-//				t.setOperate_function(currentMethod.getName()); 
-//				if ((obj instanceof JSONObject)) {
-//					JSONObject j = (JSONObject)obj;
-//					t.setRes(j.get("res").toString());
-//					t.setMsg(j.get("msg").toString());
-//				}
+				LogInfo t = new LogInfo();   
+				Account account = PubFun.getCurrentAccount();
+				t.setId(getUUID());
+				t.setCreator(account.getLogName()+account.getName());
+				t.setOperateFunction(target.getClass().getName()+"."+currentMethod.getName());
+				String classType = pjd.getTarget().getClass().getName();    
+		        Class<?> clazz = Class.forName(classType);   
+				String clazzName = clazz.getName();    
+		        String methodName = pjd.getSignature().getName(); //获取方法名称   
+		        Object[] args = pjd.getArgs();//参数  
+				Map<String,Object > nameAndArgs = PubFun.getFieldsNameAndValue(this.getClass(), clazzName, methodName,args);   
+				t.setParams(nameAndArgs.toString());
+				t.setResult(obj.toString());
+				t.setLogType("wslog");
+				logService.notice(t);
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}
