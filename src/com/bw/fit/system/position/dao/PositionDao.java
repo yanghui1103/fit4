@@ -3,6 +3,7 @@ package com.bw.fit.system.position.dao;
 import java.util.List;
 
 import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.position.entity.TOrganization2Position;
 import com.bw.fit.system.position.model.Position;
 
 public interface PositionDao {
@@ -18,6 +19,13 @@ public interface PositionDao {
 	 * @throws RbackException
 	 */
 	public void insert(Position position ) throws RbackException ;
+	
+	/****
+	 * 新增岗位和组织得关系
+	 * @param organization2Position
+	 * @throws RbackException
+	 */
+	public void insertOrg2Position(TOrganization2Position organization2Position) throws RbackException ;
 	/****
 	 * 修改岗位
 	 * @param position

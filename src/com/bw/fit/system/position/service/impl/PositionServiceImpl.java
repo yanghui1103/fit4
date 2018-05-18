@@ -11,6 +11,7 @@ import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.position.dao.PositionDao;
+import com.bw.fit.system.position.entity.TOrganization2Position;
 import com.bw.fit.system.position.model.Position;
 import com.bw.fit.system.position.service.PositionService;
 @Service
@@ -24,6 +25,15 @@ public class PositionServiceImpl implements PositionService{
 		try {
 			positionDao.insert(position);
 			PubFun.returnSuccessJson(json);
+			String [] ids = position.getTemp_str1().split(",");
+			if(ids.length>0) {
+				for(String orgId : ids) {
+					TOrganization2Position to2p = new TOrganization2Position();
+					to2p.setPositionId(position.getId());
+					to2p.setOrgId(orgId);
+					positionDao.insertOrg2Position(to2p);
+				}
+			}
 		} catch (RbackException e) {
 			e.printStackTrace();
 			PubFun.returnFailJson(json, e.getMsg());

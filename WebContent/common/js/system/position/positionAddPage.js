@@ -9,12 +9,12 @@ function addNewPosition(){
 	}
 	$.ajax({
 		type : 'POST',
-		url : ctx + "dict/dict",
+		url : ctx + "position/position",
 		data : serializeFormToJSON($("#positionAddFm")
 				.serializeArray()),
 		success : function(data) {
 			promptMessageCallBack(data.res, data.msg,function(){
-				 $('#dataDictTreeGd').treegrid('reload');  
+				 $('#positionLiDg').datagrid('reload');  
 			} );
 		},
 		dataType : "JSON"

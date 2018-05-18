@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.position.dao.PositionDao;
+import com.bw.fit.system.position.entity.TOrganization2Position;
 import com.bw.fit.system.position.model.Position;
 @Repository
 public class PositionDaoImpl implements PositionDao{
@@ -41,6 +42,11 @@ public class PositionDaoImpl implements PositionDao{
 	@Override
 	public List<String> getOrgByPositionId(String positionId){
 		return daoTemplete.getListData("positionSql.getOrgsByPositionId", positionId);
+	}
+
+	@Override
+	public void insertOrg2Position(TOrganization2Position organization2Position) throws RbackException {
+		daoTemplete.insert("positionSql.insertOrg2Position", organization2Position);
 	}
 
 }

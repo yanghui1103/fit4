@@ -23,12 +23,17 @@
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>所属组织</div>
 			<input class="easyui-textbox"    style="width: 80%;paddding-right:2px"  readonly  value="${orgNames }">
-			<input type="hidden" value="${orgIds }" name="orgIds"  >
+			<input type="hidden" value="${orgIds }" name="temp_str1"  >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>名称</div>
 			<input class="easyui-textbox" name="name" style="width: 80%;paddding-right:2px"  
 				data-options="required:true,validType:['length[0,20]']">
+		</div>
+		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>简称</div>
+			<input class="easyui-textbox" name="simpleName" style="width: 80%;paddding-right:2px"  
+				data-options="rvalidType:['length[0,10]']">
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>编码</div>
@@ -42,6 +47,6 @@
 		</div>
 	</form>	
 	
-	<script type="text/javascript" src="<%=basePath%>common/js/system/dict/positionAddPage.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionAddPage.js"></script>
 </body>
 </html>

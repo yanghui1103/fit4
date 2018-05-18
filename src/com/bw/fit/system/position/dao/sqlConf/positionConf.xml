@@ -23,6 +23,11 @@
 		(#{id},#{name,jdbcType=VARCHAR},#{code},#{simpleName,jdbcType=VARCHAR},'0',
 		#{creator,jdbcType=VARCHAR},sysdate,#{sortNumber,jdbcType=INTEGER},sysdate,#{createOrgId,jdbcType=VARCHAR})
 	</insert>
+	
+	<insert id="insertOrg2Position"  parameterType="TOrganization2Position">
+		insert into t_organization2position(orgId,positionId) values
+		(#{orgId},#{positionId})
+	</insert>
 	<!-- 
 	删除组织
 	<update id="delete"  parameterType="String">

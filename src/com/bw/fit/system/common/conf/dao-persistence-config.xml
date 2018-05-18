@@ -18,6 +18,7 @@
     	<package name="com.bw.fit.system.account.model"/> 
     	<package name="com.bw.fit.system.common.model"/> 
     	<package name="com.bw.fit.system.position.model"/> 
+    	<package name="com.bw.fit.system.position.entity"/> 
     	<package name="com.bw.fit.system.common.entity"/> 
     	<package name="com.bw.fit.system.dict.entity"/> 
     	<package name="com.bw.fit.system.dict.model"/> 

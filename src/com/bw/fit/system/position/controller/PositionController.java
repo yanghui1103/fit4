@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
-import com.bw.fit.system.dict.model.Dict;
 import com.bw.fit.system.organization.dao.OrganizationDao;
 import com.bw.fit.system.position.dao.PositionDao;
+import com.bw.fit.system.position.entity.TOrganization2Position;
 import com.bw.fit.system.position.model.Position;
 import com.bw.fit.system.position.service.PositionService;
 
