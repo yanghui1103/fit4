@@ -47,4 +47,12 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public User get(String id) {
+		User user = new User();
+		TUser tu =  userDao.get(id);
+		PubFun.copyProperties(user, tu);
+		return user ;
+	}
+
 }

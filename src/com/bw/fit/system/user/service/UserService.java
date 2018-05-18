@@ -2,6 +2,7 @@ package com.bw.fit.system.user.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.user.entity.TUser;
 import com.bw.fit.system.user.model.User;
 
 public interface UserService {
@@ -20,4 +21,10 @@ public interface UserService {
 	 * @throws RbackException
 	 */
 	public JSONObject delete(String id) throws RbackException ;
+	/****
+	 * 获取单个用户资料
+	 * @param id
+	 * @return
+	 */
+	public User get(String id);
 }

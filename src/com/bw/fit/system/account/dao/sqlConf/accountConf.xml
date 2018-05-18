@@ -32,4 +32,8 @@
 		and r.isdeleted ='0' and a.logname = #{logName}
 	</select>
 		
+	<select id="getOrgByAccount" parameterType="String" resultType="tOrganization">
+		select o.* from t_account2organization ao ,t_organization o ,t_account ac
+		where ao.orgid = o.id and o.isdeleted='0' and ao.accountid  =ac.id and ac.logname = #{logName}
+	</select>	
 </mapper>   

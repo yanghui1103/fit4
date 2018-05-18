@@ -12,9 +12,15 @@ public class Account extends User{
 	private String logPwd;
 	private String verificationCode;
 	private String currentOrgId; /****归属组织id***/
+	private String userId;
 	
 	
-	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getVerificationCode() {
 		return verificationCode;
 	}

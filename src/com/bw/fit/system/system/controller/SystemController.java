@@ -8,6 +8,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,11 +24,14 @@ import static com.bw.fit.system.common.util.PubFun.*;
 
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.account.model.LogAccount;
+import com.bw.fit.system.account.service.AccountService;
 
 @RequestMapping("system")
 @Controller
 public class SystemController extends BaseController {
 
+	@Autowired
+	private AccountService accountService;
 	/****
 	 * 登录请求
 	 * @param account
@@ -91,8 +95,8 @@ public class SystemController extends BaseController {
 				return "system/common/loginPage";
 			}
 
-			Account uu  = null ;
-			session.setAttribute("CurrentUser", uu);
+			Account currentAccount  = accountService.getAccountByLogName(logAccount.getLogName()) ;
+			session.setAttribute("CurrentUser", currentAccount);
 			return "system/common/indexPage";
 	}
 	

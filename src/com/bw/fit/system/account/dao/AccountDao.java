@@ -3,6 +3,7 @@ package com.bw.fit.system.account.dao;
 import java.util.List;
 
 import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.organization.entity.TOrganization;
 import com.bw.fit.system.role.entity.TRole;
 
 public interface AccountDao {
@@ -19,6 +20,16 @@ public interface AccountDao {
 	 * @return
 	 */
 	public Account getAccountByName(String logName);
-	
+	/****
+	 * 获取其所有的角色
+	 * @param logName
+	 * @return
+	 */
 	public List<TRole> getRolesByAccount(String logName);
+	/****
+	 *查询账号所属组织
+	 * @param logName
+	 * @return
+	 */
+	public TOrganization getOrgByAccount(String logName);
 }
