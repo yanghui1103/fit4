@@ -33,4 +33,18 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public JSONObject delete(String id) throws RbackException {
+		JSONObject json = new JSONObject();
+		try{ 
+			userDao.delete(id);
+			PubFun.returnSuccessJson(json);
+		}catch(RbackException ex){
+			json = new JSONObject();
+			PubFun.returnFailJson(json, ex.getMsg());
+		}finally{
+			return json;
+		}
+	}
+
 }

@@ -14,6 +14,8 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.session.Session;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
@@ -30,9 +32,8 @@ import com.bw.fit.component.log.service.LogService;
  * @author yangh
  *
  */
-@Component
+@Component(value="mainLogAspect")
 public class ControllerLogAspect implements Ordered {
-	public static Log log = LogFactory.getLog(ControllerLogAspect.class);
 	@Autowired  
 	HttpServletRequest request; 
 	@Autowired

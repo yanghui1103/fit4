@@ -111,8 +111,7 @@ public class UserController  extends BaseController{
 	public JSONObject delete(@PathVariable String id){
 		JSONObject json = new JSONObject();
 		try {
-			userDao.delete(id);
-			PubFun.returnSuccessJson(json);
+			json = userService.delete(id); 
 		} catch (RbackException e) {
 			e.printStackTrace();
 			json = new JSONObject();
