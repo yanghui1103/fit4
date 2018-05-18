@@ -1,8 +1,12 @@
 package com.bw.fit.component.log.aspect;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
+import javassist.*;
+import javassist.bytecode.CodeAttribute;
+import javassist.bytecode.LocalVariableAttribute;
+import javassist.bytecode.MethodInfo;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -64,8 +68,14 @@ public class ControllerLogAspect implements Ordered {
 			Account account = PubFun.getCurrentAccount();
 			t.setId(getUUID());
 			t.setCreator(account.getLogName()+account.getName());
-			t.setOperateFunction(currentMethod.getName());
-			t.setParams(currentMethod.getParameters().toString());
+			t.setOperateFunction(target.getClass().getName()+"."+currentMethod.getName());
+			String classType = pjd.getTarget().getClass().getName();    
+	        Class<?> clazz = Class.forName(classType);   
+			String clazzName = clazz.getName();    
+	        String methodName = pjd.getSignature().getName(); //获取方法名称   
+	        Object[] args = pjd.getArgs();//参数  
+			Map<String,Object > nameAndArgs = PubFun.getFieldsNameAndValue(this.getClass(), clazzName, methodName,args);   
+			t.setParams(nameAndArgs.toString());
 			t.setResult(obj.toString());
 			t.setLogType("mainlog");
 			logService.notice(t);
@@ -74,4 +84,5 @@ public class ControllerLogAspect implements Ordered {
 		}
 		return obj;
 	}
+	
 }

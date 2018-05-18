@@ -23,8 +23,7 @@ public class LogDaoImpl implements LogDao {
 
 	@Override
 	public void insert(LogInfo l) throws RbackException {
-		// TODO Auto-generated method stub
-		
+		daoTemplete.insert("logSql.insert", l);
 	}
 	
 	

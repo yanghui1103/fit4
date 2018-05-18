@@ -3,9 +3,9 @@
 <mapper namespace="logSql">
 	<!-- 增加日志记录 -->
 	<insert id="insert"  parameterType="logInfo">
-		insert into t_loginfo(id,params,result,creator,createtime,logtype,operatefunction,resourceid,ip,url) values
-	(#{id},#{params,jdbcType=VARCHAR},#{result,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},sysdate,#{logType},#{operateFunction,jdbcType=VARCHAR},
-	#{resourceId,jdbcType=VARCHAR},#{ip},#{url})
+		insert into t_loginfo(id,params2,result,creator,createtime,logtype,operatefunction,resourceid,ip,url) values
+	(#{id},#{params,jdbcType=CLOB},#{result,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},sysdate,#{logType},#{operateFunction,jdbcType=VARCHAR},
+	#{resourceId,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR})
 	</insert>
 	<sql id="paginationSql">
 		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
