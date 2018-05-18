@@ -28,4 +28,10 @@
 		select a.* from t_role2authority  ra ,t_authority a 
 		where ra.authorityid = a.code  and a.isdeleted='0' and ra.roleid = #{roleId}
 	</select>	
+	
+	<select id="getMenusByRole"  parameterType="String" resultType="menu">
+		select m.* from t_menu m,t_role2menu rm 
+		where rm.menuid = m.id and m.isdeleted='0' and rm.roleid =#{roleId}
+	</select>
+	
 </mapper>   

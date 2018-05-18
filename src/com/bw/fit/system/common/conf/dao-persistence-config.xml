@@ -28,6 +28,7 @@
     	<package name="com.bw.fit.system.authority.model"/> 
     	<package name="com.bw.fit.system.role.entity"/> 
     	<package name="com.bw.fit.system.role.model"/> 
+    	<package name="com.bw.fit.system.menu.model"/> 
     	
     </typeAliases>
 </configuration>

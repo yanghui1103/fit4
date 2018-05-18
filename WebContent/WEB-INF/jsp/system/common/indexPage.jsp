@@ -21,7 +21,6 @@
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/easyui-lang-zh_CN.js"></script>	
-	<%--     <jsp:include page="../../../../common/common.jsp" /> --%>
 	
 </head> 
 <body  scroll=yes>
