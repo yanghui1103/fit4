@@ -3,6 +3,7 @@ package com.bw.fit.system.position.dao.impl;
 import java.util.*;
 import java.util.List;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -47,6 +48,14 @@ public class PositionDaoImpl implements PositionDao{
 	@Override
 	public void insertOrg2Position(TOrganization2Position organization2Position) throws RbackException {
 		daoTemplete.insert("positionSql.insertOrg2Position", organization2Position);
+	}
+
+	@Override
+	public void deleteO2P(String id,String orgId) throws RbackException {
+		Map<String,String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("orgId", orgId);
+		daoTemplete.delete("positionSql.deleteO2P", map);
 	}
 
 }

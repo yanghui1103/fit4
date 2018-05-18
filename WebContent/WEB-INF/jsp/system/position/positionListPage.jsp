@@ -57,7 +57,7 @@
 				<a href="javascript:addPositionPage();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
 				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
-				<a href="javascript:removeOrg();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
+				<a href="javascript:deletePosition();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
 			</div>	
 		</div>
 	</div>

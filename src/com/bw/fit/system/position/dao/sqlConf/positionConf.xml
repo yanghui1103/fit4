@@ -28,10 +28,11 @@
 		insert into t_organization2position(orgId,positionId) values
 		(#{orgId},#{positionId})
 	</insert>
-	<!-- 
-	删除组织
+	<!-- 删除组织 -->
 	<update id="delete"  parameterType="String">
 		update t_position set isdeleted='1'  where id = #{id}
 	</update>
-	 -->
+	<delete id="deleteO2P"  parameterType="map">
+		delete from t_organization2position where positionId = #{id} and orgId = #{orgId}
+	</delete>
 </mapper>   

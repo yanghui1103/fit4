@@ -104,4 +104,19 @@ public class PositionController {
 			return json ;
 		}
 	}
+	
+	@RequestMapping(value="position/{id}/{orgId}",method=RequestMethod.DELETE,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject delete(@PathVariable String id,@PathVariable String orgId){	
+		JSONObject json = new JSONObject();		
+		try {
+			json = positionService.deletePosition(id,orgId);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json =  new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}		finally{
+			return json ;
+		}
+	}
 }

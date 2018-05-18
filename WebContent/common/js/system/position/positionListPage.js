@@ -58,3 +58,24 @@ function addPositionPage(){
 		});
 	}
 }
+
+function deletePosition(){	 
+	var row = getSingleGridSelectData($("#positionLiDg"));
+	if(row !=null){
+		var orgId = $("#org_id").val();
+		//增加判断人员和岗位关系表是否有记录，如果有，不能删除该岗位
+		promptMessageCallBack("3","是否确认删除该记录",function(){					
+			$.ajax({
+				type : 'DELETE',
+				url : ctx + "position/position/"+row.id+"/"+orgId,
+				data : {},
+				success : function(data) {
+					promptMessageCallBack(data.res, data.msg,function(){
+						 $('#positionLiDg').datagrid('reload');  
+					} );
+				},
+				dataType : "JSON"
+			});
+		});
+	}
+}

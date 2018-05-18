@@ -13,6 +13,13 @@ public interface PositionService {
 	 */
 	public JSONObject createPosition(Position position) throws RbackException ;
 	/****
+	 * 删除岗位
+	 * @param position
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject deletePosition(String id,String orgId) throws RbackException ;
+	/****
 	 * 修改岗位
 	 * @param position
 	 * @return
