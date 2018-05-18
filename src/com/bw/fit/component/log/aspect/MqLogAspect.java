@@ -15,8 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.dao.DaoTemplete;
-import com.bw.fit.component.log.entity.TLogInfo;
-import com.bw.fit.component.log.service.ILogService;
+import com.bw.fit.component.log.service.LogService;
 
 /*****
  * 消息队列产品发送数据/消费数据的日志切面
@@ -29,7 +28,7 @@ public class MqLogAspect implements Ordered {
 	@Autowired
 	private DaoTemplete daoTemplete;
 	@Autowired
-	private ILogService iLogService;
+	private LogService iLogService;
 
 	@Override
 	public int getOrder() {
@@ -53,17 +52,17 @@ public class MqLogAspect implements Ordered {
 					msig.getParameterTypes());
 
 			obj = pjd.proceed(); // 执行
-			TLogInfo t = new TLogInfo();
-			t.setLog_type_id("62");		 // 消息队列操作日志，选自数据字典 
-			t.setOperator_id("system_mq_server"); // 
-			t.setId(getUUID());
-			t.setIp("major_system");
-			t.setOperate_function(currentMethod.getName()); 
-			if ((obj instanceof JSONObject)) {
-				JSONObject j = (JSONObject)obj;
-				t.setRes(j.get("res").toString());
-				t.setMsg(j.get("msg").toString());
-			}
+//			TLogInfo t = new TLogInfo();
+//			t.setLog_type_id("62");		 // 消息队列操作日志，选自数据字典 
+//			t.setOperator_id("system_mq_server"); // 
+//			t.setId(getUUID());
+//			t.setIp("major_system");
+//			t.setOperate_function(currentMethod.getName()); 
+//			if ((obj instanceof JSONObject)) {
+//				JSONObject j = (JSONObject)obj;
+//				t.setRes(j.get("res").toString());
+//				t.setMsg(j.get("msg").toString());
+//			}
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
