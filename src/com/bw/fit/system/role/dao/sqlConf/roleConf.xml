@@ -26,6 +26,6 @@
 		
 	<select id="getAuthoritysByRole"  parameterType="String" resultType="tAuthority">
 		select a.* from t_role2authority  ra ,t_authority a 
-		where ra.authorityid = a.id  and a.isdeleted='0' and ra.roleid = #{roleId}
+		where ra.authorityid = a.code  and a.isdeleted='0' and ra.roleid = #{roleId}
 	</select>	
 </mapper>   

@@ -79,8 +79,7 @@ public class UserController  extends BaseController{
 		user.setIsVisible(dictDao.getDictByValue(user.getIsVisible()).getDictName());
 		model.addAttribute("user", user);
 		return "system/user/userDetailPage";
-	}
-	
+	}	
 	
 	@RequestMapping(value = "user",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
 	@ResponseBody
