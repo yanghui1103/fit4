@@ -30,8 +30,8 @@
 	</select>	
 	
 	<select id="getMenusByRole"  parameterType="String" resultType="menu">
-		select m.* from t_menu m,t_role2menu rm 
-		where rm.menuid = m.id and m.isdeleted='0' and rm.roleid =#{roleId}
+		select m.id,m.parentid,m.title,m.isdeleted,m.icon,m.href,m.opened from t_menu m,t_role2menu rm 
+		where rm.menuid = m.id and m.isdeleted='0'  and rm.roleid =#{roleId} order by m.id asc
 	</select>
 	
 </mapper>   

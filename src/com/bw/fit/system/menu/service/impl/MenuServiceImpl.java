@@ -31,6 +31,7 @@ public class MenuServiceImpl implements MenuService {
 	            map.put("id", menus.get(i).getId());          
 	            map.put("title",menus.get(i).getTitle());      
 	            map.put("icon",menus.get(i).getIcon());    
+	            map.put("isCurrent", menus.get(i).isCurrent());
 	            if(!"".equals(menus.get(i).getHref())){
 	            	map.put("href",menus.get(i).getHref());    
 	            } 
@@ -60,6 +61,7 @@ public class MenuServiceImpl implements MenuService {
 	            map.put("id", menus.get(j).getId());          
 	            map.put("title",menus.get(j).getTitle());      
 	            map.put("icon",menus.get(j).getIcon());    
+	            map.put("isCurrent", menus.get(j).isCurrent());
 	            if(!"".equals(menus.get(j).getHref())){
 	            	map.put("href",menus.get(j).getHref());    
 	            } 

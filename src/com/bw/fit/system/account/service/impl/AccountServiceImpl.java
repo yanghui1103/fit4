@@ -37,6 +37,9 @@ public class AccountServiceImpl implements AccountService {
 				m.setHref(PropertiesUtil.getValueByKey("system.default.url")+m.getHref());
 				menus.add(m);
 			}
+			/****
+			 * 加入首页
+			 */
 		}
 		return menus.stream().distinct().collect(Collectors.toList());
 	}

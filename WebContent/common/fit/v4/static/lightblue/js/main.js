@@ -104,8 +104,10 @@ var mainPlatform = {
 			success:function(data){
 				menus = data ;
 				SystemMenu = [{
-					title: '系统管理',
-					icon: '&#xe63f;',
+//					title: '系统管理',
+//					icon: '&#xe63f;',
+					title: ' ',
+					icon: ' ',
 					isCurrent: true,
 					menu:  menus 
 				}];
