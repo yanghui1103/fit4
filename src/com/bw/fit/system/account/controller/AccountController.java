@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
@@ -30,7 +31,7 @@ public class AccountController extends BaseController {
 	 * menu.js 调用
 	 * @return
 	 */
-	@RequestMapping("getMenus")
+	@RequestMapping(value="menus",method=RequestMethod.GET)
 	@ResponseBody
 	public JSONArray getMenus(){
 		Account account = PubFun.getCurrentAccount();

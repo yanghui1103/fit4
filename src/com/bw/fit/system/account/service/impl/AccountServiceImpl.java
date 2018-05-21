@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bw.fit.system.account.dao.AccountDao;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.account.service.AccountService;
+import com.bw.fit.system.common.util.PropertiesUtil;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
@@ -33,6 +34,7 @@ public class AccountServiceImpl implements AccountService {
 		for(TRole t:roles){
 			List<Menu> ms = roleDao.getMenusByRole(t.getId());
 			for(Menu m:ms){
+				m.setHref(PropertiesUtil.getValueByKey("system.default.url")+m.getHref());
 				menus.add(m);
 			}
 		}

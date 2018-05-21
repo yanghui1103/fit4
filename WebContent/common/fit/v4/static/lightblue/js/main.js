@@ -1,9 +1,7 @@
 var mainPlatform = {
-
-	init: function(){
-
-		this.bindEvent();
-		this._createTopMenu();
+	init: function(){ 
+    			this.bindEvent();
+    			this._createTopMenu();   
 	},
 
 	bindEvent: function(){
@@ -100,6 +98,19 @@ var mainPlatform = {
 	_createTopMenu: function(){
 		var menuStr = '',
 			currentIndex = 0;
+		$.ajax({url: ctx +"account/menus",
+			type:'get',
+			async:false,
+			success:function(data){
+				menus = data ;
+				SystemMenu = [{
+					title: '系统管理',
+					icon: '&#xe63f;',
+					isCurrent: true,
+					menu:  menus 
+				}];
+			}
+		});
 		for(var i = 0, len = SystemMenu.length; i < len; i++) {
 			menuStr += '<li class="pf-nav-item project" data-sort="'+ i +'" data-menu="system_menu_" + i>'+
                       '<a href="javascript:;">'+

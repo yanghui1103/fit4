@@ -2,6 +2,9 @@ package com.bw.fit.system.common.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -22,5 +25,9 @@ public abstract class BaseController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				dateFormat, false));
 	}	
-	
+
+	@ModelAttribute
+	public void initControl(HttpServletResponse response){
+		response.addHeader("Access-Control-Allow-Origin", "*");
+	}
 }

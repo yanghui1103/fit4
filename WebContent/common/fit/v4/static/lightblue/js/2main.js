@@ -1,31 +1,9 @@
 var mainPlatform = {
 
-  
-		
-		
 	init: function(){
-		$.ajax({
-            type: "GET",
-            url: ctx +"account/getMenus",
-            data: {},
-            dataType: "json",
-            async:  false ,
-            success: function(data){
-            	menus = data ;
-    	        var SystemMenu = [{
-    	        	title: '系统管理',
-    	        	icon: '&#xe63f;',
-    	        	isCurrent: true,
-    	        	menu:  menus 
-    	        }];     	        
 
-    			this.bindEvent();
-    			this._createTopMenu();    	        
-    	        
-            }
-        }); 
-		 
-        
+		this.bindEvent();
+		this._createTopMenu();
 	},
 
 	bindEvent: function(){
@@ -37,7 +15,6 @@ var mainPlatform = {
 
             // 渲染对应侧边菜单
             var m = $(this).data('sort');
-            alert(SystemMenu);
             self._createSiderMenu(SystemMenu[m], m);
         });
 
@@ -123,7 +100,6 @@ var mainPlatform = {
 	_createTopMenu: function(){
 		var menuStr = '',
 			currentIndex = 0;
-        alert(SystemMenu);
 		for(var i = 0, len = SystemMenu.length; i < len; i++) {
 			menuStr += '<li class="pf-nav-item project" data-sort="'+ i +'" data-menu="system_menu_" + i>'+
                       '<a href="javascript:;">'+
