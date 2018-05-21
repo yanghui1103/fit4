@@ -2,17 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="accountSql">
 	<sql id="paginationSql">
-		<![CDATA[ and rownum >#{start_num} and rownum <= #{end_num} ]]>   
+		<![CDATA[ and rn >#{start_num} and rn <= #{end_num} ]]>   
 	</sql>
-	<!-- 获取组织信息 -->
-	<select id="getCompanyList" parameterType="Organization" resultType="Organization">
-		select * from (
-		select * from t_organization where name like  '%'||#{keyWords}||'%' and isdeleted='0' order by create_time desc ) 
-		where 1=1  
-		<if test="paginationEnable!='0'">		
-			<include refid="paginationSql"></include>
-		</if>
-	</select>
 	<!-- 删除组织 -->
 	<update id="delete"  parameterType="String">
 		update t_organization set isdeleted='1'  where id = #{id}
@@ -36,4 +27,16 @@
 		select o.* from t_account2organization ao ,t_organization o ,t_account ac
 		where ao.orgid = o.id and o.isdeleted='0' and ao.accountid  =ac.id and ac.logname = #{logName}
 	</select>	
+	
+	<select id="getAccounts" parameterType="account" resultType="account">
+		select * from (select u.*,a.id temp_str2,a.create_time temp_str3 ,a.logname,rownum rn
+		from t_account a,t_user u 
+		where u.id = a.userid and a.isdeleted ='0' and u.isdeleted='0'
+		and  a.logname like '%'||#{logName,jdbcType=VARCHAR}||'%' and  u.name like '%'||#{name,jdbcType=VARCHAR}||'%' 
+		) cc  where 1=1
+		<if test="paginationEnable!='0'">		
+			<include refid="paginationSql"></include>
+		</if>
+	</select>
+	
 </mapper>   

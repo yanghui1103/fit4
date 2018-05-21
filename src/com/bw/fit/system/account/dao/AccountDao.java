@@ -32,4 +32,10 @@ public interface AccountDao {
 	 * @return
 	 */
 	public TOrganization getOrgByAccount(String logName);
+	/*****
+	 * 根据查询条件,查询到账户资料
+	 * @param account
+	 * @return
+	 */
+	public List<Account> getAccounts(Account account);
 }

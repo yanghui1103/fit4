@@ -48,4 +48,9 @@ public class AccountDaoImpl implements AccountDao {
 		return (TOrganization)daoTemplete.getOneData("accountSql.getOrgByAccount", logName);
 	}
 
+	@Override
+	public List<Account> getAccounts(Account account) {
+		return daoTemplete.getListData("accountSql.getAccounts", account);
+	}
+
 }

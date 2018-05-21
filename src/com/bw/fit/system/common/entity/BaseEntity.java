@@ -22,6 +22,7 @@ public class BaseEntity {
 	private String logId ;
 	private String logContent;
 	private String sql ;
+	private String isdeleted;
 	private String res ;
 	private String msg ;
 	private String returnInfo ;
@@ -46,6 +47,12 @@ public class BaseEntity {
 	
 	
 	
+	public String getIsdeleted() {
+		return isdeleted;
+	}
+	public void setIsdeleted(String isdeleted) {
+		this.isdeleted = isdeleted;
+	}
 	public Integer getRn() {
 		return rn;
 	}

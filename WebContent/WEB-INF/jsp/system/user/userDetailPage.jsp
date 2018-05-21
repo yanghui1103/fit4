@@ -18,7 +18,7 @@
 							<td class="kv-content"><span >${user.name }</span></td>
 							<td class="kv-label">姓名拼音</td>
 							<td class="kv-content"><span id="code">${user.name_pinyin }</span></td>
-							<td class="kv-label">编码</td>
+							<td class="kv-label">用户编码</td>
 							<td class="kv-content"><span id="simpleName">${user.code }</span></td>
 						</tr>
 						<tr>
