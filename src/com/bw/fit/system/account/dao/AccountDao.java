@@ -3,6 +3,7 @@ package com.bw.fit.system.account.dao;
 import java.util.List;
 
 import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.organization.entity.TOrganization;
 import com.bw.fit.system.role.entity.TRole;
 
@@ -38,4 +39,10 @@ public interface AccountDao {
 	 * @return
 	 */
 	public List<Account> getAccounts(Account account);
+	/*****
+	 * 删除帐户 
+	 * @param id
+	 * @throws RbackException
+	 */
+	public void delete(String id) throws RbackException ;
 }

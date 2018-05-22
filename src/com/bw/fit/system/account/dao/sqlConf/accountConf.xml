@@ -4,11 +4,6 @@
 	<sql id="paginationSql">
 		<![CDATA[ and rn >#{start_num} and rn <= #{end_num} ]]>   
 	</sql>
-	<!-- 删除组织 -->
-	<update id="delete"  parameterType="String">
-		update t_organization set isdeleted='1'  where id = #{id}
-	</update>
-	
 	<select id="getAccountIdByName"  parameterType="String" resultType="account">
 		select * from t_account where isdeleted='0' and logname= #{logName,jdbcType=VARCHAR}
 	</select>
@@ -39,4 +34,7 @@
 		</if>
 	</select>
 	
+	<update id="delete"  parameterType="account">
+		update t_account set isdeleted='1' where id = #{id}
+	</update>
 </mapper>   

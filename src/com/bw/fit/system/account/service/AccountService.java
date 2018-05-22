@@ -2,7 +2,9 @@ package com.bw.fit.system.account.service;
 
 import java.util.*;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 
 public interface AccountService {
@@ -19,4 +21,11 @@ public interface AccountService {
 	 * @return
 	 */
 	public List<Menu> getMenusOfThisAccount(String logName);
+	/****
+	 * 删除账户
+	 * @param id
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject delete(String id) throws RbackException;
 }

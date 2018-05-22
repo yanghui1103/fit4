@@ -15,7 +15,7 @@ function accountlistquery(){
         queryParams:   serializeFormToJSON($("#accountlistFM").serializeArray()),
 	    remoteSort: false, 
         columns: [[
-                   { field: 'temp_str1', title: 'ID' ,hidden:true  },
+                   { field: 'temp_str2', title: 'ID' ,hidden:true  },
                    { field: 'id', hidden:true  },
                    { field: 'name', title: '用户姓名', width: '30%',fixed:true  },
                    { field: 'logName', title: '账号', width: '30%' },
@@ -60,4 +60,42 @@ function openUserDetail(id){
 	    href: ctx+'user/openUserDetail/'+id,    
 	    modal: true   
 	}); 	
+}
+
+
+
+
+function deleteAccount(){	 
+	var row = getSingleTreeGridSelectData($("#accountListDg"));
+	if(row !=null){
+		promptMessageCallBack("3","是否确认删除该账户？",function(){					
+			$.ajax({
+				type : 'DELETE',
+				url : ctx + "account/account/"+row.temp_str2,
+				data : {},
+				success : function(data) {
+					promptMessageCallBack(data.res, data.msg,function(){
+						accountReloadgrid();
+					} );
+				},
+				dataType : "JSON"
+			});
+		});
+	}
+}
+
+
+function openAddAccount(){
+	$('#_loadDialog_accountlist').dialog({    
+	    title: '账户新增',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'system/gotoIframePage/system/account/accountAddPage/-9',    
+	    modal: true   
+	}); 	
+
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.bw.fit.system.account.dao.AccountDao;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.organization.entity.TOrganization;
 import com.bw.fit.system.role.entity.TRole;
@@ -51,6 +52,11 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public List<Account> getAccounts(Account account) {
 		return daoTemplete.getListData("accountSql.getAccounts", account);
+	}
+
+	@Override
+	public void delete(String id) throws RbackException {
+		daoTemplete.update("accountSql.delete", id);
 	}
 
 }
