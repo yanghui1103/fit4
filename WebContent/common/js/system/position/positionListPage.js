@@ -88,7 +88,7 @@ function addAddressPage(){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'position/openAddressPage',    
+	    href: ctx+'system/gotoIframePage/system/position/addressPage/-9',    
 	    modal: true   
 	});
 }
