@@ -9,6 +9,7 @@ import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
+import com.bw.fit.system.role.entity.TRole;
 @Repository
 public class RoleDaoImpl implements RoleDao {
 
@@ -23,6 +24,11 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public List<Menu> getMenusByRole(String roleId) {
 		return daoTemplete.getListData("roleSql.getMenusByRole", roleId);
+	}
+
+	@Override
+	public List<TRole> getRoles(TRole role) {
+		return daoTemplete.getListData("roleSql.getRoles", role);
 	}
 
 }

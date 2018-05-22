@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.menu.model.Menu;
+import com.bw.fit.system.role.entity.TRole;
 
 public interface RoleDao {
 
@@ -19,4 +20,10 @@ public interface RoleDao {
 	 * @return
 	 */
 	public List<Menu> getMenusByRole(String roleId);
+	/****
+	 * 查询角色翻页
+	 * @param role
+	 * @return
+	 */
+	public List<TRole> getRoles(TRole role);
 }

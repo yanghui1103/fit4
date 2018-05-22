@@ -10,6 +10,8 @@ public class TRole extends BaseEntity {
 
 	private String name;
 	private String desp ;
+	
+	
 	public String getName() {
 		return name;
 	}
