@@ -59,14 +59,14 @@
 	<aop:config>
 		<!-- 通过aop定义事务增强切面 -->
 		<aop:pointcut id="serviceMethod"
-			expression="execution(* com.bw.fit.*.service.impl.*.*.*(..))" />
+			expression="execution(* com.bw.fit.*.*.service.impl.*.*.*(..))" />
 		<!-- 引用事务增强 -->
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
 	</aop:config>
 	<aop:config>
 		<!-- 通过aop定义事务增强切面 -->
 		<aop:pointcut id="daoMethod"
-			expression="execution(* com.bw.fit.*.dao.impl.*.*.*(..))" />
+			expression="execution(* com.bw.fit.*.*.dao.impl.*.*.*(..))" />
 		<!-- 引用事务增强 -->
 		<aop:advisor pointcut-ref="daoMethod" advice-ref="txAdvice" />
 	</aop:config>
@@ -78,6 +78,7 @@
 			<tx:method name="get*" read-only="true" />
 			<tx:method name="find*" read-only="true" />
 			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="edit*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
