@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
@@ -30,10 +31,14 @@ public class RoleDaoImpl implements RoleDao {
 	public List<TRole> getRoles(TRole role) {
 		List<TRole> list = daoTemplete.getListData("roleSql.getRoles", role);
 		for (TRole t:list){
-			String roleId =  t.getId();
-			t.setTemp_str1(String.valueOf((Integer)daoTemplete.getOneData("roleSql.getAccountCntOfRole",roleId)));
+			t.setTemp_str1(String.valueOf((Integer)daoTemplete.getOneData("roleSql.getAccountCntOfRole",t.getId())));
 		}
 		return list ;
+	}
+
+	@Override
+	public void delete(String id) throws RbackException {
+		daoTemplete.update("roleSql.delete", id);
 	}
 
 }

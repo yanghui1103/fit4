@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.controller.BaseController;
+import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.model.Role;
+import com.bw.fit.system.role.service.RoleService;
 import com.bw.fit.system.user.entity.TUser;
 /*****
  * 角色模块controller
@@ -28,6 +30,8 @@ public class RoleController extends BaseController {
 
 	@Autowired
 	private RoleDao roleDao;
+	@Autowired
+	private RoleService roleService;
 	
 	@RequestMapping(value="roles",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
@@ -51,7 +55,15 @@ public class RoleController extends BaseController {
 	@RequestMapping(value="role/{id}",method=RequestMethod.DELETE,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject delete(@PathVariable String id){
-		
-		return null ;
+		JSONObject json = new JSONObject();		
+		try {
+			json = roleService.delete(id);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}finally{
+			return json ;
+		}
 	}
 }

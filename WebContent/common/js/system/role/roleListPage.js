@@ -47,7 +47,11 @@ function roleReloadgrid() {
 
 
 function deleteRole(){	 
-	var row = getSingleTreeGridSelectData($("#roleListDg"));
+	var row = getSingleTreeGridSelectData($("#roleListDg")); 
+	if(parseInt(row.temp_str1)>0){
+		promptMessage("1","此角色关联有效账户，故不得删除。");
+		return ;
+	}
 	if(row !=null){
 		promptMessageCallBack("3","是否确认删除该角色？",function(){					
 			$.ajax({

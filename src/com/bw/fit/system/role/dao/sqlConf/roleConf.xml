@@ -39,4 +39,8 @@
  		where tr.accountid = ta.id and ta.isdeleted='0' 
  		and tr.roleid = #{roleId}
 	</select>
+	
+	<update id="delete" parameterType="String" >
+		update t_role set isdeleted='1',versionTime=sysdate where id = #{id}
+	</update>
 </mapper>   
