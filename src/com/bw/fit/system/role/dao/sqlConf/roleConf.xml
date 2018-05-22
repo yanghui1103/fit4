@@ -32,4 +32,11 @@
 			<include refid="paginationSql"></include>
 		</if>
 	</select>
+	
+	<!-- 根据角色id查询正在使用有效账户总数 -->
+	<select id="getAccountCntOfRole" parameterType="String" resultType="int">
+		 select count(1) from t_account ta ,t_account2role tr 
+ 		where tr.accountid = ta.id and ta.isdeleted='0' 
+ 		and tr.roleid = #{roleId}
+	</select>
 </mapper>   

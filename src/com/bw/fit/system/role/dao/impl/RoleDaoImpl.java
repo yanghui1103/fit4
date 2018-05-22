@@ -28,7 +28,12 @@ public class RoleDaoImpl implements RoleDao {
 
 	@Override
 	public List<TRole> getRoles(TRole role) {
-		return daoTemplete.getListData("roleSql.getRoles", role);
+		List<TRole> list = daoTemplete.getListData("roleSql.getRoles", role);
+		for (TRole t:list){
+			String roleId =  t.getId();
+			t.setTemp_str1(String.valueOf((Integer)daoTemplete.getOneData("roleSql.getAccountCntOfRole",roleId)));
+		}
+		return list ;
 	}
 
 }
