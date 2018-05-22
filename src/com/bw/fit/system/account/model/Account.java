@@ -12,9 +12,23 @@ public class Account extends User{
 	private String logPwd;
 	private String verificationCode;
 	private String currentOrgId; /****归属组织id***/
-	private String userId;
+	private String userId; 
+	private String positionIds;
+	private String roleIds;
 	
 	
+	public String getPositionIds() {
+		return positionIds;
+	}
+	public void setPositionIds(String positionIds) {
+		this.positionIds = positionIds;
+	}
+	public String getRoleIds() {
+		return roleIds;
+	}
+	public void setRoleIds(String roleIds) {
+		this.roleIds = roleIds;
+	}
 	public String getUserId() {
 		return userId;
 	}

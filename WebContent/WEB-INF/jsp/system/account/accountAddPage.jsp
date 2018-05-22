@@ -35,7 +35,9 @@
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>岗位</div>
-			<input class="easyui-textbox"  name="postionId" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox"  name="postionNames" style="width: 80%;paddding-right:2px"  
+				data-options="required:true">
+			<input type="hidden"  name="postionIds"  
 				data-options="required:true">
 		</div>
 		
@@ -46,11 +48,19 @@
 		</div>
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
+			<div>角色</div>
+			<input class="easyui-textbox"  name="roleNames" style="width: 80%;paddding-right:2px"  
+				data-options="required:true">
+			<input type="hidden"  name="roleIds"  
+				data-options="required:true">
+		</div>
+		
+		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>排序号</div>
 			<input class="easyui-numberbox" name="sortNumber" style="width: 80%;paddding-right:2px"  
 				data-options="">
 		</div>
-		
+				
 	</form>	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/account/accountAddPage.js"></script>
 </body>

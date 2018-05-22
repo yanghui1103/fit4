@@ -30,6 +30,7 @@
         	账号: <input class="easyui-textbox" type="text" name="logName" style="width:166px;height:35px;line-height:35px;"></input>
         <a href="javascript:accountReloadgrid();" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> 
         <a href="javascript:openAddAccount();" class="easyui-linkbutton" iconCls="icon-add" >新增</a> 
+        <a href="javascript:openEditAccount();" class="easyui-linkbutton" iconCls="icon-edit" >修改</a> 
         <shiro:hasRole name="DEL_USER"> 
         	<a href="javascript:deleteAccount();" class="easyui-linkbutton" iconCls="icon-remove" >作废</a> 
         </shiro:hasRole>
