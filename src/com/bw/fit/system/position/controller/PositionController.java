@@ -72,6 +72,18 @@ public class PositionController {
 	}
 	
 	/***
+	 * 打开地址本
+	 * @param orgIds
+	 * @param orgNames
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("openAddressPage")
+	public String openAddressPage(Model model){
+		return "system/position/addressPage" ;
+	}
+	
+	/***
 	 * 打开新增岗位页
 	 * @param orgIds
 	 * @param orgNames

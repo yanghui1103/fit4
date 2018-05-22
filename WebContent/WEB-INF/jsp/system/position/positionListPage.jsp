@@ -49,6 +49,7 @@
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="岗位列表" data-options="closable:false" class="basic-info">
 		      	<div id="_loadDialog_positionList"></div>
+		      	<div id="_loadDialog_address"></div>
 		      	<table id="positionLiDg" style="width:100%;height:470px" >
        			</table>
 		      </div>
@@ -56,6 +57,8 @@
 		    <div style="padding: 0 20px; float: right;position: absolute;top:0px;right:0px">
 				<a href="javascript:addPositionPage();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
+					<a href="javascript:addAddressPage();" class="easyui-linkbutton" iconCls="icon-add"
+					data-options="selected:true">地址本</a>
 				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
 				<a href="javascript:deletePosition();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
 			</div>	

@@ -79,3 +79,16 @@ function deletePosition(){
 		});
 	}
 }
+
+function addAddressPage(){
+	$('#_loadDialog_address').dialog({    
+	    title: '地址本',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'position/openAddressPage',    
+	    modal: true   
+	});
+}
