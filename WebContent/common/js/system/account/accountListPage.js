@@ -83,3 +83,19 @@ function deleteAccount(){
 		});
 	}
 }
+
+
+function openAddAccount(){
+	$('#_loadDialog_accountlist').dialog({    
+	    title: '账户新增',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'system/gotoIframePage/system/account/accountAddPage/-9',    
+	    modal: true   
+	}); 	
+
+	
+}

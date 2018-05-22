@@ -38,8 +38,20 @@
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>类型</div>
-			<input class="easyui-textbox" name="type" style="width: 80%;paddding-right:2px"  
-				data-options="required:true">
+			<select class="easyui-combogrid"  name="type"  editable="false" style="width:80%"  data-options="limitToList:true,
+					panelWidth: 500,
+					idField: 'dict_value',
+					textField: 'dict_name',
+					url: '<%=basePath%>dict/getDictsByParentValue/9',
+					method: 'get', 
+					columns: [[
+						{field:'dict_value',title:'值',width:50},
+						{field:'dict_name',title:'名称',width:140} 
+					]],
+					fitColumns: true, 
+					required:true
+				">
+			</select>	
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>父组织</div>
