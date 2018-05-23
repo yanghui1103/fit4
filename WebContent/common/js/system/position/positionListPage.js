@@ -80,6 +80,22 @@ function deletePosition(){
 	}
 }
 
+function editPosition(){
+	var row = getSingleGridSelectData($("#positionLiDg"));
+	if(row !=null){				
+		$('#_loadDialog_positionList').dialog({    
+		    title: '编辑岗位',    
+		    width: 800,    
+		    height: 500,    
+		    closed: false,    
+		    cache: false,    
+		    maximizable:true,
+		    href: ctx+'position/openPositionEditPage/'+row.id,    
+		    modal: true   
+		});
+	}
+}
+
 function addAddressPage(){
 	$('#_loadDialog_address').dialog({    
 	    title: '地址本',    

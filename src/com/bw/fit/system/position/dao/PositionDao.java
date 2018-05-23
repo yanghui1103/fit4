@@ -3,6 +3,7 @@ package com.bw.fit.system.position.dao;
 import java.util.List;
 
 import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.position.entity.TOrganization2Position;
 import com.bw.fit.system.position.model.Position;
 
@@ -50,11 +51,17 @@ public interface PositionDao {
 	 * 根据岗位Id获取所属组织列表
 	 * @param positionId
 	 */
-	public List<String> getOrgByPositionId(String positionId) ;
+	public List<Organization> getOrgByPositionId(String positionId) ;
 	
 	/****
 	 * 根据组织Id获岗位列表
 	 * @param posiorgIdtionId
 	 */
 	public List<Position> getPositionByOrgId(String orgId) ;
+	
+	/****
+	 * 根据Id获岗位
+	 * @param posiorgIdtionId
+	 */
+	public Position get(String id) ;
 }

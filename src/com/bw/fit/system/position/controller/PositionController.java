@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.system.dict.model.Dict;
 import com.bw.fit.system.organization.dao.OrganizationDao;
+import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.position.dao.PositionDao;
 import com.bw.fit.system.position.entity.TOrganization2Position;
 import com.bw.fit.system.position.model.Position;
@@ -55,10 +57,10 @@ public class PositionController {
 		List<Position> list = positionDao.getPositions(p,orgId);
 		for(Position tmp : list) {
 			String orgNames="";
-			List<String> tmpOrgs = positionDao.getOrgByPositionId(tmp.getId());
-			if(tmpOrgs.size()>0) {
-				for(String s1 : tmpOrgs) {
-					orgNames += s1+";";
+			List<Organization> tmpOrgs = positionDao.getOrgByPositionId(tmp.getId());
+			if(tmpOrgs!=null&&tmpOrgs.size()>0) {
+				for(Organization s1 : tmpOrgs) {
+					orgNames += s1.getName()+";";
 				}
 				orgNames = orgNames.substring(0, orgNames.length()-1);
 				tmp.setTemp_str1(orgNames);
@@ -87,6 +89,29 @@ public class PositionController {
 		}
 		model.addAttribute("orgNames", orgNames);
 		return "system/position/positionAddPage" ;
+	}
+	
+	/*****
+	 * 打开update岗位页
+	 * @param parentId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("openPositionEditPage/{id}")
+	public String openPositionEditPage(@PathVariable String id,Model model){
+		Position p = positionDao.get(id);
+		List<Organization> orgList = positionDao.getOrgByPositionId(id);
+		String ids = "";
+		String names = "";
+		for(Organization o : orgList) {
+			ids += o.getId()+',';
+			names += o.getName()+',';
+		}
+		model.addAttribute("position", p);
+		model.addAttribute("orgIds", ids);
+		model.addAttribute("orgNames", names);
+		
+		return "system/position/positionEditPage" ;
 	}
 	
 	@RequestMapping(value="position",method=RequestMethod.POST,produces="application/json;charset=UTF-8")

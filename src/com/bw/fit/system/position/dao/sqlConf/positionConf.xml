@@ -14,14 +14,18 @@
 		</if>
 	</select>
 	<!-- 根据岗位ID获取所属组织 -->
-	<select id="getOrgsByPositionId" parameterType="string" resultType="string">
-		select o.name temp_str1 from t_organization2position op,t_organization o where o.id=OP.ORGID and positionId = #{positionId} ORDER BY o.SORTNUMBER
+	<select id="getOrgsByPositionId" parameterType="string" resultType="Organization">
+		select o.* from t_organization2position op,t_organization o where o.isdeleted = '0' and o.id=OP.ORGID and positionId = #{positionId} ORDER BY o.SORTNUMBER
 	</select>
 	
 	<!-- 根据组织ID获取岗位列表 -->
 	<select id="getPositionByOrgId" parameterType="string" resultType="Position">
 		select p.*from t_organization2position op,T_POSITION p
 		where p.id=OP.POSITIONID and OP.ORGID = #{orgId} ORDER BY p.SORTNUMBER
+	</select>
+	
+	<select id="get" parameterType="string" resultType="Position">
+		select * from t_position where id = #{id}
 	</select>
 	
 	<insert id="insert"  parameterType="Position">
