@@ -1,9 +1,6 @@
 /**
  * 
  */
-
-
-
 function addNewRole(){ 
 	if (!$("#roleAddFm").form('enableValidation')
 			.form('validate')) {

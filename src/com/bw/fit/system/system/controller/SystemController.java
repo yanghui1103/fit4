@@ -108,10 +108,11 @@ public class SystemController extends BaseController {
 	 * @param model UI-Model
 	 * @return
 	 */
-	@RequestMapping("gotoIframePage/{path1}/{path2}/{pageName}/{param}")
+	@RequestMapping(value="gotoIframePage/{path1}/{path2}/{pageName}/{param}",produces="text/html;charset=UTF-8")
 	public String gotoIframePage(@PathVariable(value="path1") String path1,@PathVariable(value="path2") String path2,
 			@PathVariable(value="pageName") String pageName,@PathVariable(value="param") String param,Model model){
 		
+		model.addAttribute("param", param);
 		return path1+"/"+path2+"/"+pageName  ;
 	}
 }
