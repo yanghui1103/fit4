@@ -12,7 +12,6 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/common/common.js"></script>
-	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/base.css" rel="stylesheet">
 	<link href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/easyui.css"  rel="stylesheet" >
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/index.css"  rel="stylesheet" >
     <link href="<%=basePath%>common/fit/v4/static/lightblue/css/basic_info.css" rel="stylesheet">
