@@ -29,4 +29,10 @@ public interface RoleDao {
 	public List<TRole> getRoles(TRole role);
 	
 	public void delete(String id) throws RbackException ;
+	/****
+	 * 增加
+	 * @param trole
+	 * @throws RbackException
+	 */
+	public void insert(TRole trole) throws RbackException ;
 }

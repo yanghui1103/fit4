@@ -41,4 +41,9 @@ public class RoleDaoImpl implements RoleDao {
 		daoTemplete.update("roleSql.delete", id);
 	}
 
+	@Override
+	public void insert(TRole trole) throws RbackException {
+		daoTemplete.insert("roleSql.insert", trole);
+	}
+
 }

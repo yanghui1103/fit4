@@ -67,7 +67,18 @@ function deleteRole(){
 			});
 		});
 	}
+}
 
-	
-	
+function openAddRole(){
+
+	$('#_loadDialog_rolelist').dialog({    
+	    title: '新增角色',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'system/gotoIframePage/system/role/roleAddPage/-9',    
+	    modal: true   
+	});
 }

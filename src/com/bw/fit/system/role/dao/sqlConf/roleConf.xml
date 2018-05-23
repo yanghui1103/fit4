@@ -43,4 +43,9 @@
 	<update id="delete" parameterType="String" >
 		update t_role set isdeleted='1',versionTime=sysdate where id = #{id}
 	</update>
+	
+	<insert id="insert" parameterType="TRole" >
+		insert into t_role (id,name,desp,creator,createtime,versiontime,createorgid,isdeleted) values
+		(#{id},#{name,jdbcType=VARCHAR},#{desp,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},sysdate,sysdate,#{createOrgId,jdbcType=VARCHAR},'0')
+	</insert>
 </mapper>   
