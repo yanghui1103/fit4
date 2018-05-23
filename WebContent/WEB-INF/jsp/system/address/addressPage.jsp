@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%><jsp:include page="/common.jsp" />
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -42,19 +43,9 @@
 					<tr height="300px">
 						<td width="45%" height="320px">
 							<select style="WIDTH:100%;height: 100%" multiple name="list1" size="12" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
-	                            <option value="北京">北京</option> 
-	                            <option value="上海">上海</option> 
-	                            <option value="山东">山东</option> 
-	                            <option value="安徽">安徽</option> 
-	                            <option value="重庆">重庆</option> 
-	                            <option value="福建">福建</option> 
-	                            <option value="甘肃">甘肃</option> 
-	                            <option value="广东">广东</option> 
-	                            <option value="广西">广西</option> 
-	                            <option value="贵州">贵州</option> 
-	                            <option value="海南">海南</option> 
-	                            <option value="河北">河北</option> 
-	                            <option value="黑龙江">黑龙江</option> 
+	                            <c:forEach items="${selectMap }" var="sm">
+	                           		<option value="${sm.key }">${sm.value }</option> 
+	                            </c:forEach>
 		                    </select>
 						</td>
 						<td width="10%">
@@ -70,7 +61,8 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-							值：<input type="text" name="city" size="40">
+							<input id="selectids" type="hidden" name="selectids" size="40">
+							<input id="selectnames" type="hidden" name="selectnames" size="40">
 							<button>确定</button>
 							<button>取消</button>
 						</td>
