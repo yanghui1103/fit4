@@ -12,7 +12,8 @@ function moveOption(e1, e2){
                ii=i-1 	
 	       } 
 	    } 
-       	document.myform.city.value=getvalue(document.myform.list2); 
+       	document.myform.selectids.value=getvalue(document.myform.list2);
+       	document.myform.selectnames.value=getname(document.myform.list2);
     } 
     catch(e){} 
 } 
@@ -24,3 +25,10 @@ function getvalue(geto){
     } 
     return allvalue; 
  } 
+function getname(geto){ 
+    var allname = ""; 
+    for(var i=0;i<geto.options.length;i++){ 
+    	allname +=geto.options[i].text + ","; 
+    } 
+    return allname; 
+ }

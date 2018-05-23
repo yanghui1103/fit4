@@ -49,7 +49,12 @@ public interface PositionDao {
 	/****
 	 * 根据岗位Id获取所属组织列表
 	 * @param positionId
-	 * @throws RbackException
 	 */
 	public List<String> getOrgByPositionId(String positionId) ;
+	
+	/****
+	 * 根据组织Id获岗位列表
+	 * @param posiorgIdtionId
+	 */
+	public List<Position> getPositionByOrgId(String orgId) ;
 }

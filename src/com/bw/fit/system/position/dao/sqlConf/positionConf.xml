@@ -17,6 +17,13 @@
 	<select id="getOrgsByPositionId" parameterType="string" resultType="string">
 		select o.name temp_str1 from t_organization2position op,t_organization o where o.id=OP.ORGID and positionId = #{positionId} ORDER BY o.SORTNUMBER
 	</select>
+	
+	<!-- 根据组织ID获取岗位列表 -->
+	<select id="getPositionByOrgId" parameterType="string" resultType="Position">
+		select p.*from t_organization2position op,T_POSITION p
+		where p.id=OP.POSITIONID and OP.ORGID = #{orgId} ORDER BY p.SORTNUMBER
+	</select>
+	
 	<insert id="insert"  parameterType="Position">
 		insert into t_position(id,name,code,simpleName,isdeleted,
 		creator,createtime,sortnumber,versiontime,createorgid) values

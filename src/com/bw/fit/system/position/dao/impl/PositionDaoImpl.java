@@ -58,4 +58,9 @@ public class PositionDaoImpl implements PositionDao{
 		daoTemplete.delete("positionSql.deleteO2P", map);
 	}
 
+	@Override
+	public List<Position> getPositionByOrgId(String orgId) {
+		return daoTemplete.getListData("positionSql.getPositionByOrgId", orgId);
+	}
+
 }
