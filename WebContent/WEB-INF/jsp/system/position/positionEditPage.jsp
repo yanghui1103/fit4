@@ -23,8 +23,8 @@
 		data-options="novalidate:false">		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>所属组织</div>
-			<input class="easyui-textbox address-select" style="width: 80%;paddding-right:2px"   value="${orgNames }">
-			<input type="text" value="${orgIds }" name="temp_str1"  >
+			<input class="easyui-textbox address-select" style="width: 80%;paddding-right:2px" editable="false" value="${orgNames }">
+			<input type="hidden" value="${orgIds }" name="temp_str1"  >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>名称</div>

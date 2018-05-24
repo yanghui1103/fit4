@@ -33,12 +33,6 @@ function getname(geto){
     return allname; 
  }
 
-
-function callBakcAddressValues(){
-	$('#_loadDialog_address').dialog('close');
-}
-
-
 /****
  * 通用打开地址本
  * @param obj
@@ -51,11 +45,10 @@ function openAddress(dlgObj,idsObj,namesObj){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage',    
+	    href: ctx+'address/openAddressPage/'+idsObj.val(),    
 	    modal: true   ,
-	    toolbar:[{
-			text:'编辑',
-			iconCls:'icon-edit',
+	    buttons:[{
+			text:'确定',
 			handler:function(){
 				var selectids = $("#selectids").val();
 				idsObj.val(  selectids);
