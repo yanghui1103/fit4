@@ -46,4 +46,9 @@ public class RoleDaoImpl implements RoleDao {
 		daoTemplete.insert("roleSql.insert", trole);
 	}
 
+	@Override
+	public List<TAuthority> getAuthsOfThisRole(String roleId) {
+		return daoTemplete.getListData("roleSql.getAuthsOfThisRole", roleId);
+	}
+
 }

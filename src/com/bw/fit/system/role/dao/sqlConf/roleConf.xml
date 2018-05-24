@@ -48,4 +48,10 @@
 		insert into t_role (id,name,desp,creator,createtime,versiontime,createorgid,isdeleted) values
 		(#{id},#{name,jdbcType=VARCHAR},#{desp,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},sysdate,sysdate,#{createOrgId,jdbcType=VARCHAR},'0')
 	</insert>
+	
+	<select id="getAuthsOfThisRole"  parameterType="String" resultType="TAuthority">
+		select a.* from t_role2authority ra ,t_authority a where a.code = ra.authorityid
+ 		and a.isdeleted='0' and ra.roleid = #{roleId}
+	</select>
+	
 </mapper>   

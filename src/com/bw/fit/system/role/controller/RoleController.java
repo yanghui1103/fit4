@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.model.RbackException;
@@ -96,4 +97,11 @@ public class RoleController extends BaseController {
 		return null ;
 	}
 	
+	
+	@RequestMapping("authsOfRole/{roleId}")
+	@ResponseBody
+	public JSONObject authsOfRole(@PathVariable String roleId){
+		
+		return roleService.getAuthsOfRole(roleId);
+	}
 }
