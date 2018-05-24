@@ -32,29 +32,52 @@
 
 </head>
 <body>
-	<div class="easyui-tabs1" style="width: 100%;">
+	<div style="float: right;margin-right:30px;margin-top:5px" >
+		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
+			onclick="addRole2Auths();" style="width: 150px">保存</button>
+	</div>
+	<form id="role2AuthFm">
+	 <div class="easyui-tabs1" style="width: 100%;">
+		<div class="column">
+			<span class="current">角色信息</span>
+		</div>
+		<div class="easyui-panel"
+			style="width: 100%; max-width: 900px; padding: 30px 60px;">
+			<ul><label>${role.name }	</label>
+			</ul>
+		</div>
+		<input name="temp_str1"  value=${role.id } type="hidden">
+		<input name="_method"  value="PUT" type="hidden">
+		
 		<div class="column">
 			<span class="current">功能权限信息</span>
 		</div>
 		<div class="easyui-panel"
 			style="width: 100%; max-width: 900px; padding: 30px 60px;">
-			<div style="margin-bottom: 20px">
-			<select class="easyui-combogrid"  name="type"  editable="false" style="width:80%"  data-options="limitToList:true,
-					panelWidth: 500,
-					idField: 'id',
-					textField: 'name',
-					url: '<%=basePath%>role/authsOfRole/${param }',
-					method: 'get', 
-					columns: [[
-						{field:'id',title:'值',width:50},
-						{field:'name',title:'名称',width:140} 
-					]],
-					fitColumns: true, 
-					required:true
-				">
-			</select>	
-			</div>
+			<ul>
+			<c:forEach items="${all}" var ="item" varStatus="status">
+				<li>
+				<input name="id" value='${item.code }' type="checkbox" /><label>${item.name }</label>
+				</li>
+			</c:forEach>
+			</ul>
 		</div>
-	</div>
+	 </div>
+	</form>
+	<script type="text/javascript">
+		function addRole2Auths(){
+			promptMessageCallBack("3","是否该角色修改功能权限？",function(){					
+				$.ajax({
+					type : 'POST',
+					url : ctx + "role/authsOfRole" ,
+					data :   serializeFormToJSON($("#role2AuthFm").serializeArray()),
+					success : function(data) {
+						promptMessage(data.res, data.msg );
+					},
+					dataType : "JSON"
+				});
+			});
+		}
+	</script>
 </body>
 </html>

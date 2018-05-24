@@ -57,18 +57,4 @@ public class RoleServiceImpl implements RoleService {
 		}
 	}
 
-	@Override
-	public JSONObject getAuthsOfRole(String roleId) {
-		TAuthority ta = new TAuthority();
-		List<TAuthority> all = authorityDao.authoritys(ta);
-		List<TAuthority> my = roleDao.getAuthoritysByRole(roleId);
-
-		JSONObject json = new JSONObject();
-		List<TAuthority> list = authorityDao.authoritys(ta);
-		json.put("total", list.size());
-		json.put("rows", JSONObject.toJSON(list));		
-		return json ;
-	
-	}
-
 }

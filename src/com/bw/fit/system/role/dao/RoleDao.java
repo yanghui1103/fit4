@@ -41,4 +41,10 @@ public interface RoleDao {
 	 * @return
 	 */
 	public List<TAuthority> getAuthsOfThisRole(String roleId);
+	/****
+	 * 获取角色实体
+	 * @param id
+	 * @return
+	 */
+	public TRole get(String id);
 }

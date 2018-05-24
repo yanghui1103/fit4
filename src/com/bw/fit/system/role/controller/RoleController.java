@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.authority.dao.AuthorityDao;
+import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.common.controller.BaseController;
+import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.role.dao.RoleDao;
@@ -37,6 +41,8 @@ public class RoleController extends BaseController {
 	private RoleDao roleDao;
 	@Autowired
 	private RoleService roleService;
+	@Autowired
+	private AuthorityDao authorityDao;
 	
 	@RequestMapping(value="roles",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
@@ -99,9 +105,21 @@ public class RoleController extends BaseController {
 	
 	
 	@RequestMapping("authsOfRole/{roleId}")
+	public String authsOfRole(@PathVariable String roleId,Model model){
+		model.addAttribute("role", roleDao.get(roleId));
+		TAuthority ta = new TAuthority();
+		List<TAuthority> all = authorityDao.authoritys(ta);
+		List<TAuthority> my = roleDao.getAuthoritysByRole(roleId);
+		model.addAttribute("all", all);
+		model.addAttribute("my", my);
+		return "system/role/role2AuthPage";
+	}
+
+	@RequestMapping(value="authsOfRole",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public JSONObject authsOfRole(@PathVariable String roleId){
-		
-		return roleService.getAuthsOfRole(roleId);
+	public JSONObject update(@RequestParam(value="temp_str1") String temp_str1,
+			@RequestParam(value="id") String[] id){
+		System.out.println(id);
+		return null ;
 	}
 }

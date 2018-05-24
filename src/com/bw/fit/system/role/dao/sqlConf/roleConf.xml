@@ -7,9 +7,7 @@
 	<select id="getAccountIdByName"  parameterType="String" resultType="account">
 		select * from t_account where isdeleted='0' and logname= #{logName,jdbcType=VARCHAR}
 	</select>
-	<select id="get"  parameterType="String" resultType="tAuthority">
-		select * from t_authority where code = #{code,jdbcType=VARCHAR} and isdeleted='1'
-	</select>
+
 		
 	<select id="getAuthoritysByRole"  parameterType="String" resultType="tAuthority">
 		select a.* from t_role2authority  ra ,t_authority a 
@@ -52,6 +50,10 @@
 	<select id="getAuthsOfThisRole"  parameterType="String" resultType="TAuthority">
 		select a.* from t_role2authority ra ,t_authority a where a.code = ra.authorityid
  		and a.isdeleted='0' and ra.roleid = #{roleId}
+	</select>
+	
+	<select id="get"  parameterType="String" resultType="tRole">
+		select * from t_role where id = #{id}
 	</select>
 	
 </mapper>   
