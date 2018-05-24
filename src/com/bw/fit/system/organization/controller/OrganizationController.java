@@ -46,7 +46,7 @@ public class OrganizationController extends BaseController {
 	 * @param result
 	 * @return
 	 */
-	@RequestMapping(value="organization",method=RequestMethod.POST,produces="application/json;charset=UTF8")
+	@RequestMapping(value="organization",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject add(@Valid @ModelAttribute Organization org,BindingResult result){
 		JSONObject json = new JSONObject();

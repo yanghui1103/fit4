@@ -2,8 +2,12 @@ package com.bw.fit.system.role.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,4 +70,30 @@ public class RoleController extends BaseController {
 			return json ;
 		}
 	}
+	
+	@RequestMapping(value="role",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject add(@Valid @ModelAttribute Role role){
+		JSONObject json = new JSONObject();		
+		try {
+			Session session = PubFun.getCurrentSession();
+			PubFun.fillCommonProptities(role, true, session);
+			json = roleService.insert(role);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}finally{
+			return json ;
+		}
+	}
+	
+	
+	@RequestMapping("openAddRole/{id}/{name}")
+	public String openAddRole(@PathVariable(value="id") String id,@PathVariable(value="name") String name,Model model){
+		model.addAttribute("roleName", name);
+		
+		return null ;
+	}
+	
 }

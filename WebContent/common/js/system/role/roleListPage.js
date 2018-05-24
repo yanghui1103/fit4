@@ -67,7 +67,34 @@ function deleteRole(){
 			});
 		});
 	}
+}
+/*****
+ * 打开分配功能权限
+ */
+function openRole2AuthPage(){
+	var row = getSingleTreeGridSelectData($("#roleListDg")); 
+	$('#_loadDialog_rolelist').dialog({    
+	    title: '新增角色',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'system/gotoIframePage/system/role/role2AuthPage/'+row.id ,    
+	    modal: true   
+	});
+}
 
-	
-	
+
+function openAddRole(){
+	$('#_loadDialog_rolelist').dialog({    
+	    title: '分配权限',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'system/gotoIframePage/system/role/roleAddPage/-9',    
+	    modal: true   
+	});
 }
