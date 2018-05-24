@@ -22,7 +22,7 @@
 		data-options="novalidate:false">		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>所属组织</div>
-			<input class="easyui-textbox addressSelect" style="width: 80%;paddding-right:2px"  editable="false"  value="${orgNames }">
+			<input id="address-select" class="easyui-textbox" style="width: 80%;paddding-right:2px" readonly="readonly"  value="${orgNames }">
 			<input type="hidden" value="${orgIds }" name="temp_str1"  >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
@@ -33,7 +33,7 @@
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>简称</div>
-			<input class="easyui-textbox addressSelect" name="simpleName" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox" name="simpleName" style="width: 80%;paddding-right:2px"  
 				value="${position.simpleName }" 
 				data-options="rvalidType:['length[0,10]']">
 		</div>
@@ -53,10 +53,11 @@
 	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionAddPage.js"></script>
 <script type="text/javascript">
-$(function(){ 
-	　　$(".addressSelect").mouseup(function(){
-		 alert();
-	});
+$(function(){
+	var t = $("#address-select");
+	 t.textbox('textbox').bind("mouseup",function(e){
+		  alert('666');
+	 });
 }); 
 </script>
 </body>
