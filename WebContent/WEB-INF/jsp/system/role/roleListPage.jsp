@@ -39,5 +39,6 @@
         </table>
     </div>      
 	<div id="_loadDialog_rolelist"></div>
+	
 </body> 
 </html>

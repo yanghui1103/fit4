@@ -4,6 +4,8 @@
 
 $(function(){
 	positionlistquery();
+	
+
 });
 
 
@@ -96,15 +98,5 @@ function editPosition(){
 	}
 }
 
-function addAddressPage(){
-	$('#_loadDialog_address').dialog({    
-	    title: '地址本',    
-	    width: 800,    
-	    height: 500,    
-	    closed: false,    
-	    cache: false,    
-	    maximizable:true,
-	    href: ctx+'address/openAddressPage',    
-	    modal: true   
-	});
-}
+
+ 

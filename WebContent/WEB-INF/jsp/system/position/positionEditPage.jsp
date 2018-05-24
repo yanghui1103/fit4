@@ -23,8 +23,8 @@
 		data-options="novalidate:false">		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>所属组织</div>
-			<input class="easyui-textbox address-select" style="width: 80%;paddding-right:2px" editable="false"  value="${orgNames }">
-			<input type="hidden" value="${orgIds }" name="temp_str1"  >
+			<input class="easyui-textbox address-select" style="width: 80%;paddding-right:2px"   value="${orgNames }">
+			<input type="text" value="${orgIds }" name="temp_str1"  >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>名称</div>
@@ -52,6 +52,7 @@
 		</div>
 	</form>	
 	
+	<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionAddPage.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -59,7 +60,7 @@
 			icons: [{
 				iconCls:'icon-search',
 				handler: function(e){
-					addAddressPage();
+					openAddress($("#_loadDialog_address"),$("input[name='temp_str1']"),$(".address-select"));
 				}
 			}]
 		})

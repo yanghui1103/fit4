@@ -63,8 +63,8 @@
 						<td colspan="3">
 							<input id="selectids" type="hidden" name="selectids" size="40">
 							<input id="selectnames" type="hidden" name="selectnames" size="40">
-							<button>确定</button>
-							<button>取消</button>
+							<button type=button onclick="callBakcAddressValues();">确定</button>
+							<button type=button>取消</button>
 						</td>
 					</tr>
 				</table>
@@ -74,6 +74,5 @@
 		</div>
 	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>
-	<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
 </body>
 </html>

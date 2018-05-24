@@ -32,3 +32,37 @@ function getname(geto){
     } 
     return allname; 
  }
+
+
+function callBakcAddressValues(){
+	$('#_loadDialog_address').dialog('close');
+}
+
+
+/****
+ * 通用打开地址本
+ * @param obj
+ */
+function openAddress(dlgObj,idsObj,namesObj){
+	dlgObj.dialog({    
+	    title: '地址本',    
+	    width: 800,    
+	    height: 400,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'address/openAddressPage',    
+	    modal: true   ,
+	    toolbar:[{
+			text:'编辑',
+			iconCls:'icon-edit',
+			handler:function(){
+				var selectids = $("#selectids").val();
+				idsObj.val(  selectids);
+				var selectNames = $("#selectnames").val();
+				namesObj.textbox('setValue', selectNames);
+				dlgObj.dialog("close");
+			}
+		}]
+	});
+}
