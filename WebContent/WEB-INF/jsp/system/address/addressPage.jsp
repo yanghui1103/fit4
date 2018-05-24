@@ -33,7 +33,7 @@
 					<input type="checkbox"><label class="kv-label">岗位</label>
 					<input type="checkbox"><label class="kv-label">账户</label>
 				</div>
-				<form method="post" name="myform">
+				<form name="myform">
 				<table width="100%" border="1" rules="all">
 					<tr>
 						<td width="45%" align="center">待选</td>

@@ -17,12 +17,13 @@
 			onclick="addNewPosition();" style="width: 150px">保存</button>
 	</div>
 	
+	<div id="_loadDialog_address"></div>
 	<div style="margin:30px 0px;"></div>
 	<form id="positionAddFm"  class="easyui-form" method="post"
 		data-options="novalidate:false">		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>所属组织</div>
-			<input id="address-select" class="easyui-textbox" style="width: 80%;paddding-right:2px" readonly="readonly"  value="${orgNames }">
+			<input class="easyui-textbox address-select" style="width: 80%;paddding-right:2px" editable="false"  value="${orgNames }">
 			<input type="hidden" value="${orgIds }" name="temp_str1"  >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
@@ -53,13 +54,19 @@
 	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionAddPage.js"></script>
 <script type="text/javascript">
-$(function(){
-	var t = $("#address-select");
-	 t.textbox('textbox').bind("mouseup",function(e){
-		  alert('666');
-	 });
-}); 
-</script>
+	$(function(){
+		$(".address-select").textbox({
+			icons: [{
+				iconCls:'icon-search',
+				handler: function(e){
+					addAddressPage();
+				}
+			}]
+		})
+
+
+	});
+	</script>
 </body>
 
 </html>
