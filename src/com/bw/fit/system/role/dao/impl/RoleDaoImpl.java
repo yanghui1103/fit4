@@ -11,6 +11,7 @@ import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2Authority;
 @Repository
 public class RoleDaoImpl implements RoleDao {
 
@@ -54,6 +55,17 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public TRole get(String id) {
 		return (TRole)daoTemplete.getOneData("roleSql.get", id);
+	}
+
+	@Override
+	public void grantAuthority2Role(TRole2Authority ta) throws RbackException {
+		daoTemplete.insert("roleSql.insertAuthority2Role",ta);
+	}
+
+	@Override
+	public void deleteAuthority2Role(TRole2Authority ta) throws RbackException {
+		// TODO Auto-generated method stub
+		daoTemplete.delete("roleSql.deleteAuthority2Role", ta);
 	}
 
 

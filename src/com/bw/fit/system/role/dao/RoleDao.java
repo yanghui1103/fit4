@@ -6,6 +6,7 @@ import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2Authority;
 
 public interface RoleDao {
 
@@ -47,4 +48,16 @@ public interface RoleDao {
 	 * @return
 	 */
 	public TRole get(String id);
+	/****
+	 * 赋权
+	 * @param ta
+	 * @throws RbackException
+	 */
+	public void grantAuthority2Role(TRole2Authority ta)  throws RbackException ;
+	/****
+	 * delete赋权
+	 * @param ta
+	 * @throws RbackException
+	 */
+	public void deleteAuthority2Role(TRole2Authority ta)  throws RbackException ;
 }

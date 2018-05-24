@@ -56,4 +56,10 @@
 		select * from t_role where id = #{id}
 	</select>
 	
+	<insert id="insertAuthority2Role"  parameterType="TRole2Authority" >
+		insert into t_role2authority (roleId,authorityId) values (#{roleId},#{authorityId})
+	</insert>
+	<delete id="deleteAuthority2Role" parameterType="TRole2Authority" >
+		delete from t_role2authority where roleid = #{roleId}
+	</delete>
 </mapper>   

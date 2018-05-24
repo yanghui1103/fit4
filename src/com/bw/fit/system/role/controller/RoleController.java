@@ -118,8 +118,10 @@ public class RoleController extends BaseController {
 	@RequestMapping(value="authsOfRole",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject update(@RequestParam(value="temp_str1") String temp_str1,
-			@RequestParam(value="id") String[] id){
-		System.out.println(id);
-		return null ;
+			@RequestParam(value="id") String[] id) throws RbackException{
+		JSONObject json = new JSONObject();		
+		json = roleService.updateAuthsOfRole(temp_str1,id);
+		return json ;
+	
 	}
 }

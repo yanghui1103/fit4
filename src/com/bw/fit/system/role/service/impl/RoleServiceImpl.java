@@ -14,6 +14,7 @@ import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2Authority;
 import com.bw.fit.system.role.model.Role;
 import com.bw.fit.system.role.service.RoleService;
 
@@ -55,6 +56,47 @@ public class RoleServiceImpl implements RoleService {
 		}finally{
 			return json;
 		}
+	}
+
+	@Override
+	public JSONObject grantAuthority2Role(TRole2Authority taa)
+			throws RbackException {
+		JSONObject json = new JSONObject();
+		try{
+			roleDao.grantAuthority2Role(taa);
+			PubFun.returnSuccessJson(json);
+		}catch(RbackException ex){
+			json = new JSONObject();
+			PubFun.returnFailJson(json, ex.getMsg());
+			throw ex;
+		}finally{
+			return json;
+		}
+	}
+
+	@Override
+	public JSONObject updateAuthsOfRole(String temp_str1, String[] id)
+			throws RbackException {
+		try {
+			TRole2Authority ta2 = new TRole2Authority();
+			ta2.setRoleId(temp_str1);
+			roleDao.deleteAuthority2Role(ta2);
+			for(String s:id){
+				TRole2Authority ta = new TRole2Authority();
+				ta.setRoleId(temp_str1);
+				ta.setAuthorityId(s);
+				JSONObject j = grantAuthority2Role(ta);
+				if(!"2".equals(j.get("res"))){
+					throw new RbackException("1",j.getString("msg"));
+				}
+			}
+		} catch (Exception e) {
+			RbackException ex = new RbackException("1",e.getMessage());
+			throw ex;
+		}
+		JSONObject json = new JSONObject();
+		PubFun.returnSuccessJson(json);
+		return json ;
 	}
 
 }

@@ -70,7 +70,7 @@
 				$.ajax({
 					type : 'POST',
 					url : ctx + "role/authsOfRole" ,
-					data :   serializeFormToJSON($("#role2AuthFm").serializeArray()),
+					data :   ($("#role2AuthFm").serialize()),
 					success : function(data) {
 						promptMessage(data.res, data.msg );
 					},
