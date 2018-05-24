@@ -1,5 +1,8 @@
 package com.bw.fit.system.system.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -112,6 +115,12 @@ public class SystemController extends BaseController {
 	public String gotoIframePage(@PathVariable(value="path1") String path1,@PathVariable(value="path2") String path2,
 			@PathVariable(value="pageName") String pageName,@PathVariable(value="param") String param,Model model){
 		
+		try {
+			param = (URLDecoder.decode(param, "UTF-8"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("param", param);
 		return path1+"/"+path2+"/"+pageName  ;
 	}

@@ -74,13 +74,13 @@ function deleteRole(){
 function openRole2AuthPage(){
 	var row = getSingleTreeGridSelectData($("#roleListDg")); 
 	$('#_loadDialog_rolelist').dialog({    
-	    title: '新增角色',    
+	    title: '分配功能权限',    
 	    width: 800,    
 	    height: 500,    
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'system/gotoIframePage/system/role/role2AuthPage/'+row.id ,    
+	    href: ctx+'system/gotoIframePage/system/role/role2AuthPage/'+encodeURI(encodeURI(row.id)) ,    
 	    modal: true   
 	});
 }

@@ -35,4 +35,10 @@ public interface RoleDao {
 	 * @throws RbackException
 	 */
 	public void insert(TRole trole) throws RbackException ;
+	/****
+	 * 这个角色的功能权限
+	 * @param roleId
+	 * @return
+	 */
+	public List<TAuthority> getAuthsOfThisRole(String roleId);
 }
