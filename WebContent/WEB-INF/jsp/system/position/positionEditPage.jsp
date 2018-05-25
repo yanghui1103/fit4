@@ -14,12 +14,12 @@
 <body>
 	<div style="float: right;margin-right:30px;margin-top:5px" >
 		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
-			onclick="addNewPosition();" style="width: 150px">保存</button>
+			onclick="editPosition();" style="width: 150px">修改</button>
 	</div>
 	
 	<div id="_loadDialog_address"></div>
 	<div style="margin:30px 0px;"></div>
-	<form id="positionAddFm"  class="easyui-form" method="post"
+	<form id="positionEditFm"  class="easyui-form" method="post"
 		data-options="novalidate:false">		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>所属组织</div>
@@ -53,21 +53,7 @@
 	</form>	
 	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
-	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionAddPage.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$(".address-select").textbox({
-			icons: [{
-				iconCls:'icon-search',
-				handler: function(e){
-					openAddress($("#_loadDialog_address"),$("input[name='temp_str1']"),$(".address-select"));
-				}
-			}]
-		})
-
-
-	});
-	</script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/position/positionEditPage.js"></script>
 </body>
 
 </html>

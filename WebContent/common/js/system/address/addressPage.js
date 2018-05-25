@@ -45,7 +45,7 @@ function openAddress(dlgObj,idsObj,namesObj){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage/'+idsObj.val(),    
+	    href: ctx+'address/openAddressPage/105/1/-1/-1',    
 	    modal: true   ,
 	    buttons:[{
 			text:'确定',
