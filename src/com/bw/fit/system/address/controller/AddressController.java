@@ -1,16 +1,20 @@
 package com.bw.fit.system.address.controller;
 
+import static com.bw.fit.system.common.util.PubFun.getCurrentSession;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.address.dao.AddressDao;
 import com.bw.fit.system.address.entity.VAddress;
 import com.bw.fit.system.common.model.BaseModel;
@@ -33,9 +37,11 @@ public class AddressController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("openAddressPage/{orgId}/{o}/{p}/{a}")
-	public String openAddressPage(Model model,@PathVariable String orgId,@PathVariable String o,@PathVariable String p,@PathVariable String a){
-		
+	@RequestMapping("openAddressPage/{o}/{p}/{a}")
+	public String openAddressPage(Model model,@PathVariable String o,@PathVariable String p,@PathVariable String a){
+		Session session = getCurrentSession();
+		Account account = (Account)session.getAttribute("CurrentUser");
+		String orgId = account.getCurrentOrgId();
 		Map<String,String> map = new HashMap<>();
 		if(!"-1".equals(o)) {
 			List<VAddress> orgList = addressDao.getAddress("organization", orgId);

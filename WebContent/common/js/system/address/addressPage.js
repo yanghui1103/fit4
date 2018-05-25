@@ -6,10 +6,18 @@ function moveOption(e1, e2){
     try{ 
        for(var i=0;i<e1.options.length;i++){ 
     	   if(e1.options[i].selected){ 
-    		   var e = e1.options[i]; 
-               e2.options.add(new Option(e.text, e.value)); 
-               e1.remove(i); 
-               ii=i-1 	
+    		   var e = e1.options[i];
+    		   var flag = true;
+    		   for(var j=0;j<e2.options.length;j++){
+    			   if(e.value==e2.options[j].value){
+    				   flag = false;
+    				   break;
+    			   }
+    		   }
+    		   if(flag){
+    			   e2.options.add(new Option(e.text, e.value)); 
+                   e1.remove(i);
+    		   }
 	       } 
 	    } 
        	document.myform.selectids.value=getvalue(document.myform.list2);
@@ -45,7 +53,7 @@ function openAddress(dlgObj,idsObj,namesObj){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage/105/1/-1/-1',    
+	    href: ctx+'address/openAddressPage/1/-1/-1',    
 	    modal: true   ,
 	    buttons:[{
 			text:'确定',

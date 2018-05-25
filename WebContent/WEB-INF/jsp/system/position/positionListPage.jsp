@@ -56,7 +56,7 @@
 		    <div style="padding: 0 20px; float: right;position: absolute;top:0px;right:0px">
 				<a href="javascript:addPositionPage();" class="easyui-linkbutton" iconCls="icon-add"
 					data-options="selected:true">新增</a> 
-				<a href="javascript:editPosition()" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
+				<a href="javascript:openEditPosition()" class="easyui-linkbutton" iconCls="icon-edit" >编辑</a> 
 				<a href="javascript:deletePosition();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
 			</div>	
 		</div>

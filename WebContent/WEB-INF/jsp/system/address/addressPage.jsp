@@ -42,7 +42,7 @@
 					</tr>
 					<tr height="300px">
 						<td width="45%" height="320px">
-							<select style="WIDTH:100%;height: 100%" multiple name="list1" size="12" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
+							<select style="WIDTH:100%;height: 100%" name="list1" size="12" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
 	                            <c:forEach items="${selectMap }" var="sm">
 	                           		<option value="${sm.key }">${sm.value }</option> 
 	                            </c:forEach>
@@ -55,7 +55,8 @@
 			                <input type="button" value="删除" onclick="moveOption(document.myform.list2, document.myform.list1)">
 						</td>
 						<td width="45%" height="320px">
-							<select style="WIDTH:100%;height: 100%" multiple name="list2" size="12" ondblclick="moveOption(document.myform.list2, document.myform.list1)"> 
+							<select style="WIDTH:100%;height: 100%" name="list2" size="12" ondblclick="moveOption(document.myform.list2, document.myform.list1)"> 
+               					<option value="105000">信息公司</option>
                				</select>
 						</td>
 					</tr>

@@ -82,7 +82,7 @@ function deletePosition(){
 	}
 }
 
-function editPosition(){
+function openEditPosition(){
 	var row = getSingleGridSelectData($("#positionLiDg"));
 	if(row !=null){				
 		$('#_loadDialog_positionList').dialog({    
