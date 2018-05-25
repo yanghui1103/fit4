@@ -39,11 +39,20 @@
 		insert into t_organization2position(orgId,positionId) values
 		(#{orgId},#{positionId})
 	</insert>
+	
+	<update id="update"  parameterType="Position">
+		update t_position set name=#{name,jdbcType=VARCHAR},code=#{code},
+		simpleName=#{simpleName,jdbcType=VARCHAR},sortnumber=#{sortNumber,jdbcType=INTEGER},
+		versiontime=sysdate where id = #{id}
+	</update>
 	<!-- 删除组织 -->
 	<update id="delete"  parameterType="String">
 		update t_position set isdeleted='1'  where id = #{id}
 	</update>
 	<delete id="deleteO2P"  parameterType="map">
 		delete from t_organization2position where positionId = #{id} and orgId = #{orgId}
+	</delete>
+	<delete id="deleteO2PByPid"  parameterType="String">
+		delete from t_organization2position where positionId = #{id}
 	</delete>
 </mapper>   

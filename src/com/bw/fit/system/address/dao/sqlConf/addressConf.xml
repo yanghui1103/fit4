@@ -3,7 +3,7 @@
 <mapper namespace="addressSql"> 
 
 	<select id="getAddress" parameterType="map" resultType="VAddress">
-		select * from V_ADDRESS where ADDRESSTYPE = #{addressType} and UNDERORGID like #{underOrgId}||'%'
+		select * from V_ADDRESS where ADDRESSTYPE = #{addressType} and UNDERORGID = #{underOrgId}
 	</select>
 	
 </mapper>   

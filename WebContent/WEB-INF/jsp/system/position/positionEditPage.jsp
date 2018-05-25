@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div style="float: right;margin-right:30px;margin-top:5px" >
-		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
+		<button class="easyui-linkbutton" type=button iconCls="icon-edit" data-options="selected:true"
 			onclick="editPosition();" style="width: 150px">修改</button>
 	</div>
 	
@@ -50,6 +50,8 @@
 				value="${position.sortNumber }"
 				data-options="required:true,validType:['length[0,3]']">
 		</div>
+		<input type="hidden" name="id" value="${position.id }" >
+		<input type="hidden" name="_method" value="put" >
 	</form>	
 	
 	<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>

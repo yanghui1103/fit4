@@ -32,6 +32,7 @@ public class PositionServiceImpl implements PositionService{
 			}
 		} catch (RbackException e) {
 			e.printStackTrace();
+			json = new JSONObject();
 			PubFun.returnFailJson(json, e.getMsg());
 			throw   e;
 		}finally{
@@ -45,8 +46,19 @@ public class PositionServiceImpl implements PositionService{
 		try {
 			positionDao.update(position);
 			PubFun.returnSuccessJson(json);
+			positionDao.deleteO2PByPid(position.getId());
+			String [] ids = position.getTemp_str1().split(",");
+			if(ids.length>0) {
+				for(String orgId : ids) {
+					TOrganization2Position to2p = new TOrganization2Position();
+					to2p.setPositionId(position.getId());
+					to2p.setOrgId(orgId);
+					positionDao.insertOrg2Position(to2p);
+				}
+			}
 		} catch (RbackException e) {
 			e.printStackTrace();
+			json = new JSONObject();
 			PubFun.returnFailJson(json, e.getMsg());
 			throw   e;
 		}finally{
@@ -62,6 +74,7 @@ public class PositionServiceImpl implements PositionService{
 			PubFun.returnSuccessJson(json);
 		} catch (RbackException e) {
 			e.printStackTrace();
+			json = new JSONObject();
 			PubFun.returnFailJson(json, e.getMsg());
 			throw   e;
 		}finally{

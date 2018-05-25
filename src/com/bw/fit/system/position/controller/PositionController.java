@@ -130,6 +130,22 @@ public class PositionController {
 		}
 	}
 	
+	@RequestMapping(value="position",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject update(@Valid @ModelAttribute Position p){
+		JSONObject json = new JSONObject();
+		Session session  = PubFun.getCurrentSession();
+		PubFun.fillCommonProptities(p, false, session);
+		try {
+			json = positionService.updatePosition(p);
+		} catch (RbackException e) { 
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+		}finally{
+			return json ;
+		}
+	}
+	
 	@RequestMapping(value="position/{id}/{orgId}",method=RequestMethod.DELETE,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject delete(@PathVariable String id,@PathVariable String orgId){	

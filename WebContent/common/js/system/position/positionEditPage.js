@@ -19,12 +19,12 @@ function editPosition(){
 	}
 	$.ajax({
 		type : 'post',
-		url : ctx + "dict/dict",
+		url : ctx + "position/position",
 		data : serializeFormToJSON($("#positionEditFm")
 				.serializeArray()),
 		success : function(data) {
 			promptMessageCallBack(data.res, data.msg,function(){
-				 $('#dataDictTreeGd').treegrid('reload');  
+				 $('#positionLiDg').datagrid('reload');  
 			} );
 		},
 		dataType : "JSON"

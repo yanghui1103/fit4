@@ -48,6 +48,13 @@ public interface PositionDao {
 	public void deleteO2P(String id,String orgId) throws RbackException ;
 	
 	/****
+	 * 根据岗位id删除岗位和组织关联信息(修改岗位使用)
+	 * @param id
+	 * @throws RbackException
+	 */
+	public void deleteO2PByPid(String id) throws RbackException ;
+	
+	/****
 	 * 根据岗位Id获取所属组织列表
 	 * @param positionId
 	 */

@@ -69,4 +69,9 @@ public class PositionDaoImpl implements PositionDao{
 		return (Position)daoTemplete.getOneData("positionSql.get", id);
 	}
 
+	@Override
+	public void deleteO2PByPid(String id) throws RbackException {
+		daoTemplete.delete("positionSql.deleteO2PByPid", id);
+	}
+
 }
