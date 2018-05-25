@@ -3,7 +3,7 @@
 <mapper namespace="authoritySql">
 	<select id="authoritys" parameterType="TAuthority" resultType="TAuthority">
 		select * from (
-		select * from t_authority where ( name like  '%'||#{keyWords}||'%' or desp  like  '%'||#{keyWords}||'%')  and isdeleted='0'  ) 
+		select * from t_authority where ( name like  '%'||#{keyWords}||'%' or desp  like  '%'||#{keyWords}||'%')  and isdeleted='0' order by name asc ) 
 		where 1=1  
 	</select>
 	<!-- 删除组织 -->

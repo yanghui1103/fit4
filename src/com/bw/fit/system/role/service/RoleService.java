@@ -3,6 +3,7 @@ package com.bw.fit.system.role.service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.role.entity.TRole2Authority;
 import com.bw.fit.system.role.model.Role;
 
 public interface RoleService {
@@ -21,10 +22,13 @@ public interface RoleService {
 	 * @throws RbackException
 	 */
 	public JSONObject insert(Role role) throws RbackException;
-	/****
-	 * 根据角色id查询拥有和全部的功能权限 
-	 * @param roleId
+	/*****
+	 * 角色赋权
+	 * @param taa
 	 * @return
+	 * @throws RbackException
 	 */
-	public JSONObject getAuthsOfRole(String roleId);
+	public JSONObject grantAuthority2Role(TRole2Authority taa) throws RbackException;
+	public JSONObject updateAuthsOfRole(String temp_str1,String[] id) throws RbackException;
+	
 }

@@ -80,7 +80,7 @@ function openRole2AuthPage(){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'system/gotoIframePage/system/role/role2AuthPage/'+encodeURI(encodeURI(row.id)) ,    
+	    href: ctx+'role/authsOfRole/'+  row.id  ,    
 	    modal: true   
 	});
 }
