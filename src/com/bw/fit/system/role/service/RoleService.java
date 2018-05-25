@@ -30,5 +30,13 @@ public interface RoleService {
 	 */
 	public JSONObject grantAuthority2Role(TRole2Authority taa) throws RbackException;
 	public JSONObject updateAuthsOfRole(String temp_str1,String[] id) throws RbackException;
+	/*****
+	 * 分配数据权限
+	 * @param roleId
+	 * @param authId
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject saveDataAuthsOfRole(String roleId,String authId)  throws RbackException;
 	
 }

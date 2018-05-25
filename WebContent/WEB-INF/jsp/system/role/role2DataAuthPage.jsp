@@ -36,7 +36,7 @@
 		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
 			onclick="addRole2Auths();" style="width: 150px">保存</button>
 	</div>
-	<form id="role2AuthFm">
+	<form id="role2dataAuthFm">
 	 <div class="easyui-tabs1" style="width: 100%;">
 		<div class="column">
 			<span class="current">角色信息</span>
@@ -57,11 +57,11 @@
 			<ul>
 			<c:forEach items="${all}" var ="item" varStatus="status">
 				<li>
-				<c:if test="${item.desp =='checked'}">
-				<input name="id" value='${item.code }' checked='checked' type="radio" /><label>${item.name }</label>
+				<c:if test="${item.logId =='checked'}">
+				<input name="id" value='${item.dict_value }' checked='checked' type="radio" /><label>${item.dict_name }</label>
 				</c:if>
-				<c:if test="${item.desp !='checked'}">
-				<input name="id" value='${item.code }'   type="radio" /><label>${item.name }</label>
+				<c:if test="${item.logId !='checked'}">
+				<input name="id" value='${item.dict_value }'   type="radio" /><label>${item.dict_name }</label>
 				</c:if>
 				
 				
@@ -73,11 +73,11 @@
 	</form>
 	<script type="text/javascript">
 		function addRole2Auths(){
-			promptMessageCallBack("3","是否该角色修改功能权限？",function(){					
+			promptMessageCallBack("3","是否该角色修改数据权限？",function(){					
 				$.ajax({
 					type : 'POST',
-					url : ctx + "role/authsOfRole" ,
-					data :   ($("#role2AuthFm").serialize()),
+					url : ctx + "role/saveDataAuthsOfRole" ,
+					data :   ($("#role2dataAuthFm").serialize()),
 					success : function(data) {
 						promptMessage(data.res, data.msg );
 					},

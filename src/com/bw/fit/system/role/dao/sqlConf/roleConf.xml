@@ -72,5 +72,10 @@
 		select * from t_role2dataauth where roleid = #{roleId} 
 	</select>
 	
-	
+	<delete id="deleteDataAuthority2Role"  parameterType="string">
+		delete from t_role2dataauth where roleid = #{roleId}
+	</delete>
+	<insert id="grantDataAuthority2Role" parameterType="baseModel">
+		insert into t_role2dataauth (roleid,authid) values (#{id},#{action_name})
+	</insert>
 </mapper>   
