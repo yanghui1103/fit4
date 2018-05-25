@@ -49,6 +49,11 @@
     	start with a.parent_id = #{parent_id}
 	</select>
 	
+	<select id="getDictsByPid" parameterType="String" resultType="tdataDict">
+		select * from data_dict a
+    	where isdeleted='0'  and parent_id = #{parentId}
+	</select>
+	
 	<insert id="insert" parameterType="dict">
 		insert into data_dict (fdid,parent_id,dict_name,dict_value,num,can_add,can_edit,can_del,isdeleted) values
 	(#{id},#{parentId},#{dictName},#{dictValue},#{sortNumber},#{canAdd},#{canEdit},#{canDel},'0')

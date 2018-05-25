@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bw.fit.system.authority.entity.TAuthority;
+import com.bw.fit.system.authority.entity.TRole2dataauth;
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
@@ -71,6 +73,21 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public List<TAuthority> getAuthority2Role(TRole2Authority ta) {
 		return daoTemplete.getListData("roleSql.getAuthority2Role", ta);
+	}
+
+	@Override
+	public List<TRole2dataauth> getDataAuthoritysByRole(String roleId) {
+		return daoTemplete.getListData("roleSql.getDataAuthoritysByRole", roleId);
+	}
+
+	@Override
+	public void grantDataAuthority2Role(BaseModel ta) throws RbackException {
+		daoTemplete.insert("roleSql.grantDataAuthority2Role", ta);
+	}
+
+	@Override
+	public void deleteDataAuthority2Role(String roleId) throws RbackException {
+		daoTemplete.delete("roleSql.deleteDataAuthority2Role", roleId);
 	}
 
 

@@ -9,6 +9,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.authority.dao.AuthorityDao;
 import com.bw.fit.system.authority.entity.TAuthority;
+import com.bw.fit.system.authority.entity.TRole2dataauth;
+import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.model.DataDict;
@@ -100,6 +102,30 @@ public class RoleServiceImpl implements RoleService {
 		JSONObject json = new JSONObject();
 		PubFun.returnSuccessJson(json);
 		return json ;
+	}
+
+	@Override
+	public JSONObject saveDataAuthsOfRole(String roleId, String authId)
+			throws RbackException {
+		JSONObject json = new JSONObject();
+		try {
+			BaseModel bm = new BaseModel();
+			bm.setId(roleId);
+			bm.setAction_name(authId);
+			List<TRole2dataauth> alis = roleDao.getDataAuthoritysByRole(roleId);
+			if(alis!=null){
+				roleDao.deleteDataAuthority2Role(roleId);
+			}
+			roleDao.grantDataAuthority2Role(bm);
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+			e.printStackTrace();
+			throw e;
+		}		finally{
+			return json ;
+		}
 	}
 
 }

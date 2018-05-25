@@ -30,7 +30,7 @@
         <a href="javascript:openAddRole();" class="easyui-linkbutton" iconCls="icon-add" >新增</a> 
         <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >分配人员</a> 
         <a href="javascript:openRole2AuthPage();" class="easyui-linkbutton" iconCls="icon-edit" >配置功能权限</a> 
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >配置数据权限</a> 
+        <a href="javascript:openRole2DataAuthPage();" class="easyui-linkbutton" iconCls="icon-edit" >配置数据权限</a> 
         <a href="#" class="easyui-linkbutton" iconCls="icon-edit" >配置菜单权限</a> 
         <a href="javascript:deleteRole();" class="easyui-linkbutton" iconCls="icon-remove" >删除</a> 
         </form>

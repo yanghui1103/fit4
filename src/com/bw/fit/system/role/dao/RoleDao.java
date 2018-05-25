@@ -3,6 +3,8 @@ package com.bw.fit.system.role.dao;
 import java.util.List;
 
 import com.bw.fit.system.authority.entity.TAuthority;
+import com.bw.fit.system.authority.entity.TRole2dataauth;
+import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.entity.TRole;
@@ -66,4 +68,17 @@ public interface RoleDao {
 	 * @return
 	 */
 	public List<TAuthority> getAuthority2Role(TRole2Authority ta);
+	/*****
+	 * 根据角色id查询拥有的数据权限
+	 * @param roleId
+	 * @return
+	 */
+	public List<TRole2dataauth> getDataAuthoritysByRole(String roleId);
+	/*****
+	 * 给角色赋数据权限 
+	 * @param ta
+	 * @throws RbackException
+	 */
+	public  void grantDataAuthority2Role(BaseModel ta)  throws RbackException ; 
+	public  void deleteDataAuthority2Role(String roleId)  throws RbackException ; 
 }

@@ -22,8 +22,9 @@ public class DictServiceImpl implements DictService {
 	private DictDao dictDao ;
 	
 	@Override
-	public DataDict getDictsByParentValue(String value) {
-		return null ;
+	public Dict getDictsByParentValue(String value) {
+		Dict d = dictDao.getDictByValue(value);
+		return d ;
 		
 	}
 

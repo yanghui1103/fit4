@@ -20,10 +20,16 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.authority.dao.AuthorityDao;
 import com.bw.fit.system.authority.entity.TAuthority;
+import com.bw.fit.system.authority.entity.TRole2dataauth;
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.system.dict.dao.DictDao;
+import com.bw.fit.system.dict.entity.TdataDict;
+import com.bw.fit.system.dict.model.DataDict;
+import com.bw.fit.system.dict.model.Dict;
+import com.bw.fit.system.dict.service.DictService;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.model.Role;
@@ -39,11 +45,15 @@ import com.bw.fit.system.user.entity.TUser;
 public class RoleController extends BaseController {
 
 	@Autowired
+	private DictService dictService ;
+	@Autowired
 	private RoleDao roleDao;
 	@Autowired
 	private RoleService roleService;
 	@Autowired
 	private AuthorityDao authorityDao;
+	@Autowired
+	private DictDao dictDao;
 	
 	@RequestMapping(value="roles",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
@@ -121,6 +131,13 @@ public class RoleController extends BaseController {
 		return "system/role/role2AuthPage";
 	}
 
+	/*****
+	 * 分配功能权限
+	 * @param temp_str1
+	 * @param id
+	 * @return
+	 * @throws RbackException
+	 */
 	@RequestMapping(value="authsOfRole",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public JSONObject update(@RequestParam(value="temp_str1") String temp_str1,
@@ -129,4 +146,34 @@ public class RoleController extends BaseController {
 		json = roleService.updateAuthsOfRole(temp_str1,id);
 		return json ;	
 	}
+	
+
+	@RequestMapping("dataAuthsOfRole/{roleId}")
+	public String dataAuthsOfRole(@PathVariable String roleId,Model model){
+		model.addAttribute("role", roleDao.get(roleId));
+		Dict dd = dictService.getDictsByParentValue("dataAuth");
+		List<TdataDict> tds =  dictDao.getDictsByPid(dd.getId());
+		List<TRole2dataauth> my = roleDao.getDataAuthoritysByRole(roleId);
+		for(TdataDict t:tds){
+			if(my!=null){
+				Optional ops = my.parallelStream().filter(x->x.getAuthId().equals(t.getDict_value())).findAny();
+				if(ops.isPresent()){
+					t.setLogId("checked");
+				}
+			}
+		}
+		model.addAttribute("all", tds);
+		return "system/role/role2DataAuthPage";
+	}
+
+	
+	@RequestMapping(value="saveDataAuthsOfRole",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject saveAuthsOfRole(@RequestParam(value="temp_str1") String temp_str1,
+			@RequestParam(value="id") String id) throws RbackException{
+		JSONObject json = new JSONObject();		
+		json = roleService.saveDataAuthsOfRole(temp_str1,id);
+		return json ;	
+	}
+	
 }

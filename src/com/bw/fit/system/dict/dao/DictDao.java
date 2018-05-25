@@ -55,4 +55,10 @@ public interface DictDao {
 	 * @throws RbackException
 	 */
 	public void update(Dict dict) throws RbackException ;
+	/****
+	 * 根据父节点id查询所有有效的数据字典记录
+	 * @param parentId
+	 * @return
+	 */
+	public List<TdataDict> getDictsByPid(String parentId);
 }
