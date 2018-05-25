@@ -118,3 +118,23 @@
 							setCheck(); 
 					});
 		});
+		
+		
+ 
+			function addRole2Menus(){
+				var treeObj=  $.fn.zTree.getZTreeObj("menuTree");
+				var nodes=treeObj.getCheckedNodes(true);
+				var ids = "";
+				for(var i=0;i<nodes.length;i++){  
+					ids = ids +nodes[i].id ;
+					ids = ids + ",";
+				}
+				$.ajax({
+					url:ctx + "role/role2Menu",
+					data:{roleId:$("input[name='temp_str1']").val(),menus:ids,_method:'PUT'},
+					type:'post',
+					success:function(data){
+						
+					}
+				});
+			}
