@@ -176,4 +176,12 @@ public class RoleController extends BaseController {
 		return json ;	
 	}
 	
+	@RequestMapping("openMenusOfRole/{roleId}")
+	public String openMenusOfRole(@PathVariable String roleId,Model model){
+		model.addAttribute("role", roleDao.get(roleId));
+		return "system/role/role2MenuPage";
+	}
+
+	
+	
 }

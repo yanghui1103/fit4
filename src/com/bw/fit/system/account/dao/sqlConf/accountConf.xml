@@ -24,9 +24,9 @@
 	</select>	
 	
 	<select id="getAccounts" parameterType="account" resultType="account">
-		select * from (select u.*,a.id temp_str2,a.create_time temp_str3 ,a.logname,rownum rn
+		select * from (select u.*,a.id temp_str2,a.create_time temp_str3 ,a.isdeleted temp_str1,a.logname,rownum rn
 		from t_account a,t_user u 
-		where u.id = a.userid and a.isdeleted ='0' and u.isdeleted='0'
+		where u.id = a.userid  and u.isdeleted='0'
 		and  a.logname like '%'||#{logName,jdbcType=VARCHAR}||'%' and  u.name like '%'||#{name,jdbcType=VARCHAR}||'%' 
 		) cc  where 1=1
 		<if test="paginationEnable!='0'">		

@@ -55,7 +55,7 @@ public class AccountController extends BaseController {
 		account.setPaginationEnable("1");
 		List<Account> list = accountDao.getAccounts(account);
 		for(Account a:list){
-			a.setIsdeleted("0".equals(a.getIsdeleted())?"正常":"已作废");
+			a.setIsdeleted("0".equals(a.getTemp_str1())?"正常":"已作废");
 		}
 		account.setPaginationEnable("0");
 		List<Account> listTatol = accountDao.getAccounts(account);

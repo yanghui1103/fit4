@@ -2,24 +2,34 @@
  * 组织管理JS
  */
 
-var zNodes ='';
 
-var setting = {
+		var setting = {
+			check: {
+				enable: true
+			},
 			data: {
-				key: {
-					title: "t"
-				},
 				simpleData: {
 					enable: true
-				}				
-			},
-			view: {
-				fontCss: getFontCss
-			},
-			callback: {
-				onClick: this.onClick
+				}
 			}
 		};
+		
+
+		var zNodes =[
+			{ id:1, pId:0, name:"随意勾选 1", open:true},
+			{ id:11, pId:1, name:"随意勾选 1-1", open:true},
+			{ id:111, pId:11, name:"随意勾选 1-1-1"},
+			{ id:112, pId:11, name:"随意勾选 1-1-2"},
+			{ id:12, pId:1, name:"随意勾选 1-2", open:true},
+			{ id:121, pId:12, name:"随意勾选 1-2-1"},
+			{ id:122, pId:12, name:"随意勾选 1-2-2"},
+			{ id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
+			{ id:21, pId:2, name:"随意勾选 2-1"},
+			{ id:22, pId:2, name:"随意勾选 2-2", open:true},
+			{ id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
+			{ id:222, pId:22, name:"随意勾选 2-2-2"},
+			{ id:23, pId:2, name:"随意勾选 2-3"}
+		];
 
 		function focusKey(e) {
 			if (key.hasClass("empty")) {
@@ -37,34 +47,9 @@ var setting = {
 			searchNode(e);
 		}
 
-		function onClick(e, treeId, node) {
-			var orgId = node.id;
-			$.ajax({
-				type : 'GET',
-				url : ctx + "org/organization/"+orgId,
-				data : {},
-				success : function(data) {
-					if(data.res=="2"){
-						printOrgDetailInfo(data.org);
-					}else{
-						promptMessage(data.res,data.msg) ;
-					}
-				},
-				error:function(XMLHttpRequest, textStatus, errorThrown){
-					$.messager.alert({
-			            title: '提示信息',
-			            ok: '确定',
-			            icon: 'error',
-			            cancel: '取消',
-			            msg: errorThrown
-			          });
-				},
-				dataType : "JSON"
-			});
-		}
 		
 		function searchNode(e) {
-			var zTree = $.fn.zTree.getZTreeObj("orgTree");
+			var zTree = $.fn.zTree.getZTreeObj("menuTree");
 			if (!$("#getNodesByFilter").attr("checked")) {
 				var value = $.trim(key.get(0).value);
 				var keyType = "";
@@ -105,7 +90,7 @@ var setting = {
 
 		}
 		function updateNodes(highlight) {
-			var zTree = $.fn.zTree.getZTreeObj("orgTree");
+			var zTree = $.fn.zTree.getZTreeObj("menuTree");
 			for( var i=0, l=nodeList.length; i<l; i++) {
 				nodeList[i].highlight = highlight;
 				zTree.updateNode(nodeList[i]);
@@ -118,22 +103,18 @@ var setting = {
 			return !node.isParent && node.isFirstNode;
 		}
 
-		var key;
-		$(document).ready(function(){		
-			$.get(ctx+"org/organizations",function(data){ 
-				if(data.res =="2"){ 
-					zNodes = (data.list) ; 					
-					$.fn.zTree.init($("#orgTree"), setting, zNodes);
-					key = $("#key");
-					key.bind("focus", focusKey)
-					.bind("blur", blurKey)
-					.bind("propertychange", searchNode)
-					.bind("input", searchNode);
-					$("#name").bind("change", clickRadio);
-					$("#level").bind("change", clickRadio);
-					$("#id").bind("change", clickRadio); 
-					$("#getNodesByParamFuzzy").bind("change", clickRadio); 
-				}
-			});
+		function setCheck() {
+			var zTree = $.fn.zTree.getZTreeObj("menuTree"),
 			
+			type = { "Y":"ps", "N":"ps"};
+			zTree.setting.check.chkboxType = type; 
+		}
+		
+		var key;
+		$(document).ready(function(){					
+					$.get(ctx+"menu/menus/"+$("input[name='temp_str1']").val() ,function(data){  
+							zNodes = data  ; 			 					
+							$.fn.zTree.init($("#menuTree"), setting, zNodes);
+							setCheck(); 
+					});
 		});
