@@ -134,7 +134,7 @@
 					data:{roleId:$("input[name='temp_str1']").val(),menus:ids,_method:'PUT'},
 					type:'post',
 					success:function(data){
-						
+						promptMessage(data.res,data.msg);
 					}
 				});
 			}

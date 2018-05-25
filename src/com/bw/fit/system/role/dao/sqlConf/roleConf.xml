@@ -78,4 +78,16 @@
 	<insert id="grantDataAuthority2Role" parameterType="baseModel">
 		insert into t_role2dataauth (roleid,authid) values (#{id},#{action_name})
 	</insert>
+	
+	<delete id="deleteRole2Menus"  parameterType="string">
+		delete from t_role2menu where roleid = #{roleId}
+	 </delete>
+	 <select id="getMenusOfRole" parameterType="string" resultType="menu"> 
+	 	select m.* from t_role2menu rm ,t_menu m 
+		where m.id = rm.menuid and m.isdeleted ='0' 
+		and rm.roleid = #{roleId}
+	 </select>
+	 <insert id="grantMenus2role" parameterType="baseModel">
+	 	insert into t_role2menu (roleid,menuid) values (#{id},#{logId})
+	 </insert>
 </mapper>   

@@ -182,6 +182,13 @@ public class RoleController extends BaseController {
 		return "system/role/role2MenuPage";
 	}
 
-	
+	@RequestMapping(value="role2Menu",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject role2Menu(@RequestParam(value="roleId") String roleId,@RequestParam(value="menus") String menus) throws Exception{
+		JSONObject json = new JSONObject();	 
+				json = roleService.saverole2Menu(roleId,menus);
+		 
+		return json ;	
+	}
 	
 }

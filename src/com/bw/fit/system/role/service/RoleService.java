@@ -39,4 +39,12 @@ public interface RoleService {
 	 */
 	public JSONObject saveDataAuthsOfRole(String roleId,String authId)  throws RbackException;
 	
+	/****
+	 * 角色分配菜单权限
+	 * @param roleId
+	 * @param menuIds
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject saverole2Menu(String roleId,String menuIds)  throws RbackException;
 }
