@@ -60,4 +60,10 @@ public interface RoleDao {
 	 * @throws RbackException
 	 */
 	public void deleteAuthority2Role(TRole2Authority ta)  throws RbackException ;
+	/****
+	 * 获取该角色下所有权限
+	 * @param ta
+	 * @return
+	 */
+	public List<TAuthority> getAuthority2Role(TRole2Authority ta);
 }

@@ -68,5 +68,10 @@ public class RoleDaoImpl implements RoleDao {
 		daoTemplete.delete("roleSql.deleteAuthority2Role", ta);
 	}
 
+	@Override
+	public List<TAuthority> getAuthority2Role(TRole2Authority ta) {
+		return daoTemplete.getListData("roleSql.getAuthority2Role", ta);
+	}
+
 
 }

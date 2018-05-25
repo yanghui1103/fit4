@@ -1,6 +1,7 @@
 package com.bw.fit.system.role.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -110,8 +111,13 @@ public class RoleController extends BaseController {
 		TAuthority ta = new TAuthority();
 		List<TAuthority> all = authorityDao.authoritys(ta);
 		List<TAuthority> my = roleDao.getAuthoritysByRole(roleId);
+		for(TAuthority t:all){
+			if(my!=null){
+				Optional<TAuthority> ops = my.parallelStream().filter(x->x.getCode().equals(t.getCode())).findAny();
+				t.setDesp(ops.isPresent()?"checked":"false");
+			}
+		}
 		model.addAttribute("all", all);
-		model.addAttribute("my", my);
 		return "system/role/role2AuthPage";
 	}
 
@@ -121,7 +127,6 @@ public class RoleController extends BaseController {
 			@RequestParam(value="id") String[] id) throws RbackException{
 		JSONObject json = new JSONObject();		
 		json = roleService.updateAuthsOfRole(temp_str1,id);
-		return json ;
-	
+		return json ;	
 	}
 }

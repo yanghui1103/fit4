@@ -57,7 +57,14 @@
 			<ul>
 			<c:forEach items="${all}" var ="item" varStatus="status">
 				<li>
-				<input name="id" value='${item.code }' type="checkbox" /><label>${item.name }</label>
+				<c:if test="${item.desp =='checked'}">
+				<input name="id" value='${item.code }' checked='checked' type="checkbox" /><label>${item.name }</label>
+				</c:if>
+				<c:if test="${item.desp !='checked'}">
+				<input name="id" value='${item.code }'   type="checkbox" /><label>${item.name }</label>
+				</c:if>
+				
+				
 				</li>
 			</c:forEach>
 			</ul>

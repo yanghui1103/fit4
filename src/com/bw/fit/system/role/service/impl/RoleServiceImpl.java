@@ -80,7 +80,10 @@ public class RoleServiceImpl implements RoleService {
 		try {
 			TRole2Authority ta2 = new TRole2Authority();
 			ta2.setRoleId(temp_str1);
-			roleDao.deleteAuthority2Role(ta2);
+			List<TAuthority> lisa = roleDao.getAuthority2Role(ta2);
+			if(lisa!=null && lisa.size()>0){
+				roleDao.deleteAuthority2Role(ta2);
+			}
 			for(String s:id){
 				TRole2Authority ta = new TRole2Authority();
 				ta.setRoleId(temp_str1);

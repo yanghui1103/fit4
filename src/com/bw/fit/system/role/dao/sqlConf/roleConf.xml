@@ -62,4 +62,9 @@
 	<delete id="deleteAuthority2Role" parameterType="TRole2Authority" >
 		delete from t_role2authority where roleid = #{roleId}
 	</delete>
+	<select id="getAuthority2Role" parameterType="TRole2Authority" resultType="TAuthority"> 
+		select ta.*
+ 		from t_role2authority a ,t_authority ta 
+ 		where ta.code = a.authorityid and ta.isdeleted='0' and a.roleid=#{roleId}
+	</select>
 </mapper>   
