@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bw.fit.system.authority.entity.TAuthority;
+import com.bw.fit.system.authority.entity.TRole2dataauth;
 import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
@@ -71,6 +72,11 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public List<TAuthority> getAuthority2Role(TRole2Authority ta) {
 		return daoTemplete.getListData("roleSql.getAuthority2Role", ta);
+	}
+
+	@Override
+	public List<TRole2dataauth> getDataAuthoritysByRole(String roleId) {
+		return daoTemplete.getListData("roleSql.getDataAuthoritysByRole", roleId);
 	}
 
 

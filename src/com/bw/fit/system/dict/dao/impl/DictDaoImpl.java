@@ -48,5 +48,9 @@ public class DictDaoImpl implements DictDao {
 	public void update(Dict dict) throws RbackException {
 		daoTemplete.update("dictSql.update", dict);
 	}
+	@Override
+	public List<TdataDict> getDictsByPid(String parentId) {
+		return daoTemplete.getListData("dictSql.getDictsByPid", parentId);
+	}
 
 }

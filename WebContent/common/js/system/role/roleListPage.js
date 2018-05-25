@@ -98,3 +98,23 @@ function openAddRole(){
 	    modal: true   
 	});
 }
+
+
+/*****
+ * 打开分配data权限
+ */
+function openRole2DataAuthPage(){
+	var row = getSingleTreeGridSelectData($("#roleListDg")); 
+	$('#_loadDialog_rolelist').dialog({    
+	    title: '分配数据权限',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'role/dataAuthsOfRole/'+  row.id  ,    
+	    modal: true   
+	});
+}
+
+
