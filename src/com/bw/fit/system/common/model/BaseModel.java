@@ -1,6 +1,8 @@
 package com.bw.fit.system.common.model;
 
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
  
 
@@ -45,10 +47,17 @@ public class BaseModel{
 	private Integer end_num;
 	private String paginationEnable;
 	private Integer rn ;
+	private List<String> createOrgIds;
 	
 	
 	
 	
+	public List<String> getCreateOrgIds() {
+		return createOrgIds;
+	}
+	public void setCreateOrgIds(List<String> createOrgIds) {
+		this.createOrgIds = createOrgIds;
+	}
 	public String getIsdeleted() {
 		return isdeleted;
 	}

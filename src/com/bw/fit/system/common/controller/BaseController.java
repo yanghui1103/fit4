@@ -16,8 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public abstract class BaseController {
 	
-	private Logger logger = LoggerFactory.getLogger(BaseController.class);  
-	
+//	private Logger logger = LoggerFactory.getLogger(BaseController.class);  	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -30,4 +29,8 @@ public abstract class BaseController {
 	public void initControl(HttpServletResponse response){
 		response.addHeader("Access-Control-Allow-Origin", "*");
 	}
+	
+	
+	
+	
 }
