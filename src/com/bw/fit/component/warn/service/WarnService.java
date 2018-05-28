@@ -1,5 +1,6 @@
 package com.bw.fit.component.warn.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
 
 public interface WarnService {
@@ -12,5 +13,5 @@ public interface WarnService {
 	 * @return
 	 * @throws RbackException
 	 */
-	public void sendWarning(String warningLevel,String warningType ,String target_number,String subject,String message) throws RbackException;
+	public JSONObject sendWarning(String warningLevel,String warningType ,String target_number,String subject,String message) throws RbackException;
 }
