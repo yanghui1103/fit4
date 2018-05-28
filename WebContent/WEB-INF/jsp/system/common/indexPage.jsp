@@ -19,7 +19,7 @@
 	<link href="<%=basePath%>common/fit/v4/static/lightblue/css/platform.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>common/fit/v4/custom/lightblue/uimaker/icon.css">
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/fit/v4/custom/lightblue/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/easyui-lang-zh_CN.js"></script>	
 	
 </head> 

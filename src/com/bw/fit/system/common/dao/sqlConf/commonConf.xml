@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="commonSql">
 	<sql id="createOrgDataSql">
-		<![CDATA[ and createOrgId in 
+		<![CDATA[ and aa.createOrgId in 
 		<foreach item="item" collection="createOrgIds" index="index" open="("  
                 separator="," close=")">  
                 #{item}  

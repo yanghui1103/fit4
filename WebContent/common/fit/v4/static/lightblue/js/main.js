@@ -209,7 +209,10 @@ var mainPlatform = {
 	      onSelect:function(title, index){
 	        var currentTab = $tabs.tabs("getSelected");
 	        if(currentTab.find("iframe") && currentTab.find("iframe").size()){
-	            currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
+	        	/*****
+	        	 * 如果想让切换tab刷新页面，就打开下面这行注释
+	        	 */
+	           //  currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
 	        }
 	        $('.pf-sider:visible').find('.sider-nav-s li').removeClass('active');
 	        $('.pf-sider:visible').find('.sider-nav-s li[text='+ title +']').addClass('active');
