@@ -118,3 +118,22 @@ function openRole2DataAuthPage(){
 }
 
 
+
+/*****
+ * 打开分配菜单权限
+ */
+function openRole2MenuPage(){
+	var row = getSingleTreeGridSelectData($("#roleListDg")); 
+	$('#_loadDialog_rolelist').dialog({    
+	    title: '分配菜单权限',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'role/openMenusOfRole/'+  row.id  ,    
+	    modal: true   
+	});
+}
+
+

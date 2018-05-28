@@ -2,6 +2,7 @@ package com.bw.fit.system.common.entity;
 import static com.bw.fit.system.common.util.PubFun.*;
 
 import java.util.Date;
+import java.util.List;
 /*****
  * 父实体类
  * @author yangh
@@ -43,10 +44,17 @@ public class BaseEntity {
 	private Integer end_num;
 	private String paginationEnable;
 	private Integer rn ;
+	private List<String> createOrgIds;
 	
 	
 	
 	
+	public List<String> getCreateOrgIds() {
+		return createOrgIds;
+	}
+	public void setCreateOrgIds(List<String> createOrgIds) {
+		this.createOrgIds = createOrgIds;
+	}
 	public String getIsdeleted() {
 		return isdeleted;
 	}

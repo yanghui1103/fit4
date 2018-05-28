@@ -68,7 +68,7 @@ function openUserDetail(id){
 function deleteAccount(){	 
 	var row = getSingleTreeGridSelectData($("#accountListDg"));
 	if(row !=null){
-		promptMessageCallBack("3","是否确认删除该账户？",function(){					
+		promptMessageCallBack("3","是否确认作废该账户？",function(){					
 			$.ajax({
 				type : 'DELETE',
 				url : ctx + "account/account/"+row.temp_str2,

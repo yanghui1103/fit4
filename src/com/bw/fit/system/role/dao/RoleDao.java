@@ -81,4 +81,21 @@ public interface RoleDao {
 	 */
 	public  void grantDataAuthority2Role(BaseModel ta)  throws RbackException ; 
 	public  void deleteDataAuthority2Role(String roleId)  throws RbackException ; 
+	
+	/****
+	 * 删除角色下菜单权限
+	 */
+	public void deleteRole2Menus(String roleId)  throws RbackException ; 
+	/****
+	 * 角色下所有菜单
+	 * @param roleId
+	 * @return
+	 */
+	public List<Menu> getMenusOfRole(String roleId);
+	/****
+	 * 给角色分配菜单
+	 * @param ta
+	 * @throws RbackException
+	 */
+	public void grantMenus2role(BaseModel ta)  throws RbackException ; 
 }

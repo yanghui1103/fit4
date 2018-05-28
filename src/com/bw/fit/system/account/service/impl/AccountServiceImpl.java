@@ -37,7 +37,9 @@ public class AccountServiceImpl implements AccountService {
 		for(TRole t:roles){
 			List<Menu> ms = roleDao.getMenusByRole(t.getId());
 			for(Menu m:ms){
-				m.setHref(PropertiesUtil.getValueByKey("system.default.url")+m.getHref());
+				if(!"".equals(m.getHref())){
+					m.setHref(PropertiesUtil.getValueByKey("system.default.url")+m.getHref());
+				}
 				menus.add(m);
 			}
 			/****

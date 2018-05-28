@@ -90,5 +90,21 @@ public class RoleDaoImpl implements RoleDao {
 		daoTemplete.delete("roleSql.deleteDataAuthority2Role", roleId);
 	}
 
+	@Override
+	public void deleteRole2Menus(String roleId) throws RbackException {
+		daoTemplete.delete("roleSql.deleteRole2Menus", roleId);
+	}
+
+	@Override
+	public List<Menu> getMenusOfRole(String roleId) {
+		return daoTemplete.getListData("roleSql.getMenusOfRole", roleId);
+	}
+
+	@Override
+	public void grantMenus2role(BaseModel ta) throws RbackException {
+		daoTemplete.insert("roleSql.grantMenus2role", ta);
+		throw new RbackException("1","sdfdf");
+	}
+
 
 }

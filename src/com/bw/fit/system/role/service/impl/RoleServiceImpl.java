@@ -14,6 +14,7 @@ import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.model.DataDict;
+import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.entity.TRole2Authority;
@@ -123,9 +124,34 @@ public class RoleServiceImpl implements RoleService {
 			PubFun.returnFailJson(json, e.getMsg());
 			e.printStackTrace();
 			throw e;
-		}		finally{
+		}finally{
 			return json ;
 		}
+	}
+
+	@Override
+	public JSONObject saverole2Menu(String roleId, String menuIds)
+			throws RbackException {
+		JSONObject json = new JSONObject();
+		try {
+			BaseModel bm = new BaseModel();
+			bm.setId(roleId);
+			List<Menu> ms = roleDao.getMenusOfRole(roleId);
+			if(ms!=null){
+				roleDao.deleteRole2Menus(roleId);
+			}
+			String[] array = menuIds.split(",");
+			for(String s:array){
+				bm.setLogId(s);
+				roleDao.grantMenus2role(bm);
+			}
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+			throw e;
+		}
+		return json ;
 	}
 
 }
