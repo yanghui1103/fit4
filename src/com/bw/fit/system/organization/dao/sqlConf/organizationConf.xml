@@ -29,4 +29,19 @@
 		,#{creator,jdbcType=VARCHAR},sysdate,#{sortNumber,jdbcType=INTEGER},sysdate,#{createOrgId,jdbcType=VARCHAR} )
 	</insert>
 		
+		
+	<select id="getChildrenAndCurt" parameterType="string" resultType="Organization">
+		select a.* from t_organization a  where isdeleted='0'
+       connect by a.parentid = prior a.id start with a.parentid = #{cuurentOrgId}
+       union  select a.*  from      t_organization a where id = #{cuurentOrgId}
+	</select>	
+	
+	<select id="getParentsAndCurt" parameterType="string" resultType="Organization">
+		select a.* from t_organization a
+      where isdeleted='0'
+      connect by
+    	a.id =
+    	prior a.parentid
+    	start with a.id =#{cuurentOrgId}
+	</select>
 </mapper>   

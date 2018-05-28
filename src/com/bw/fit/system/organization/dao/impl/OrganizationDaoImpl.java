@@ -40,4 +40,14 @@ public class OrganizationDaoImpl implements OrganizationDao {
 		return (Organization)daoTemplete.getOneData("organizationSql.get", id);
 	}
 
+	@Override
+	public List<Organization> getChildrenAndCurt(String cuurentOrgId) {
+		return daoTemplete.getListData("organizationSql.getChildrenAndCurt", cuurentOrgId);
+	}
+
+	@Override
+	public List<Organization> getParentsAndCurt(String cuurentOrgId) {
+		return daoTemplete.getListData("organizationSql.getParentsAndCurt", cuurentOrgId);
+	}
+
 }

@@ -37,5 +37,17 @@ public interface OrganizationDao {
 	 * @throws RbackException
 	 */
 	public Organization get(String id) ;
+	/*****
+	 * 获取当前组织及其子孙组织列表
+	 * @param cuurentOrgId
+	 * @return
+	 */
+	public List<Organization> getChildrenAndCurt(String cuurentOrgId);
+	/*****
+	 * 获取当前组织及其父组织列表
+	 * @param cuurentOrgId
+	 * @return
+	 */
+	public List<Organization> getParentsAndCurt(String cuurentOrgId);
 	
 }

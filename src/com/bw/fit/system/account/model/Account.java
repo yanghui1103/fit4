@@ -17,6 +17,7 @@ public class Account extends User{
 	private String roleIds;
 	
 	
+	
 	public String getPositionIds() {
 		return positionIds;
 	}

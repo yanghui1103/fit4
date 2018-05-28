@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bw.fit.system.common.model.BaseModel;
+
 
 public abstract class BaseController {
 	
@@ -25,11 +27,14 @@ public abstract class BaseController {
 				dateFormat, false));
 	}	
 
+	/*****
+	 *	适用于跨域请求
+	 * @param response
+	 */
 	@ModelAttribute
-	public void initControl(HttpServletResponse response){
+	public void initControlKReq(HttpServletResponse response){
 		response.addHeader("Access-Control-Allow-Origin", "*");
 	}
-	
 	
 	
 	

@@ -558,10 +558,10 @@ public class PubFun {
 		if(isFillFdid){
 			b.setId(getUUID());
 		}
-//		b.setCreator(getCurrentAccount().getId());
-//		b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
-		b.setCreator("11");
-		b.setCreateOrgId("105");
+		b.setCreator(getCurrentAccount().getId());
+		b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
+//		b.setCreator("11");
+//		b.setCreateOrgId("105");
 	}
 	
 	/****
