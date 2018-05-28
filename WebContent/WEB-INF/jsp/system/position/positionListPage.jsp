@@ -34,7 +34,7 @@
 <body>
 	<div class="container">
 		<div class="left-tree">
-		<input type="hidden" value="105" id="org_id" />
+		<input type="hidden" value="${sessionScope.CurrentUser.currentOrgId}" id="org_id" />
 		<input type="hidden" value="-1" id="org_ids" />
 		<label class="kv-label">关键词:</label><input type="text" id="key" value="" class="empty" />
 			<div style="display:none">

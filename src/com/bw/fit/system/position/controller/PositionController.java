@@ -55,22 +55,29 @@ public class PositionController {
 		JSONObject json = new JSONObject();
 		p.setPaginationEnable("1");
 		List<Position> list = positionDao.getPositions(p,orgId);
-		for(Position tmp : list) {
-			String orgNames="";
-			List<Organization> tmpOrgs = positionDao.getOrgByPositionId(tmp.getId());
-			if(tmpOrgs!=null&&tmpOrgs.size()>0) {
-				for(Organization s1 : tmpOrgs) {
-					orgNames += s1.getName()+";";
+		if(list!=null&&list.size()>0) {
+			for(Position tmp : list) {
+				String orgNames="";
+				List<Organization> tmpOrgs = positionDao.getOrgByPositionId(tmp.getId());
+				if(tmpOrgs!=null&&tmpOrgs.size()>0) {
+					for(Organization s1 : tmpOrgs) {
+						orgNames += s1.getName()+";";
+					}
+					orgNames = orgNames.substring(0, orgNames.length()-1);
+					tmp.setTemp_str1(orgNames);
 				}
-				orgNames = orgNames.substring(0, orgNames.length()-1);
-				tmp.setTemp_str1(orgNames);
 			}
+			p.setPaginationEnable("0");
+			List<Position> listTotal = positionDao.getPositions(p,orgId);
+			json.put("total",(listTotal != null && listTotal.size() > 0)?listTotal.size() : 0);
+			json.put("rows", JSONObject.toJSON(list));
+			return json;
+		}else {
+			json.put("total",null);
+			json.put("rows", 0);
+			return json;
 		}
-		p.setPaginationEnable("0");
-		List<Position> listTotal = positionDao.getPositions(p,orgId);
-		json.put("total",(listTotal != null && listTotal.size() > 0)?listTotal.size() : 0);
-		json.put("rows", JSONObject.toJSON(list));
-		return json;
+		
 	}
 	
 	/***

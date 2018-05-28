@@ -1,5 +1,7 @@
 package com.bw.fit.system.position.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +73,10 @@ public class PositionServiceImpl implements PositionService{
 		JSONObject json = new JSONObject();		
 		try {
 			positionDao.deleteO2P(id,orgId);
+			List<TOrganization2Position> aaa= positionDao.checkO2P(id);
+			if(aaa==null||aaa.size()<=0) {
+				positionDao.delete(id);
+			}
 			PubFun.returnSuccessJson(json);
 		} catch (RbackException e) {
 			e.printStackTrace();

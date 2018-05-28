@@ -71,4 +71,9 @@ public interface PositionDao {
 	 * @param posiorgIdtionId
 	 */
 	public Position get(String id) ;
+	/****
+	 * 根据岗位Id检查是否还存在该岗位和组织的关系
+	 * @param id 岗位id
+	 */
+	public List<TOrganization2Position> checkO2P(String id) ;
 }

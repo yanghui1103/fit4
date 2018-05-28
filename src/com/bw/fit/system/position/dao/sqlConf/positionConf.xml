@@ -28,6 +28,10 @@
 		select * from t_position where id = #{id}
 	</select>
 	
+	<select id="checkO2P" parameterType="string" resultType="TOrganization2Position">
+		select * from t_organization2position where POSITIONID = #{id}
+	</select>
+	
 	<insert id="insert"  parameterType="Position">
 		insert into t_position(id,name,code,simpleName,isdeleted,
 		creator,createtime,sortnumber,versiontime,createorgid) values

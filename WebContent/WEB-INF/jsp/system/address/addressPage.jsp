@@ -21,7 +21,7 @@
 					<input type="radio" id="getNodesByParamFuzzy" name="funType" class="radio" style="margin-left:36px;" checked />
 				</div>
 				<div class="zTreeDemoBackground left">
-					<ul id="orgTree" class="ztree"></ul>
+					<ul id="addrOrgTree" class="ztree"></ul>
 				</div>
 			</div>
 			<div class="content">
@@ -42,7 +42,7 @@
 					</tr>
 					<tr height="300px">
 						<td width="45%" height="320px">
-							<select style="WIDTH:100%;height: 100%" name="list1" size="12" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
+							<select id="dxlb_select" style="WIDTH:100%;height: 100%" name="list1" size="12" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
 	                            <c:forEach items="${selectMap }" var="sm">
 	                           		<option value="${sm.key }">${sm.value }</option> 
 	                            </c:forEach>
@@ -74,6 +74,6 @@
 		</div>
 		</div>
 	
-	<script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationListPage.js"></script>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/address/organizationListPage.js"></script>
 </body>
 </html>

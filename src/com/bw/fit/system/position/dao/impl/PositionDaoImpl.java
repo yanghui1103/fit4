@@ -74,4 +74,9 @@ public class PositionDaoImpl implements PositionDao{
 		daoTemplete.delete("positionSql.deleteO2PByPid", id);
 	}
 
+	@Override
+	public List<TOrganization2Position> checkO2P(String id) {
+		return daoTemplete.getListData("positionSql.checkO2P", id);
+	}
+
 }
