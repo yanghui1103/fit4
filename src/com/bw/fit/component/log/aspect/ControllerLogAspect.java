@@ -66,6 +66,11 @@ public class ControllerLogAspect implements Ordered {
 			obj = pjd.proceed(); // 执行
 			LogInfo t = new LogInfo();   
 			Account account = PubFun.getCurrentAccount();
+			if(account==null){ //如果为空，疑似系统本身发起
+				account = new Account();
+				account.setLogName("-9");
+				account.setName("SYSTEM");
+			}
 			t.setId(getUUID());
 			t.setCreator(account.getLogName()+account.getName());
 			t.setOperateFunction(target.getClass().getName()+"."+currentMethod.getName());
