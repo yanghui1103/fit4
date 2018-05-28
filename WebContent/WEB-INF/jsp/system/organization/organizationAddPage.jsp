@@ -42,7 +42,7 @@
 					panelWidth: 500,
 					idField: 'dict_value',
 					textField: 'dict_name',
-					url: '<%=basePath%>dict/getDictsByParentValue/9',
+					url: '<%=basePath%>dict/getDictsByParentValue/dataAuth',
 					method: 'get', 
 					columns: [[
 						{field:'dict_value',title:'值',width:50},

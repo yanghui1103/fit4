@@ -38,6 +38,7 @@ public class BaseModel{
 	private String temp_str1;
 	private String temp_str2;
 	private String temp_str3;
+	private String dataAuth ;/***数据权限***/
 	/***
 	 * 翻页使用
 	 */
@@ -52,6 +53,12 @@ public class BaseModel{
 	
 	
 	
+	public String getDataAuth() {
+		return dataAuth;
+	}
+	public void setDataAuth(String dataAuth) {
+		this.dataAuth = dataAuth;
+	}
 	public List<String> getCreateOrgIds() {
 		return createOrgIds;
 	}

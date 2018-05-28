@@ -24,6 +24,7 @@ import com.bw.fit.system.authority.entity.TRole2dataauth;
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.model.BaseModel;
 import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.common.util.CommonUtil;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.entity.TdataDict;
@@ -54,6 +55,8 @@ public class RoleController extends BaseController {
 	private AuthorityDao authorityDao;
 	@Autowired
 	private DictDao dictDao;
+	@Autowired
+	private CommonUtil commonUtil;
 	
 	@RequestMapping(value="roles",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
@@ -95,7 +98,7 @@ public class RoleController extends BaseController {
 		JSONObject json = new JSONObject();		
 		try {
 			Session session = PubFun.getCurrentSession();
-			PubFun.fillCommonProptities(role, true, session);
+			commonUtil.fillCommonProptities(role, true, session);
 			json = roleService.insert(role);
 		} catch (RbackException e) {
 			e.printStackTrace();

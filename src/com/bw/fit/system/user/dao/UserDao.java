@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.alibaba.fastjson.JSONObject; 
 import com.bw.fit.system.common.model.RbackException;
+import com.bw.fit.system.role.model.Role;
 import com.bw.fit.system.user.entity.TUser;
 
 /****
