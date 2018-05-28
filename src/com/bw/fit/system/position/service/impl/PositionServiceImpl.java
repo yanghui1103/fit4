@@ -47,7 +47,6 @@ public class PositionServiceImpl implements PositionService{
 		JSONObject json = new JSONObject();		
 		try {
 			positionDao.update(position);
-			PubFun.returnSuccessJson(json);
 			positionDao.deleteO2PByPid(position.getId());
 			String [] ids = position.getTemp_str1().split(",");
 			if(ids.length>0) {
@@ -58,6 +57,7 @@ public class PositionServiceImpl implements PositionService{
 					positionDao.insertOrg2Position(to2p);
 				}
 			}
+			PubFun.returnSuccessJson(json);
 		} catch (RbackException e) {
 			e.printStackTrace();
 			json = new JSONObject();

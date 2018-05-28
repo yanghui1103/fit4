@@ -12,4 +12,11 @@ public interface AddressDao {
 	 * @return
 	 */
 	public List<VAddress> getAddress(String addressType,String underOrgId);
+	
+	/***
+	 * 根据id获取地址
+	 * @param id
+	 * @return
+	 */
+	public VAddress get (String id);
 }

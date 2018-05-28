@@ -39,36 +39,8 @@ var setting = {
 
 		function onClick(e, treeId, node) {
 			var orgId = node.id;
-			$.ajax({
-				type : 'GET',
-				url : ctx + "address/address/"+orgId,
-				data : {},
-				success : function(data) {
-					if(data.res=="2"){
-						//console.info(data.addressMap);
-						$("#dxlb_select").empty();
-						
-						$.each(data.addressMap, function(key,values){     
-							console.info(this);
-							var option = "<option value='"+key+"'>"+values+"</option>"
-							$("#dxlb_select").append(option);
-						 });
-						//$("#dxlb_select")append(option);
-					}else{
-						promptMessage(data.res,data.msg) ;
-					}
-				},
-				error:function(XMLHttpRequest, textStatus, errorThrown){
-					$.messager.alert({
-			            title: '提示信息',
-			            ok: '确定',
-			            icon: 'error',
-			            cancel: '取消',
-			            msg: errorThrown
-			          });
-				},
-				dataType : "JSON"
-			});
+			$("#addr_org_id").val(orgId);
+			changeConstraintTerm(orgId);
 		}
 		
 		function searchNode(e) {
@@ -130,7 +102,8 @@ var setting = {
 		$(document).ready(function(){		
 			$.get(ctx+"org/organizations",function(data){ 
 				if(data.res =="2"){ 
-					zNodes = (data.list) ; 					
+					zNodes = (data.list) ;
+					console.info(data.list);
 					$.fn.zTree.init($("#addrOrgTree"), setting, zNodes);
 					key = $("#key");
 					key.bind("focus", focusKey)

@@ -23,15 +23,24 @@
 				<div class="zTreeDemoBackground left">
 					<ul id="addrOrgTree" class="ztree"></ul>
 				</div>
+				<input type="hidden" value="${sessionScope.CurrentUser.currentOrgId}" id="addr_org_id">
 			</div>
 			<div class="content">
 			<div style="width: 100%;">
 				<div align="center">
 					<label class="kv-label">关键词:</label>
-					<input type="text" id="key" value="" class="empty" /><br>
-					<input type="checkbox"><label class="kv-label">组织</label>
-					<input type="checkbox"><label class="kv-label">岗位</label>
-					<input type="checkbox"><label class="kv-label">账户</label>
+					<input type="text" id="key" value="" class="empty" />
+					<input type="button" value="查找" />
+					<br>
+					<c:if test="${ifshow_org }">
+						<input onclick="checkboxClick()" id="select_org" type="checkbox" checked="checked"><label for="select_org" class="kv-label">组织</label>
+					</c:if>
+					<c:if test="${ifshow_position }">
+						<input onclick="checkboxClick()" id="select_position" type="checkbox" checked="checked"><label for="select_position" class="kv-label">岗位</label>
+					</c:if>
+					<c:if test="${ifshow_account }">
+						<input onclick="checkboxClick()" id="select_account" type="checkbox" checked="checked"><label for="select_account" class="kv-label">账户</label>
+					</c:if>
 				</div>
 				<form name="myform">
 				<table width="100%" border="1" rules="all">
@@ -56,7 +65,9 @@
 						</td>
 						<td width="45%" height="320px">
 							<select style="WIDTH:100%;height: 100%" name="list2" size="12" ondblclick="moveOption(document.myform.list2, document.myform.list1)"> 
-               					<option value="105000">信息公司</option>
+               					<c:forEach items="${selectedMap }" var="sdm">
+	                           		<option value="${sdm.key }">${sdm.value }</option> 
+	                            </c:forEach>
                				</select>
 						</td>
 					</tr>

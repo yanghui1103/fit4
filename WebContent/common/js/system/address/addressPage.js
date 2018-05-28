@@ -16,8 +16,8 @@ function moveOption(e1, e2){
     		   }
     		   if(flag){
     			   e2.options.add(new Option(e.text, e.value)); 
-                   e1.remove(i);
     		   }
+    		   e1.remove(i);
 	       } 
 	    } 
        	document.myform.selectids.value=getvalue(document.myform.list2);
@@ -53,7 +53,7 @@ function openAddress(dlgObj,idsObj,namesObj){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage/1/-1/-1',    
+	    href: ctx+'address/openAddressPage/true/true/true/'+idsObj.val(),    
 	    modal: true   ,
 	    buttons:[{
 			text:'确定',
@@ -65,5 +65,48 @@ function openAddress(dlgObj,idsObj,namesObj){
 				dlgObj.dialog("close");
 			}
 		}]
+	});
+}
+
+function checkboxClick(){
+	var orgId = $("#addr_org_id").val();
+	changeConstraintTerm(orgId);
+}
+
+/******
+ * 更改待选列表
+ * @param orgId
+ * @returns
+ */
+function changeConstraintTerm(orgId){
+	var isOrg = $("#select_org").is(':checked');
+	var isPosition = $("#select_position").is(':checked');
+	var isAccount = $("#select_account").is(':checked');
+	$.ajax({
+		type : 'GET',
+		url : ctx + "address/address/"+orgId+"/"+isOrg+"/"+isPosition+"/"+isAccount,
+		data : {},
+		success : function(data) {
+			if(data.res=="2"){
+				//console.info(data.addressMap);
+				$("#dxlb_select").empty();
+				$.each(data.addressMap, function(key,values){     
+					var option = "<option value='"+key+"'>"+values+"</option>"
+					$("#dxlb_select").append(option);
+				 });
+			}else{
+				promptMessage(data.res,data.msg) ;
+			}
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			$.messager.alert({
+	            title: '提示信息',
+	            ok: '确定',
+	            icon: 'error',
+	            cancel: '取消',
+	            msg: errorThrown
+	          });
+		},
+		dataType : "JSON"
 	});
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bw.fit.system.address.dao.AddressDao;
 import com.bw.fit.system.address.entity.VAddress;
 import com.bw.fit.system.common.dao.DaoTemplete;
+import com.bw.fit.system.position.model.Position;
 @Repository
 public class AddressDaoImpl implements AddressDao{
 	@Autowired
@@ -21,6 +22,10 @@ public class AddressDaoImpl implements AddressDao{
 		map.put("addressType",addressType);
 		map.put("underOrgId",underOrgId);
 		return daoTemplete.getListData("addressSql.getAddress", map);
+	}
+	@Override
+	public VAddress get(String id) {
+		return (VAddress)daoTemplete.getOneData("addressSql.get", id);
 	}
 
 }

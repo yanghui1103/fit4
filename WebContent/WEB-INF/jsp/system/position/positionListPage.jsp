@@ -49,6 +49,7 @@
 			<div class="easyui-tabs1" style="width:100%;">					
 		      <div title="岗位列表" data-options="closable:false" class="basic-info">
 		      	<div id="_loadDialog_positionList"></div>
+		      	<div id="_loadDialog_address"></div>
 		      	<table id="positionLiDg" style="width:100%;height:470px" >
        			</table>
 		      </div>

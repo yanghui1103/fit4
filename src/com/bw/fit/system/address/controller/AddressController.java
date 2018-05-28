@@ -36,6 +36,8 @@ public class AddressController {
 	@Autowired
 	private AddressDao addressDao ;
 	
+	@Autowired
+	private OrganizationDao organizationDao ;
 	/***
 	 * 打开地址本
 	 * @param orgIds
@@ -43,13 +45,14 @@ public class AddressController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("openAddressPage/{o}/{p}/{a}")
-	public String openAddressPage(Model model,@PathVariable String o,@PathVariable String p,@PathVariable String a){
+	@RequestMapping("openAddressPage/{o}/{p}/{a}/{idsObj}")
+	public String openAddressPage(Model model,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable String idsObj){
 		Session session = getCurrentSession();
 		Account account = (Account)session.getAttribute("CurrentUser");
 		String orgId = account.getCurrentOrgId();
+		//待选列表
 		Map<String,String> map = new HashMap<>();
-		if(!"-1".equals(o)) {
+		if(o) {
 			List<VAddress> orgList = addressDao.getAddress("organization", orgId);
 			if(orgList!=null&&orgList.size()>0) {
 				for(VAddress p1 : orgList) {
@@ -58,7 +61,7 @@ public class AddressController {
 			}
 			
 		}
-		if(!"-1".equals(p)) {
+		if(p) {
 			List<VAddress> positionList = addressDao.getAddress("position", orgId);
 			if(positionList!=null&&positionList.size()>0) {
 				for(VAddress p1 : positionList) {
@@ -67,49 +70,66 @@ public class AddressController {
 			}
 			
 		}
-		if(!"-1".equals(a)) {
+		if(a) {
 			List<VAddress> accountList = addressDao.getAddress("account", orgId);
 			if(accountList!=null&&accountList.size()>0) {
 				for(VAddress p1 : accountList) {
 					map.put(p1.getId(), p1.getName());
 				}
 			}
-			
 		}
-//		String[] ids =null;
-//		List<VAddress> positionList = addressDao.getAddress("", "105");
-		
-//		for(String id:ids) {
-//			Optional<BaseModel> o = positionList.parallelStream().filter(x->x.equals(id)).findAny();
-//		}
-		
+		//已选列表
+		Map<String,String> map2 = new HashMap<>();
+		String ids[] = idsObj.split(",");
+		if(ids.length>0) {
+			for(String id : ids) {
+				VAddress addr = addressDao.get(id);
+				map2.put(addr.getId(), addr.getName());
+			}
+		}
 		model.addAttribute("selectMap", map);
+		model.addAttribute("selectedMap", map2);
+		model.addAttribute("ifshow_org", o);
+		model.addAttribute("ifshow_position", p);
+		model.addAttribute("ifshow_account", a);
 		return "system/address/addressPage" ;
 	}
 	
-	
-	@RequestMapping(value="address/{orgId}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
+	/*****
+	 * 地址本中点击左侧组织树，响应右侧待选
+	 * @param orgId 组织id
+	 * @param o是否查询组织
+	 * @param p是否查询岗位
+	 * @param a是否查询账号
+	 * @return
+	 */
+	@RequestMapping(value="address/{orgId}/{o}/{p}/{a}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
 	@ResponseBody
-	public JSONObject get(@PathVariable String orgId){
+	public JSONObject get(@PathVariable String orgId,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a){
 		JSONObject json = new JSONObject();
 		Map<String,String> map = new HashMap<>();
-		List<VAddress> orgList = addressDao.getAddress("organization", orgId);
-		if(orgList!=null&&orgList.size()>0) {
-			for(VAddress p1 : orgList) {
-				map.put(p1.getId(), p1.getName());
+		if(o) {
+			List<VAddress> orgList = addressDao.getAddress("organization", orgId);
+			if(orgList!=null&&orgList.size()>0) {
+				for(VAddress p1 : orgList) {
+					map.put(p1.getId(), p1.getName());
+				}
 			}
 		}
-		
-		List<VAddress> positionList = addressDao.getAddress("position", orgId);
-		if(positionList!=null&&positionList.size()>0) {
-			for(VAddress p1 : positionList) {
-				map.put(p1.getId(), p1.getName());
+		if(p) {
+			List<VAddress> positionList = addressDao.getAddress("position", orgId);
+			if(positionList!=null&&positionList.size()>0) {
+				for(VAddress p1 : positionList) {
+					map.put(p1.getId(), p1.getName());
+				}
 			}
 		}
-		List<VAddress> accountList = addressDao.getAddress("account", orgId);
-		if(accountList!=null&&accountList.size()>0) {
-			for(VAddress p1 : accountList) {
-				map.put(p1.getId(), p1.getName());
+		if(a) {
+			List<VAddress> accountList = addressDao.getAddress("account", orgId);
+			if(accountList!=null&&accountList.size()>0) {
+				for(VAddress p1 : accountList) {
+					map.put(p1.getId(), p1.getName());
+				}
 			}
 		}
 		json = new JSONObject();

@@ -17,7 +17,6 @@
 			onclick="editPosition();" style="width: 150px">修改</button>
 	</div>
 	
-	<div id="_loadDialog_address"></div>
 	<div style="margin:30px 0px;"></div>
 	<form id="positionEditFm"  class="easyui-form" method="post"
 		data-options="novalidate:false">		

@@ -6,4 +6,7 @@
 		select * from V_ADDRESS where ADDRESSTYPE = #{addressType} and UNDERORGID = #{underOrgId}
 	</select>
 	
+	<select id="get" parameterType="string" resultType="VAddress">
+		select * from V_ADDRESS where id = #{id}
+	</select>
 </mapper>   
