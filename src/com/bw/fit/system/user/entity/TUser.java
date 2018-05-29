@@ -81,6 +81,14 @@ public class TUser extends BaseEntity {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
+	@Override
+	public String toString() {
+		return "TUser [name=" + name + ", name_pinyin=" + name_pinyin
+				+ ", code=" + code + ", gender=" + gender + ", card=" + card
+				+ ", type=" + type + ", isVisible=" + isVisible + ", email="
+				+ email + ", phone=" + phone + ", address=" + address
+				+ ", postCode=" + postCode + "]";
+	}
 	
 	
 }

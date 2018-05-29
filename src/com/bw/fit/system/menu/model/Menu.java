@@ -52,6 +52,12 @@ public class Menu extends BaseModel {
 	public void setCurrent(boolean isCurrent) {
 		this.isCurrent = isCurrent;
 	}
+	@Override
+	public String toString() {
+		return "Menu [title=" + title + ", parentId=" + parentId + ", href="
+				+ href + ", icon=" + icon + ", opened=" + opened
+				+ ", isCurrent=" + isCurrent + "]";
+	}
 	
 	
 	

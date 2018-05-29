@@ -28,5 +28,10 @@ public class LogAccount {
 	public void setVerificationCode(String verificationCode) {
 		this.verificationCode = verificationCode;
 	}
+	@Override
+	public String toString() {
+		return "LogAccount [logName=" + logName + ", logPwd=" + logPwd
+				+ ", verificationCode=" + verificationCode + "]";
+	}
 	
 }

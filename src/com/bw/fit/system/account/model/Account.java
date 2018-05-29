@@ -61,6 +61,14 @@ public class Account extends User{
 		this.logPwd = logPwd;
 	}
 	
+	@Override
+	public String toString() {
+		return "Account [logName=" + logName + ", logPwd=" + logPwd
+				+ ", verificationCode=" + verificationCode + ", currentOrgId="
+				+ currentOrgId + ", userId=" + userId + ", positionIds="
+				+ positionIds + ", roleIds=" + roleIds + "]";
+	}
+	
 	
 	
 }

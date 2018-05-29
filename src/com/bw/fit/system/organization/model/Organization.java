@@ -92,6 +92,15 @@ public class Organization extends BaseModel{
 	public void setSimpleName(String simpleName) {
 		this.simpleName = simpleName;
 	}
+	@Override
+	public String toString() {
+		return "Organization [name=" + name + ", code=" + code
+				+ ", simpleName=" + simpleName + ", type=" + type
+				+ ", isVisible=" + isVisible + ", parentId=" + parentId
+				+ ", adminer=" + adminer + ", phone=" + phone + ", address="
+				+ address + ", postCode=" + postCode + ", summary=" + summary
+				+ "]";
+	}
 	
 	
 	

@@ -18,5 +18,10 @@ public class TRole2Authority extends BaseEntity {
 	public void setAuthorityId(String authorityId) {
 		this.authorityId = authorityId;
 	}
+	@Override
+	public String toString() {
+		return "TRole2Authority [roleId=" + roleId + ", authorityId="
+				+ authorityId + "]";
+	}
 	
 }

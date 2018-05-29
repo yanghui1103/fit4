@@ -25,5 +25,10 @@ public class TAuthority  extends BaseEntity{
 	public void setDesp(String desp) {
 		this.desp = desp;
 	}
+	@Override
+	public String toString() {
+		return "TAuthority [code=" + code + ", name=" + name + ", desp=" + desp
+				+ "]";
+	}
 	
 }

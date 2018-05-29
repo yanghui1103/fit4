@@ -86,6 +86,15 @@ public class TOrganization extends BaseEntity {
 	public void setSimpleName(String simpleName) {
 		this.simpleName = simpleName;
 	}
+	@Override
+	public String toString() {
+		return "TOrganization [name=" + name + ", code=" + code
+				+ ", simpleName=" + simpleName + ", type=" + type
+				+ ", isVisible=" + isVisible + ", parentId=" + parentId
+				+ ", adminer=" + adminer + ", phone=" + phone + ", address="
+				+ address + ", postCode=" + postCode + ", summary=" + summary
+				+ "]";
+	}
 	
 	
 }

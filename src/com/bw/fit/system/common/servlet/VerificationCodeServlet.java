@@ -40,9 +40,9 @@ public class VerificationCodeServlet extends HttpServlet{
         Graphics graphics = bi.getGraphics();
         graphics.setColor(new Color(100, 230, 200)); // 使用RGB设置背景颜色
         graphics.fillRect(0, 0, 100, 30); // 填充矩形区域
-
+        
         // 验证码中所使用到的字符
-        char[] codeChar = "ABCDEFGHJKMNOPQRSTUVWXYZ0123456789".toCharArray();
+        char[] codeChar = "ABCDEFGHJKMNPQRSTUVWXYZ123456789".toCharArray();
         String captcha = ""; // 存放生成的验证码
         Random random = new Random();
         for(int i = 0; i < CODE_LEN; i++) { // 循环将每个验证码字符绘制到图片上
