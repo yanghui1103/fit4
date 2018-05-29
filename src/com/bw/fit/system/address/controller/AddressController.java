@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -108,7 +109,7 @@ public class AddressController {
 	 */
 	@RequestMapping(value="address/{keyWords}/{o}/{p}/{a}/{type}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
 	@ResponseBody
-	public JSONObject get(HttpServletRequest request,@PathVariable String keyWords,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable boolean type){
+	public JSONObject get(@PathVariable String keyWords,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable boolean type){
 		JSONObject json = new JSONObject();
 		Map<String,String> map = new HashMap<>();
 		List<VAddress> orgList = new ArrayList<>();
@@ -150,5 +151,19 @@ public class AddressController {
 		returnSuccessJson(json);
 		json.put("addressMap", (JSONObject)JSONObject.toJSON(map) );
 		return json ;
+	}
+	
+	@RequestMapping(value="addressDetail/{id}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
+	@ResponseBody
+	public JSONObject addressDetail(@PathVariable String id){
+		Map<String,String> map = new HashMap<>();
+		map.put("105001", "信息公司");
+		map.put("105001001", "信息公司下的软件开发部门");
+		map.put("1e9d68a118514792bc6523182c1c3b55", "软件开发部门的软件开发岗位");
+		map.put("481908ea568444729707ed459b2d8497", "软件开发部门的软件运维岗位");
+		JSONObject json  = new JSONObject();
+		returnSuccessJson(json);
+		json.put("detali",map.get(id));
+		return json;
 	}
 }

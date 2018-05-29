@@ -49,7 +49,7 @@ function openAddress(dlgObj,idsObj,namesObj){
 	dlgObj.dialog({    
 	    title: '地址本',    
 	    width: 800,    
-	    height: 400,    
+	    height: 450,    
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
@@ -72,6 +72,47 @@ function checkboxClick(){
 	var orgId = $("#addr_org_id").val();
 	changeConstraintTerm(orgId);
 }
+/***
+ * 查看描述
+ * @param obj
+ * @returns
+ */
+function showDetail(e1){
+	for(var i=0;i<e1.options.length;i++){ 
+ 	   if(e1.options[i].selected){ 
+ 		   var id = e1.options[i].value;
+ 		  $.ajax({
+ 				type : 'GET',
+ 				url : ctx + "address/addressDetail/"+id,
+ 				data : {},
+ 				success : function(data) {
+ 					if(data.res=="2"){
+ 						var detali = data.detali;
+ 						if(detali!=null&&detali!=''){
+ 							$("#addressDetail").text(detali);
+ 						}else{
+ 							$("#addressDetail").text('暂无描述');
+ 						}
+ 					}else{
+ 						promptMessage(data.res,data.msg) ;
+ 					}
+ 				},
+ 				error:function(XMLHttpRequest, textStatus, errorThrown){
+ 					$.messager.alert({
+ 			            title: '提示信息',
+ 			            ok: '确定',
+ 			            icon: 'error',
+ 			            cancel: '取消',
+ 			            msg: errorThrown
+ 			          });
+ 				},
+ 				dataType : "JSON"
+ 			});
+	    }
+	}
+}
+
+
 
 /******
  * 更改待选列表
