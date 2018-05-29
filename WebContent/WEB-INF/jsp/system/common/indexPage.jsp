@@ -31,6 +31,18 @@
 				}
 			});
 		}
+		function accountInfo(){
+			$('#_loadDialog_AccountInfo').dialog({    
+			    title: '账户详情',    
+			    width: 800,    
+			    height: 500,    
+			    closed: false,    
+			    cache: false,    
+			    maximizable:true,
+			    href: ctx+'user/openUserDetail/${sessionScope.CurrentUser.userId }' ,    
+			    modal: true   
+			}); 
+		}
 	</script>
 </head> 
 <body  scroll=yes>
@@ -40,7 +52,6 @@
                 <img src="<%=basePath%>common/fit/v4/static/lightblue/images/main/main_logo.png" alt="logo">
             </div> 
             <div class="pf-user">
-            	<span class="msgts">${sessionScope.CurrentUser.name }</span>
                 <div class="pf-user-photo">
                     <img src="<%=basePath%>common/fit/v4/static/lightblue/images/main/user.png" alt="">                   
                 </div>
@@ -49,17 +60,17 @@
                 <div class="pf-user-panel">
                     <ul class="pf-user-opt">
                         <li>
-                            <a href="javascript:;">
+                            <a href="javascript:accountInfo();">
                                 <i class="iconfont">&#xe60d;</i>
-                                <span class="pf-opt-name">用户信息</span>
+                                <span class="pf-opt-name">账户信息</span>
                             </a>
                         </li>
-                         <li class="pf-modify-pwd">
-                            <a href="http://www.uimaker.com">
-                                <i class="iconfont">&#xe6f8;</i>
-                                <span class="pf-opt-name">消息<i class="mailtext">[10]</i></span>
-                            </a>
-                        </li>
+<!--                          <li class="pf-modify-pwd"> -->
+<!--                             <a href="http://www.uimaker.com"> -->
+<!--                                 <i class="iconfont">&#xe6f8;</i> -->
+<!--                                 <span class="pf-opt-name">消息<i class="mailtext">[10]</i></span> -->
+<!--                             </a> -->
+<!--                         </li> -->
                         <li class="pf-modify-pwd">
                             <a href="http://www.uimaker.com">
                                 <i class="iconfont">&#xe634;</i>
@@ -170,6 +181,7 @@
             <div class="copyright-name">
               <span>CopyRight&nbsp;2016&nbsp;&nbsp;**.com&nbsp;版权所有</span>
               <i class="iconfont" >&#xe6ff;</i>
+              <div id="_loadDialog_AccountInfo"></div>
             </div>
         </div>
     </div>

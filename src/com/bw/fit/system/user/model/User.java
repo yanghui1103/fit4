@@ -97,6 +97,14 @@ public class User  extends BaseModel{
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", name_pinyin=" + name_pinyin
+				+ ", code=" + code + ", gender=" + gender + ", card=" + card
+				+ ", type=" + type + ", isVisible=" + isVisible + ", email="
+				+ email + ", phone=" + phone + ", address=" + address
+				+ ", postCode=" + postCode + "]";
+	}
 	
 	
 	

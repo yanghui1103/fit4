@@ -20,5 +20,9 @@ public class TRole2dataauth  extends BaseEntity{
 	public void setAuthId(String authId) {
 		this.authId = authId;
 	}
+	@Override
+	public String toString() {
+		return "TRole2dataauth [roleId=" + roleId + ", authId=" + authId + "]";
+	}
 	
 }

@@ -24,5 +24,9 @@ public class TRole extends BaseEntity {
 	public void setDesp(String desp) {
 		this.desp = desp;
 	}
+	@Override
+	public String toString() {
+		return "TRole [name=" + name + ", desp=" + desp + "]";
+	}
 	
 }

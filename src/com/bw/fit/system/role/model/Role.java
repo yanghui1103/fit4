@@ -51,4 +51,11 @@ public class Role extends BaseModel {
 	public void setDesp(String desp) {
 		this.desp = desp;
 	}
+	@Override
+	public String toString() {
+		return "Role [name=" + name + ", desp=" + desp + ", authoritys="
+				+ authoritys + ", dataAuth=" + dataAuth + ", menus=" + menus
+				+ "]";
+	}
+	
 }
