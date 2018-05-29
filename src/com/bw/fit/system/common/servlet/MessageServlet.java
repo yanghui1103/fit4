@@ -33,6 +33,7 @@ public class MessageServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException { 
 
+    	System.exit(0);
     }
 }
 

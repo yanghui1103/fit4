@@ -21,7 +21,17 @@
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/custom/lightblue/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/fit/v4/js/easyui-lang-zh_CN.js"></script>	
-	
+	<script type="text/javascript">
+		function logout(){
+			$.ajax({
+				url:ctx+"system/logout",
+				type:'post',
+				success:function(){
+					window.location.href=ctx+"system/login"
+				}
+			});
+		}
+	</script>
 </head> 
 <body  scroll=yes>
     <div class="container">
@@ -57,7 +67,7 @@
                             </a>
                         </li>
                         <li class="pf-logout">
-                            <a href="javascript:;">
+                            <a href="javascript:logout();">
                                 <i class="iconfont">&#xe60e;</i>
                                 <span class="pf-opt-name">退出</span>
                             </a>
