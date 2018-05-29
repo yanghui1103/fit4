@@ -29,8 +29,8 @@
 			<div style="width: 100%;">
 				<div align="center">
 					<label class="kv-label">关键词:</label>
-					<input type="text" id="key" value="" class="empty" />
-					<input type="button" value="查找" />
+					<input type="text" name="keyWords" id="keyWords" value="" class="empty" />
+					<input type="button" onclick="changeConstraintTerm('-9')" value="查找" />
 					<br>
 					<c:if test="${ifshow_org }">
 						<input onclick="checkboxClick()" id="select_org" type="checkbox" checked="checked"><label for="select_org" class="kv-label">组织</label>

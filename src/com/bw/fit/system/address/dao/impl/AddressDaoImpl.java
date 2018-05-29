@@ -16,16 +16,22 @@ public class AddressDaoImpl implements AddressDao{
 	@Autowired
 	private DaoTemplete daoTemplete;
 	@Override
-	public List<VAddress> getAddress(String addressType, String underOrgId) {
-		
+	public VAddress get(String id) {
+		return (VAddress)daoTemplete.getOneData("addressSql.get", id);
+	}
+	@Override
+	public List<VAddress> getAddressByOrgId(String addressType, String underOrgId) {
 		Map<String,String> map = new HashMap<>();
 		map.put("addressType",addressType);
 		map.put("underOrgId",underOrgId);
-		return daoTemplete.getListData("addressSql.getAddress", map);
+		return daoTemplete.getListData("addressSql.getAddressByOrgId", map);
 	}
 	@Override
-	public VAddress get(String id) {
-		return (VAddress)daoTemplete.getOneData("addressSql.get", id);
+	public List<VAddress> getAddressByKey(String addressType, String keyWords) {
+		Map<String,String> map = new HashMap<>();
+		map.put("addressType",addressType);
+		map.put("keyWords",keyWords);
+		return daoTemplete.getListData("addressSql.getAddressByKey", map);
 	}
 
 }

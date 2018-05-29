@@ -78,13 +78,18 @@ function checkboxClick(){
  * @param orgId
  * @returns
  */
-function changeConstraintTerm(orgId){
+function changeConstraintTerm(keyWords){
 	var isOrg = $("#select_org").is(':checked');
 	var isPosition = $("#select_position").is(':checked');
 	var isAccount = $("#select_account").is(':checked');
+	var isFind = false;
+	if(keyWords=='-9'){
+		keyWords = $("#keyWords").val();
+		isFind = true;
+	}
 	$.ajax({
 		type : 'GET',
-		url : ctx + "address/address/"+orgId+"/"+isOrg+"/"+isPosition+"/"+isAccount,
+		url : ctx + "address/address/"+encodeURI(encodeURI(keyWords))+"/"+isOrg+"/"+isPosition+"/"+isAccount+"/"+isFind,
 		data : {},
 		success : function(data) {
 			if(data.res=="2"){

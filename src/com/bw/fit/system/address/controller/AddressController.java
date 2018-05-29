@@ -4,10 +4,15 @@ import static com.bw.fit.system.common.util.PubFun.getCurrentSession;
 import static com.bw.fit.system.common.util.PubFun.returnFailJson;
 import static com.bw.fit.system.common.util.PubFun.returnSuccessJson;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,30 +57,27 @@ public class AddressController {
 		String orgId = account.getCurrentOrgId();
 		//待选列表
 		Map<String,String> map = new HashMap<>();
-		if(o) {
-			List<VAddress> orgList = addressDao.getAddress("organization", orgId);
-			if(orgList!=null&&orgList.size()>0) {
-				for(VAddress p1 : orgList) {
-					map.put(p1.getId(), p1.getName());
-				}
+		List<VAddress> orgList = new ArrayList<>();
+		List<VAddress> positionList = new ArrayList<>();
+		List<VAddress> accountList = new ArrayList<>();
+		
+		orgList = o?addressDao.getAddressByOrgId("organization", orgId):null;
+		positionList = p?addressDao.getAddressByOrgId("position", orgId):null;
+		accountList = a?addressDao.getAddressByOrgId("account", orgId):null;
+		
+		if(orgList!=null&&orgList.size()>0) {
+			for(VAddress p1 : orgList) {
+				map.put(p1.getId(), p1.getName());
 			}
-			
 		}
-		if(p) {
-			List<VAddress> positionList = addressDao.getAddress("position", orgId);
-			if(positionList!=null&&positionList.size()>0) {
-				for(VAddress p1 : positionList) {
-					map.put(p1.getId(), p1.getName());
-				}
+		if(positionList!=null&&positionList.size()>0) {
+			for(VAddress p1 : positionList) {
+				map.put(p1.getId(), p1.getName());
 			}
-			
 		}
-		if(a) {
-			List<VAddress> accountList = addressDao.getAddress("account", orgId);
-			if(accountList!=null&&accountList.size()>0) {
-				for(VAddress p1 : accountList) {
-					map.put(p1.getId(), p1.getName());
-				}
+		if(accountList!=null&&accountList.size()>0) {
+			for(VAddress p1 : accountList) {
+				map.put(p1.getId(), p1.getName());
 			}
 		}
 		//已选列表
@@ -101,37 +103,49 @@ public class AddressController {
 	 * @param o是否查询组织
 	 * @param p是否查询岗位
 	 * @param a是否查询账号
+	 * @param type查询类型：true:搜索框查询false：点击左侧组织树查询
 	 * @return
 	 */
-	@RequestMapping(value="address/{orgId}/{o}/{p}/{a}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
+	@RequestMapping(value="address/{keyWords}/{o}/{p}/{a}/{type}",method=RequestMethod.GET,produces="application/json;charset=UTF8")
 	@ResponseBody
-	public JSONObject get(@PathVariable String orgId,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a){
+	public JSONObject get(HttpServletRequest request,@PathVariable String keyWords,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable boolean type){
 		JSONObject json = new JSONObject();
 		Map<String,String> map = new HashMap<>();
-		if(o) {
-			List<VAddress> orgList = addressDao.getAddress("organization", orgId);
-			if(orgList!=null&&orgList.size()>0) {
-				for(VAddress p1 : orgList) {
-					map.put(p1.getId(), p1.getName());
-				}
+		List<VAddress> orgList = new ArrayList<>();
+		List<VAddress> positionList = new ArrayList<>();
+		List<VAddress> accountList = new ArrayList<>();
+		try {
+			keyWords = (URLDecoder.decode(keyWords, "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(type) {
+			orgList = o?addressDao.getAddressByKey("organization", keyWords):null;
+			positionList = p?addressDao.getAddressByKey("position", keyWords):null;
+			accountList = a?addressDao.getAddressByKey("account", keyWords):null;
+		}else {
+			orgList = o?addressDao.getAddressByOrgId("organization", keyWords):null;
+			positionList = p?addressDao.getAddressByOrgId("position", keyWords):null;
+			accountList = a?addressDao.getAddressByOrgId("account", keyWords):null;
+		}
+		
+		if(orgList!=null&&orgList.size()>0) {
+			for(VAddress p1 : orgList) {
+				map.put(p1.getId(), p1.getName());
 			}
 		}
-		if(p) {
-			List<VAddress> positionList = addressDao.getAddress("position", orgId);
-			if(positionList!=null&&positionList.size()>0) {
-				for(VAddress p1 : positionList) {
-					map.put(p1.getId(), p1.getName());
-				}
+		if(positionList!=null&&positionList.size()>0) {
+			for(VAddress p1 : positionList) {
+				map.put(p1.getId(), p1.getName());
 			}
 		}
-		if(a) {
-			List<VAddress> accountList = addressDao.getAddress("account", orgId);
-			if(accountList!=null&&accountList.size()>0) {
-				for(VAddress p1 : accountList) {
-					map.put(p1.getId(), p1.getName());
-				}
+		if(accountList!=null&&accountList.size()>0) {
+			for(VAddress p1 : accountList) {
+				map.put(p1.getId(), p1.getName());
 			}
 		}
+		
 		json = new JSONObject();
 		returnSuccessJson(json);
 		json.put("addressMap", (JSONObject)JSONObject.toJSON(map) );

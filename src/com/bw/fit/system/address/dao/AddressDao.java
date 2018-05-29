@@ -11,7 +11,15 @@ public interface AddressDao {
 	 * @param underOrgId组织id
 	 * @return
 	 */
-	public List<VAddress> getAddress(String addressType,String underOrgId);
+	public List<VAddress> getAddressByOrgId(String addressType,String underOrgId);
+	
+	/***
+	 * 根据underOrgId和key获取地址
+	 * @param addressType类型
+	 * @param keyWords关键词
+	 * @return
+	 */
+	public List<VAddress> getAddressByKey(String addressType,String keyWords);
 	
 	/***
 	 * 根据id获取地址
