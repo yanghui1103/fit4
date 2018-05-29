@@ -24,5 +24,9 @@ public class TPosition extends BaseEntity{
 	public void setSimpleName(String simpleName) {
 		this.simpleName = simpleName;
 	}
+	@Override
+	public String toString() {
+		return "TPosition [name=" + name + ", code=" + code + ", simpleName=" + simpleName + "]";
+	}
 	
 }

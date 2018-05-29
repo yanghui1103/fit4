@@ -17,6 +17,10 @@ public class TOrganization2Position extends BaseEntity{
 	public void setPositionId(String positionId) {
 		this.positionId = positionId;
 	}
+	@Override
+	public String toString() {
+		return "TOrganization2Position [orgId=" + orgId + ", positionId=" + positionId + "]";
+	}
 	
 	
 }

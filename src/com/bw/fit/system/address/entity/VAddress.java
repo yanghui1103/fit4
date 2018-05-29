@@ -24,5 +24,9 @@ public class VAddress extends BaseEntity{
 	public void setUnderOrgId(String underOrgId) {
 		this.underOrgId = underOrgId;
 	}
+	@Override
+	public String toString() {
+		return "VAddress [name=" + name + ", addressType=" + addressType + ", underOrgId=" + underOrgId + "]";
+	}
 	
 }

@@ -46,4 +46,11 @@ public class Position extends BaseModel{
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
+	@Override
+	public String toString() {
+		return "Position [name=" + name + ", code=" + code + ", simpleName=" + simpleName + ", organization="
+				+ organization + ", accounts=" + accounts + "]";
+	}
+	
+	
 }
