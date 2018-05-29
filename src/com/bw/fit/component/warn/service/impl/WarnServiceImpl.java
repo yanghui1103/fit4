@@ -9,9 +9,11 @@ import javax.mail.internet.InternetAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.component.warn.service.WarnService;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.MailTool;
+import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.common.util.SmsSender;
 import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.model.DataDict;
@@ -23,34 +25,53 @@ public class WarnServiceImpl implements WarnService {
 	@Autowired
 	private DictDao dictDao ;
 	@Override
-	public void sendWarning(String warningLevel, String warningType,
-			String target_number, String subject, String message)
-			throws RbackException {
+	public JSONObject sendWarning(String warningLevel, String warningType,
+			String target_number, String subject, String message)  {
+		JSONObject json = new JSONObject();
 		Dict dict = dictDao.getDictByValue("warnLevel");
 		List<DataDict> ds = dictDao.getDictsByParentId(dict.getId());
 		Optional<DataDict> t = ds.stream().filter(x->x.getDict_value().equalsIgnoreCase(warningLevel)).findFirst();
-		
+		if(!t.isPresent()){
+			json = new JSONObject();
+			json.put("res", "1");
+			json.put("msg", "没有找到预警级别，故无法发送");
+			return json ;
+		}
 		message = "[" + t.get().getDict_name()+"]" +message ;		
 		if("1".equals(warningType)){
 			try {
 				SmsSender.SendSMSString(target_number, message);
+				PubFun.returnSuccessJson(json);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				throw new RbackException("1","预警短信发送异常,地址:"+target_number); 
+				json = new JSONObject();
+				json.put("res", "1");
+				json.put("msg", e.getLocalizedMessage()); 
+			}finally{
+				return json ;
 			}
 		}else if("3".equals(warningType)){ 
 			StringBuilder sb = new StringBuilder(message);
 			try {
 				MailTool.send(subject, sb, new InternetAddress[] { new InternetAddress(target_number) });
+				PubFun.returnSuccessJson(json);
 			} catch (AddressException e) {
-				// TODO Auto-generated catch block
+				json = new JSONObject();
+				json.put("res", "1");
+				json.put("msg", e.getLocalizedMessage()); 
+			}finally{
+				return json ;
 			}
 		}else if("2".equals(warningType)){
 			/****
 			 * 发送即时消息
 			 */
+			PubFun.returnSuccessJson(json);
+			return json ;
 		} else{
-			throw new RbackException("1","预警方式错误"); 
+			json = new JSONObject();
+			json.put("res", "1");
+			json.put("msg", "预警方式有误，故发送失败");
+			return json ;
 		}
 	}
 
