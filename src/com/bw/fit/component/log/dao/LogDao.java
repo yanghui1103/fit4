@@ -16,5 +16,16 @@ public interface LogDao {
 	 */
 	public void insert(LogInfo l) throws RbackException ;
 	
-
+	/****
+	 * 获取详情
+	 * @param id
+	 * @return
+	 */
+	public LogInfo get(String id);
+	/****
+	 * 查询日志记录list
+	 * @param log
+	 * @return
+	 */
+	public List<LogInfo> getLogs(LogInfo log);
 }

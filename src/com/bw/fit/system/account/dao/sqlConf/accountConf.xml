@@ -29,7 +29,7 @@
 		where u.id = a.userid  and u.isdeleted='0'
 		and  a.logname like '%'||#{logName,jdbcType=VARCHAR}||'%' and  u.name like '%'||#{name,jdbcType=VARCHAR}||'%' 
 		) cc  where 1=1
-		<if test="paginationEnable!='0'">		
+		<if test="paginationEnable!='0'.toString()">		
 			<include refid="paginationSql"></include>
 		</if>
 	</select>
