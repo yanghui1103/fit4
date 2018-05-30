@@ -89,5 +89,10 @@ public class DictServiceImpl implements DictService {
 		}
 	}
 
+	@Override
+	public Dict getDictByValue(String dictValue) {
+		return dictDao.getDictByValue(dictValue);
+	}
+
 	
 }

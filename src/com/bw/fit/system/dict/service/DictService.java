@@ -35,4 +35,10 @@ public interface DictService {
 	 * @throws RbackException
 	 */
 	public JSONObject updateDict(Dict dict) throws RbackException ;
+	/****
+	 * 根据值获取数据字典数据
+	 * @param dictValue
+	 * @return
+	 */
+	public Dict getDictByValue(String dictValue);
 }

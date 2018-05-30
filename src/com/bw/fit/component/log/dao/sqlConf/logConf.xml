@@ -12,7 +12,9 @@
 	</insert>
 	
 	<select id="get" parameterType="String" resultType="logInfo">
-		select * from t_loginfo where id = #{id}
+		select a.id,a.result,a.creator,a.createtime,a.logtype,a.operatefunction,
+		a.resourceid,a.ip,a.url,a.params2 params 
+ 		from t_loginfo a where id = #{id}
 	</select>
 	
 	<select id="getLogs" parameterType="logInfo" resultType="logInfo">
