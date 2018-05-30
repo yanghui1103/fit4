@@ -18,3 +18,15 @@ function addOrg2(){
 		dataType : "JSON"
 	});
 }
+
+
+$(function(){
+		$(".address-select").textbox({
+			icons: [{
+				iconCls:'icon-search',
+				handler: function(e){
+					openAddress($("#_loadDialog_address"),$("input[name='parentOrgIds']"),$(".address-select"));
+				}
+			}]
+		})
+	});
