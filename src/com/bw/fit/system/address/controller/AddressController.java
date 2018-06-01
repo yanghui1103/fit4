@@ -82,16 +82,18 @@ public class AddressController {
 			}
 		}
 		//已选列表
-		Map<String,String> map2 = new HashMap<>();
-		String ids[] = idsObj.split(",");
-		if(ids.length>0) {
-			for(String id : ids) {
-				VAddress addr = addressDao.get(id);
-				map2.put(addr.getId(), addr.getName());
+		if(idsObj!=null&&!idsObj.equals("")) {
+			Map<String,String> map2 = new HashMap<>();
+			String ids[] = idsObj.split(",");
+			if(ids.length>0) {
+				for(String id : ids) {
+					VAddress addr = addressDao.get(id);
+					map2.put(addr.getId(), addr.getName());
+				}
 			}
+			model.addAttribute("selectedMap", map2);
 		}
 		model.addAttribute("selectMap", map);
-		model.addAttribute("selectedMap", map2);
 		model.addAttribute("ifshow_org", o);
 		model.addAttribute("ifshow_position", p);
 		model.addAttribute("ifshow_account", a);

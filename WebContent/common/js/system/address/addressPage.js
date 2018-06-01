@@ -128,6 +128,9 @@ function changeConstraintTerm(keyWords){
 		keyWords = $("#keyWords").val();
 		isFind = true;
 	}
+	if(keyWords==null||keyWords==undefined||keyWords==''){
+		return false;
+	}
 	$.ajax({
 		type : 'GET',
 		url : ctx + "address/address/"+encodeURI(encodeURI(keyWords))+"/"+isOrg+"/"+isPosition+"/"+isAccount+"/"+isFind,
