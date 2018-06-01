@@ -25,6 +25,16 @@ public class LogDaoImpl implements LogDao {
 	public void insert(LogInfo l) throws RbackException {
 		daoTemplete.insert("logSql.insert", l);
 	}
+
+	@Override
+	public LogInfo get(String id) {
+		return (LogInfo)daoTemplete.getOneData("logSql.get", id);
+	}
+
+	@Override
+	public List<LogInfo> getLogs(LogInfo log) {
+		return daoTemplete.getListData("logSql.getLogs", log);
+	}
 	
 	
 }

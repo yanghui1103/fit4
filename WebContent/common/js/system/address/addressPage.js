@@ -43,7 +43,9 @@ function getname(geto){
 
 /****
  * 通用打开地址本
- * @param obj
+ * @param dlgObj 页面展位
+ * @param idsObj ids对象
+ * @param namesObj names对象
  */
 function openAddress(dlgObj,idsObj,namesObj){
 	dlgObj.dialog({    

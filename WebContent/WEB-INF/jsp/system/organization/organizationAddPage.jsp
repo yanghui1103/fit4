@@ -55,8 +55,9 @@
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>父组织</div>
-			<input class="easyui-textbox" name="parentId" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox address-select" name="parentId" style="width: 80%;paddding-right:2px"  editable=false 
 				data-options="required:true">
+				<input type="hidden" name="parentOrgIds" >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>地址薄显示与否</div>
@@ -113,8 +114,9 @@
 		</div>
 		
 	</form>	
+	<div id="_loadDialog_address"></div>
 	
-	
+<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/system/organization/organizationAddPage.js"></script>
 </body>
 </html>

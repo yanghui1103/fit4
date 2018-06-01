@@ -17,28 +17,31 @@
 	<div    style="width:80%;">
 		<form id="ff" method="post">
 			<div style="margin-bottom:20px">
-				<input class="easyui-textbox" value="${log.operator_name }" style="width:80%" data-options="label:'操作者'">
+			<div>操作者:</div>
+				<input class="easyui-textbox" value="${log.creator }" style="width:80%" data-options="label:''">
 			</div>
 			<div style="margin-bottom:20px">
-				<input class="easyui-textbox"  value="${log.create_time }"  style="width:80%" data-options="label:'操作时间'">
+			<div>操作时间:</div>
+				<input class="easyui-textbox"  value="${log.createTime }"  style="width:80%" data-options="label:''">
 			</div>
 			<div style="margin-bottom:20px">
+			<div>URL:</div>
 				<input class="easyui-textbox"  value="${log.url }"  style="width:80%" data-options="label:'URL'">
 			</div>
 			<div style="margin-bottom:20px">
+			<div>IP:</div>
 				<input class="easyui-textbox"  value="${log.ip }"  style="width:80%" data-options="label:'IP'">
 			</div>
 			<div style="margin-bottom:20px">
-				<input class="easyui-textbox"  value="${log.operate_function }"  style="width:80%" data-options="label:'HTTP请求'">
+			<div>HTTP请求:</div>
+				<input class="easyui-textbox"  value="${log.operateFunction }"  style="width:80%" data-options="label:''">
 			</div>
 			<div style="margin-bottom:20px">
-				<input class="easyui-textbox"  value="${log.params }"  style="width:80%;height:60px" data-options="label:'请求参数',multiline:true">
-			</div>
+			<div>请求参数:</div>
+				<input class="easyui-textbox"  value="${log.params }"  style="width:80%;height:60px" data-options="label:'请求参数'">
+			</div> 
 			<div style="margin-bottom:20px">
-				<input class="easyui-textbox"  value="${log.res_desp }"  style="width:80%" data-options="label:'返回标志'">
-			</div>
-			<div style="margin-bottom:20px">
-				<input class="easyui-textbox"  value="${log.msg }"  style="width:80%;height:60px" data-options="label:'返回消息',multiline:true">
+			<div>返回值:${log.result }</div>
 			</div>
 		</form>
 	</div>
