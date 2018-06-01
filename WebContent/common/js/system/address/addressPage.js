@@ -51,20 +51,21 @@ function openAddress(dlgObj,idsObj,namesObj,type){
 	var o = type.indexOf("O")!=-1?true:false;
 	var p = type.indexOf("P")!=-1?true:false;
 	var a = type.indexOf("A")!=-1?true:false;
-	dlgObj.dialog({    
+	var ids = idsObj.val()==''?'-9':idsObj.val();
+	dlgObj.dialog({
 	    title: '地址本',    
 	    width: 800,    
 	    height: 450,    
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage/'+o+'/'+p+'/'+a+'/'+idsObj.val(),    
+	    href: ctx+'address/openAddressPage/'+o+'/'+p+'/'+a+'/'+ids,    
 	    modal: true   ,
 	    buttons:[{
 			text:'确定',
 			handler:function(){
 				var selectids = $("#selectids").val();
-				idsObj.val(  selectids);
+				idsObj.val(selectids);
 				var selectNames = $("#selectnames").val();
 				namesObj.textbox('setValue', selectNames);
 				dlgObj.dialog("close");

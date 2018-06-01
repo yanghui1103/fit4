@@ -45,14 +45,16 @@ public class AddressController {
 	@Autowired
 	private OrganizationDao organizationDao ;
 	/***
-	 * 打开地址本
-	 * @param orgIds
-	 * @param orgNames
+	 * 
 	 * @param model
+	 * @param o
+	 * @param p
+	 * @param a
+	 * @param ids
 	 * @return
 	 */
-	@RequestMapping("openAddressPage/{o}/{p}/{a}/{idsObj}")
-	public String openAddressPage(Model model,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable String idsObj){
+	@RequestMapping("openAddressPage/{o}/{p}/{a}/{ids}")
+	public String openAddressPage(Model model,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable(value="ids",required=false) String ids){
 		Session session = getCurrentSession();
 		Account account = (Account)session.getAttribute("CurrentUser");
 		String orgId = account.getCurrentOrgId();
@@ -82,11 +84,11 @@ public class AddressController {
 			}
 		}
 		//已选列表
-		if(idsObj!=null&&!idsObj.equals("")) {
+		if(!"-9".equals(ids)) {
 			Map<String,String> map2 = new HashMap<>();
-			String ids[] = idsObj.split(",");
-			if(ids.length>0) {
-				for(String id : ids) {
+			String ids2[] = ids.split(",");
+			if(ids2.length>0) {
+				for(String id : ids2) {
 					VAddress addr = addressDao.get(id);
 					map2.put(addr.getId(), addr.getName());
 				}
