@@ -57,7 +57,7 @@
 			<div>父组织</div>
 			<input class="easyui-textbox address-select"  style="width: 80%;paddding-right:2px"  editable=false 
 				data-options="required:true">
-				<input type="hidden" name="parentOrgIds" >
+				<input type="hidden" name="parentId" >
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>地址薄显示与否</div>

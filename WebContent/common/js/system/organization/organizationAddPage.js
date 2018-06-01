@@ -25,7 +25,7 @@ $(function(){
 			icons: [{
 				iconCls:'icon-search',
 				handler: function(e){
-					openAddress($("#_loadDialog_address"),$("input[name='parentOrgIds']"),$(".address-select"),"O");
+					openAddress($("#_loadDialog_address"),$("input[name='parentId']"),$(".address-select"),"O",false);
 				}
 			}]
 		})

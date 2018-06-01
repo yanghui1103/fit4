@@ -35,7 +35,7 @@
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>岗位</div>
-			<input class="easyui-textbox"  name="postionNames" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox address-select-position"  editable=false  name="postionNames" style="width: 80%;paddding-right:2px"  
 				data-options="required:true">
 			<input type="hidden"  name="postionIds"  
 				data-options="required:true">
@@ -62,6 +62,9 @@
 		</div>
 				
 	</form>	
+	
+	
+	<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
 	<script type="text/javascript" src="<%=basePath%>common/js/system/account/accountAddPage.js"></script>
 </body>
 </html>

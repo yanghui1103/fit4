@@ -41,5 +41,6 @@
         </table>
     </div>    
     <div id="_loadDialog_accountlist"></div>  
+    <div id="_loadDialog_address"></div>
 </body> 
 </html>
