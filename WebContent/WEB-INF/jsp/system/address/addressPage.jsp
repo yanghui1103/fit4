@@ -51,7 +51,7 @@
 					</tr>
 					<tr height="260px">
 						<td width="45%" height="260px">
-							<select id="dxlb_select" style="WIDTH:100%;height: 100%" name="list1" size="12" onclick="showDetail(this)" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
+							<select id="dxlb_select" style="WIDTH:100%;height: 100%" ${isMultiple } name="list1" size="12" onclick="showDetail(this)" ondblclick="moveOption(document.myform.list1, document.myform.list2)"> 
 	                            <c:forEach items="${selectMap }" var="sm">
 	                           		<option value="${sm.key }">${sm.value }</option> 
 	                            </c:forEach>
@@ -64,7 +64,7 @@
 			                <input type="button" value="删除" onclick="moveOption(document.myform.list2, document.myform.list1)">
 						</td>
 						<td width="45%" height="260px">
-							<select style="WIDTH:100%;height: 100%" name="list2" size="12"  onclick="showDetail(this)" ondblclick="moveOption(document.myform.list2, document.myform.list1)"> 
+							<select style="WIDTH:100%;height: 100%" name="list2" size="12" ${isMultiple } onclick="showDetail(this)" ondblclick="moveOption(document.myform.list2, document.myform.list1)"> 
                					<c:forEach items="${selectedMap }" var="sdm">
 	                           		<option value="${sdm.key }">${sdm.value }</option> 
 	                            </c:forEach>
