@@ -26,7 +26,7 @@
 	<select id="getAccounts" parameterType="account" resultType="account">
 		select * from (select u.*,a.id temp_str2,a.create_time temp_str3 ,a.isdeleted temp_str1,a.logname,rownum rn
 		from t_account a,t_user u 
-		where u.id = a.userid  and u.isdeleted='0'
+		where u.code = a.userid  and u.isdeleted='0'
 		and  a.logname like '%'||#{logName,jdbcType=VARCHAR}||'%' and  u.name like '%'||#{name,jdbcType=VARCHAR}||'%' 
 		) cc  where 1=1
 		<if test="paginationEnable!='0'.toString()">		
@@ -37,4 +37,19 @@
 	<update id="delete"  parameterType="account">
 		update t_account set isdeleted='1' where id = #{id}
 	</update>
+	<insert id="insert" parameterType="account">
+		insert into t_account(id,userid,logname,logpwd,creator,create_time,version_time,isdeleted,createorgid)
+		values (#{id},#{userId},#{logName},#{logPwd},#{creator},sysdate,sysdate,'0',#{createOrgId,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- insertAccount2Position -->
+	<insert id="insertAccount2Position" parameterType="map">
+		insert into t_account2position(accountId,positionId) values (#{accountId},#{positionId})
+	</insert>
+	<insert id="insertAccount2Org" parameterType="map">
+		insert into t_account2organization(accountId,orgId) values (#{accountId},#{orgId})
+	</insert>	
+	<insert id="insertAccount2Role" parameterType="map">
+		insert into t_account2role(accountId,roleid) values (#{accountId},#{roleId})
+	</insert>
 </mapper>   

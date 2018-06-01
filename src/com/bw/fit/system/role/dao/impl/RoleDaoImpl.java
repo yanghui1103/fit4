@@ -106,5 +106,11 @@ public class RoleDaoImpl implements RoleDao {
 		throw new RbackException("1","sdfdf");
 	}
 
+	@Override
+	public List<TRole> getAllRoles(String keyWords) {
+		String name = keyWords ;
+		return daoTemplete.getListData("roleSql.getAllRoles", name);
+	}
+
 
 }

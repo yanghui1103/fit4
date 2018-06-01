@@ -45,4 +45,31 @@ public interface AccountDao {
 	 * @throws RbackException
 	 */
 	public void delete(String id) throws RbackException ;
+	/*****
+	 * add帐户 
+	 * @param id
+	 * @throws RbackException
+	 */
+	public void insert(Account account) throws RbackException ;
+	/****
+	 * 账户与岗位
+	 * @param accountId
+	 * @param positionId
+	 * @throws RbackException
+	 */
+	public void insertAccount2Position(String accountId,String positionId) throws RbackException ;
+	/****
+	 * 账户与组织
+	 * @param accountId
+	 * @param orgId
+	 * @throws RbackException
+	 */
+	public void insertAccount2Org(String accountId,String orgId) throws RbackException ;
+	/***
+	 * 账户与角色
+	 * @param accountId
+	 * @param roleId
+	 * @throws RbackException
+	 */
+	public void insertAccount2Role(String accountId,String roleId) throws RbackException ;
 }

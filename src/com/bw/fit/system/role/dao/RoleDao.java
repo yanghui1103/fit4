@@ -9,6 +9,7 @@ import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.entity.TRole2Authority;
+import com.bw.fit.system.role.model.Role;
 
 public interface RoleDao {
 
@@ -98,4 +99,9 @@ public interface RoleDao {
 	 * @throws RbackException
 	 */
 	public void grantMenus2role(BaseModel ta)  throws RbackException ; 
+	/****
+	 * 查询所有符合的角色
+	 * @return
+	 */
+	public List<TRole> getAllRoles(String keyWords);
 }

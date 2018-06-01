@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.system.role.service.RoleService;
 
 import static com.bw.fit.system.common.util.PubFun.*;
 
@@ -35,6 +36,9 @@ public class SystemController extends BaseController {
 
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private RoleService roleService;
+	
 	/****
 	 * 登录请求
 	 * @param account
@@ -117,8 +121,11 @@ public class SystemController extends BaseController {
 		
 		try {
 			param = (URLDecoder.decode(param, "UTF-8"));
+			/*****
+			 * 系统中所有角色列表
+			 */
+			model.addAttribute("allRoles", roleService.getAllRoles(""));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("param", param);

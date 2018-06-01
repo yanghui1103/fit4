@@ -1,5 +1,6 @@
 package com.bw.fit.system.role.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -152,6 +153,20 @@ public class RoleServiceImpl implements RoleService {
 			throw e;
 		}
 		return json ;
+	}
+
+	@Override
+	public List<Role> getAllRoles(String keyWords) {
+		List<TRole> rs = roleDao.getAllRoles(keyWords);
+		List<Role> list = new ArrayList<>();
+		if(rs == null)
+			return null ;
+		for(TRole t:rs){
+			Role role = new Role();
+			PubFun.copyProperties(role, t);
+			list.add(role);
+		}
+		return list;
 	}
 
 }

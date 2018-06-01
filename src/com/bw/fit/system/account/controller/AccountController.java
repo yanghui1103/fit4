@@ -1,11 +1,17 @@
 package com.bw.fit.system.account.controller;
 
+import static com.bw.fit.system.common.util.PubFun.getUUID;
 import static com.bw.fit.system.common.util.PubFun.returnFailJson;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +22,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.account.dao.AccountDao;
 import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.account.model.AccountItem;
 import com.bw.fit.system.account.service.AccountService;
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.model.RbackException;
@@ -77,6 +84,31 @@ public class AccountController extends BaseController {
 			throw e;
 		}finally{
 			return json ;
+		}
+	}
+	
+	@RequestMapping(value="account",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject insert(@Valid @ModelAttribute AccountItem account,BindingResult result){
+		JSONObject json = new JSONObject();
+		if (result.hasErrors()) {
+			FieldError error = result.getFieldError();
+			json.put("res", "1");
+			returnFailJson(json, error.getDefaultMessage());
+			return json ;
+		}
+		try {
+			Session session = PubFun.getCurrentSession();
+			PubFun.fillCommonProptities(account, true, session);
+			Account acc = new Account();
+			PubFun.copyProperties(acc, account);
+			json = accountService.insert(acc);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
 		}
 	}
 	

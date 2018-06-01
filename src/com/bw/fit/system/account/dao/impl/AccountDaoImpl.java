@@ -1,6 +1,8 @@
 package com.bw.fit.system.account.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -57,6 +59,39 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void delete(String id) throws RbackException {
 		daoTemplete.update("accountSql.delete", id);
+	}
+
+	@Override
+	public void insert(Account account) throws RbackException {
+		daoTemplete.insert("accountSql.insert", account);
+	}
+
+	@Override
+	public void insertAccount2Position(String accountId, String positionId)
+			throws RbackException {
+		Map<String,String> map = new HashMap<>();
+		map.put("accountId", accountId);
+		map.put("positionId", positionId);
+		
+		daoTemplete.insert("accountSql.insertAccount2Position", map);
+	}
+
+	@Override
+	public void insertAccount2Org(String accountId, String orgId)
+			throws RbackException {
+		Map<String,String> map = new HashMap<>();
+		map.put("accountId", accountId);
+		map.put("orgId", orgId);
+		daoTemplete.insert("accountSql.insertAccount2Org", map);
+	}
+
+	@Override
+	public void insertAccount2Role(String accountId, String roleId)
+			throws RbackException {
+		Map<String,String> map = new HashMap<>();
+		map.put("accountId", accountId);
+		map.put("roleId", roleId);
+		daoTemplete.insert("accountSql.insertAccount2Role", map);
 	}
 
 }

@@ -4,8 +4,11 @@
 	<sql id="paginationSql">
 		<![CDATA[ and rn >#{start_num} and rn <= #{end_num} ]]>   
 	</sql>
-	<select id="getAccountIdByName"  parameterType="String" resultType="account">
-		select * from t_account where isdeleted='0' and logname= #{logName,jdbcType=VARCHAR}
+	<select id="getAllRoles"  parameterType="string" resultType="tRole">
+		select * from t_role where 1=1 
+				and (
+					name like '%'||#{name,jdbcType=VARCHAR}||'%' or desp like '%'||#{name,jdbcType=VARCHAR}||'%'
+				)
 	</select>
 
 		

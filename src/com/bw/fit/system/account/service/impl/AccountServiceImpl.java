@@ -65,4 +65,38 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
+	@Override
+	public JSONObject insert(Account account) throws RbackException {
+		JSONObject json = new JSONObject();
+		
+		try {
+			account.setLogPwd(PubFun.getUserPasswordShiro(account.getLogName(), PropertiesUtil.getValueByKey("user.default.pwd"),
+					"MD5", 10));
+			accountDao.insert(account);		
+			accountDao.insertAccount2Org(account.getId(), account.getCurrentOrgId());
+			String pos = account.getPositionIds();
+			if(pos!=null&&!"".equals(pos)){
+				String[] poss = pos.split(",");
+				for(String s :poss){
+					accountDao.insertAccount2Position(account.getId(), s);
+				}
+			}
+			String roles = account.getRoleIds();
+			if(!"".equals(roles)){
+				String[] roless = roles.split(",");
+				for(String s :roless){
+					accountDao.insertAccount2Role(account.getId(), s);
+				}
+			}
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			json = new JSONObject();
+			PubFun.returnFailJson(json, e.getMsg());
+			e.printStackTrace();
+			throw e;
+		}
+		
+		return json ;
+	}
+
 }

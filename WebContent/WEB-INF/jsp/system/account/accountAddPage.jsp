@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><jsp:include page="/common.jsp" />
+	pageEncoding="UTF-8"%><jsp:include page="/common.jsp" /><%@ include file="/include.inc.jsp"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -18,7 +18,7 @@
 	</div>
 	
 	<div style="margin:30px 0px;"></div>
-	<form id="orgAddFm"  class="easyui-form" method="post"
+	<form id="accountAddFm"  class="easyui-form" method="post"
 		data-options="novalidate:false">
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
@@ -28,7 +28,7 @@
 		</div>
 				
 		<div style="margin-bottom: 20px;margin-left: 90px">  
-			<div>用户</div>
+			<div>用户编码</div>
 			<input class="easyui-textbox"  name="userId" style="width: 80%;paddding-right:2px"  
 				data-options="required:true">
 		</div>
@@ -37,22 +37,27 @@
 			<div>岗位</div>
 			<input class="easyui-textbox address-select-position"  editable=false  name="postionNames" style="width: 80%;paddding-right:2px"  
 				data-options="required:true">
-			<input type="hidden"  name="postionIds"  
+			<input type="hidden"  name="positionIds"  
 				data-options="required:true">
 		</div>
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>组织</div>
-			<input class="easyui-textbox"  name="currentOrgId" style="width: 80%;paddding-right:2px"  
+			<input class="easyui-textbox address-select-org"  editable=false   style="width: 80%;paddding-right:2px"  
+				data-options="required:true">
+			<input type="hidden"  name="currentOrgId"  
 				data-options="required:true">
 		</div>
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>角色</div>
-			<input class="easyui-textbox"  name="roleNames" style="width: 80%;paddding-right:2px"  
-				data-options="required:true">
-			<input type="hidden"  name="roleIds"  
-				data-options="required:true">
+				
+			<select class="easyui-combobox" name="roleIds" multiple="true" multiline="true"  editable=false
+				data-options="required:true"   style="width: 80%;paddding-right:2px"  >
+				<c:forEach var="item" items="${allRoles}" varStatus="status">
+					<option value="${item.id }">${item.name }</option>
+				</c:forEach>
+			</select>
 		</div>
 		
 		<div style="margin-bottom: 20px;margin-left: 90px">  

@@ -28,4 +28,11 @@ public interface AccountService {
 	 * @throws RbackException
 	 */
 	public JSONObject delete(String id) throws RbackException;
+	/****
+	 * 新增
+	 * @param account
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject insert(Account account) throws RbackException;
 }
