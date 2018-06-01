@@ -47,7 +47,10 @@ function getname(geto){
  * @param idsObj ids对象
  * @param namesObj names对象
  */
-function openAddress(dlgObj,idsObj,namesObj){
+function openAddress(dlgObj,idsObj,namesObj,type){
+	var o = type.indexOf("O")!=-1?true:false;
+	var p = type.indexOf("P")!=-1?true:false;
+	var a = type.indexOf("A")!=-1?true:false;
 	dlgObj.dialog({    
 	    title: '地址本',    
 	    width: 800,    
@@ -55,7 +58,7 @@ function openAddress(dlgObj,idsObj,namesObj){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage/true/true/true/'+idsObj.val(),    
+	    href: ctx+'address/openAddressPage/'+o+'/'+p+'/'+a+'/'+idsObj.val(),    
 	    modal: true   ,
 	    buttons:[{
 			text:'确定',

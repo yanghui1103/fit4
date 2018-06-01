@@ -6,7 +6,7 @@ $(function(){
 			icons: [{
 				iconCls:'icon-search',
 				handler: function(e){
-					openAddress($("#_loadDialog_address"),$("input[name='temp_str1']"),$(".address-select"));
+					openAddress($("#_loadDialog_address"),$("input[name='temp_str1']"),$(".address-select"),'P');
 				}
 			}]
 		})
