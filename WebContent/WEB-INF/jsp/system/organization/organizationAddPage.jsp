@@ -55,7 +55,7 @@
 		</div>
 		<div style="margin-bottom: 20px;margin-left: 90px">  
 			<div>父组织</div>
-			<input class="easyui-textbox address-select" name="parentId" style="width: 80%;paddding-right:2px"  editable=false 
+			<input class="easyui-textbox address-select"  style="width: 80%;paddding-right:2px"  editable=false 
 				data-options="required:true">
 				<input type="hidden" name="parentOrgIds" >
 		</div>
