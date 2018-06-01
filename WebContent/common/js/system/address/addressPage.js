@@ -24,40 +24,53 @@ function moveOption(e1, e2){
 	       		   }
 	       		   e1.remove(i);
     		  }else{
-    			  if(e2.options.length<=0){
-    				  var e = e1.options[i];
-    				  e2.options.add(new Option(e.text, e.value));
-    				  e1.remove(i);
-    			  }
+				  e2.options.length=0; 
+				  var e = e1.options[i];
+				  e2.options.add(new Option(e.text, e.value));
+				  e1.remove(i);
     		  }
 	       } 
 	    } 
        	document.myform.selectids.value=getvalue(document.myform.list2);
        	document.myform.selectnames.value=getname(document.myform.list2);
+       	
     } 
-    catch(e){} 
+    catch(ex){
+    	promptMessage(1,ex.msg);
+    } 
 } 
 
 function getvalue(geto){ 
-    var allvalue = ""; 
-    for(var i=0;i<geto.options.length;i++){ 
-       allvalue +=geto.options[i].value + ","; 
-    } 
+    var allvalue = "";
+    if(geto.options.length==1){
+    	allvalue = geto.options[0].value;
+    }else{
+    	for(var i=0;i<geto.options.length;i++){ 
+    		allvalue +=geto.options[i].value + ","; 
+    	}
+    }
     return allvalue; 
  } 
 function getname(geto){ 
-    var allname = ""; 
-    for(var i=0;i<geto.options.length;i++){ 
-    	allname +=geto.options[i].text + ","; 
-    } 
+    var allname = "";
+    if(geto.options.length==1){
+    	allname = geto.options[0].text;
+    }else{
+    	for(var i=0;i<geto.options.length;i++){ 
+        	allname +=geto.options[i].text + ","; 
+        } 
+    }
     return allname; 
  }
 
 /****
  * 通用打开地址本
- * @param dlgObj 页面展位
+ * @param dlgObj 页面占位
  * @param idsObj ids对象
  * @param namesObj names对象
+ * @param type 所需类型O:组织P:岗位A:账号
+ * @param isMultiple 是否多选，true是 false否
+ * @returns
  */
 function openAddress(dlgObj,idsObj,namesObj,type,isMultiple){
 	var o = type.indexOf("O")!=-1?true:false;
