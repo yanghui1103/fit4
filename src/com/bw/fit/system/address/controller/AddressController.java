@@ -53,8 +53,11 @@ public class AddressController {
 	 * @param ids
 	 * @return
 	 */
-	@RequestMapping("openAddressPage/{o}/{p}/{a}/{ids}")
-	public String openAddressPage(Model model,@PathVariable boolean o,@PathVariable boolean p,@PathVariable boolean a,@PathVariable(value="ids",required=false) String ids){
+	@RequestMapping("openAddressPage/{o}/{p}/{a}/{ids}/{isMultiple}")
+	public String openAddressPage(Model model,@PathVariable boolean o,
+			@PathVariable boolean p,@PathVariable boolean a,
+			@PathVariable(value="ids",required=false) String ids,
+			@PathVariable boolean isMultiple){
 		Session session = getCurrentSession();
 		Account account = (Account)session.getAttribute("CurrentUser");
 		String orgId = account.getCurrentOrgId();
@@ -99,6 +102,9 @@ public class AddressController {
 		model.addAttribute("ifshow_org", o);
 		model.addAttribute("ifshow_position", p);
 		model.addAttribute("ifshow_account", a);
+		if(isMultiple) {
+			model.addAttribute("isMultiple", "multiple");
+		}
 		return "system/address/addressPage" ;
 	}
 	

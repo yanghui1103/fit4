@@ -3,21 +3,33 @@
  */
 
 function moveOption(e1, e2){
+	var isMultiple = true;
+	if(e1.name=='list1'){
+		isMultiple = e1.multiple;
+	}
     try{ 
        for(var i=0;i<e1.options.length;i++){ 
-    	   if(e1.options[i].selected){ 
-    		   var e = e1.options[i];
-    		   var flag = true;
-    		   for(var j=0;j<e2.options.length;j++){
-    			   if(e.value==e2.options[j].value){
-    				   flag = false;
-    				   break;
-    			   }
-    		   }
-    		   if(flag){
-    			   e2.options.add(new Option(e.text, e.value)); 
-    		   }
-    		   e1.remove(i);
+    	   if(e1.options[i].selected){
+    		  if(isMultiple){
+    			   var e = e1.options[i];
+	       		   var flag = true;
+	       		   for(var j=0;j<e2.options.length;j++){
+	       			   if(e.value==e2.options[j].value){
+	       				   flag = false;
+	       				   break;
+	       			   }
+	       		   }
+	       		   if(flag){
+	       			   e2.options.add(new Option(e.text, e.value)); 
+	       		   }
+	       		   e1.remove(i);
+    		  }else{
+    			  if(e2.options.length<=0){
+    				  var e = e1.options[i];
+    				  e2.options.add(new Option(e.text, e.value));
+    				  e1.remove(i);
+    			  }
+    		  }
 	       } 
 	    } 
        	document.myform.selectids.value=getvalue(document.myform.list2);
@@ -47,7 +59,7 @@ function getname(geto){
  * @param idsObj ids对象
  * @param namesObj names对象
  */
-function openAddress(dlgObj,idsObj,namesObj,type){
+function openAddress(dlgObj,idsObj,namesObj,type,isMultiple){
 	var o = type.indexOf("O")!=-1?true:false;
 	var p = type.indexOf("P")!=-1?true:false;
 	var a = type.indexOf("A")!=-1?true:false;
@@ -59,7 +71,7 @@ function openAddress(dlgObj,idsObj,namesObj,type){
 	    closed: false,    
 	    cache: false,    
 	    maximizable:true,
-	    href: ctx+'address/openAddressPage/'+o+'/'+p+'/'+a+'/'+ids,    
+	    href: ctx+'address/openAddressPage/'+o+'/'+p+'/'+a+'/'+ids+'/'+isMultiple,    
 	    modal: true   ,
 	    buttons:[{
 			text:'确定',
