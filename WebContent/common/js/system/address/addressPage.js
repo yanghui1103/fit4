@@ -31,9 +31,6 @@ function moveOption(e1, e2){
     		  }
 	       } 
 	    } 
-       	document.myform.selectids.value=getvalue(document.myform.list2);
-       	document.myform.selectnames.value=getname(document.myform.list2);
-       	
     } 
     catch(ex){
     	promptMessage(1,ex.msg);
@@ -43,10 +40,10 @@ function moveOption(e1, e2){
 function getvalue(geto){ 
     var allvalue = "";
     if(geto.options.length==1){
-    	allvalue = geto.options[0].value;
+    	allvalue = geto.options[0].value.split("-")[0];
     }else{
     	for(var i=0;i<geto.options.length;i++){ 
-    		allvalue +=geto.options[i].value + ","; 
+    		allvalue +=geto.options[i].value.split("-")[0] + ","; 
     	}
     }
     return allvalue; 
@@ -89,6 +86,8 @@ function openAddress(dlgObj,idsObj,namesObj,type,isMultiple){
 	    buttons:[{
 			text:'确定',
 			handler:function(){
+				document.myform.selectids.value=getvalue(document.myform.list2);
+		       	document.myform.selectnames.value=getname(document.myform.list2);
 				var selectids = $("#selectids").val();
 				idsObj.val(selectids);
 				var selectNames = $("#selectnames").val();
@@ -120,9 +119,9 @@ function showDetail(e1){
  					if(data.res=="2"){
  						var detali = data.detali;
  						if(detali!=null&&detali!=''){
- 							$("#addressDetail").text(detali);
+ 							$("#addressDetail").text('描述:'+detali);
  						}else{
- 							$("#addressDetail").text('暂无描述');
+ 							$("#addressDetail").text('描述:不详');
  						}
  					}else{
  						promptMessage(data.res,data.msg) ;

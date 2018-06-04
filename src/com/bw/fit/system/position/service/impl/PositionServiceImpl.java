@@ -96,6 +96,11 @@ public class PositionServiceImpl implements PositionService{
 			return json ;
 		}
 	}
+
+	@Override
+	public Position get(String id) {
+		return positionDao.get(id);
+	}
 	
 
 }

@@ -26,5 +26,5 @@ public interface AddressDao {
 	 * @param id
 	 * @return
 	 */
-	public VAddress get (String id);
+	public List<VAddress> get (String id);
 }
