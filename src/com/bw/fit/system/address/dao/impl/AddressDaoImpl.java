@@ -16,8 +16,8 @@ public class AddressDaoImpl implements AddressDao{
 	@Autowired
 	private DaoTemplete daoTemplete;
 	@Override
-	public VAddress get(String id) {
-		return (VAddress)daoTemplete.getOneData("addressSql.get", id);
+	public List<VAddress> get(String id) {
+		return daoTemplete.getListData("addressSql.get", id);
 	}
 	@Override
 	public List<VAddress> getAddressByOrgId(String addressType, String underOrgId) {

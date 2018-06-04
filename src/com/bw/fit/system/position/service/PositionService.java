@@ -26,4 +26,11 @@ public interface PositionService {
 	 * @throws RbackException
 	 */
 	public JSONObject updatePosition(Position position) throws RbackException ;
+	
+	/****
+	 * 获取岗位
+	 * @param id 岗位id
+	 * @return
+	 */
+	public Position get(String id);
 }
