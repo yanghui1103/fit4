@@ -14,6 +14,7 @@ import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PropertiesUtil;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.menu.model.Menu;
+import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
 
@@ -97,6 +98,26 @@ public class AccountServiceImpl implements AccountService {
 		}
 		
 		return json ;
+	}
+
+	@Override
+	public List<TPosition> getPositionsOfTheAccount(String accountId) {
+		return accountDao.getPositionsOfTheAccount(accountId);
+	}
+
+	@Override
+	public String getPositionStrOfTheAccount(String accountId) {
+		List<String> slist = getPositionsOfTheAccount(accountId).stream().map(TPosition::getName).collect(Collectors.toList());
+		StringBuffer sb = new StringBuffer();
+		for(String s:slist){
+			sb.append(s+";");
+		}
+		return sb.toString();
+	}
+
+	@Override
+	public Account get(String id) {
+		return accountDao.getAccount(id);
 	}
 
 }

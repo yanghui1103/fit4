@@ -38,8 +38,8 @@
 	
 	<select id="getParentsAndCurt" parameterType="string" resultType="Organization">
 		select a.* from t_organization a
-      where isdeleted='0'
-      connect by
+      	where isdeleted='0'
+      	connect by
     	a.id =
     	prior a.parentid
     	start with a.id =#{cuurentOrgId}

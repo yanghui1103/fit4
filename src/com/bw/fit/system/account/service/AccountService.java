@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
+import com.bw.fit.system.position.entity.TPosition;
 
 public interface AccountService {
 
@@ -35,4 +36,17 @@ public interface AccountService {
 	 * @throws RbackException
 	 */
 	public JSONObject insert(Account account) throws RbackException;
+	public Account get(String id);
+	/****
+	 * 获取此账号的岗位列表
+	 * @param accountId
+	 * @return
+	 */
+	public List<TPosition> getPositionsOfTheAccount(String accountId);
+	/*****
+	 * 获取此账号的岗位列表转化为字符串
+	 * @param accountId
+	 * @return
+	 */
+	public String getPositionStrOfTheAccount(String accountId);
 }

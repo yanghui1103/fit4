@@ -13,6 +13,7 @@ import com.bw.fit.system.common.dao.DaoTemplete;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.organization.entity.TOrganization;
+import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.user.model.User;
 import com.bw.fit.system.user.service.UserService;
@@ -92,6 +93,11 @@ public class AccountDaoImpl implements AccountDao {
 		map.put("accountId", accountId);
 		map.put("roleId", roleId);
 		daoTemplete.insert("accountSql.insertAccount2Role", map);
+	}
+
+	@Override
+	public List<TPosition> getPositionsOfTheAccount(String accountId) {
+		return daoTemplete.getListData("accountSql.getPositionsOfTheAccount", accountId);
 	}
 
 }

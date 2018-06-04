@@ -5,6 +5,7 @@ import java.util.List;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.organization.entity.TOrganization;
+import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.entity.TRole;
 
 public interface AccountDao {
@@ -72,4 +73,10 @@ public interface AccountDao {
 	 * @throws RbackException
 	 */
 	public void insertAccount2Role(String accountId,String roleId) throws RbackException ;
+	/****
+	 * 获取此账号的岗位列表
+	 * @param accountId
+	 * @return
+	 */
+	public List<TPosition> getPositionsOfTheAccount(String accountId);
 }

@@ -52,4 +52,10 @@
 	<insert id="insertAccount2Role" parameterType="map">
 		insert into t_account2role(accountId,roleid) values (#{accountId},#{roleId})
 	</insert>
+	
+	<select id="getPositionsOfTheAccount"  parameterType="String" resultType="TPosition">
+		select p.* from t_position p,t_account2position ap
+      where ap.positionid = p.id and p.isdeleted='0' 
+      and ap.accountid=#{accountId}
+	</select>
 </mapper>   
