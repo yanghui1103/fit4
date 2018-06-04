@@ -22,7 +22,6 @@
 	<script type="text/javascript" src="<%=basePath%>common/js/system/account/accountListPage.js"></script>
 </head> 
 <body>	
-    <div class="container">    
         
       <div id="tb" style="padding:0 30px;">
 		<form id="accountlistFM">
@@ -39,7 +38,6 @@
       
        <table id="accountListDg" style="width:100%;height:480px;" >
         </table>
-    </div>    
     <div id="_loadDialog_accountlist"></div>  
     <div id="_loadDialog_address"></div>
 </body> 
