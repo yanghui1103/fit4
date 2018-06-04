@@ -22,4 +22,10 @@ public interface OrganizationService {
 	 * @throws RbackException
 	 */
 	public JSONObject delete(String id) throws RbackException ;
+	/*****
+	 * 获取当前组织的父组织（尾部跟随当前组织）
+	 * @param currentOrgId
+	 * @return
+	 */
+	public String getParentOrgByCurtOrgId(String currentOrgId);
 }

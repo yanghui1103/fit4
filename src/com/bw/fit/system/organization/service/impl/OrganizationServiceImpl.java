@@ -49,4 +49,11 @@ public class OrganizationServiceImpl implements OrganizationService {
 	}
 
 
+	@Override
+	public String getParentOrgByCurtOrgId(String currentOrgId) {
+		
+		return null;
+	}
+
+
 }
