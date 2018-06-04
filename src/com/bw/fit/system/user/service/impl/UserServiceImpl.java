@@ -51,7 +51,9 @@ public class UserServiceImpl implements UserService {
 	public User get(String id) {
 		User user = new User();
 		TUser tu =  userDao.get(id);
-		PubFun.copyProperties(user, tu);
+		if(tu!=null){
+			PubFun.copyProperties(user, tu);
+		}
 		return user ;
 	}
 
