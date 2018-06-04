@@ -63,4 +63,10 @@ public class OrganizationServiceImpl implements OrganizationService {
 	}
 
 
+	@Override
+	public Organization get(String id) {
+		return organizationDao.get(id);
+	}
+
+
 }
