@@ -16,10 +16,11 @@ function listquery(){
 	    remoteSort: false, 
         columns: [[
                    { field: 'id', title: 'ID' ,hidden:true  }, 
-                   { field: 'creator', title: '操作人', width: '30%',fixed:true  },
+                   { field: 'creator', title: '操作人', width: '10%',fixed:true  },
                    { field: 'logType', title: '类型', width: '20%' },
                    { field: 'operateFunction', title: '执行方法', width: '30%' } ,
-                   { field: 'result', title: '结果', width: '20%' }
+                   { field: 'result', title: '返回值', width: '20%' },
+                   { field: 'createTime', title: '执行时间', width: '20%' }
                ]],
              fit: false ,    
              idField: "id",
