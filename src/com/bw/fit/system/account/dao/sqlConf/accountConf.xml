@@ -9,7 +9,8 @@
 	</select>
 	
 	<select id="getAccount"  parameterType="String" resultType="account">
-		select * from t_account where id = #{id,jdbcType=VARCHAR}
+		select a.*,u.name,u.name_pinyin,u.card,u.type,u.isvisible,u.email,u.phone,u.address from t_account a,t_user u where
+		1=1 and a.userid = u.code and a.id = #{id,jdbcType=VARCHAR}
 	</select>
 	
 	<select id="getRolesByAccount"  parameterType="String" resultType="tRole">

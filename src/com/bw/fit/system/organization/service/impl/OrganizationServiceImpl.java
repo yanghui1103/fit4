@@ -53,7 +53,6 @@ public class OrganizationServiceImpl implements OrganizationService {
 	@Override
 	public String getParentOrgByCurtOrgId(String currentOrgId) {
 		List<Organization>  list = organizationDao.getParentsAndCurt(currentOrgId);
-		list.stream().map(Organization::getName).forEach(str->System.out.println(str));
 		StringBuffer sb = new StringBuffer();
 		List<String> ss = list.stream().map(Organization::getName).collect(Collectors.toList());
 		for(int i=ss.size()-1;i>=0 ;i--){
