@@ -5,19 +5,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bw.fit.system.account.model.Account;
+import com.bw.fit.system.account.service.AccountService;
 import com.bw.fit.system.address.dao.AddressDao;
 import com.bw.fit.system.address.entity.VAddress;
 import com.bw.fit.system.address.service.AddressService;
+import com.bw.fit.system.dict.service.DictService;
+import com.bw.fit.system.organization.service.OrganizationService;
 import com.bw.fit.system.position.service.PositionService;
 @Service
 public class AddressServcieImpl implements AddressService{
 	@Autowired
 	private PositionService positionService;
+	@Autowired
+	private OrganizationService organizationService;
+	@Autowired
+	private AccountService accountService;
+	@Autowired
+	private DictService dictService;
 	@Autowired
 	private AddressDao addressDao ;
 	
@@ -80,14 +89,20 @@ public class AddressServcieImpl implements AddressService{
 		if (address.isPresent()) {
 			VAddress addr = address.get();
 			if("organization".equals(addr.getAddressType())) {//组织
-				
+				detali = organizationService.get(id).getName()
+						+"("+dictService.getDictsByParentValue(organizationService.get(id).getType()).getDictName()+")";
+				detali += "["+organizationService.getParentOrgByCurtOrgId(underOrgId)+"]";
 			}
 			if("position".equals(addr.getAddressType())){//岗位
 				detali = positionService.get(id).getName()+"(岗位)";
-				detali += "--XXX组织";
+				detali += "["+organizationService.getParentOrgByCurtOrgId(underOrgId)+"]";
 			}
-			if("account".equals(addr.getAddressType())){//账户
-				
+			if("account".equals(addr.getAddressType())){//账号
+				Account account = accountService.get(id);
+				detali = account.getName()+","+account.getLogName()+","
+						+account.getPhone()+","+"(账号)";
+				detali += "[所属岗位:"+accountService.getPositionStrOfTheAccount(id)+
+						",所属组织:"+organizationService.getParentOrgByCurtOrgId(underOrgId)+"]";
 			}
 		}
 		return detali;
