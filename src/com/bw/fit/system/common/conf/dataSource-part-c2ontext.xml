@@ -70,10 +70,10 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation"
-			value="classpath:com/bw/fit/common/conf/dao-persistence-config.xml"></property>
+			value="classpath:com/bw/fit/system/common/conf/dao-persistence-config.xml"></property>
 		<property name="mapperLocations" >
 			<list>
-				<value>classpath:com/bw/fit/*/dao/sqlConf/*Conf.xml</value>
+				<value>classpath:com/bw/fit/*/*/dao/sqlConf/*Conf.xml</value>
 			</list>
 		</property>	
 	</bean>
@@ -93,7 +93,7 @@
 	<aop:config>
 		<!-- 通过aop定义事务增强切面 -->
 		<aop:pointcut id="serviceMethod"
-			expression="execution(* com.bw.fit.*.service.impl.*.*(..))" />
+			expression="execution(* com.bw.fit.*.*.service.impl.*.*(..))" />
 		<!-- 引用事务增强 -->
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txPointcut" /> 
 		
@@ -104,7 +104,7 @@
 	<aop:config>
 		<!-- 通过aop定义事务增强切面 -->
 		<aop:pointcut id="daoMethod"
-			expression="execution(* com.bw.fit.*.dao.impl.*.*(..))" />
+			expression="execution(* com.bw.fit.*.*.dao.impl.*.*(..))" />
 		<!-- 引用事务增强 -->
 		<aop:advisor pointcut-ref="daoMethod" advice-ref="txPointcut" />
 		
@@ -126,6 +126,7 @@
 			<tx:method name="get*" read-only="true" />
 			<tx:method name="find*" read-only="true" />
 			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="send*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="edit*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
