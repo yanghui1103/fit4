@@ -67,10 +67,17 @@
 				
 				</li>
 			</c:forEach>
+			<li>
+				<label>其他组织:</label>				
+			<input class="easyui-textbox address-select" 
+			style="width: 80%;paddding-right:2px" data-options="required:true" editable="false" value="${orgNames }">
+			<input type="hidden" value="${orgIds }" name="rorgIds"  >
+			</li>
 			</ul>
 		</div>
 	 </div>
 	</form>
+	<script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
 	<script type="text/javascript">
 		function addRole2Auths(){
 			promptMessageCallBack("3","是否该角色修改数据权限？",function(){					
@@ -85,6 +92,18 @@
 				});
 			});
 		}
+		
+
+		$(function(){
+				$(".address-select").textbox({
+					icons: [{
+						iconCls:'icon-search',
+						handler: function(e){
+							openAddress($("#_loadDialog_address"),$("input[name='rorgIds']"),$(".address-select"),'O',true);
+						}
+					}]
+				})
+			});
 	</script>
 </body>
 </html>

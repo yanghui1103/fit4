@@ -39,6 +39,7 @@
         </table>
     </div>      
 	<div id="_loadDialog_rolelist"></div>
+	<div id="_loadDialog_address"></div>
 	
 </body> 
 </html>
