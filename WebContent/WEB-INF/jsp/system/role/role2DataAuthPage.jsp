@@ -70,7 +70,7 @@
 			<li>
 				<label>其他组织:</label>				
 			<input class="easyui-textbox address-select" 
-			style="width: 80%;paddding-right:2px" data-options="required:true" editable="false" value="${orgNames }">
+			style="width: 80%;paddding-right:2px"   editable="false" value="${orgNames }">
 			<input type="hidden" value="${orgIds }" name="rorgids"  >
 			</li>
 			</ul>

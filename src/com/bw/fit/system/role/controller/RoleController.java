@@ -1,7 +1,9 @@
 package com.bw.fit.system.role.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.address.service.AddressService;
 import com.bw.fit.system.authority.dao.AuthorityDao;
 import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.authority.entity.TRole2dataauth;
@@ -45,6 +48,8 @@ import com.bw.fit.system.user.entity.TUser;
 @Controller
 public class RoleController extends BaseController {
 
+	@Autowired
+	private AddressService addressService ;
 	@Autowired
 	private DictService dictService ;
 	@Autowired
@@ -166,6 +171,14 @@ public class RoleController extends BaseController {
 			}
 		}
 		model.addAttribute("all", tds);
+		BaseModel b = roleDao.getRoleDataAuthOrgs(roleId);
+		if(b!=null){
+			model.addAttribute("orgIds",b.getTemp_str2());
+			String[] arr = addressService.getNames(b.getTemp_str2().split(",")) ;
+			
+			model.addAttribute("orgNames", Arrays.stream(arr).collect(Collectors.joining(",")));
+		}
+		
 		return "system/role/role2DataAuthPage";
 	}
 

@@ -45,7 +45,7 @@ public interface RoleDao {
 	 * @return
 	 * @throws RbackException
 	 */
-	public BaseModel getRoleDataAuthOrgs(String roleId)  throws RbackException ;
+	public BaseModel getRoleDataAuthOrgs(String roleId)  ;
 	public void delete(String id) throws RbackException ;
 	/****
 	 * 增加

@@ -123,7 +123,7 @@ public class RoleDaoImpl implements RoleDao {
 	}
 
 	@Override
-	public BaseModel getRoleDataAuthOrgs(String roleId) throws RbackException {
+	public BaseModel getRoleDataAuthOrgs(String roleId)   {
 		return (BaseModel)daoTemplete.getOneData("roleSql.getRoleDataAuthOrgs", roleId);
 	}
 
