@@ -9,6 +9,7 @@ import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.entity.TRole2Authority;
+import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
 import com.bw.fit.system.role.model.Role;
 
 public interface RoleDao {
@@ -118,4 +119,10 @@ public interface RoleDao {
 	 * @return
 	 */
 	public List<TRole> getAllRoles(String keyWords);
+	/*****
+	 * 此角色下数据权限指定的别的组织 
+	 * @param roleId
+	 * @return
+	 */
+	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId);
 }

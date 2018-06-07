@@ -561,8 +561,8 @@ public class PubFun {
 		}
 		b.setCreator(getCurrentAccount().getId());
 		b.setCreateOrgId(getCurrentAccount().getCurrentOrgId());
-//		b.setCreator("11");
-//		b.setCreateOrgId("105");
+		List<String> orgs = (List)PubFun.getCurrentSession().getAttribute("OrgIdsOfDataAuth");
+		b.setCreateOrgIds(orgs);
 	}
 	
 	/****

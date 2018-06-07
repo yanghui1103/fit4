@@ -103,4 +103,7 @@
 	 <insert id="insertRoleDataAuthOrgs" parameterType="baseModel" >
 	 	insert into t_role2dataauth_orgs(roleid,orgids) values (#{id},#{temp_str2}) 
 	 </insert>
+	 <select id="getTRole2dataauthOrgs" parameterType="String" resultType="TRole2dataauthOrgs"> 
+	 	select * from t_role2dataauth_orgs where roleid =#{roleId,jdbcType=VARCHAR}
+	 </select>	
 </mapper>   

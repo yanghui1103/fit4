@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.role.entity.TRole2Authority;
+import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
 import com.bw.fit.system.role.model.Role;
 
 public interface RoleService {
@@ -55,4 +56,10 @@ public interface RoleService {
 	 * @return
 	 */
 	public List<Role> getAllRoles(String keyWords);
+	/*****
+	 * 此角色下数据权限指定的别的组织 
+	 * @param roleId
+	 * @return
+	 */
+	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId);
 }

@@ -19,6 +19,7 @@ import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.entity.TRole2Authority;
+import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
 import com.bw.fit.system.role.model.Role;
 import com.bw.fit.system.role.service.RoleService;
 
@@ -182,6 +183,11 @@ public class RoleServiceImpl implements RoleService {
 			list.add(role);
 		}
 		return list;
+	}
+
+	@Override
+	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId) {
+		return roleDao.getTRole2dataauthOrgs(roleId);
 	}
 
 }

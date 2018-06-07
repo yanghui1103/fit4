@@ -23,6 +23,8 @@ import com.bw.fit.system.organization.service.OrganizationService;
 import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
+import com.bw.fit.system.role.service.RoleService;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -35,6 +37,8 @@ public class AccountServiceImpl implements AccountService {
 	private DictService dictService;
 	@Autowired
 	private OrganizationService organizationService; 
+	@Autowired
+	private RoleService roleService;
 	
 	@Override
 	public Account getAccountByLogName(String logName) {
@@ -132,6 +136,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public List<Organization> getDataAuthOrgsOfAccount(String accountId) {
+		List<Organization> all = new ArrayList<>();
 		Account a = accountDao.getAccount(accountId);		
 		List<TRole> roles = accountDao.getRolesByAccount(a.getLogName());
 		int level = 0 ;
@@ -142,25 +147,37 @@ public class AccountServiceImpl implements AccountService {
 				level = dictService.getDictByValue(ta.getAuthId()).getSortNumber() ;
 				levelname = dictService.getDictByValue(ta.getAuthId()).getDictValue();
 			}
+
+			TRole2dataauthOrgs tt = roleService.getTRole2dataauthOrgs(tr.getId());
+			if(tt!=null&&!"".equals(tt.getOrgIds())){ 
+				String[] arr = tt.getOrgIds().split(",");
+				for(String ss:arr){
+					Organization organization = organizationService.get(ss);
+					all.add(organization);
+				}				
+			}			
 		}
 		
 		String currentOrgId = PubFun.getCurrentAccount().getCurrentOrgId();
 		Organization organization = organizationService.get(currentOrgId);
 		Dict curtOrg = dictService.getDictByValue(organization.getType());
-		
+		/*****
+		 * 将指定组织纳入
+		 */
 		/*****
 		 * 1,如果当前帐号所在的组织的级别大于等于当前帐号所有角色关联数据权限的最高级别,那么就去当前组织及子孙组织
 		 * 2,则向上追溯到[当前帐号所有角色关联数据权限的最高级别]的组织，然后将此组织及此组织下所有子孙组织
 		 */
 		if(curtOrg.getSortNumber()>=level){//1
 			List<Organization>  orgss = organizationService.getChildrenAndCurt(currentOrgId);
-			return orgss ;
+			all.addAll(orgss);
+			return all ;
 		}else{//2
 			List<Organization>  orgss = organizationService.getParentsAndCurt(currentOrgId);
 			for(int i=0;i<orgss.size();i++){ // 直至追溯到和当前最高数据级别一致
 				if(dictService.getDictByValue(orgss.get(i).getType()).getSortNumber()== level){
 					List<Organization> ccorgs = organizationService.getChildrenAndCurt(orgss.get(i).getId());
-					return ccorgs ;
+					all.addAll(ccorgs);
 				}
 			}
 		}

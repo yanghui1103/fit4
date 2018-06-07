@@ -14,6 +14,7 @@ import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.entity.TRole2Authority;
+import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
 @Repository
 public class RoleDaoImpl implements RoleDao {
 
@@ -125,6 +126,11 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public BaseModel getRoleDataAuthOrgs(String roleId)   {
 		return (BaseModel)daoTemplete.getOneData("roleSql.getRoleDataAuthOrgs", roleId);
+	}
+
+	@Override
+	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId) {
+		return (TRole2dataauthOrgs)daoTemplete.getOneData("roleSql.getTRole2dataauthOrgs", roleId);
 	}
 
 

@@ -108,7 +108,7 @@ public class SystemController extends BaseController {
 			session.setAttribute("CurrentUser", currentAccount);
 			/***将这个账户所拥有的所有数据级权限下所有的组织IDS=>session***/
 			List<Organization> orgs = accountService.getDataAuthOrgsOfAccount(currentAccount.getId());
-			session.setAttribute("OrgIdsOfDataAuth", orgs.stream().map(Organization::getId).collect(Collectors.joining(",")));
+			session.setAttribute("OrgIdsOfDataAuth", orgs.stream().map(Organization::getId).collect(Collectors.toList()));
 			return "system/common/indexPage";
 	}
 	
