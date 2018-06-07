@@ -27,4 +27,10 @@ public interface AddressDao {
 	 * @return
 	 */
 	public List<VAddress> get (String id);
+	/***
+	 * 根据id数组获取地址本名称数组
+	 * @param ids
+	 * @return
+	 */
+	public String[] getNames(String [] ids);
 }

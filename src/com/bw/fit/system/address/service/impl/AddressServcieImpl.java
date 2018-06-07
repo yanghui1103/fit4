@@ -108,4 +108,9 @@ public class AddressServcieImpl implements AddressService{
 		return detali;
 	}
 
+	@Override
+	public String[] getNames(String[] ids) {
+		return addressDao.getNames(ids);
+	}
+
 }

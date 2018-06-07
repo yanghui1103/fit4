@@ -3,6 +3,7 @@ package com.bw.fit.system.address.dao.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,6 +33,12 @@ public class AddressDaoImpl implements AddressDao{
 		map.put("addressType",addressType);
 		map.put("keyWords",keyWords);
 		return daoTemplete.getListData("addressSql.getAddressByKey", map);
+	}
+	@Override
+	public String[] getNames(String[] ids) {
+		List<VAddress> lists = daoTemplete.getListData("addressSql.getNames", ids);
+		String[] names=lists.stream().map(VAddress::getName).toArray(String[]::new);
+		return names;
 	}
 
 }

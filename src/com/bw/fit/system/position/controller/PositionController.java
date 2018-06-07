@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.address.service.AddressService;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.dict.model.Dict;
@@ -33,6 +34,8 @@ public class PositionController {
 	private PositionDao positionDao ;
 	@Autowired
 	private PositionService positionService ;
+	@Autowired
+	private AddressService addressService ;
 	@Autowired
 	private OrganizationDao organizationDao;
 	/*****

@@ -27,4 +27,10 @@ public interface AddressService {
 	 * @return
 	 */
 	public String getDetali(String id,String underOrgId);
+	/****
+	 * 通过ids获取names
+	 * @param ids 
+	 * @return
+	 */
+	public String[] getNames(String[] ids);
 }

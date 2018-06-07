@@ -13,4 +13,12 @@
 	<select id="get" parameterType="string" resultType="VAddress">
 		select * from V_ADDRESS where id = #{id}
 	</select>
+	
+	<select id="getNames" resultType="VAddress">
+		select * from V_ADDRESS where id in 
+		<foreach collection="array" item="id" index="index"
+            open="(" close=")" separator=",">
+            #{id}
+        </foreach> 
+	</select>
 </mapper>   
