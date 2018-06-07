@@ -6,7 +6,7 @@ import com.bw.fit.system.common.data.source.NoSQLDataSource;
 import com.bw.fit.system.common.data.source.RmdbDataSource;
 
 public interface DaoTemplete extends MqDataSource,  KvdbDataSource,
-		RmdbDataSource {
+		RmdbDataSource ,NoSQLDataSource{
 
 	public void join();
 }
