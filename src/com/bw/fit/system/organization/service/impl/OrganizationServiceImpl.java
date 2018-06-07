@@ -68,4 +68,16 @@ public class OrganizationServiceImpl implements OrganizationService {
 	}
 
 
+	@Override
+	public List<Organization> getChildrenAndCurt(String cuurentOrgId) {
+		return organizationDao.getChildrenAndCurt(cuurentOrgId);
+	}
+
+
+	@Override
+	public List<Organization> getParentsAndCurt(String cuurentOrgId) {
+		return organizationDao.getParentsAndCurt(cuurentOrgId);
+	}
+
+
 }

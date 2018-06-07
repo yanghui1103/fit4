@@ -103,7 +103,7 @@ public class RoleController extends BaseController {
 		JSONObject json = new JSONObject();		
 		try {
 			Session session = PubFun.getCurrentSession();
-			commonUtil.fillCommonProptities(role, true, session);
+			PubFun.fillCommonProptities(role, true, session);
 			json = roleService.insert(role);
 		} catch (RbackException e) {
 			e.printStackTrace();
@@ -161,11 +161,10 @@ public class RoleController extends BaseController {
 		model.addAttribute("role", roleDao.get(roleId));
 		Dict dd = dictService.getDictsByParentValue("dataAuth");
 		List<TdataDict> tds =  dictDao.getDictsByPid(dd.getId());
-		List<TRole2dataauth> my = roleDao.getDataAuthoritysByRole(roleId);
+		TRole2dataauth my = roleDao.getDataAuthoritysByRole(roleId);
 		for(TdataDict t:tds){
 			if(my!=null){
-				Optional ops = my.parallelStream().filter(x->x.getAuthId().equals(t.getDict_value())).findAny();
-				if(ops.isPresent()){
+				if(my.getAuthId().equalsIgnoreCase(t.getDict_value())){
 					t.setLogId("checked");
 				}
 			}

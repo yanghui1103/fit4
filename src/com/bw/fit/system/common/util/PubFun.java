@@ -475,7 +475,7 @@ public class PubFun {
 	public static String getLicneceMiWen(String key) {
 		ResourceBundle rb = null;
 		try {
-			rb = ResourceBundle.getBundle("com/bw/fit/common/conf/licence");
+			rb = ResourceBundle.getBundle("com/bw/fit/system/common/conf/licence");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

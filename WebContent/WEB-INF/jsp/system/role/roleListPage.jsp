@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="<%=basePath%>common/js/system/role/roleListPage.js"></script>
 </head> 
 <body>	
-    <div class="container">
+    <div>
       <div id="tb" style="padding:0 30px;">
 		<form id="rolelistFM">
         	关键词: <input class="easyui-textbox"   type="text" name="keyWords" style="width:166px;height:35px;line-height:35px;"></input>

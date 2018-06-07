@@ -88,7 +88,7 @@ public interface RoleDao {
 	 * @param roleId
 	 * @return
 	 */
-	public List<TRole2dataauth> getDataAuthoritysByRole(String roleId);
+	public TRole2dataauth getDataAuthoritysByRole(String roleId);
 	/*****
 	 * 给角色赋数据权限 
 	 * @param ta

@@ -6,6 +6,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.menu.model.Menu;
+import com.bw.fit.system.organization.entity.TOrganization;
+import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.position.entity.TPosition;
 
 public interface AccountService {
@@ -49,4 +51,11 @@ public interface AccountService {
 	 * @return
 	 */
 	public String getPositionStrOfTheAccount(String accountId);
+	/******
+	 * 此账号的数据权限级别下关联的组织，
+	 * 及指定组织
+	 * @param accountId
+	 * @return
+	 */
+	public List<Organization> getDataAuthOrgsOfAccount(String accountId);
 }

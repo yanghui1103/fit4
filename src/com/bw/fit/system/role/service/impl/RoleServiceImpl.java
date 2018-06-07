@@ -114,7 +114,7 @@ public class RoleServiceImpl implements RoleService {
 			BaseModel bm = new BaseModel();
 			bm.setId(roleId);
 			bm.setAction_name(authId);
-			List<TRole2dataauth> alis = roleDao.getDataAuthoritysByRole(roleId);
+			TRole2dataauth alis = roleDao.getDataAuthoritysByRole(roleId);
 			if(alis!=null){
 				roleDao.deleteDataAuthority2Role(roleId);
 			}

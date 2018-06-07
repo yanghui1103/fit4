@@ -2,6 +2,8 @@ package com.bw.fit.system.system.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bw.fit.system.common.controller.BaseController;
 import com.bw.fit.system.common.util.PubFun;
+import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.role.service.RoleService;
 
 import static com.bw.fit.system.common.util.PubFun.*;
@@ -103,6 +106,9 @@ public class SystemController extends BaseController {
 
 			Account currentAccount  = accountService.getAccountByLogName(logAccount.getLogName()) ;
 			session.setAttribute("CurrentUser", currentAccount);
+			/***将这个账户所拥有的所有数据级权限下所有的组织IDS=>session***/
+			List<Organization> orgs = accountService.getDataAuthOrgsOfAccount(currentAccount.getId());
+			session.setAttribute("OrgIdsOfDataAuth", orgs.stream().map(Organization::getId).collect(Collectors.joining(",")));
 			return "system/common/indexPage";
 	}
 	

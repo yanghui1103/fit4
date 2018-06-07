@@ -76,8 +76,8 @@ public class RoleDaoImpl implements RoleDao {
 	}
 
 	@Override
-	public List<TRole2dataauth> getDataAuthoritysByRole(String roleId) {
-		return daoTemplete.getListData("roleSql.getDataAuthoritysByRole", roleId);
+	public TRole2dataauth getDataAuthoritysByRole(String roleId) {
+		return (TRole2dataauth)daoTemplete.getOneData("roleSql.getDataAuthoritysByRole", roleId);
 	}
 
 	@Override
