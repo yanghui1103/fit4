@@ -16,7 +16,6 @@ import com.bw.fit.system.common.model.RbackException;
  * @author yangh
  *
  */
-
 public class NoSQLDataSourceImpl implements NoSQLDataSource {
 
 	@Autowired
