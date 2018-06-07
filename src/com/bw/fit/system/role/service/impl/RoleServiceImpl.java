@@ -127,11 +127,12 @@ public class RoleServiceImpl implements RoleService {
 			if(b!=null){
 				roleDao.deleteRoleDataAuthOrgs(roleId);
 			}
-
-			BaseModel bb = new BaseModel();
-			bb.setId(roleId);
-			bb.setTemp_str2(rorgids);
-			roleDao.insertRoleDataAuthOrgs(bb);
+			if(!"".equals(rorgids)){
+				BaseModel bb = new BaseModel();
+				bb.setId(roleId);
+				bb.setTemp_str2(rorgids);
+				roleDao.insertRoleDataAuthOrgs(bb);				
+			}
 			
 			PubFun.returnSuccessJson(json);
 		} catch (RbackException e) {
