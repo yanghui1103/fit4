@@ -93,4 +93,14 @@
 	 <insert id="grantMenus2role" parameterType="baseModel">
 	 	insert into t_role2menu (roleid,menuid) values (#{id},#{logId})
 	 </insert>
+	 
+	 <select id="getRoleDataAuthOrgs" parameterType="String" resultType="baseModel"> 
+	 	select a.roleId ,orgids temp_str2 from t_role2dataauth_orgs a where roleid = #{roleId}
+	 </select>
+	 <delete id="deleteRoleDataAuthOrgs" parameterType="String">
+	  	delete from t_role2dataauth_orgs where roleid = #{roleId}
+	 </delete>
+	 <insert id="insertRoleDataAuthOrgs" parameterType="baseModel" >
+	 	insert into t_role2dataauth_orgs(roleid,orgids) values (#{id},#{temp_str2}) 
+	 </insert>
 </mapper>   

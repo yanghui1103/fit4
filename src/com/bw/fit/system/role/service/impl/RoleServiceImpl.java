@@ -107,7 +107,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public JSONObject saveDataAuthsOfRole(String roleId, String authId)
+	public JSONObject saveDataAuthsOfRole(String roleId, String authId,String rorgids)
 			throws RbackException {
 		JSONObject json = new JSONObject();
 		try {
@@ -119,6 +119,20 @@ public class RoleServiceImpl implements RoleService {
 				roleDao.deleteDataAuthority2Role(roleId);
 			}
 			roleDao.grantDataAuthority2Role(bm);
+			
+			/****
+			 * 指定组织部分
+			 */
+			BaseModel b = roleDao.getRoleDataAuthOrgs(roleId);
+			if(b!=null){
+				roleDao.deleteRoleDataAuthOrgs(roleId);
+			}
+
+			BaseModel bb = new BaseModel();
+			bb.setId(roleId);
+			bb.setTemp_str2(rorgids);
+			roleDao.insertRoleDataAuthOrgs(b);
+			
 			PubFun.returnSuccessJson(json);
 		} catch (RbackException e) {
 			json = new JSONObject();

@@ -31,7 +31,21 @@ public interface RoleDao {
 	 * @return
 	 */
 	public List<TRole> getRoles(TRole role);
+	/****
+	 * 删除角色与指定组织的关系
+	 * @param roleId
+	 * @throws RbackException
+	 */
+	public void deleteRoleDataAuthOrgs(String roleId) throws RbackException ;
 	
+	public void insertRoleDataAuthOrgs(BaseModel b) throws RbackException ;
+	/***
+	 * 这个角色被指定的其他组织（数据权限部分）
+	 * @param roleid
+	 * @return
+	 * @throws RbackException
+	 */
+	public BaseModel getRoleDataAuthOrgs(String roleId)  throws RbackException ;
 	public void delete(String id) throws RbackException ;
 	/****
 	 * 增加

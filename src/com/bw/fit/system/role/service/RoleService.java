@@ -36,10 +36,11 @@ public interface RoleService {
 	 * 分配数据权限
 	 * @param roleId
 	 * @param authId
+	 * rorgids 那些指定的组织
 	 * @return
 	 * @throws RbackException
 	 */
-	public JSONObject saveDataAuthsOfRole(String roleId,String authId)  throws RbackException;
+	public JSONObject saveDataAuthsOfRole(String roleId,String authId,String rorgids)  throws RbackException;
 	
 	/****
 	 * 角色分配菜单权限

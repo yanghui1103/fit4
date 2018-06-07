@@ -71,7 +71,7 @@
 				<label>其他组织:</label>				
 			<input class="easyui-textbox address-select" 
 			style="width: 80%;paddding-right:2px" data-options="required:true" editable="false" value="${orgNames }">
-			<input type="hidden" value="${orgIds }" name="rorgIds"  >
+			<input type="hidden" value="${orgIds }" name="rorgids"  >
 			</li>
 			</ul>
 		</div>
@@ -99,7 +99,7 @@
 					icons: [{
 						iconCls:'icon-search',
 						handler: function(e){
-							openAddress($("#_loadDialog_address"),$("input[name='rorgIds']"),$(".address-select"),'O',true);
+							openAddress($("#_loadDialog_address"),$("input[name='rorgids']"),$(".address-select"),'O',true);
 						}
 					}]
 				})

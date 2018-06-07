@@ -112,5 +112,20 @@ public class RoleDaoImpl implements RoleDao {
 		return daoTemplete.getListData("roleSql.getAllRoles", name);
 	}
 
+	@Override
+	public void deleteRoleDataAuthOrgs(String roleId) throws RbackException {
+		daoTemplete.delete("roleSql.deleteRoleDataAuthOrgs", roleId);
+	}
+
+	@Override
+	public void insertRoleDataAuthOrgs(BaseModel b) throws RbackException {
+		daoTemplete.insert("roleSql.insertRoleDataAuthOrgs", b);
+	}
+
+	@Override
+	public BaseModel getRoleDataAuthOrgs(String roleId) throws RbackException {
+		return (BaseModel)daoTemplete.getOneData("roleSql.getRoleDataAuthOrgs", roleId);
+	}
+
 
 }

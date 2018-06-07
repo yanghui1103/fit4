@@ -172,10 +172,10 @@ public class RoleController extends BaseController {
 	
 	@RequestMapping(value="saveDataAuthsOfRole",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public JSONObject saveAuthsOfRole(@RequestParam(value="temp_str1") String temp_str1,
+	public JSONObject saveAuthsOfRole(@RequestParam(value="rorgids") String rorgids,@RequestParam(value="temp_str1") String temp_str1,
 			@RequestParam(value="id") String id) throws RbackException{
 		JSONObject json = new JSONObject();		
-		json = roleService.saveDataAuthsOfRole(temp_str1,id);
+		json = roleService.saveDataAuthsOfRole(temp_str1,id,rorgids);
 		return json ;	
 	}
 	
