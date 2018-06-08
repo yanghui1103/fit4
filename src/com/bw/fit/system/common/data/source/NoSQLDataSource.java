@@ -77,5 +77,12 @@ public interface NoSQLDataSource {
 	 * @return
 	 */
 	public boolean sisMember(String setName,String object);
+	/*****
+	 * 键的失效时间
+	 * @param key
+	 * @param seconds
+	 * @return
+	 */
+	public Long expire(String key,int seconds);
 	
 }

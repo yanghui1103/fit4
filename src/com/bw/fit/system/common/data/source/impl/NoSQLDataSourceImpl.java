@@ -16,11 +16,10 @@ import com.bw.fit.system.common.model.RbackException;
  * @author yangh
  *
  */
+@Component 
 public class NoSQLDataSourceImpl implements NoSQLDataSource {
 
 	private JedisCluster jedisCluster; 
-	//@Autowired
-	// private org.springframework.data.redis.core.RedisTemplate redisTemplate;
 	
 	@Override
 	public void del_list(String listName) {
@@ -84,6 +83,11 @@ public class NoSQLDataSourceImpl implements NoSQLDataSource {
 	@Override
 	public boolean sisMember(String setName, String object) {
 		return jedisCluster.sismember(setName, object);
+	}
+
+	@Override
+	public Long expire(String key, int seconds) {
+		return jedisCluster.expire(key, seconds);
 	}
 
 }

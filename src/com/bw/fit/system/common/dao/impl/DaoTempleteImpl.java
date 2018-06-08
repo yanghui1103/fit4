@@ -1,6 +1,7 @@
 package com.bw.fit.system.common.dao.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,7 @@ public class DaoTempleteImpl  implements DaoTemplete{
 	private KvdbDataSource kvdbDataSource; 
 	@Autowired
 	private RmdbDataSource rmdbDataSource ;
+	@Autowired
 	private NoSQLDataSource noSQLDataSource ;
 	
 	@Override
@@ -98,6 +100,11 @@ public class DaoTempleteImpl  implements DaoTemplete{
 	}
 
 	@Override
+	public Long expire(String key, int seconds) {
+		return noSQLDataSource.expire(key, seconds);
+	}
+
+	@Override
 	public boolean sisMember(String setName, String object) {
 		return noSQLDataSource.sisMember(setName, object);
 	}
@@ -145,6 +152,11 @@ public class DaoTempleteImpl  implements DaoTemplete{
 	@Override
 	public void del(String key) throws RbackException {
 		kvdbDataSource.del(key);
+	}
+
+	@Override
+	public Set getKeysByPattern(String pattern) {
+		return kvdbDataSource.getKeysByPattern(pattern);
 	}
 
 }
