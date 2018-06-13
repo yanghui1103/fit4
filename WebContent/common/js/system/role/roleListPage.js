@@ -136,4 +136,17 @@ function openRole2MenuPage(){
 	});
 }
 
+function openAssignAccount(){
+	var row = getSingleTreeGridSelectData($("#roleListDg")); 
+	$('#_loadDialog_rolelist').dialog({    
+	    title: '分配账号',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'role/openAccountOfRole/'+  row.id  ,    
+	    modal: true   
+	});
+}
 

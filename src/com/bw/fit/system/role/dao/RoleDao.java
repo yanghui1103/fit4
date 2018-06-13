@@ -2,6 +2,7 @@ package com.bw.fit.system.role.dao;
 
 import java.util.List;
 
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.authority.entity.TRole2dataauth;
 import com.bw.fit.system.common.model.BaseModel;
@@ -125,4 +126,10 @@ public interface RoleDao {
 	 * @return
 	 */
 	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId);
+	/****
+	 * 获取此角色分配得账号
+	 * @param roleId
+	 * @return
+	 */
+	public List<Account> getAccountOfRole(String roleId);
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.authority.dao.AuthorityDao;
 import com.bw.fit.system.authority.entity.TAuthority;
 import com.bw.fit.system.authority.entity.TRole2dataauth;
@@ -188,6 +189,11 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId) {
 		return roleDao.getTRole2dataauthOrgs(roleId);
+	}
+
+	@Override
+	public List<Account> getAccountOfRole(String roleId) {
+		return roleDao.getAccountOfRole(roleId);
 	}
 
 }

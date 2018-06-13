@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.address.service.AddressService;
 import com.bw.fit.system.authority.dao.AuthorityDao;
 import com.bw.fit.system.authority.entity.TAuthority;
@@ -39,6 +40,7 @@ import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.model.Role;
 import com.bw.fit.system.role.service.RoleService;
 import com.bw.fit.system.user.entity.TUser;
+import com.bw.fit.system.user.service.UserService;
 /*****
  * 角色模块controller
  * @author yangh
@@ -48,6 +50,8 @@ import com.bw.fit.system.user.entity.TUser;
 @Controller
 public class RoleController extends BaseController {
 
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private AddressService addressService ;
 	@Autowired
@@ -206,4 +210,22 @@ public class RoleController extends BaseController {
 		return json ;	
 	}
 	
+	/*****
+	 * 打开角色分配人员界面，将已有得人员输出
+	 * @param roleId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("openAccountOfRole/{roleId}")
+	public String openAccountOfRole(@PathVariable String roleId,Model model){		
+		List<Account> as = roleService.getAccountOfRole(roleId);
+		for(Account a:as){
+			a.setName(userService.get(a.getUserId()).getName());
+		}
+		model.addAttribute("role", roleDao.get(roleId));
+		model.addAttribute("accountIds", as.stream().map(Account::getId).collect(Collectors.joining(",")));
+		model.addAttribute("accountNames", as.stream().map(Account::getName).collect(Collectors.joining(",")));
+		
+		return "system/role/role2AccountPage";
+	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.role.entity.TRole2Authority;
 import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
@@ -62,4 +63,10 @@ public interface RoleService {
 	 * @return
 	 */
 	public TRole2dataauthOrgs getTRole2dataauthOrgs(String roleId);
+	/****
+	 * 获取此角色分配得账号
+	 * @param roleId
+	 * @return
+	 */
+	public List<Account> getAccountOfRole(String roleId);
 }

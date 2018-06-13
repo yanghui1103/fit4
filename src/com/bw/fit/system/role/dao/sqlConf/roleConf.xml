@@ -106,4 +106,8 @@
 	 <select id="getTRole2dataauthOrgs" parameterType="String" resultType="TRole2dataauthOrgs"> 
 	 	select * from t_role2dataauth_orgs where roleid =#{roleId,jdbcType=VARCHAR}
 	 </select>	
+	 <select id="getAccountOfRole"  parameterType="String" resultType="Account"> 
+	 	select aa.* from t_account2role ar,t_account aa 
+		where aa.id = ar.accountid and aa.isdeleted='0' and ar.roleid = #{roleId}
+	 </select>
 </mapper>   
