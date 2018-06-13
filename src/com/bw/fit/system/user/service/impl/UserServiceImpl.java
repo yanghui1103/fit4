@@ -57,4 +57,14 @@ public class UserServiceImpl implements UserService {
 		return user ;
 	}
 
+	@Override
+	public User getByCode(String code) {
+		User user = new User();
+		TUser tu =  userDao.getByCode(code);
+		if(tu!=null){
+			PubFun.copyProperties(user, tu);
+		}
+		return user ;
+	}
+
 }

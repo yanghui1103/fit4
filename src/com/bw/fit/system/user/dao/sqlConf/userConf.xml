@@ -18,6 +18,9 @@
 		select * from t_user where id = #{id}
 	</select>
 	
+	<select id="getByCode" parameterType="String" resultType="tUser">
+		select * from t_user where code = #{code}
+	</select>
 	<insert id="insert"  parameterType="tUser">
 		insert into t_user (id,name,name_pinyin,code,gender,card,type,isvisible,email,phone,address,postcode,isdeleted,creator,createtime,versiontime,createorgid) values
 	(#{id},#{name},#{name_pinyin,jdbcType=VARCHAR}

@@ -40,6 +40,7 @@ import com.bw.fit.system.role.entity.TRole;
 import com.bw.fit.system.role.model.Role;
 import com.bw.fit.system.role.service.RoleService;
 import com.bw.fit.system.user.entity.TUser;
+import com.bw.fit.system.user.model.User;
 import com.bw.fit.system.user.service.UserService;
 /*****
  * 角色模块controller
@@ -220,11 +221,13 @@ public class RoleController extends BaseController {
 	public String openAccountOfRole(@PathVariable String roleId,Model model){		
 		List<Account> as = roleService.getAccountOfRole(roleId);
 		for(Account a:as){
-			a.setName(userService.get(a.getUserId()).getName());
+			User u = userService.getByCode(a.getUserId());
+			a.setName(u.getName());
 		}
+		String s = as.stream().map(Account::getName).collect(Collectors.joining(",")) ;
 		model.addAttribute("role", roleDao.get(roleId));
 		model.addAttribute("accountIds", as.stream().map(Account::getId).collect(Collectors.joining(",")));
-		model.addAttribute("accountNames", as.stream().map(Account::getName).collect(Collectors.joining(",")));
+		model.addAttribute("accountNames", s);
 		
 		return "system/role/role2AccountPage";
 	}

@@ -26,6 +26,12 @@ public class UserDaoImpl implements UserDao {
 	public TUser get(String id) {
 		return (TUser)daoTemplete.getOneData("userSql.get", id);
 	}
+	
+
+	@Override
+	public TUser getByCode(String code) {
+		return (TUser)daoTemplete.getOneData("userSql.getByCode", code);
+	}
 
 	@Override
 	public void insert(TUser tu) throws RbackException {

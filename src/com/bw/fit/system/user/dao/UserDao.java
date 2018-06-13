@@ -26,6 +26,12 @@ public interface UserDao {
 	 * @return
 	 */
 	public TUser get(String id);
+	/***
+	 * 根据code获取用户资料
+	 * @param id
+	 * @return
+	 */
+	public TUser getByCode(String code);
 	/****
 	 * 新增
 	 * @param tu

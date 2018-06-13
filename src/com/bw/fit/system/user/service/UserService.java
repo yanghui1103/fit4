@@ -27,4 +27,6 @@ public interface UserService {
 	 * @return
 	 */
 	public User get(String id);
+	
+	public User getByCode(String code);
 }
