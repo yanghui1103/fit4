@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.component.warn.service.WarnService;
 import com.bw.fit.system.address.service.AddressService;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.PubFun;
@@ -35,7 +36,7 @@ public class PositionController {
 	@Autowired
 	private PositionService positionService ;
 	@Autowired
-	private AddressService addressService ;
+	private WarnService warnService ;
 	@Autowired
 	private OrganizationDao organizationDao;
 	/*****
@@ -57,6 +58,7 @@ public class PositionController {
 	public JSONObject companyList(@ModelAttribute Position p, HttpServletRequest request,@PathVariable String orgId) {
 		JSONObject json = new JSONObject();
 		p.setPaginationEnable("1");
+		warnService.sendWaitWarns();
 		List<Position> list = positionDao.getPositions(p,orgId);
 		if(list!=null&&list.size()>0) {
 			for(Position tmp : list) {

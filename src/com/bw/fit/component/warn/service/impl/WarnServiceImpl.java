@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bw.fit.component.warn.dao.WarnDao;
+import com.bw.fit.component.warn.entity.TWarn;
 import com.bw.fit.component.warn.service.WarnService;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.common.util.MailTool;
@@ -21,7 +23,8 @@ import com.bw.fit.system.dict.model.Dict;
 
 @Service
 public class WarnServiceImpl implements WarnService {
-
+	@Autowired
+	private WarnDao warnDao ;
 	@Autowired
 	private DictDao dictDao ;
 	@Override
@@ -73,6 +76,16 @@ public class WarnServiceImpl implements WarnService {
 			json.put("msg", "预警方式有误，故发送失败");
 			return json ;
 		}
+	}
+	@Override
+	public List<TWarn> all(TWarn warn) {
+		return warnDao.all(warn);
+	}
+	@Override
+	public JSONObject sendWaitWarns() {
+		TWarn tw = new TWarn();
+		List<TWarn> allWarn = all(tw);
+		return null;
 	}
 
 }
