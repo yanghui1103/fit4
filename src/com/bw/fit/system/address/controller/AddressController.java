@@ -41,12 +41,8 @@ import com.bw.fit.system.position.service.PositionService;
 public class AddressController {
 	
 	@Autowired
-	private AddressDao addressDao ;
-	@Autowired
 	private AddressService addressService ;
 	
-	@Autowired
-	private OrganizationDao organizationDao ;
 	/***
 	 * 打开地址本页面
 	 * @param model
