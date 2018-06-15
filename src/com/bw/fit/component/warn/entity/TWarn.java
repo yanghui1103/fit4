@@ -1,0 +1,81 @@
+package com.bw.fit.component.warn.entity;
+
+import com.bw.fit.system.common.entity.BaseEntity;
+
+/****
+ * 通知实体
+ * @author yangh
+ *
+ */
+public class TWarn extends BaseEntity{
+
+	private String title ;
+	private String content;
+	private String url;
+	private String tLevel;
+	private String modes;
+	private String creator;
+	private String createTime;
+	private String runTime;
+	private String result;
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public String gettLevel() {
+		return tLevel;
+	}
+	public void settLevel(String tLevel) {
+		this.tLevel = tLevel;
+	}
+	public String getModes() {
+		return modes;
+	}
+	public void setModes(String modes) {
+		this.modes = modes;
+	}
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	public String getRunTime() {
+		return runTime;
+	}
+	public void setRunTime(String runTime) {
+		this.runTime = runTime;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
+	
+	
+}

@@ -38,7 +38,7 @@ public class WarnServiceImpl implements WarnService {
 			return json ;
 		}
 		message = "[" + t.get().getDict_name()+"]" +message ;		
-		if("1".equals(warningType)){
+		if("sms".equalsIgnoreCase(warningType)){
 			try {
 				SmsSender.SendSMSString(target_number, message);
 				PubFun.returnSuccessJson(json);
@@ -49,7 +49,7 @@ public class WarnServiceImpl implements WarnService {
 			}finally{
 				return json ;
 			}
-		}else if("3".equals(warningType)){ 
+		}else if("emain".equalsIgnoreCase(warningType)){ 
 			StringBuilder sb = new StringBuilder(message);
 			try {
 				MailTool.send(subject, sb, new InternetAddress[] { new InternetAddress(target_number) });
@@ -61,7 +61,7 @@ public class WarnServiceImpl implements WarnService {
 			}finally{
 				return json ;
 			}
-		}else if("2".equals(warningType)){
+		}else if("ism".equalsIgnoreCase(warningType)){
 			/****
 			 * 发送即时消息
 			 */
