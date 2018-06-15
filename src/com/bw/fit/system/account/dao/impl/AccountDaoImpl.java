@@ -100,4 +100,9 @@ public class AccountDaoImpl implements AccountDao {
 		return daoTemplete.getListData("accountSql.getPositionsOfTheAccount", accountId);
 	}
 
+	@Override
+	public void transferAccount(Account account) throws RbackException {
+		daoTemplete.update("accountSql.transferAccount", account);
+	}
+
 }

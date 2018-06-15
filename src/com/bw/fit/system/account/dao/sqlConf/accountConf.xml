@@ -59,4 +59,8 @@
       where ap.positionid = p.id and p.isdeleted='0' 
       and ap.accountid=#{accountId}
 	</select>
+	
+	<update id="transferAccount" parameterType="account">
+		update account set userid = #{userId,jdbcType=VARCHAR} where id = #{id,jdbcType=VARCHAR}
+	</update>
 </mapper>   

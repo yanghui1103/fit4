@@ -96,6 +96,18 @@ function openAddAccount(){
 	    href: ctx+'system/gotoIframePage/system/account/accountAddPage/-9',    
 	    modal: true   
 	}); 	
+}
 
-	
+function openTransferAccount(){
+	var row = getSingleTreeGridSelectData($("#accountListDg"));
+	$('#_loadDialog_accountlist').dialog({    
+	    title: '账户过户',    
+	    width: 800,    
+	    height: 500,    
+	    closed: false,    
+	    cache: false,    
+	    maximizable:true,
+	    href: ctx+'account/openAccountTransferPage/'+row.temp_str2,    
+	    modal: true   
+	}); 	
 }

@@ -58,4 +58,11 @@ public interface AccountService {
 	 * @return
 	 */
 	public List<Organization> getDataAuthOrgsOfAccount(String accountId);
+	/*****
+	 * 过户账户至别的用户
+	 * @param account
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject transferAccount(Account account) throws RbackException;
 }

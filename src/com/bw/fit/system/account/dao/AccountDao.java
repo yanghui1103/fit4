@@ -2,6 +2,7 @@ package com.bw.fit.system.account.dao;
 
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bw.fit.system.account.model.Account;
 import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.organization.entity.TOrganization;
@@ -79,4 +80,11 @@ public interface AccountDao {
 	 * @return
 	 */
 	public List<TPosition> getPositionsOfTheAccount(String accountId);
+	/*****
+	 * 过户账户至别的用户
+	 * @param account
+	 * @return
+	 * @throws RbackException
+	 */
+	public void transferAccount(Account account) throws RbackException;
 }

@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -110,6 +111,42 @@ public class AccountController extends BaseController {
 		}finally{
 			return json  ;
 		}
+	}
+	
+	/****
+	 * 支持过户
+	 * @param account
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value="account",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject update(@Valid @ModelAttribute Account account,BindingResult result){
+		JSONObject json = new JSONObject();
+		if (result.hasErrors()) {
+			FieldError error = result.getFieldError();
+			json.put("res", "1");
+			returnFailJson(json, error.getDefaultMessage());
+			return json ;
+		}
+		try {
+			Session session = PubFun.getCurrentSession();
+			PubFun.fillCommonProptities(account, false, session);
+			json = accountService.transferAccount(account);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}
+	}
+	
+	@RequestMapping("openAccountTransferPage/{accountId}")
+	public String openAccountTransferPage(@PathVariable String accountId,Model model){
+		Account ac = accountService.get(accountId);
+		model.addAttribute("account", ac);
+		return "system/account/accountTransferPage";
 	}
 	
 }
