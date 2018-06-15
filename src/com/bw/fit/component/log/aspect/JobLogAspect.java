@@ -55,9 +55,8 @@ public class JobLogAspect implements  Ordered {
 
 				obj = pjd.proceed(); // 执行
 				LogInfo t = new LogInfo();   
-				Account account = PubFun.getCurrentAccount();
 				t.setId(getUUID());
-				t.setCreator(account.getLogName()+account.getName());
+				t.setCreator("JobRobot");
 				t.setOperateFunction(target.getClass().getName()+"."+currentMethod.getName());
 				String classType = pjd.getTarget().getClass().getName();    
 		        Class<?> clazz = Class.forName(classType);   
