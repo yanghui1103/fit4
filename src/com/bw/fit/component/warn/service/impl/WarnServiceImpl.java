@@ -21,7 +21,7 @@ import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.dict.model.Dict;
 
-@Service
+@Service(value="warnService")
 public class WarnServiceImpl implements WarnService {
 	@Autowired
 	private WarnDao warnDao ;
@@ -52,7 +52,7 @@ public class WarnServiceImpl implements WarnService {
 			}finally{
 				return json ;
 			}
-		}else if("emain".equalsIgnoreCase(warningType)){ 
+		}else if("email".equalsIgnoreCase(warningType)){ 
 			StringBuilder sb = new StringBuilder(message);
 			try {
 				MailTool.send(subject, sb, new InternetAddress[] { new InternetAddress(target_number) });
