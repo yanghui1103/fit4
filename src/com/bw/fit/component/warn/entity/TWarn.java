@@ -14,8 +14,7 @@ public class TWarn extends BaseEntity{
 	private String url;
 	private String tLevel;
 	private String modes;
-	private String creator;
-	private String createTime;
+	private String runner;
 	private String runTime;
 	private String result;
 	private String target_number ;
@@ -60,17 +59,11 @@ public class TWarn extends BaseEntity{
 	public void setModes(String modes) {
 		this.modes = modes;
 	}
-	public String getCreator() {
-		return creator;
+	public String getRunner() {
+		return runner;
 	}
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-	public String getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
+	public void setRunner(String runner) {
+		this.runner = runner;
 	}
 	public String getRunTime() {
 		return runTime;
