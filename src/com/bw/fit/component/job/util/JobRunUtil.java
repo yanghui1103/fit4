@@ -28,13 +28,15 @@ public class JobRunUtil {
     
 	@PostConstruct
 	public void runAllJobTask() throws Exception{
-		List<TJob> list = jobDao.all(null);
+		TJob t = new TJob();
+		t.setIsValid("1");
+		List<TJob> list = jobDao.all(t);
 		for(TJob tb:list){
-	        QuartzManager.addJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, Class.forName(tb.getCodeData()), tb.getRunTime()); 
+	        QuartzManager.addJob(tb.getId(), JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, Class.forName(tb.getCodeData()), tb.getRunTime()); 
 		}   
 	}
 	
-	public void remove(String taskName) {
-		QuartzManager.removeJob(taskName,JOB_GROUP_NAME,TRIGGER_NAME,TRIGGER_GROUP_NAME); 
+	public void remove(String jobName) {
+		QuartzManager.removeJob(jobName,JOB_GROUP_NAME,TRIGGER_NAME,TRIGGER_GROUP_NAME); 
 	}
 }

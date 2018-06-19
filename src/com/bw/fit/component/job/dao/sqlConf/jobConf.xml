@@ -6,7 +6,15 @@
 	</sql>
 	
 	<select id="all" parameterType="tJob" resultType="tJob">
-		select * from  t_job a where isvalid = '1'
+		select * from  (
+			select a.*,rownum rn from  t_job a where 1=1 
+		<if test="isValid!=''.toString() and isValid !=null">
+			and isvalid = #{isValid,jdbcType=VARCHAR}
+		</if>	
+		) cc where 1=1 
+		<if test="paginationEnable!='0'.toString()">		
+			<include refid="paginationSql"></include>
+		</if>
 	</select>
 	
 	<select id="get" parameterType="String" resultType="tJob">

@@ -105,7 +105,6 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public void grantMenus2role(BaseModel ta) throws RbackException {
 		daoTemplete.insert("roleSql.grantMenus2role", ta);
-		throw new RbackException("1","sdfdf");
 	}
 
 	@Override
