@@ -85,17 +85,19 @@ public class WarnServiceImpl implements WarnService {
 	public void sendWaitWarns(String runner) {
 		TWarn tw = new TWarn();
 		List<TWarn> allWarn = all(tw);
-		allWarn.stream().forEach(warn -> {  
-            //System.out.println(warn);
-			JSONObject jobj = sendWarning(warn.gettLevel(), warn.getModes(), warn.getTarget_number(), warn.getTitle(), warn.getMsg());
-			warn.setRunner(runner);
-			warn.setResult(jobj.toJSONString());
-			try {
-				warnDao.update(warn);
-			} catch (RbackException e) {
-				e.printStackTrace();
-			}
-		}); 
+		if(allWarn!=null&&allWarn.size()>0) {
+			allWarn.stream().forEach(warn -> {  
+	            //System.out.println(warn);
+				JSONObject jobj = sendWarning(warn.gettLevel(), warn.getModes(), warn.getTarget_number(), warn.getTitle(), warn.getMsg());
+				warn.setRunner(runner);
+				warn.setResult(jobj.toJSONString());
+				try {
+					warnDao.update(warn);
+				} catch (RbackException e) {
+					e.printStackTrace();
+				}
+			}); 
+		}
 	}
 
 }
