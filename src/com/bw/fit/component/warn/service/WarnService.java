@@ -16,7 +16,7 @@ public interface WarnService {
 	 * @return
 	 * @throws RbackException
 	 */
-	public JSONObject sendWarning(String warningLevel,String warningType ,String target_number,String subject,String message) throws RbackException;
+	public JSONObject warning(String warningLevel,String warningType ,String target_number,String subject,String message) throws RbackException;
 	/****
 	 * 获取全部预警信息
 	 * @param warn
@@ -27,5 +27,5 @@ public interface WarnService {
 	 * 发送等待预警
 	 * @return
 	 */
-	public void sendWaitWarns(String runner);
+	public void warnWaitWarns(String runner);
 }

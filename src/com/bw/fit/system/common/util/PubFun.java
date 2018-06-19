@@ -17,15 +17,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.*;
 
 import javassist.ClassClassPath;
@@ -62,6 +53,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.util.ByteSource;
 import org.dom4j.Document;
@@ -551,7 +543,12 @@ public class PubFun {
 	 * @return
 	 */
 	public static Account getCurrentAccount() {
-		return ((Account)SecurityUtils.getSubject().getSession().getAttribute("CurrentUser"));
+		try {
+			return ((Account)SecurityUtils.getSubject().getSession().getAttribute("CurrentUser"));
+		} catch (Throwable e) {
+			// e.printStackTrace();
+			return null;
+		}
 	}
 
 

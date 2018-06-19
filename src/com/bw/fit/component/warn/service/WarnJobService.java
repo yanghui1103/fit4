@@ -10,5 +10,5 @@ public interface WarnJobService {
 	/*****
 	 * 定时隔时间发送
 	 */
-	public void sendWarn();
+	public void warn();
 }

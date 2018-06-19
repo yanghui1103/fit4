@@ -16,15 +16,15 @@ public class WarnJobServiceImpl implements WarnJobService,Job {
 
 	
 	@Override
-	public void sendWarn() {
+	public void warn() {
 		WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
 		WarnService warnService = (WarnService) wac.getBean("warnService");
-		warnService.sendWaitWarns(PropertiesUtil.getValueByKey("job_robot"));
+		warnService.warnWaitWarns(PropertiesUtil.getValueByKey("job_robot"));
 	}
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		sendWarn();
+		warn();
 	}
 
 }
