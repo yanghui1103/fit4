@@ -82,7 +82,7 @@ public class WarnServiceImpl implements WarnService {
 		return warnDao.all(warn);
 	}
 	@Override
-	public JSONObject sendWaitWarns() {
+	public JSONObject sendWaitWarns(String runner) {
 		TWarn tw = new TWarn();
 		List<TWarn> allWarn = all(tw);
 		return null;

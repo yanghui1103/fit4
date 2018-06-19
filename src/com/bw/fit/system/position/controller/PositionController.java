@@ -58,7 +58,6 @@ public class PositionController {
 	public JSONObject companyList(@ModelAttribute Position p, HttpServletRequest request,@PathVariable String orgId) {
 		JSONObject json = new JSONObject();
 		p.setPaginationEnable("1");
-		warnService.sendWaitWarns();
 		List<Position> list = positionDao.getPositions(p,orgId);
 		if(list!=null&&list.size()>0) {
 			for(Position tmp : list) {
