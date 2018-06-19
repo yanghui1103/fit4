@@ -12,6 +12,11 @@
 				and result like '%'||#{result}||'%'				
 			</otherwise>
 		</choose>
-		
 	</select>
+	
+	<update id="update"  parameterType="TWarn">
+		update t_warn set runner=#{runner,jdbcType=VARCHAR},
+		result=#{result,jdbcType=VARCHAR},runtime=sysdate
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
 </mapper>   

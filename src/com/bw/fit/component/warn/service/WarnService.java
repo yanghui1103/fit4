@@ -27,5 +27,5 @@ public interface WarnService {
 	 * 发送等待预警
 	 * @return
 	 */
-	public JSONObject sendWaitWarns(String runner);
+	public void sendWaitWarns(String runner);
 }
