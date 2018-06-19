@@ -37,7 +37,7 @@ public class WarnServiceImpl implements WarnService {
 		if(!t.isPresent()){
 			json = new JSONObject();
 			json.put("res", "1");
-			json.put("msg", "没有找到预警级别，故无法发送");
+			json.put("msg", "没有找到通知级别，故无法发送");
 			return json ;
 		}
 		message = "[" + t.get().getDict_name()+"]" +message ;		
@@ -76,7 +76,7 @@ public class WarnServiceImpl implements WarnService {
 		} else{
 			json = new JSONObject();
 			json.put("res", "1");
-			json.put("msg", "预警方式有误，故发送失败");
+			json.put("msg", "通知方式有误，故发送失败");
 			return json ;
 		}
 	}
