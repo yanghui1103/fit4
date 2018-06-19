@@ -21,7 +21,7 @@ import com.bw.fit.system.dict.dao.DictDao;
 import com.bw.fit.system.dict.model.DataDict;
 import com.bw.fit.system.dict.model.Dict;
 
-@Service
+@Service(value="warnService")
 public class WarnServiceImpl implements WarnService {
 	@Autowired
 	private WarnDao warnDao ;
@@ -43,24 +43,27 @@ public class WarnServiceImpl implements WarnService {
 		message = "[" + t.get().getDict_name()+"]" +message ;		
 		if("sms".equalsIgnoreCase(warningType)){
 			try {
-				SmsSender.SendSMSString(target_number, message);
-				PubFun.returnSuccessJson(json);
+				boolean b = SmsSender.SendSMSString(target_number, message);
+				if(b){
+					PubFun.returnSuccessJson(json);
+				}else{
+					PubFun.returnFailJson(json, "发送失败");
+				}
 			} catch (Exception e) {
 				json = new JSONObject();
 				json.put("res", "1");
-				json.put("msg", e.getLocalizedMessage()); 
+				json.put("msg", e.getMessage()); 
 			}finally{
 				return json ;
 			}
-		}else if("emain".equalsIgnoreCase(warningType)){ 
+		}else if("email".equalsIgnoreCase(warningType)){ 
 			StringBuilder sb = new StringBuilder(message);
 			try {
-				MailTool.send(subject, sb, new InternetAddress[] { new InternetAddress(target_number) });
-				PubFun.returnSuccessJson(json);
+				json = MailTool.send(subject, sb, new InternetAddress[] { new InternetAddress(target_number) });
 			} catch (AddressException e) {
 				json = new JSONObject();
 				json.put("res", "1");
-				json.put("msg", e.getLocalizedMessage()); 
+				json.put("msg", e.getMessage()); 
 			}finally{
 				return json ;
 			}
