@@ -18,8 +18,17 @@ public class TWarn extends BaseEntity{
 	private String createTime;
 	private String runTime;
 	private String result;
+	private String target_number ;
 	
 	
+	
+	
+	public String getTarget_number() {
+		return target_number;
+	}
+	public void setTarget_number(String target_number) {
+		this.target_number = target_number;
+	}
 	public String getTitle() {
 		return title;
 	}
