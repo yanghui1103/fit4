@@ -13,13 +13,12 @@ import com.bw.fit.component.warn.service.WarnService;
 import com.bw.fit.system.common.util.PropertiesUtil;
 
 public class WarnJobServiceImpl implements WarnJobService,Job {
-
 	
 	@Override
 	public void warn() {
 		WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
 		WarnService warnService = (WarnService) wac.getBean("warnService");
-		warnService.warnWaitWarns(PropertiesUtil.getValueByKey("job_robot"));
+		warnService.sdaitWarns(PropertiesUtil.getValueByKey("job_robot"));
 	}
 
 	@Override

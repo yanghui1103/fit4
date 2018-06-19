@@ -26,7 +26,7 @@ import com.bw.fit.component.log.service.LogService;
  * @author yangh
  *
  */
-@Component
+@Component(value="jobLogAspect")
 public class JobLogAspect implements  Ordered {
 	@Autowired
 	private DaoTemplete daoTemplete ;

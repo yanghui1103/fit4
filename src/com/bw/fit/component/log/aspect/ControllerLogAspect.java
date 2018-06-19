@@ -81,7 +81,7 @@ public class ControllerLogAspect implements Ordered {
 	        Object[] args = pjd.getArgs();//参数  
 			Map<String,Object > nameAndArgs = PubFun.getFieldsNameAndValue(this.getClass(), clazzName, methodName,args);   
 			t.setParams(nameAndArgs.toString());
-			t.setResult(obj.toString());
+			t.setResult(obj==null?"":obj.toString());
 			t.setLogType("mainlog");
 			logService.notice(t);
 		} catch (Throwable e) {

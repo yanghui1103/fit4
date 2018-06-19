@@ -43,13 +43,4 @@
 		</aop:aspect>
 	</aop:config>	
 	
-	<!-- 采集Job方法日志 -->
-	<aop:config>
-		<aop:pointcut
-			expression="execution(* com.bw.fit.*.*.service.*JobService.*(..))"
-			id="logpointcut4" />
-		<aop:aspect ref="jobLogAspect" order="4">
-			<aop:around method="aroundMethod" pointcut-ref="logpointcut4" />
-		</aop:aspect>
-	</aop:config>	
 </beans> 

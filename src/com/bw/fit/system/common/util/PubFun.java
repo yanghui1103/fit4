@@ -520,7 +520,6 @@ public class PubFun {
 
 	/****
 	 * 填充失败/异常返回JSON
-	 * 
 	 * @param j
 	 * @param errorMsg
 	 *            失败消息
@@ -546,7 +545,6 @@ public class PubFun {
 		try {
 			return ((Account)SecurityUtils.getSubject().getSession().getAttribute("CurrentUser"));
 		} catch (Throwable e) {
-			// e.printStackTrace();
 			return null;
 		}
 	}

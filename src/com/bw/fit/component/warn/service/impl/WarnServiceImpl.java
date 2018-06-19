@@ -28,7 +28,7 @@ public class WarnServiceImpl implements WarnService {
 	@Autowired
 	private DictDao dictDao ;
 	@Override
-	public JSONObject warning(String warningLevel, String warningType,
+	public JSONObject createWarning(String warningLevel, String warningType,
 			String target_number, String subject, String message)  {
 		JSONObject json = new JSONObject();
 		Dict dict = dictDao.getDictByValue("warnLevel");
@@ -85,13 +85,12 @@ public class WarnServiceImpl implements WarnService {
 		return warnDao.all(warn);
 	}
 	@Override
-	public void warnWaitWarns(String runner) {
+	public void sdaitWarns(String runner) {
 		TWarn tw = new TWarn();
 		List<TWarn> allWarn = all(tw);
 		if(allWarn!=null&&allWarn.size()>0) {
 			allWarn.stream().forEach(warn -> {  
-	            //System.out.println(warn);
-				JSONObject jobj = warning(warn.gettLevel(), warn.getModes(), warn.getTarget_number(), warn.getTitle(), warn.getMsg());
+				JSONObject jobj = createWarning(warn.gettLevel(), warn.getModes(), warn.getTarget_number(), warn.getTitle(), warn.getMsg());
 				warn.setRunner(runner);
 				warn.setResult(jobj.toJSONString());
 				try {
