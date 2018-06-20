@@ -9,6 +9,7 @@ import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.organization.entity.TOrganization;
 import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.position.entity.TPosition;
+import com.bw.fit.system.role.model.Role2Account;
 
 public interface AccountService {
 
@@ -65,4 +66,11 @@ public interface AccountService {
 	 * @throws RbackException
 	 */
 	public JSONObject transferAccount(Account account) throws RbackException;
+	/*****
+	 * 角色分配账号
+	 * @param ra
+	 * @return
+	 * @throws RbackException
+	 */
+	public JSONObject updateRole2Account(Role2Account ra) throws RbackException;
 }

@@ -29,14 +29,13 @@
 	src="<%=basePath%>common/fit/v4/js/jquery.min.js"></script>
 <script type="text/javascript"
 	src="<%=basePath%>common/fit/v4/js/jquery.easyui.min.js"></script>
-
 </head>
 <body>
 	<div style="float: right;margin-right:30px;margin-top:5px" >
 		<button class="easyui-linkbutton" type=button iconCls="icon-add" data-options="selected:true"
-			onclick="addRole2Auths();" style="width: 150px">保存</button>
+			onclick="addRole2Account();" style="width: 150px">保存</button>
 	</div>
-	<form id="role2AuthFm">
+	<form id="role2AccountFm">
 	 <div class="easyui-tabs1" style="width: 100%;">
 		<div class="column">
 			<span class="current">角色信息</span>
@@ -46,7 +45,7 @@
 			<ul><label>${role.name }	</label>
 			</ul>
 		</div>
-		<input name="temp_str1"  value=${role.id } type="hidden">
+		<input name="roleId"  value=${role.id } type="hidden">
 		<input name="_method"  value="PUT" type="hidden">
 		
 		<div class="column">
@@ -58,15 +57,13 @@
 			<div>人员列表</div>
 			<input class="easyui-textbox address-select"  value='${accountNames }' style="width: 80%;paddding-right:2px"  editable=false 
 				data-options="required:true">
-				<input type="hidden" name="parentId" value='${accountIds }'>
+				<input type="hidden" name="accountIds" value='${accountIds }'>
 		</div>
 		</div>
 	 </div>
 	</form>
 <script type="text/javascript" src="<%=basePath%>common/js/system/address/addressPage.js"></script>
 <script type="text/javascript">
-
-
 $(function(){
 		$(".address-select").textbox({
 			icons: [{
@@ -78,6 +75,22 @@ $(function(){
 		})
 	});
 
+function addRole2Account(){
+	if (!$("#role2AccountFm").form('enableValidation')
+			.form('validate')) {
+		return;
+	}
+	$.ajax({
+		type : 'PUT',
+		url : ctx + "account/role2Account",
+		data :  $("#role2AccountFm").serialize(),
+		success : function(data) {
+			promptMessage(data.res, data.msg );
+		},
+		dataType : "JSON"
+	});
+		
+}
 </script>
 </body>
 </html>

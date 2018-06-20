@@ -31,6 +31,7 @@ import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.menu.service.MenuService;
 import com.bw.fit.system.organization.model.Organization;
+import com.bw.fit.system.role.model.Role2Account;
 
 @RequestMapping("account")
 @Controller
@@ -147,6 +148,30 @@ public class AccountController extends BaseController {
 		Account ac = accountService.get(accountId);
 		model.addAttribute("account", ac);
 		return "system/account/accountTransferPage";
+	}
+	
+	@RequestMapping(value="role2Account",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public JSONObject role2Account(@Valid @ModelAttribute Role2Account ra,BindingResult result){
+		JSONObject json = new JSONObject();
+		if (result.hasErrors()) {
+			FieldError error = result.getFieldError();
+			json.put("res", "1");
+			returnFailJson(json, error.getDefaultMessage());
+			return json ;
+		}
+		try {
+			Session session = PubFun.getCurrentSession();
+			PubFun.fillCommonProptities(ra, true, session);
+			json = accountService.updateRole2Account(ra);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			returnFailJson(json, e.getMsg());
+		}finally{
+			return json  ;
+		}
+	
 	}
 	
 }

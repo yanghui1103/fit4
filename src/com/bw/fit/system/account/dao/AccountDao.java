@@ -8,6 +8,8 @@ import com.bw.fit.system.common.model.RbackException;
 import com.bw.fit.system.organization.entity.TOrganization;
 import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2Account;
+import com.bw.fit.system.role.model.Role2Account;
 
 public interface AccountDao {
 
@@ -87,4 +89,11 @@ public interface AccountDao {
 	 * @throws RbackException
 	 */
 	public void transferAccount(Account account) throws RbackException;
+	/*****
+	 * 角色分配账号
+	 * @param ra
+	 * @throws RbackException
+	 */
+	public void updateRole2Account(TRole2Account ra) throws RbackException;
+	
 }

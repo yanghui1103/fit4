@@ -110,4 +110,13 @@
 	 	select aa.* from t_account2role ar,t_account aa 
 		where aa.id = ar.accountid and aa.isdeleted='0' and ar.roleid = #{roleId}
 	 </select>
+	 <select id="getRole2Account" parameterType="TRole2Account" resultType="TRole2Account"> 
+	 	select * from t_account2role a where a.roleid = #{roleId,jdbcType=VARCHAR}
+	 </select>
+	 <delete id="deleteRole2Account" parameterType="TRole2Account">
+	 	delete from t_account2role a where a.roleid = #{roleId,jdbcType=VARCHAR}
+	 </delete>
+	 <insert id="insertRole2Account" parameterType="TRole2Account">
+	 	insert into t_account2role(roleid,accountid) values (#{roleId,jdbcType=VARCHAR},#{accountId,jdbcType=VARCHAR})
+	 </insert>
 </mapper>   

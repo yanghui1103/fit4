@@ -15,6 +15,8 @@ import com.bw.fit.system.common.util.PubFun;
 import com.bw.fit.system.organization.entity.TOrganization;
 import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2Account;
+import com.bw.fit.system.role.model.Role2Account;
 import com.bw.fit.system.user.model.User;
 import com.bw.fit.system.user.service.UserService;
 @Repository
@@ -103,6 +105,15 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void transferAccount(Account account) throws RbackException {
 		daoTemplete.update("accountSql.transferAccount", account);
+	}
+
+	@Override
+	public void updateRole2Account(TRole2Account ra) throws RbackException {
+		List list = daoTemplete.getListData("roleSql.getRole2Account", ra);
+		if(list!=null ){
+			daoTemplete.insert("roleSql.deleteRole2Account", ra);
+		}
+		daoTemplete.insert("roleSql.insertRole2Account", ra);
 	}
 
 }

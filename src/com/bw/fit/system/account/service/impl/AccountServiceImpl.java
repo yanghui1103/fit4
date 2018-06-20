@@ -23,7 +23,9 @@ import com.bw.fit.system.organization.service.OrganizationService;
 import com.bw.fit.system.position.entity.TPosition;
 import com.bw.fit.system.role.dao.RoleDao;
 import com.bw.fit.system.role.entity.TRole;
+import com.bw.fit.system.role.entity.TRole2Account;
 import com.bw.fit.system.role.entity.TRole2dataauthOrgs;
+import com.bw.fit.system.role.model.Role2Account;
 import com.bw.fit.system.role.service.RoleService;
 
 @Service
@@ -198,5 +200,27 @@ public class AccountServiceImpl implements AccountService {
 		}finally{
 			return json ;
 		}}
+
+	@Override
+	public JSONObject updateRole2Account(Role2Account ra) throws RbackException {
+		JSONObject json = new JSONObject();		
+		try {
+			String[] ss = ra.getAccountIds().split(",");
+			for(String s:ss){
+				TRole2Account raa  = new TRole2Account();
+				raa.setRoleId(ra.getRoleId());
+				raa.setAccountId(s);
+				accountDao.updateRole2Account(raa);
+			}
+			PubFun.returnSuccessJson(json);
+		} catch (RbackException e) {
+			e.printStackTrace();
+			json = new JSONObject();		
+			PubFun.returnFailJson(json, e.getMsg());
+			throw e;
+		}finally{
+			return json ;
+		}
+	}
 
 }
