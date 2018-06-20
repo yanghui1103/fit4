@@ -69,7 +69,7 @@ $(function(){
 			icons: [{
 				iconCls:'icon-search',
 				handler: function(e){
-					openAddress($("#_loadDialog_address"),$("input[name='parentId']"),$(".address-select"),"A",false);
+					openAddress($("#_loadDialog_address"),$("input[name='accountIds']"),$(".address-select"),"A",false);
 				}
 			}]
 		})
@@ -81,9 +81,10 @@ function addRole2Account(){
 		return;
 	}
 	$.ajax({
-		type : 'PUT',
+		type : 'POST',
 		url : ctx + "account/role2Account",
-		data :  $("#role2AccountFm").serialize(),
+		data : serializeFormToJSON($("#role2AccountFm")
+				.serializeArray()), 
 		success : function(data) {
 			promptMessage(data.res, data.msg );
 		},

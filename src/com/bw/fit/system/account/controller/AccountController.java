@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
@@ -152,14 +153,8 @@ public class AccountController extends BaseController {
 	
 	@RequestMapping(value="role2Account",method=RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public JSONObject role2Account(@Valid @ModelAttribute Role2Account ra,BindingResult result){
+	public JSONObject role2Account(@ModelAttribute Role2Account ra,@RequestParam(value="roleId") String roleId){
 		JSONObject json = new JSONObject();
-		if (result.hasErrors()) {
-			FieldError error = result.getFieldError();
-			json.put("res", "1");
-			returnFailJson(json, error.getDefaultMessage());
-			return json ;
-		}
 		try {
 			Session session = PubFun.getCurrentSession();
 			PubFun.fillCommonProptities(ra, true, session);
