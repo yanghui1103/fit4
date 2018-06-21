@@ -134,7 +134,7 @@ public class AccountController extends BaseController {
 		try {
 			Session session = PubFun.getCurrentSession();
 			PubFun.fillCommonProptities(account, false, session);
-			json = accountService.transferAccount(account);
+			json = accountService.updateTransferAccount(account);
 		} catch (RbackException e) {
 			e.printStackTrace();
 			json = new JSONObject();

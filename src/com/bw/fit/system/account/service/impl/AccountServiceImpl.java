@@ -187,7 +187,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public JSONObject transferAccount(Account account) throws RbackException {
+	public JSONObject updateTransferAccount(Account account) throws RbackException {
 		JSONObject json = new JSONObject();		
 		try {
 			accountDao.transferAccount(account);

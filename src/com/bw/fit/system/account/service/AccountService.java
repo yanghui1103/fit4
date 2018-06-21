@@ -65,7 +65,7 @@ public interface AccountService {
 	 * @return
 	 * @throws RbackException
 	 */
-	public JSONObject transferAccount(Account account) throws RbackException;
+	public JSONObject updateTransferAccount(Account account) throws RbackException;
 	/*****
 	 * 角色分配账号
 	 * @param ra
