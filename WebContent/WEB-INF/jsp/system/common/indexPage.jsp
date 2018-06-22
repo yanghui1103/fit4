@@ -55,14 +55,14 @@
                 <div class="pf-user-photo">
                     <img src="<%=basePath%>common/fit/v4/static/lightblue/images/main/user.png" alt="">                   
                 </div>
-                <h4 class="pf-user-name ellipsis">${sessionScope.CurrentUser.name }</h4>
+                <h4 class="pf-user-name ellipsis"></h4>
                 <i class="iconfont xiala">&#xe607;</i>
                 <div class="pf-user-panel">
                     <ul class="pf-user-opt">
                         <li>
                             <a href="javascript:accountInfo();">
                                 <i class="iconfont">&#xe60d;</i>
-                                <span class="pf-opt-name">账户信息</span>
+                                <span class="pf-opt-name">[${sessionScope.CurrentUser.name }]账户信息</span>
                             </a>
                         </li>
 <!--                          <li class="pf-modify-pwd"> -->
