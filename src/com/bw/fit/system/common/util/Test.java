@@ -6,11 +6,18 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-public class Test implements  Job{
+public class Test {
 
-	@Override
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		System.out.println(new Date() + ": doing something...");
-	}
+	 public static void main(String[] args){
+		 fg(1,2);
+	 }
+	 
+	 public static void fg(String s,int... arg){
+		 
+	 }
+	 
+	 public static void fg(int p,int... arg){
+		 
+	 }
 
 }

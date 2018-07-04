@@ -33,11 +33,11 @@
         , serverUrl:    "http://localhost:8080/fit4/editor/config"
         ,imageActionName:"/editor/upload/image"
         ,imageAllowFiles:[".png",".jpg",".jpeg",".gif",".bmp"]
-    	,imageUrl:"/editor/viewImagesToPage?imagePath="
+    	,imageUrl:"editor/viewImagesToPage?imagePath="
     	,fileActionName:"/editor/upload/image"
     	,fileAllowFiles:[".png",".jpg",".jpeg",".gif",".bmp",
-    			                 ".xls",".xlsx",".doc",".docx",".txt"]
-    	,fileUrlPrefix:"/editor/fileDownLoad"
+    			                 ".xls",".xlsx",".doc",".docx",".txt",".ppt",".pptx"]
+    	,fileUrlPrefix:"/editor/fileDownLoad?"
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[
             'fullscreen', 'source', '|', 'undo', 'redo', '|',
