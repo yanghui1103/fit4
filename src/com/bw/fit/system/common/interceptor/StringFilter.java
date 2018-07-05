@@ -13,7 +13,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.filter.OncePerRequestFilter;
-
+/****
+ * 非法字符串攻击
+ * @author yangh
+ *
+ */
 public class StringFilter implements Filter {
 
 	@Override

@@ -38,7 +38,6 @@
 	</filter-mapping>
 
 	
-	
 	<filter>
 		<filter-name>IllegalStringFilter</filter-name>
 		<filter-class>com.bw.fit.system.common.interceptor.StringFilter</filter-class>
@@ -47,8 +46,6 @@
 		<filter-name>IllegalStringFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	
 
 	<!-- 初始化 DispatcherServlet时，该框架在 web应用程序WEB-INF目录中寻找一个名为[servlet-名称]-servlet.xml的文件， 
 		并在那里定义相关的Beans，重写在全局中定义的任何Beans -->
@@ -102,7 +99,7 @@
 	</error-page>
 
 	<session-config>
-		<session-timeout>30</session-timeout>
+		<session-timeout>-1</session-timeout>
 	</session-config>
 
 	<welcome-file-list>

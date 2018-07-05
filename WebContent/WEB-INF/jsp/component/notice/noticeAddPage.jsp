@@ -36,8 +36,8 @@ $(function(){
     UE.getEditor('myEditor')  
     UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;  
     UE.Editor.prototype.getActionUrl = function(action){  
-        if(action == '/editor/upload/image'){  
-            return ctx +'/editor/upload/image';  
+        if(action == '/editor/upload/file'){  
+            return ctx +'/editor/upload/file';  
         }else{  
             var ac =  this._bkGetActionUrl.call(this, action);  
             return ac ;

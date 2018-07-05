@@ -31,22 +31,22 @@ import com.bw.fit.system.common.util.PubFun;
 public class EditorController extends BaseController {
 
 	/** 
-     * 上传图片 
+     * 上传文件/图片/视频
      * @param file 
      * @param request 
      * @param response 
      * @return 
      */  
     @ResponseBody  
-	@RequestMapping(value = "upload/image")
+	@RequestMapping(value = "upload/file")
     public Map<String, Object> images (@RequestParam(value="file",required=false)MultipartFile file, HttpServletRequest request, HttpServletResponse response){  
         Map<String, Object> params = new HashMap<String, Object>();  
         try{  
         	if(file == null){
         		return null ;
         	}
-             String basePath = PropertiesUtil.getValueByKey("fit_editor_image_path");
-             String visitUrl = PropertiesUtil.getValueByKey("fit_editor_image_path");
+             String basePath = PropertiesUtil.getValueByKey("fit_editor_file_path");
+             String visitUrl = PropertiesUtil.getValueByKey("fit_editor_file_path");
              String origname = file.getOriginalFilename() ;
              String ext = origname.substring(origname.indexOf(".")+1, origname.length());
              String fileName = String.valueOf(System.currentTimeMillis()).concat("_").concat(PubFun.getUUID()).concat(".").concat(ext);  
@@ -162,12 +162,12 @@ public class EditorController extends BaseController {
         System.out.println("filename:"+fileName+" url:"+url);  
         // 读到流中  
         InputStream inStream = new FileInputStream(url);// 文件的存放路径  
-//      fileName = url.substring(url.lastIndexOf("/")+1);  
-//      System.out.println("filename:"+fileName);  
+        //      fileName = url.substring(url.lastIndexOf("/")+1);  
+        //      System.out.println("filename:"+fileName);  
         // 设置输出的格式  
         response.reset();  
-//      response.setContentType("bin");  
-        response.setContentType("application/vnd.ms-excel;charset=utf-8");  
+        //      response.setContentType("bin");  
+        //        response.setContentType("application/vnd.ms-excel;charset=utf-8");  
         response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");  
         // 循环取出流中的数据  
         byte[] b = new byte[100];  
