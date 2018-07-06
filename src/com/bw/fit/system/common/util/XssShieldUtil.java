@@ -18,6 +18,7 @@ public class XssShieldUtil {
     private static List<Object[]> getXssPatternList() {
         List<Object[]> ret = new ArrayList<Object[]>();
 
+        ret.add(new Object[]{"<script>.*?</script>", Pattern.CASE_INSENSITIVE});
         ret.add(new Object[]{"<(no)?script[^>]*>.*?</(no)?script>", Pattern.CASE_INSENSITIVE});
         ret.add(new Object[]{"eval\\((.*?)\\)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL});
         ret.add(new Object[]{"expression\\((.*?)\\)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL});
