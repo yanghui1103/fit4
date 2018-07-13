@@ -173,17 +173,6 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 	
-	
-	<servlet>
-		<description>点对点通讯</description>
-		<servlet-name>message</servlet-name>
-		<servlet-class>com.bw.fit.system.servlet.MessageServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>message</servlet-name>
-		<url-pattern>/messageInteractive</url-pattern>
-	</servlet-mapping>
-
 	<jsp-config>
 		<jsp-property-group>
 			<display-name>JSPConfiguration</display-name>
