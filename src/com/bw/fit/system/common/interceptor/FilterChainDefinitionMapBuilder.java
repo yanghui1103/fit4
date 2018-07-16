@@ -13,6 +13,8 @@ public class FilterChainDefinitionMapBuilder {
 
 		map.put("/common/**", "anon");
 		map.put("/themes/**", "anon");
+		map.put("/plugins/**", "anon");
+		map.put("/upLoadFiles/**", "anon");
 		map.put("/system/login", "anon");
 		map.put("/system/logout", "logout");
 

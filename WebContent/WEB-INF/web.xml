@@ -14,13 +14,13 @@
 		<url-pattern>/js/*</url-pattern>
 		<url-pattern>/plugins/*</url-pattern>
 		<url-pattern>/upLoadFiles/*</url-pattern>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	<!-- Spring 刷新Introspector防止内存泄露 -->
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
-	
-	
+		
 	<!-- session建立和销毁,都被此处拦截并进行增删 -->
 	<listener>
 		<listener-class>com.bw.fit.system.common.listenter.MultiSessionListener</listener-class>
@@ -30,9 +30,7 @@
             org.springframework.web.context.request.RequestContextListener  
         </listener-class>  
 	</listener>
-	
-	
-	
+		
 	<!-- 配置字符集 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -172,7 +170,7 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
-	
+
 	<jsp-config>
 		<jsp-property-group>
 			<display-name>JSPConfiguration</display-name>

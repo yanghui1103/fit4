@@ -30,14 +30,16 @@
         UEDITOR_HOME_URL: URL
         ,contextRootPath:'fit4'
         // 服务器统一请求接口路径
-        , serverUrl:    "http://localhost:8080/fit4/editor/config"
+        , serverUrl:   "http://localhost:8080/fit4/editor/config"
         ,imageActionName:"/editor/upload/file"
         ,imageAllowFiles:[".png",".jpg",".jpeg",".gif",".bmp"]
     	,imageUrl:"editor/viewImagesToPage?imagePath="
     	,fileActionName:"/editor/upload/file"
+        ,imageUrlPrefix: "http://localhost:8080/fit4/editor/viewImagesToPage?imagePath=" 
+        ,   imagePathFormat: "/upLoadFiles/{yyyy}{mm}{dd}/{time}{rand:6}" 
     	,fileAllowFiles:[".png",".jpg",".jpeg",".gif",".bmp",
     			                 ".xls",".xlsx",".doc",".docx",".txt",".ppt",".pptx"]
-    	,fileUrlPrefix:"/editor/fileDownLoad?url="
+    	,fileUrlPrefix:"http://localhost:8080/fit4/editor/fileDownLoad?url="
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[
             'fullscreen', 'source', '|', 'undo', 'redo', '|',
