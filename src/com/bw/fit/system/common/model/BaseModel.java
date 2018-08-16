@@ -52,7 +52,6 @@ public class BaseModel{
 	
 	
 	
-	
 	public String getDataAuth() {
 		return dataAuth;
 	}

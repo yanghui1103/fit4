@@ -19,6 +19,7 @@ import com.bw.fit.system.role.entity.TRole2Account;
 import com.bw.fit.system.role.model.Role2Account;
 import com.bw.fit.system.user.model.User;
 import com.bw.fit.system.user.service.UserService;
+import com.github.pagehelper.PageHelper;
 @Repository
 public class AccountDaoImpl implements AccountDao {
 
@@ -56,6 +57,8 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public List<Account> getAccounts(Account account) {
+		// String orderBy = "logName desc";
+		PageHelper.startPage(account.getPage(), account.getRows()); 
 		return daoTemplete.getListData("accountSql.getAccounts", account);
 	}
 

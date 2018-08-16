@@ -33,6 +33,7 @@ import com.bw.fit.system.menu.model.Menu;
 import com.bw.fit.system.menu.service.MenuService;
 import com.bw.fit.system.organization.model.Organization;
 import com.bw.fit.system.role.model.Role2Account;
+import com.github.pagehelper.Page;
 
 @RequestMapping("account")
 @Controller
@@ -62,14 +63,11 @@ public class AccountController extends BaseController {
 	@ResponseBody
 	public JSONObject accounts(@ModelAttribute Account account){
 		JSONObject js = new JSONObject();
-		account.setPaginationEnable("1");
 		List<Account> list = accountDao.getAccounts(account);
 		for(Account a:list){
 			a.setIsdeleted("0".equals(a.getTemp_str1())?"正常":"已作废");
 		}
-		account.setPaginationEnable("0");
-		List<Account> listTatol = accountDao.getAccounts(account);
-		js.put("total", (listTatol!=null&& listTatol.size() > 0)?listTatol.size():0);
+		js.put("total",((Page)list).getTotal());
 		js.put("rows",  JSONObject.toJSON(list));
 		return js ;
 	}

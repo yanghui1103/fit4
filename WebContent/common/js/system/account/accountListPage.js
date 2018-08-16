@@ -18,9 +18,9 @@ function accountlistquery(){
                    { field: 'temp_str2', title: 'ID' ,hidden:true  },
                    { field: 'id', hidden:true  },
                    { field: 'name', title: '用户姓名', width: '30%',fixed:true  },
-                   { field: 'logName', title: '账号', width: '30%' },
+                   { field: 'logName', title: '账号', width: '30%',sortable:true },
                    { field: 'isdeleted', title: '状态', width: '20%' } ,
-                   { field: 'temp_str3', title: '创建时间', width: '20%' }
+                   { field: 'temp_str3', title: '创建时间', width: '20%' ,sortable:true}
                ]],
              fit: false ,    
              idField: "temp_str1",

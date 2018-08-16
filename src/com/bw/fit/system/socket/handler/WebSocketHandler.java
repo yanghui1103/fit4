@@ -56,6 +56,7 @@ public class WebSocketHandler {
     @OnMessage
     public void onMessage(String message, Session session,@PathParam("username") String username) {
         System.out.println("来自客户端的消息:" + message);
+        System.out.println("来自"+username+"的消息:" );
         System.out.println(username);
         //群发消息
         for(WebSocketHandler item: webSocketSet){
